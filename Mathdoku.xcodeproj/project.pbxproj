@@ -1,0 +1,539 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 46;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		95FBB8DB1E9AD13F00B0E662 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 95FBB8DA1E9AD13F00B0E662 /* AppDelegate.swift */; };
+		95FBB8DD1E9AD13F00B0E662 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 95FBB8DC1E9AD13F00B0E662 /* ViewController.swift */; };
+		95FBB8E01E9AD13F00B0E662 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 95FBB8DE1E9AD13F00B0E662 /* Main.storyboard */; };
+		95FBB8E21E9AD13F00B0E662 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 95FBB8E11E9AD13F00B0E662 /* Assets.xcassets */; };
+		95FBB8E51E9AD13F00B0E662 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 95FBB8E31E9AD13F00B0E662 /* LaunchScreen.storyboard */; };
+		95FBB8F01E9AD13F00B0E662 /* MathdokuTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 95FBB8EF1E9AD13F00B0E662 /* MathdokuTests.swift */; };
+		95FBB8FB1E9AD13F00B0E662 /* MathdokuUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 95FBB8FA1E9AD13F00B0E662 /* MathdokuUITests.swift */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXContainerItemProxy section */
+		95FBB8EC1E9AD13F00B0E662 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 95FBB8CF1E9AD13F00B0E662 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 95FBB8D61E9AD13F00B0E662;
+			remoteInfo = Mathdoku;
+		};
+		95FBB8F71E9AD13F00B0E662 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 95FBB8CF1E9AD13F00B0E662 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 95FBB8D61E9AD13F00B0E662;
+			remoteInfo = Mathdoku;
+		};
+/* End PBXContainerItemProxy section */
+
+/* Begin PBXFileReference section */
+		95FBB8D71E9AD13F00B0E662 /* Mathdoku.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Mathdoku.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		95FBB8DA1E9AD13F00B0E662 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
+		95FBB8DC1E9AD13F00B0E662 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
+		95FBB8DF1E9AD13F00B0E662 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
+		95FBB8E11E9AD13F00B0E662 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		95FBB8E41E9AD13F00B0E662 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
+		95FBB8E61E9AD13F00B0E662 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		95FBB8EB1E9AD13F00B0E662 /* MathdokuTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = MathdokuTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		95FBB8EF1E9AD13F00B0E662 /* MathdokuTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MathdokuTests.swift; sourceTree = "<group>"; };
+		95FBB8F11E9AD13F00B0E662 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		95FBB8F61E9AD13F00B0E662 /* MathdokuUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = MathdokuUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		95FBB8FA1E9AD13F00B0E662 /* MathdokuUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MathdokuUITests.swift; sourceTree = "<group>"; };
+		95FBB8FC1E9AD13F00B0E662 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		95FBB8D41E9AD13F00B0E662 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		95FBB8E81E9AD13F00B0E662 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		95FBB8F31E9AD13F00B0E662 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		95FBB8CE1E9AD13F00B0E662 = {
+			isa = PBXGroup;
+			children = (
+				95FBB8D91E9AD13F00B0E662 /* Mathdoku */,
+				95FBB8EE1E9AD13F00B0E662 /* MathdokuTests */,
+				95FBB8F91E9AD13F00B0E662 /* MathdokuUITests */,
+				95FBB8D81E9AD13F00B0E662 /* Products */,
+			);
+			sourceTree = "<group>";
+		};
+		95FBB8D81E9AD13F00B0E662 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				95FBB8D71E9AD13F00B0E662 /* Mathdoku.app */,
+				95FBB8EB1E9AD13F00B0E662 /* MathdokuTests.xctest */,
+				95FBB8F61E9AD13F00B0E662 /* MathdokuUITests.xctest */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		95FBB8D91E9AD13F00B0E662 /* Mathdoku */ = {
+			isa = PBXGroup;
+			children = (
+				95FBB8DA1E9AD13F00B0E662 /* AppDelegate.swift */,
+				95FBB8DC1E9AD13F00B0E662 /* ViewController.swift */,
+				95FBB8DE1E9AD13F00B0E662 /* Main.storyboard */,
+				95FBB8E11E9AD13F00B0E662 /* Assets.xcassets */,
+				95FBB8E31E9AD13F00B0E662 /* LaunchScreen.storyboard */,
+				95FBB8E61E9AD13F00B0E662 /* Info.plist */,
+			);
+			path = Mathdoku;
+			sourceTree = "<group>";
+		};
+		95FBB8EE1E9AD13F00B0E662 /* MathdokuTests */ = {
+			isa = PBXGroup;
+			children = (
+				95FBB8EF1E9AD13F00B0E662 /* MathdokuTests.swift */,
+				95FBB8F11E9AD13F00B0E662 /* Info.plist */,
+			);
+			path = MathdokuTests;
+			sourceTree = "<group>";
+		};
+		95FBB8F91E9AD13F00B0E662 /* MathdokuUITests */ = {
+			isa = PBXGroup;
+			children = (
+				95FBB8FA1E9AD13F00B0E662 /* MathdokuUITests.swift */,
+				95FBB8FC1E9AD13F00B0E662 /* Info.plist */,
+			);
+			path = MathdokuUITests;
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		95FBB8D61E9AD13F00B0E662 /* Mathdoku */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 95FBB8FF1E9AD13F00B0E662 /* Build configuration list for PBXNativeTarget "Mathdoku" */;
+			buildPhases = (
+				95FBB8D31E9AD13F00B0E662 /* Sources */,
+				95FBB8D41E9AD13F00B0E662 /* Frameworks */,
+				95FBB8D51E9AD13F00B0E662 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = Mathdoku;
+			productName = Mathdoku;
+			productReference = 95FBB8D71E9AD13F00B0E662 /* Mathdoku.app */;
+			productType = "com.apple.product-type.application";
+		};
+		95FBB8EA1E9AD13F00B0E662 /* MathdokuTests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 95FBB9021E9AD13F00B0E662 /* Build configuration list for PBXNativeTarget "MathdokuTests" */;
+			buildPhases = (
+				95FBB8E71E9AD13F00B0E662 /* Sources */,
+				95FBB8E81E9AD13F00B0E662 /* Frameworks */,
+				95FBB8E91E9AD13F00B0E662 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				95FBB8ED1E9AD13F00B0E662 /* PBXTargetDependency */,
+			);
+			name = MathdokuTests;
+			productName = MathdokuTests;
+			productReference = 95FBB8EB1E9AD13F00B0E662 /* MathdokuTests.xctest */;
+			productType = "com.apple.product-type.bundle.unit-test";
+		};
+		95FBB8F51E9AD13F00B0E662 /* MathdokuUITests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 95FBB9051E9AD13F00B0E662 /* Build configuration list for PBXNativeTarget "MathdokuUITests" */;
+			buildPhases = (
+				95FBB8F21E9AD13F00B0E662 /* Sources */,
+				95FBB8F31E9AD13F00B0E662 /* Frameworks */,
+				95FBB8F41E9AD13F00B0E662 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				95FBB8F81E9AD13F00B0E662 /* PBXTargetDependency */,
+			);
+			name = MathdokuUITests;
+			productName = MathdokuUITests;
+			productReference = 95FBB8F61E9AD13F00B0E662 /* MathdokuUITests.xctest */;
+			productType = "com.apple.product-type.bundle.ui-testing";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		95FBB8CF1E9AD13F00B0E662 /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				LastSwiftUpdateCheck = 0830;
+				LastUpgradeCheck = 0830;
+				ORGANIZATIONNAME = "Taylor Geisse";
+				TargetAttributes = {
+					95FBB8D61E9AD13F00B0E662 = {
+						CreatedOnToolsVersion = 8.3.1;
+						DevelopmentTeam = 47RY6X4KE6;
+						ProvisioningStyle = Automatic;
+					};
+					95FBB8EA1E9AD13F00B0E662 = {
+						CreatedOnToolsVersion = 8.3.1;
+						DevelopmentTeam = 47RY6X4KE6;
+						ProvisioningStyle = Automatic;
+						TestTargetID = 95FBB8D61E9AD13F00B0E662;
+					};
+					95FBB8F51E9AD13F00B0E662 = {
+						CreatedOnToolsVersion = 8.3.1;
+						DevelopmentTeam = 47RY6X4KE6;
+						ProvisioningStyle = Automatic;
+						TestTargetID = 95FBB8D61E9AD13F00B0E662;
+					};
+				};
+			};
+			buildConfigurationList = 95FBB8D21E9AD13F00B0E662 /* Build configuration list for PBXProject "Mathdoku" */;
+			compatibilityVersion = "Xcode 3.2";
+			developmentRegion = English;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+				Base,
+			);
+			mainGroup = 95FBB8CE1E9AD13F00B0E662;
+			productRefGroup = 95FBB8D81E9AD13F00B0E662 /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				95FBB8D61E9AD13F00B0E662 /* Mathdoku */,
+				95FBB8EA1E9AD13F00B0E662 /* MathdokuTests */,
+				95FBB8F51E9AD13F00B0E662 /* MathdokuUITests */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		95FBB8D51E9AD13F00B0E662 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				95FBB8E51E9AD13F00B0E662 /* LaunchScreen.storyboard in Resources */,
+				95FBB8E21E9AD13F00B0E662 /* Assets.xcassets in Resources */,
+				95FBB8E01E9AD13F00B0E662 /* Main.storyboard in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		95FBB8E91E9AD13F00B0E662 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		95FBB8F41E9AD13F00B0E662 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		95FBB8D31E9AD13F00B0E662 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				95FBB8DD1E9AD13F00B0E662 /* ViewController.swift in Sources */,
+				95FBB8DB1E9AD13F00B0E662 /* AppDelegate.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		95FBB8E71E9AD13F00B0E662 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				95FBB8F01E9AD13F00B0E662 /* MathdokuTests.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		95FBB8F21E9AD13F00B0E662 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				95FBB8FB1E9AD13F00B0E662 /* MathdokuUITests.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		95FBB8ED1E9AD13F00B0E662 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 95FBB8D61E9AD13F00B0E662 /* Mathdoku */;
+			targetProxy = 95FBB8EC1E9AD13F00B0E662 /* PBXContainerItemProxy */;
+		};
+		95FBB8F81E9AD13F00B0E662 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 95FBB8D61E9AD13F00B0E662 /* Mathdoku */;
+			targetProxy = 95FBB8F71E9AD13F00B0E662 /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
+
+/* Begin PBXVariantGroup section */
+		95FBB8DE1E9AD13F00B0E662 /* Main.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				95FBB8DF1E9AD13F00B0E662 /* Base */,
+			);
+			name = Main.storyboard;
+			sourceTree = "<group>";
+		};
+		95FBB8E31E9AD13F00B0E662 /* LaunchScreen.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				95FBB8E41E9AD13F00B0E662 /* Base */,
+			);
+			name = LaunchScreen.storyboard;
+			sourceTree = "<group>";
+		};
+/* End PBXVariantGroup section */
+
+/* Begin XCBuildConfiguration section */
+		95FBB8FD1E9AD13F00B0E662 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_TESTABILITY = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 10.3;
+				MTL_ENABLE_DEBUG_INFO = YES;
+				ONLY_ACTIVE_ARCH = YES;
+				SDKROOT = iphoneos;
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = DEBUG;
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Debug;
+		};
+		95FBB8FE1E9AD13F00B0E662 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 10.3;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				SDKROOT = iphoneos;
+				SWIFT_OPTIMIZATION_LEVEL = "-Owholemodule";
+				TARGETED_DEVICE_FAMILY = "1,2";
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Release;
+		};
+		95FBB9001E9AD13F00B0E662 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				DEVELOPMENT_TEAM = 47RY6X4KE6;
+				INFOPLIST_FILE = Mathdoku/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = com.geissefamily.taylor.Mathdoku;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 3.0;
+			};
+			name = Debug;
+		};
+		95FBB9011E9AD13F00B0E662 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				DEVELOPMENT_TEAM = 47RY6X4KE6;
+				INFOPLIST_FILE = Mathdoku/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = com.geissefamily.taylor.Mathdoku;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 3.0;
+			};
+			name = Release;
+		};
+		95FBB9031E9AD13F00B0E662 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				DEVELOPMENT_TEAM = 47RY6X4KE6;
+				INFOPLIST_FILE = MathdokuTests/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = com.geissefamily.taylor.MathdokuTests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 3.0;
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/Mathdoku.app/Mathdoku";
+			};
+			name = Debug;
+		};
+		95FBB9041E9AD13F00B0E662 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				DEVELOPMENT_TEAM = 47RY6X4KE6;
+				INFOPLIST_FILE = MathdokuTests/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = com.geissefamily.taylor.MathdokuTests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 3.0;
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/Mathdoku.app/Mathdoku";
+			};
+			name = Release;
+		};
+		95FBB9061E9AD13F00B0E662 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				DEVELOPMENT_TEAM = 47RY6X4KE6;
+				INFOPLIST_FILE = MathdokuUITests/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = com.geissefamily.taylor.MathdokuUITests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 3.0;
+				TEST_TARGET_NAME = Mathdoku;
+			};
+			name = Debug;
+		};
+		95FBB9071E9AD13F00B0E662 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				DEVELOPMENT_TEAM = 47RY6X4KE6;
+				INFOPLIST_FILE = MathdokuUITests/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = com.geissefamily.taylor.MathdokuUITests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 3.0;
+				TEST_TARGET_NAME = Mathdoku;
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		95FBB8D21E9AD13F00B0E662 /* Build configuration list for PBXProject "Mathdoku" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				95FBB8FD1E9AD13F00B0E662 /* Debug */,
+				95FBB8FE1E9AD13F00B0E662 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		95FBB8FF1E9AD13F00B0E662 /* Build configuration list for PBXNativeTarget "Mathdoku" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				95FBB9001E9AD13F00B0E662 /* Debug */,
+				95FBB9011E9AD13F00B0E662 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+		};
+		95FBB9021E9AD13F00B0E662 /* Build configuration list for PBXNativeTarget "MathdokuTests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				95FBB9031E9AD13F00B0E662 /* Debug */,
+				95FBB9041E9AD13F00B0E662 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+		};
+		95FBB9051E9AD13F00B0E662 /* Build configuration list for PBXNativeTarget "MathdokuUITests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				95FBB9061E9AD13F00B0E662 /* Debug */,
+				95FBB9071E9AD13F00B0E662 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = 95FBB8CF1E9AD13F00B0E662 /* Project object */;
+}

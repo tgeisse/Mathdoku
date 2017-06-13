@@ -15,8 +15,6 @@
 
 import UIKit
 
-
-
 //@IBDesignable
 class CellView: UIView {
     // MARK: Public Properties

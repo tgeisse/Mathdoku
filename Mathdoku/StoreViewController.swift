@@ -35,7 +35,7 @@ class StoreViewController: UIViewController {
         super.viewDidLoad()
 
         // load the product details for puzzle100
-        if let loadedPuzzle = PuzzleProducts.loadedPuzzleProducts[PuzzleProducts.puzzle100.productIdentifier] {
+        if let loadedPuzzle = PuzzleProducts.getLoadedPuzzleProductInfo(productId: PuzzleProducts.puzzle100.productIdentifier) {
             // if this details are already loaded, then use what is in memory
             puzzle100Title.text = loadedPuzzle.title
             puzzle100Description.text = loadedPuzzle.description
@@ -51,7 +51,11 @@ class StoreViewController: UIViewController {
                     self?.puzzle100Product = product
                     
                     // save the details in case the page is loaded again
-                    PuzzleProducts.loadedPuzzleProducts[product.productIdentifier] = LoadedProduct(product: product, title: product.localizedTitle, description: product.localizedDescription, price: product.localizedPrice!)
+                    PuzzleProducts.setPuzzleProductInfo(
+                        productInfo: LoadedProduct(product: product,
+                                                   title: product.localizedTitle,
+                                                   description: product.localizedDescription,
+                                                   price: product.localizedPrice!))
                 }
                 for invalidProductId in results.invalidProductIDs {
                     DebugUtil.print("Could not retrieve product info. Invalid product identifier: \(invalidProductId)")
@@ -63,7 +67,7 @@ class StoreViewController: UIViewController {
         }
         
         // load the product details for puzzle1000
-        if let loadedPuzzle = PuzzleProducts.loadedPuzzleProducts[PuzzleProducts.puzzle1000.productIdentifier] {
+        if let loadedPuzzle = PuzzleProducts.getLoadedPuzzleProductInfo(productId: PuzzleProducts.puzzle1000.productIdentifier) {
             // if this details are already loaded, then use what is in memory
             puzzle1000Title.text = loadedPuzzle.title
             puzzle1000Description.text = loadedPuzzle.description
@@ -79,7 +83,11 @@ class StoreViewController: UIViewController {
                     self?.puzzle1000Product = product
                     
                     // save the details in case the page is loaded again
-                    PuzzleProducts.loadedPuzzleProducts[product.productIdentifier] = LoadedProduct(product: product, title: product.localizedTitle, description: product.localizedDescription, price: product.localizedPrice!)
+                    PuzzleProducts.setPuzzleProductInfo(
+                        productInfo: LoadedProduct(product: product,
+                                                   title: product.localizedTitle,
+                                                   description: product.localizedDescription,
+                                                   price: product.localizedPrice!))
                 }
                 for invalidProductId in results.invalidProductIDs {
                     DebugUtil.print("Could not retrieve product info. Invalid product identifier: \(invalidProductId)")

@@ -98,13 +98,21 @@ class PuzzleSelectionViewController: UIViewController {
     // MARK: - In-App Purchase methods
     func initiateIAPTransaction() {
         DebugUtil.print("Initiating an in app purchase")
-        self.showAlert(PuzzlePurchase.purchaseOptionsAlertForLoadedProducts())
+        
     }
     
     // MARK: - Navigation
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         updateStartButtonTitle()
+        
+        // see if we can get a new weekly allowawnce (if we are in weekly allowance mode)
+        switch PuzzleProducts.getPuzzleRefreshMode() {
+        case .error(let error): DebugUtil.print("Error getting the puzzle refresh mode:\n\(error)")
+        case .purchase: break
+        case .weekly:
+            let _ = PuzzleProducts.wasAbleToRefreshWeeklyPuzzleAllowance()
+        }
     }
     
     override func shouldPerformSegue(withIdentifier identifier: String, sender: Any?) -> Bool {

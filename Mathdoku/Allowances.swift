@@ -25,7 +25,7 @@ public enum AllowanceTypes {
             }
         #else
             switch self {
-            case .puzzle: return 40
+            case .puzzle: return 3
             }
         #endif
     }
@@ -37,6 +37,8 @@ class Allowances: Object {
     dynamic var allowanceId = ""
     dynamic var consumed = 0
     dynamic var allowance = 0
+    dynamic var lastPurchaseDate = NSDate(timeIntervalSince1970: 1)
+    dynamic var lastRefreshDate = NSDate(timeIntervalSince1970: 1)
     
     override static func primaryKey() -> String? {
         return "allowanceId"
@@ -63,6 +65,18 @@ class Allowances: Object {
             }
         } catch (let error) {
             fatalError("Error incrementing allowance '\(allowanceId)':\n\(error)")
+        }
+    }
+    
+    func decrementAllowance(by decrementBy: Int, withRealm: Realm? = nil) {
+        do {
+            let realm = try withRealm ?? Realm()
+            
+            try realm.write {
+                allowance = allowance - decrementBy
+            }
+        } catch (let error) {
+            fatalError("Error decrementing allowance '\(allowanceId)':\n\(error)")
         }
     }
     

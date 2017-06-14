@@ -12,6 +12,6 @@ import RealmSwift
 class PuzzlesSolved: Object {
     let forPuzzleSize = LinkingObjects(fromType: PlayerProgress.self, property: "puzzlesSolved")
     dynamic var puzzleId = 0
-    dynamic var solvedOn = NSDate(timeIntervalSince1970: 1)
+    dynamic var solvedOn = NSDate()
     dynamic var timeToSolveInSeconds = 0
 }

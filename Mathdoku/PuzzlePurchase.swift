@@ -13,6 +13,7 @@ import StoreKit
 typealias PuzzlePurchaseTuple = (product: SKProduct, buysAllowance: Int)
 
 struct PuzzlePurchase {
+    /*
     fileprivate static var loadedPuzzleProducts = [PuzzlePurchaseTuple]()
     
     static func purchaseOptionsAlertForLoadedProducts() -> UIAlertController {
@@ -38,7 +39,7 @@ struct PuzzlePurchase {
         alert.addAction(UIAlertAction(title: "Cancel Purchase", style: .cancel))
         
         return alert
-    }
+    } */
     
     static func initiateIAPForPuzzleProduct(_ product: SKProduct, buysAllowance: Int) {
         SwiftyStoreKit.purchaseProduct(product, atomically: true) { result in

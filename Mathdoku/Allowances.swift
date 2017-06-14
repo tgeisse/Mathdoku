@@ -18,6 +18,12 @@ public enum AllowanceTypes {
         }
     }
     
+    func maxRefreshPeriods() -> Int {
+        switch self {
+        case .puzzle: return 3
+        }
+    }
+    
     func defaultAllowance() -> Int {
         #if DEBUG
             switch self {
@@ -35,7 +41,6 @@ public enum AllowanceTypes {
 
 class Allowances: Object {
     dynamic var allowanceId = ""
-    dynamic var consumed = 0
     dynamic var allowance = 0
     dynamic var lastPurchaseDate = NSDate(timeIntervalSince1970: 1)
     dynamic var lastRefreshDate = NSDate(timeIntervalSince1970: 1)
@@ -44,16 +49,8 @@ class Allowances: Object {
         return "allowanceId"
     }
     
-    func incrementConsumption(by incrementBy: Int = 1, withRealm: Realm? = nil) {
-        do {
-            let realm = try withRealm ?? Realm()
-
-            try realm.write {
-                consumed = consumed + incrementBy
-            }
-        } catch (let error) {
-            fatalError("Error incrementing consumption for '\(allowanceId)':\n\(error)")
-        }
+    func incrementAllowance(to: Int, withRealm: Realm? = nil) {
+        incrementAllowance(by: to - self.allowance, withRealm: withRealm)
     }
     
     func incrementAllowance(by incrementBy: Int, withRealm: Realm? = nil) {
@@ -81,6 +78,6 @@ class Allowances: Object {
     }
     
     func playerHasPuzzleAllowance() -> Bool {
-        return consumed < allowance
+        return allowance > 0
     }
 }

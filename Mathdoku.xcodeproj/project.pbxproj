@@ -27,6 +27,7 @@
 		9512736E1ED803F000588467 /* Stack.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9512736D1ED803F000588467 /* Stack.swift */; };
 		951273701ED80A4A00588467 /* PreloadedPuzzle.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9512736F1ED80A4A00588467 /* PreloadedPuzzle.swift */; };
 		951273721EDE898200588467 /* DebugUtil.swift in Sources */ = {isa = PBXBuildFile; fileRef = 951273711EDE898200588467 /* DebugUtil.swift */; };
+		9544E33B1EF0EA5D00F37ED7 /* TimeIntervalExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9544E33A1EF0EA5D00F37ED7 /* TimeIntervalExtension.swift */; };
 		9555606A1ECD2989006C9F2D /* SwiftyJSON.swift in Sources */ = {isa = PBXBuildFile; fileRef = 955560691ECD2989006C9F2D /* SwiftyJSON.swift */; };
 		955560821ECD3690006C9F2D /* Realm.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 955560801ECD3690006C9F2D /* Realm.framework */; };
 		955560831ECD3690006C9F2D /* Realm.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 955560801ECD3690006C9F2D /* Realm.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
@@ -47,7 +48,7 @@
 		95C2C43D1ECEBF2E0007D3F1 /* PlayerProgress.swift in Sources */ = {isa = PBXBuildFile; fileRef = 95C2C43C1ECEBF2E0007D3F1 /* PlayerProgress.swift */; };
 		95D7B0BB1EE64AB900764738 /* Allowances.swift in Sources */ = {isa = PBXBuildFile; fileRef = 95D7B0BA1EE64AB900764738 /* Allowances.swift */; };
 		95D7B0BF1EE64C9800764738 /* PuzzlesSolved.swift in Sources */ = {isa = PBXBuildFile; fileRef = 95D7B0BE1EE64C9800764738 /* PuzzlesSolved.swift */; };
-		95D7B0C61EEA5F6600764738 /* Util.swift in Sources */ = {isa = PBXBuildFile; fileRef = 95D7B0C51EEA5F6600764738 /* Util.swift */; };
+		95D7B0C61EEA5F6600764738 /* Utility.swift in Sources */ = {isa = PBXBuildFile; fileRef = 95D7B0C51EEA5F6600764738 /* Utility.swift */; };
 		95E9D1121EB81C2B00F51A4B /* CALayerExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 95E9D1111EB81C2B00F51A4B /* CALayerExtensions.swift */; };
 		95E9D1181EB963A400F51A4B /* GridRowView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 95E9D1171EB963A400F51A4B /* GridRowView.swift */; };
 		95E9D11A1EB963BB00F51A4B /* CellContainerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 95E9D1191EB963BB00F51A4B /* CellContainerView.swift */; };
@@ -115,6 +116,7 @@
 		9512736D1ED803F000588467 /* Stack.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Stack.swift; sourceTree = "<group>"; };
 		9512736F1ED80A4A00588467 /* PreloadedPuzzle.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PreloadedPuzzle.swift; sourceTree = "<group>"; };
 		951273711EDE898200588467 /* DebugUtil.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DebugUtil.swift; sourceTree = "<group>"; };
+		9544E33A1EF0EA5D00F37ED7 /* TimeIntervalExtension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TimeIntervalExtension.swift; sourceTree = "<group>"; };
 		955560691ECD2989006C9F2D /* SwiftyJSON.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SwiftyJSON.swift; sourceTree = "<group>"; };
 		955560801ECD3690006C9F2D /* Realm.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = Realm.framework; sourceTree = "<group>"; };
 		955560811ECD3690006C9F2D /* RealmSwift.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = RealmSwift.framework; sourceTree = "<group>"; };
@@ -133,7 +135,7 @@
 		95C2C43C1ECEBF2E0007D3F1 /* PlayerProgress.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PlayerProgress.swift; sourceTree = "<group>"; };
 		95D7B0BA1EE64AB900764738 /* Allowances.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Allowances.swift; sourceTree = "<group>"; };
 		95D7B0BE1EE64C9800764738 /* PuzzlesSolved.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PuzzlesSolved.swift; sourceTree = "<group>"; };
-		95D7B0C51EEA5F6600764738 /* Util.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Util.swift; sourceTree = "<group>"; };
+		95D7B0C51EEA5F6600764738 /* Utility.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Utility.swift; sourceTree = "<group>"; };
 		95E9D1111EB81C2B00F51A4B /* CALayerExtensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CALayerExtensions.swift; sourceTree = "<group>"; };
 		95E9D1171EB963A400F51A4B /* GridRowView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = GridRowView.swift; path = Mathdoku/GridRowView.swift; sourceTree = "<group>"; };
 		95E9D1191EB963BB00F51A4B /* CellContainerView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = CellContainerView.swift; path = Mathdoku/CellContainerView.swift; sourceTree = "<group>"; };
@@ -206,8 +208,8 @@
 			isa = PBXGroup;
 			children = (
 				9502E5E21EEE16020048BE1B /* PuzzleProducts.swift */,
-				95F1A4571EEFC3A40019CBE6 /* StoreViewController.swift */,
 				9502E5DF1EEE158B0048BE1B /* PuzzlePurchase.swift */,
+				95F1A4571EEFC3A40019CBE6 /* StoreViewController.swift */,
 				95F1A4551EEFB50B0019CBE6 /* StoreProductContainerView.swift */,
 			);
 			name = PuzzlePurchasing;
@@ -220,7 +222,6 @@
 				95FBB9091E9AD97300B0E662 /* Puzzle.swift */,
 				95B41B8A1E9CAB94003D8C28 /* Cage.swift */,
 				95FBB90B1E9AD9E900B0E662 /* Cell.swift */,
-				95A196201ED2A3130038D40C /* RealmModel */,
 			);
 			name = Model;
 			sourceTree = "<group>";
@@ -239,12 +240,12 @@
 			name = RealmModel;
 			sourceTree = "<group>";
 		};
-		95C082621EB1AC84008B7C2E /* MenuPuzzleSelection */ = {
+		95C082621EB1AC84008B7C2E /* MainMenuPuzzleSelection */ = {
 			isa = PBXGroup;
 			children = (
 				95C082631EB1ACE3008B7C2E /* PuzzleSelectionViewController.swift */,
 			);
-			name = MenuPuzzleSelection;
+			name = MainMenuPuzzleSelection;
 			sourceTree = "<group>";
 		};
 		95C082651EB1AEA0008B7C2E /* PuzzleLoader */ = {
@@ -263,8 +264,9 @@
 				955560691ECD2989006C9F2D /* SwiftyJSON.swift */,
 				9512736D1ED803F000588467 /* Stack.swift */,
 				951273711EDE898200588467 /* DebugUtil.swift */,
-				95D7B0C51EEA5F6600764738 /* Util.swift */,
+				95D7B0C51EEA5F6600764738 /* Utility.swift */,
 				9502E5DD1EEE080F0048BE1B /* ViewControllerExtensions.swift */,
+				9544E33A1EF0EA5D00F37ED7 /* TimeIntervalExtension.swift */,
 			);
 			name = Utility;
 			sourceTree = "<group>";
@@ -297,10 +299,11 @@
 				9502E5B61EEDF66E0048BE1B /* SwiftyStoreKit */,
 				9502E5E11EEE159C0048BE1B /* PuzzlePurchasing */,
 				95E9D1101EB81C0C00F51A4B /* Utility */,
-				95C082621EB1AC84008B7C2E /* MenuPuzzleSelection */,
+				95C082621EB1AC84008B7C2E /* MainMenuPuzzleSelection */,
 				95FBB9081E9AD95B00B0E662 /* PuzzleView */,
 				95C082651EB1AEA0008B7C2E /* PuzzleLoader */,
 				9555608E1ECEBE53006C9F2D /* Model */,
+				95A196201ED2A3130038D40C /* RealmModel */,
 				95FBB8DA1E9AD13F00B0E662 /* AppDelegate.swift */,
 				95FBB8DE1E9AD13F00B0E662 /* Main.storyboard */,
 				956505EA1EDFD67300C97D73 /* LaunchScreen.storyboard */,
@@ -537,13 +540,14 @@
 				95C2BD2E1EBECC01008A62D0 /* PuzzleViewController.swift in Sources */,
 				95A196241ED2A3310038D40C /* PuzzleGuess.swift in Sources */,
 				95F1A4581EEFC3A40019CBE6 /* StoreViewController.swift in Sources */,
-				95D7B0C61EEA5F6600764738 /* Util.swift in Sources */,
+				95D7B0C61EEA5F6600764738 /* Utility.swift in Sources */,
 				9555606A1ECD2989006C9F2D /* SwiftyJSON.swift in Sources */,
 				9512736E1ED803F000588467 /* Stack.swift in Sources */,
 				9502E5E01EEE158B0048BE1B /* PuzzlePurchase.swift in Sources */,
 				95D7B0BB1EE64AB900764738 /* Allowances.swift in Sources */,
 				9502E5D01EEDF66E0048BE1B /* InAppReceiptRefreshRequest.swift in Sources */,
 				95C082641EB1ACE3008B7C2E /* PuzzleSelectionViewController.swift in Sources */,
+				9544E33B1EF0EA5D00F37ED7 /* TimeIntervalExtension.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

@@ -43,13 +43,13 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         let config = Realm.Configuration(
             // Set the new schema version. This must be greater than the previously used
             // version (if you've never set a schema version before, the version is 0).
-            schemaVersion: 3,
+            schemaVersion: 4,
             
             // Set the block which will be called automatically when opening a Realm with
             // a schema version lower than the one set above
             migrationBlock: { migration, oldSchemaVersion in
                 // We haven’t migrated anything yet, so oldSchemaVersion == 0
-                if (oldSchemaVersion < 3) {
+                if (oldSchemaVersion < 4) {
                     // do nothing, just let Realm pick up the new configuration
                     
                 }
@@ -61,32 +61,19 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         // load the configuration
         let realm = try! Realm()
         
-        // set the default allowance values
-        for allowanceType in Util.iterateEnum(AllowanceTypes.self) {
-            // if we cannot get the default allowance, then we messed up somehow
-            let defaultAllowance = allowanceType.defaultAllowance()
-            
-            // try to load the allowance value from Realm
-            if let allowanceRecord = realm.objects(Allowances.self).filter("allowanceId == '\(allowanceType.id())'").first {
-                // if we have a puzzle allowance, make sure it is greater than the default value
-                // if it -1, however, that is because the user has 'unlimited' allowance
-                if allowanceRecord.allowance != allowanceType.infiniteAllowance() && allowanceRecord.allowance < defaultAllowance {
-                    // if it is less than the default allowance, then set it new
-                    try! realm.write {
-                        allowanceRecord.allowance = defaultAllowance
-                    }
-                }
-            } else {
-                // otherwise, we do not have an allowance of this type
-                // add it to Realm
+        // set the default allowance values if they don't exist
+        for allowanceType in Utility.iterateEnum(AllowanceTypes.self) {
+            // test to see if we have an allowance for this type
+            if realm.objects(Allowances.self).filter("allowanceId == '\(allowanceType.id())'").count == 0 {
+                // if an allowance for this type does not exist, then let's add the default value
                 try! realm.write {
                     let newAllowanceRecord = Allowances()
                     newAllowanceRecord.allowanceId = allowanceType.id()
                     newAllowanceRecord.allowance = allowanceType.defaultAllowance()
+                    newAllowanceRecord.lastRefreshDate = NSDate()
                     realm.add(newAllowanceRecord)
                 }
             }
-
         }
         
         // set the default player progress / validate that none were lost

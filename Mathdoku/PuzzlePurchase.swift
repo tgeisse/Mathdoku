@@ -41,6 +41,50 @@ struct PuzzlePurchase {
         return alert
     } */
     
+    static func weeklyPuzzleAllowanceGrantAvailable(withPuzzleAllowance withAllowance: Allowances? = nil,
+                                                    withRealm: Realm? = nil) -> Bool {
+        
+        let realm = try! withRealm ?? Realm()
+        if let allowance = withAllowance ?? realm.objects(Allowances.self).filter("allowanceId == '\(AllowanceTypes.puzzle.id())'").first {
+        
+            return Date().timeIntervalSince(allowance.lastRefreshDate as Date).components.weeks > 0
+        }
+        return false
+    }
+    
+    static func grantWeeklyPuzzleAllowance(withPuzzleAllowance withAllowance: Allowances? = nil,
+                                           withRealm: Realm? = nil) -> Int {
+        
+        let realm = try! withRealm ?? Realm()
+        if let allowance = withAllowance ?? realm.objects(Allowances.self).filter("allowanceId == '\(AllowanceTypes.puzzle.id())'").first {
+            let weeksSinceLastRefresh = Date().timeIntervalSince(allowance.lastRefreshDate as Date).components.weeks
+            
+            let maxRefreshAllowed = AllowanceTypes.puzzle.maxRefreshPeriods() * AllowanceTypes.puzzle.defaultAllowance()
+            
+            let refreshAllowedByTime = AllowanceTypes.puzzle.defaultAllowance() * weeksSinceLastRefresh
+            
+            let allowanceToSetTo = min(maxRefreshAllowed, allowance.allowance + refreshAllowedByTime)
+            
+            let allowanceRefresh = allowanceToSetTo - allowance.allowance
+            
+            DebugUtil.print("Weeks since last refresh: \(weeksSinceLastRefresh) and granting \(allowanceRefresh) puzzles")
+            
+            if allowanceRefresh > 0 {
+                allowance.incrementAllowance(by: allowanceRefresh, withRealm: realm)
+            }
+            
+            if weeksSinceLastRefresh > 0 {
+                try! realm.write {
+                    allowance.lastRefreshDate = NSDate()
+                }
+            }
+            
+            return allowanceRefresh
+        }
+        
+        return 0
+    }
+    
     static func initiateIAPForPuzzleProduct(_ product: SKProduct, buysAllowance: Int) {
         SwiftyStoreKit.purchaseProduct(product, atomically: true) { result in
             switch result {

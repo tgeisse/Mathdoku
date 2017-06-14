@@ -9,7 +9,7 @@
 import StoreKit
 import RealmSwift
 
-typealias PuzzleProduct = (productIdentifier: String, buysAllowance: Int)
+typealias PuzzleProduct = (productIdentifier: String, buysAllowance: Int, disablesAds: Bool)
 typealias LoadedProduct = (product: SKProduct, title: String, description: String, price: String)
 
 enum PuzzleRefreshMode {
@@ -19,8 +19,8 @@ enum PuzzleRefreshMode {
 }
 
 struct PuzzleProducts {
-    static let puzzle100: PuzzleProduct = ("com.geissefamily.taylor.puzzle100", 100)
-    static let puzzle1000: PuzzleProduct = ("com.geissefamily.taylor.puzzle1000", 1000)
+    static let puzzle100: PuzzleProduct = ("com.geissefamily.taylor.puzzle100", 100, true)
+    static let puzzle1000: PuzzleProduct = ("com.geissefamily.taylor.puzzle1000", 1000, true)
     
     private static let loadedInfo = LoadedInformation()
     
@@ -37,7 +37,7 @@ struct PuzzleProducts {
         var refreshMode: PuzzleRefreshMode?
         
         func determineRefreshMode() -> PuzzleRefreshMode {
-            if let puzzleAllowance = realm.objects(Allowances.self).filter("allowanceId = ''").first {
+            if let puzzleAllowance = realm.objects(Allowances.self).filter("allowanceId = '\(AllowanceTypes.puzzle.id())'").first {
                 
                 if puzzleAllowance.lastPurchaseDate.timeIntervalSince1970 < puzzleAllowance.lastRefreshDate.timeIntervalSince1970 {
                     refreshMode = .weekly
@@ -45,7 +45,7 @@ struct PuzzleProducts {
                     refreshMode = .purchase
                 }
             } else {
-                refreshMode = PuzzleRefreshMode.error("Unable to find an allowance for \(AllowanceTypes.puzzle.id())")
+                refreshMode = .error("Unable to find an allowance for \(AllowanceTypes.puzzle.id())")
             }
             
             return refreshMode!
@@ -54,6 +54,10 @@ struct PuzzleProducts {
     
     static func wasAbleToRefreshWeeklyPuzzleAllowance() -> Bool {
         return false
+    }
+    
+    static func setPuzzleRefreshMode(to: PuzzleRefreshMode) {
+        loadedInfo.refreshMode = to
     }
     
     static func getPuzzleRefreshMode() -> PuzzleRefreshMode {

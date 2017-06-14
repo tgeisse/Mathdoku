@@ -568,7 +568,7 @@ class PuzzleViewController: UIViewController, UINavigationBarDelegate {
     private func consumePuzzleAllowance() {
         DebugUtil.print("Consuming a puzzle allowance")
         if let allowance = realm.objects(Allowances.self).filter("allowanceId = '\(AllowanceTypes.puzzle.id())'").first {
-            allowance.incrementConsumption(withRealm: realm)
+            allowance.decrementAllowance(by: 1, withRealm: realm)
         }
     }
     

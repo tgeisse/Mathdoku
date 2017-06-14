@@ -95,7 +95,9 @@ struct PuzzlePurchase {
                     let currentAllowance = realm.objects(Allowances.self).filter("allowanceId == '\(AllowanceTypes.puzzle.id())'").first
                     
                     currentAllowance?.incrementAllowance(by: buysAllowance, withRealm: realm)
-                    
+                    try! realm.write {
+                        currentAllowance?.lastPurchaseDate = NSDate()
+                    }
                 } catch (let error) {
                     DebugUtil.print("Unable to complete a purchase:\n\(error)")
                 }

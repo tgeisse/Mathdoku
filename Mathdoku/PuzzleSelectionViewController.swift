@@ -63,7 +63,8 @@ class PuzzleSelectionViewController: UIViewController {
         // see if we can get a new weekly allowawnce (if we are in weekly allowance mode)
         switch PuzzleProducts.getPuzzleRefreshMode() {
         case .error(let error): DebugUtil.print("Error getting the puzzle refresh mode: \(error)")
-        case .purchase: break
+        case .purchase:
+            DebugUtil.print("Entering purchase block -- nothing should be done since purchasers don't get weekly grants")
         case .weekly:
             DebugUtil.print("Entering weekly refresh grant block")
             if PuzzlePurchase.weeklyPuzzleAllowanceGrantAvailable(withPuzzleAllowance: puzzleAllowance, withRealm: realm) {
@@ -152,31 +153,6 @@ class PuzzleSelectionViewController: UIViewController {
                 // we don't have a puzzle allowance - this should not happen
                 return false
             }
-            
-            /*
-            if let allowance = puzzleAllowance {
-                let puzzleRemaining = allowance.allowance - allowance.consumed
-                
-                if (playerProgress[selectedPuzzleSize - 3].puzzleProgress?.inProgress ?? false) || puzzleRemaining > 0 || allowance.allowance == AllowanceTypes.puzzle.infiniteAllowance() {
-                    return true
-                }
-            }
-            
-            // if we have reached this point, then they do not have an allowance or they have run out of puzzles
-            let alert: UIAlertController
-            if SwiftyStoreKit.canMakePayments {
-                alert = self.alertWithTwoButtons(title: "Out of Puzzles",
-                                                 message: "In order to keep this app ad-free, we rely on puzzle purchases. Sadly, you have run out of puzzles and need to purchase more.",
-                                                 cancelButtonTitle: "Cancel",
-                                                 successButtonTitle: "Buy more",
-                                                 actionOnConfirm: initiateIAPTransaction)
-            } else {
-                alert = self.alertWithTitle("Out of Puzzles", message: "You do not have any more puzzles, but your account settings do not let you purchase more.")
-            }
-            self.showAlert(alert)
-            
-                
-            return false*/
         } else {
             return true
         }

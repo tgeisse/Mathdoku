@@ -16,12 +16,15 @@ extension UIViewController {
         return alert
     }
     
-    func alertWithTwoButtons(title: String, message: String, cancelButtonTitle: String, successButtonTitle: String, actionOnConfirm: @escaping () -> ()) ->UIAlertController {
+    func alertWithTwoButtons(title: String, message: String,
+                             cancelButtonTitle: String, cancelStyle: UIAlertActionStyle = .cancel,
+                             successButtonTitle: String, successStyle: UIAlertActionStyle = .default,
+                             actionOnConfirm: @escaping () -> ()) ->UIAlertController {
         
         let alert = UIAlertController(title: title, message: message, preferredStyle: .alert)
         
-        alert.addAction(UIAlertAction(title: cancelButtonTitle, style: .cancel))
-        alert.addAction(UIAlertAction(title: successButtonTitle, style: .default, handler: { action in
+        alert.addAction(UIAlertAction(title: cancelButtonTitle, style: cancelStyle))
+        alert.addAction(UIAlertAction(title: successButtonTitle, style: successStyle, handler: { action in
             
             switch action.style {
             case .default:
@@ -40,9 +43,22 @@ extension UIViewController {
     }
     
     func showAlert(_ alert: UIAlertController) {
-        guard self.presentedViewController != nil else {
-            self.present(alert, animated: true, completion: nil)
-            return
+        if navigationController?.visibleViewController == self {
+            guard self.presentedViewController != nil else {
+                self.present(alert, animated: true, completion: nil)
+                return
+            }
         }
+    }
+    
+    func alertOutOfPuzzlesAndCanPurchase(mentionWeeklyAllowance: Bool, actionOnConfirm: @escaping () -> ()) -> UIAlertController {
+        let message = (mentionWeeklyAllowance ? "You have run out of puzzles. Either wait for your next weekly refresh or purchase a puzzle pack." :
+                                                "You have run out of puzzles. Purchase more to keep playing!")
+        let cancelButtonTitle = (mentionWeeklyAllowance ? "Wait Until Next Week" : "Decide Later")
+        return alertWithTwoButtons(title: "Out of Puzzles",
+                                   message: message,
+                                   cancelButtonTitle: cancelButtonTitle, cancelStyle: .cancel,
+                                   successButtonTitle: "Buy Puzzles", successStyle: .default,
+                                   actionOnConfirm: actionOnConfirm)
     }
 }

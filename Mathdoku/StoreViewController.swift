@@ -104,11 +104,11 @@ class StoreViewController: UIViewController {
             switch label {
             case "puzzle100":
                 if let product = puzzle100Product {
-                    PuzzlePurchase.initiateIAPForPuzzleProduct(product, buysAllowance: PuzzleProducts.puzzle100.buysAllowance)
+                    PuzzlePurchase.initiateIAPForPuzzleProduct(product, puzzleProduct: PuzzleProducts.puzzle100)
                 }
             case "puzzle1000":
                 if let product = puzzle1000Product {
-                    PuzzlePurchase.initiateIAPForPuzzleProduct(product, buysAllowance: PuzzleProducts.puzzle1000.buysAllowance)
+                    PuzzlePurchase.initiateIAPForPuzzleProduct(product, puzzleProduct: PuzzleProducts.puzzle1000)
                 }
             default: break
             }

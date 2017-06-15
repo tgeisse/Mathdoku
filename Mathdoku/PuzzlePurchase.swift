@@ -85,7 +85,7 @@ struct PuzzlePurchase {
         return 0
     }
     
-    static func initiateIAPForPuzzleProduct(_ product: SKProduct, buysAllowance: Int) {
+    static func initiateIAPForPuzzleProduct(_ product: SKProduct, puzzleProduct: PuzzleProduct) {
         SwiftyStoreKit.purchaseProduct(product, atomically: true) { result in
             switch result {
             case .success(let purchase):
@@ -94,12 +94,12 @@ struct PuzzlePurchase {
                     let realm = try Realm()
                     let currentAllowance = realm.objects(Allowances.self).filter("allowanceId == '\(AllowanceTypes.puzzle.id())'").first
                     
-                    currentAllowance?.incrementAllowance(by: buysAllowance, withRealm: realm)
-                    try! realm.write {
+                    currentAllowance?.incrementAllowance(by: puzzleProduct.buysAllowance, withRealm: realm)
+                    try realm.write {
                         currentAllowance?.lastPurchaseDate = NSDate()
                     }
                 } catch (let error) {
-                    DebugUtil.print("Unable to complete a purchase:\n\(error)")
+                    DebugUtil.print("Unable to complete a purchase: \(error)")
                 }
             case .error(let error):
                 switch error.code {

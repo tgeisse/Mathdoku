@@ -9,9 +9,19 @@
 import Foundation
 import UIKit
 
+enum PuzzleLoaderStatusCode {
+    case success(Puzzle)
+    case noPuzzleToLoad
+    case error(String)
+}
+
 class PuzzleLoader {
     private let puzzlesPerFile = 4000
     private var preloadedPuzzles: Dictionary<Int, Set<PreloadedPuzzle>> = [:]
+    
+    class func getPuzzleForSize(_ size: Int, atPuzzleCount: Int) -> PuzzleLoaderStatusCode {
+        return .error("Not implemented yet")
+    }
     
    // let realm = try! Realm()
    // let playerProgress = try! Realm().objects(PlayerProgress.self)

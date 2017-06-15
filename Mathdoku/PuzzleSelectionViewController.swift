@@ -144,7 +144,13 @@ class PuzzleSelectionViewController: UIViewController {
                     return true
                 } else {
                     // else the player does not have puzzle allowance to play. Prompt to buy or wait
-                    let alert = self.alertWithTwoButtons(title: "Out of Puzzles", message: "You have run out of puzzles. Either wait for your next weekly refresh or purchase a puzzle pack.", cancelButtonTitle: "Wait Until Next Week", successButtonTitle: "Buy Puzzles", actionOnConfirm: segueToStore)
+                    let mentionWeeklyAllowance: Bool
+                    switch PuzzleProducts.getPuzzleRefreshMode() {
+                    case .weekly: mentionWeeklyAllowance = true
+                    default: mentionWeeklyAllowance = false
+                    }
+                    
+                    let alert = self.alertOutOfPuzzlesAndCanPurchase(mentionWeeklyAllowance: mentionWeeklyAllowance, actionOnConfirm: segueToStore)
                     self.showAlert(alert)
                     
                     return false

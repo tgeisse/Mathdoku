@@ -14,10 +14,15 @@ class Puzzle {
     private var cells: [Cell]
     
     var isSolved: Bool {
+        // if we somehow have an empty array, then return false
+        // an empty array is a very bad thing and really should never happen, but we should check
         if cells.isEmpty {
             return false
         }
         
+        return cells.filter { $0.userGuess == $0.answer } .count == cells.count
+        
+        /*
         if cells.filter( { $0.userGuess != nil }).count != cells.count {
             return false
         }
@@ -28,7 +33,7 @@ class Puzzle {
             }
         }
         
-        return true
+        return true*/
     }
     
     init(size puzzleSize: Int, cells puzzleCells: [Cell], cages puzzleCages: Dictionary<String, Cage>) {

@@ -317,7 +317,7 @@ class PuzzleViewController: UIViewController, UINavigationBarDelegate {
             puzzleLoader.preloadPuzzleForSize(puzzle.size, withPuzzleId: playerProgress.activePuzzleId + 1)
             if PuzzleProducts.puzzleAllowance.allowance == 0 {
                 // If the user is out of puzzles, tell them they have to buy (or wait for weekly)
-                let alert = self.alertOutOfPuzzlesAndCanPurchase(mentionWeeklyAllowance: PuzzleProducts.userIsWeekly, messageOverride: "You cannot skip this puzzle until you have more puzzles.", actionOnConfirm: segueToStore)
+                let alert = self.alertOutOfPuzzlesAndCanPurchase(mentionWeeklyAllowance: PuzzleProducts.userIsWeekly, messageOverride: "You cannot skip this puzzle until you have more to play.", actionOnConfirm: segueToStore)
                 self.showAlert(alert)
             } else {
                 // if the user has puzzles, then tell them that skipping will consume a puzzle and confirm first

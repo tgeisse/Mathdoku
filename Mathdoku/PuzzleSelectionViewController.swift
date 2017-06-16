@@ -123,10 +123,9 @@ class PuzzleSelectionViewController: UIViewController {
     
     // MARK: - Navigation
     override func shouldPerformSegue(withIdentifier identifier: String, sender: Any?) -> Bool {
-        
         if identifier == "PuzzleSelection" {
             let allowance = PuzzleProducts.puzzleAllowance
-            if (playerProgress[selectedPuzzleSize - 3].puzzleProgress?.inProgress ?? false) || allowance.allowance == AllowanceTypes.puzzle.infiniteAllowance() || allowance.allowance > 0{
+            if (playerProgress[selectedPuzzleSize - 3].puzzleProgress?.inProgress ?? false) || allowance.allowance == AllowanceTypes.puzzle.infiniteAllowance() || allowance.allowance > 0 {
                 
                 // if the player was already playing the puzzle or they have infinite plays
                 // or they have puzzles left, then perform the segue
@@ -162,8 +161,6 @@ class PuzzleSelectionViewController: UIViewController {
             
             puzzleViewController.puzzle = puzzleLoader.loadNewPuzzleForSize(selectedPuzzleSize, withPuzzleId: activePuzzleId)
             puzzleViewController.puzzleLoader = puzzleLoader
-            
-            // print("I am segueing to a new puzzle of size \(newPuzzleForSize.size), and that was after the button for \(puzzleSize) was interpretted as \(puzzleSizeAsInt)")
         }
     }
     

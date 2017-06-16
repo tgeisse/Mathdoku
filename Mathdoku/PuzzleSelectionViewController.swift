@@ -15,9 +15,6 @@ class PuzzleSelectionViewController: UIViewController {
     lazy var playerProgress: Results<PlayerProgress> = {
         try! Realm().objects(PlayerProgress.self).sorted(byKeyPath: "puzzleSize", ascending: true)
     }()
-    lazy var puzzleAllowance: Allowances? = {
-        try! Realm().objects(Allowances.self).filter("allowanceId == '\(AllowanceTypes.puzzle.id())'").first
-    }()
     
     var selectedPuzzleSize: Int = -1 {
         didSet{
@@ -67,10 +64,10 @@ class PuzzleSelectionViewController: UIViewController {
             DebugUtil.print("Entering purchase block -- nothing should be done since purchasers don't get weekly grants")
         case .weekly:
             DebugUtil.print("Entering weekly refresh grant block")
-            if PuzzlePurchase.weeklyPuzzleAllowanceGrantAvailable(withPuzzleAllowance: puzzleAllowance, withRealm: realm) {
+            if PuzzlePurchase.weeklyPuzzleAllowanceGrantAvailable(withPuzzleAllowance: PuzzleProducts.puzzleAllowance, withRealm: realm) {
                 
                 DebugUtil.print("Weekly grant is available -- processing")
-                let puzzlesGranted = PuzzlePurchase.grantWeeklyPuzzleAllowance(withPuzzleAllowance: puzzleAllowance, withRealm: realm)
+                let puzzlesGranted = PuzzlePurchase.grantWeeklyPuzzleAllowance(withPuzzleAllowance: PuzzleProducts.puzzleAllowance, withRealm: realm)
                 if puzzlesGranted > 0 {
                     let alert = self.alertWithTitle("Weekly Puzzle Refill!", message: "We've added \(puzzlesGranted) puzzle\(puzzlesGranted == 1 ? "" : "s") to your stash.", buttonLabel: "Game on!")
                     self.showAlert(alert)
@@ -80,15 +77,9 @@ class PuzzleSelectionViewController: UIViewController {
     }
     
     // MARK: - UI Updates
-    func updatePuzzlesRemainingLabel(allowance passedAllowance: Allowances? = nil) {
-        let allowance = passedAllowance ?? puzzleAllowance
+    func updatePuzzlesRemainingLabel() {
+        puzzlesRemainingLabel.text = "You have \(PuzzleProducts.puzzleAllowance.allowance) puzzles remaining."
         
-        if allowance != nil {
-            puzzlesRemainingLabel.text = "You have \(allowance!.allowance) puzzles remaining."
-        } else {
-            // if we were not able to load a puzzle allowance, then don't display the label
-            puzzlesRemainingLabel.text = ""
-        }
     }
     
     func updateStartButtonTitle() {
@@ -102,7 +93,7 @@ class PuzzleSelectionViewController: UIViewController {
             puzzleAllowanceNotification = puzzleAllowance.addNotificationBlock { [weak self] change in
                 switch change {
                 case .change(_):
-                    self?.updatePuzzlesRemainingLabel(allowance: puzzleAllowance)
+                    self?.updatePuzzlesRemainingLabel()
                 case .error(let error):
                     DebugUtil.print("An error occurred on the puzzle allowance notifications:\n\(error)")
                 case .deleted:
@@ -136,27 +127,23 @@ class PuzzleSelectionViewController: UIViewController {
     override func shouldPerformSegue(withIdentifier identifier: String, sender: Any?) -> Bool {
         
         if identifier == "PuzzleSelection" {
-            if let allowance = puzzleAllowance {
-                if (playerProgress[selectedPuzzleSize - 3].puzzleProgress?.inProgress ?? false) || allowance.allowance == AllowanceTypes.puzzle.infiniteAllowance() || allowance.allowance > 0{
-                    
-                    // if the player was already playing the puzzle or they have infinite plays
-                    // or they have puzzles left, then perform the segue
-                    return true
-                } else {
-                    // else the player does not have puzzle allowance to play. Prompt to buy or wait
-                    let mentionWeeklyAllowance: Bool
-                    switch PuzzleProducts.puzzleRefreshMode {
-                    case .weekly: mentionWeeklyAllowance = true
-                    default: mentionWeeklyAllowance = false
-                    }
-                    
-                    let alert = self.alertOutOfPuzzlesAndCanPurchase(mentionWeeklyAllowance: mentionWeeklyAllowance, actionOnConfirm: segueToStore)
-                    self.showAlert(alert)
-                    
-                    return false
-                }
+            let allowance = PuzzleProducts.puzzleAllowance
+            if (playerProgress[selectedPuzzleSize - 3].puzzleProgress?.inProgress ?? false) || allowance.allowance == AllowanceTypes.puzzle.infiniteAllowance() || allowance.allowance > 0{
+                
+                // if the player was already playing the puzzle or they have infinite plays
+                // or they have puzzles left, then perform the segue
+                return true
             } else {
-                // we don't have a puzzle allowance - this should not happen
+                // else the player does not have puzzle allowance to play. Prompt to buy or wait
+                let mentionWeeklyAllowance: Bool
+                switch PuzzleProducts.puzzleRefreshMode {
+                case .weekly: mentionWeeklyAllowance = true
+                default: mentionWeeklyAllowance = false
+                }
+                
+                let alert = self.alertOutOfPuzzlesAndCanPurchase(mentionWeeklyAllowance: mentionWeeklyAllowance, actionOnConfirm: segueToStore)
+                self.showAlert(alert)
+                
                 return false
             }
         } else {

@@ -26,9 +26,7 @@ class PuzzleViewController: UIViewController, UINavigationBarDelegate {
     private lazy var puzzleProgress: PuzzleProgress = self.loadPuzzleProgress()
     
     private func loadPlayerProgress() -> PlayerProgress {
-        let allPlayerProgress = realm.objects(PlayerProgress.self)
-        let filtered = allPlayerProgress.filter("puzzleSize == \(puzzle.size)")[0]
-        return filtered
+        return realm.objects(PlayerProgress.self).filter("puzzleSize == \(puzzle.size)")[0]
     }
     
     private func loadPuzzleProgress() -> PuzzleProgress {

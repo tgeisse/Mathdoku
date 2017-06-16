@@ -31,7 +31,7 @@ public enum AllowanceTypes {
             }
         #else
             switch self {
-            case .puzzle: return 3
+            case .puzzle: return 200
             }
         #endif
     }

@@ -35,6 +35,7 @@ struct PuzzleProducts {
             }
         }()
         var refreshMode: PuzzleRefreshMode?
+        var puzzleAllowance: Allowances?
         
         func determineRefreshMode() -> PuzzleRefreshMode {
             if let puzzleAllowance = realm.objects(Allowances.self).filter("allowanceId = '\(AllowanceTypes.puzzle.id())'").first {
@@ -50,18 +51,40 @@ struct PuzzleProducts {
             
             return refreshMode!
         }
+        
+        func queryPuzzleAllowance() -> Allowances {
+            puzzleAllowance = realm.objects(Allowances.self).filter("allowanceId = '\(AllowanceTypes.puzzle.id())'").first!
+            return puzzleAllowance!
+        }
     }
     
-    static func wasAbleToRefreshWeeklyPuzzleAllowance() -> Bool {
-        return false
+    static var userIsWeekly: Bool {
+        switch self.puzzleRefreshMode {
+        case .weekly: return true
+        default: return false
+        }
     }
     
-    static func setPuzzleRefreshMode(to: PuzzleRefreshMode) {
-        loadedInfo.refreshMode = to
+    static var userHasPurchased: Bool {
+        switch self.puzzleRefreshMode {
+        case .purchase: return true
+        default: return false
+        }
     }
     
-    static func getPuzzleRefreshMode() -> PuzzleRefreshMode {
-        return loadedInfo.refreshMode ?? loadedInfo.determineRefreshMode()
+    static var puzzleAllowance: Allowances {
+        get {
+            return loadedInfo.puzzleAllowance ?? loadedInfo.queryPuzzleAllowance()
+        }
+    }
+    
+    static var puzzleRefreshMode: PuzzleRefreshMode {
+        get {
+            return loadedInfo.refreshMode ?? loadedInfo.determineRefreshMode()
+        }
+        set {
+            loadedInfo.refreshMode = newValue
+        }
     }
     
     static func getLoadedPuzzleProductInfo(productId: String) -> LoadedProduct? {

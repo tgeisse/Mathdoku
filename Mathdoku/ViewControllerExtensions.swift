@@ -51,14 +51,18 @@ extension UIViewController {
         }
     }
     
-    func alertOutOfPuzzlesAndCanPurchase(mentionWeeklyAllowance: Bool, actionOnConfirm: @escaping () -> ()) -> UIAlertController {
-        let message = (mentionWeeklyAllowance ? "You have run out of puzzles. Either wait for your next weekly refresh or purchase a puzzle pack." :
-                                                "You have run out of puzzles. Purchase more to keep playing!")
-        let cancelButtonTitle = (mentionWeeklyAllowance ? "Wait Until Next Week" : "Decide Later")
-        return alertWithTwoButtons(title: "Out of Puzzles",
-                                   message: message,
-                                   cancelButtonTitle: cancelButtonTitle, cancelStyle: .cancel,
-                                   successButtonTitle: "Buy Puzzles", successStyle: .default,
-                                   actionOnConfirm: actionOnConfirm)
+    func alertOutOfPuzzlesAndCanPurchase(mentionWeeklyAllowance: Bool, messageOverride: String? = nil, actionOnConfirm: @escaping () -> ()) -> UIAlertController {
+        if SwiftyStoreKit.canMakePayments {
+            let message = (mentionWeeklyAllowance ? "You have run out of puzzles. Either wait for your next weekly refresh or purchase a puzzle pack." :
+                "You have run out of puzzles. Purchase more to keep playing!")
+            let cancelButtonTitle = (mentionWeeklyAllowance ? "Wait Until Next Week" : "Decide Later")
+            return alertWithTwoButtons(title: "Out of Puzzles",
+                                       message: messageOverride ?? message,
+                                       cancelButtonTitle: cancelButtonTitle, cancelStyle: .cancel,
+                                       successButtonTitle: "Buy Puzzles", successStyle: .default,
+                                       actionOnConfirm: actionOnConfirm)
+        } else {
+            return alertWithTitle("Out of Puzzles", message: "You have run out of puzzles, but your account cannot make purchases. Please wait for your next weekly refresh!")
+        }
     }
 }

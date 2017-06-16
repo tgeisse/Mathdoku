@@ -1948,6 +1948,7 @@
                         <outletCollection property="gridRowStacks" destination="ei0-y9-aE6" collectionClass="NSMutableArray" id="e7d-gx-sdb"/>
                         <outletCollection property="gridRowStacks" destination="Rjc-zI-8oE" collectionClass="NSMutableArray" id="sgt-wd-1bi"/>
                         <outletCollection property="gridRowStacks" destination="WyG-lm-Qad" collectionClass="NSMutableArray" id="wRa-wv-heZ"/>
+                        <segue destination="gOq-UP-G5H" kind="show" identifier="Puzzle Store Segue" id="Pxp-fq-W8Y"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="sEs-Aw-DUC" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -2361,7 +2362,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="drD-2V-3zn" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1752.8" y="421.43928035982015"/>
+            <point key="canvasLocation" x="2413" y="422"/>
         </scene>
         <!--View Controller-->
         <scene sceneID="sa1-HI-Ffn">
@@ -2391,7 +2392,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Za6-zI-FVv" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2469.5999999999999" y="420.53973013493254"/>
+            <point key="canvasLocation" x="1732" y="422"/>
         </scene>
     </scenes>
     <resources>
@@ -2402,4 +2403,7 @@
         <image name="SkipPuzzle" width="24" height="24"/>
         <image name="Validate" width="24" height="24"/>
     </resources>
+    <inferredMetricsTieBreakers>
+        <segue reference="Pxp-fq-W8Y"/>
+    </inferredMetricsTieBreakers>
 </document>

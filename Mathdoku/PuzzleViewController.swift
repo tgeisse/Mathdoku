@@ -193,36 +193,11 @@ class PuzzleViewController: UIViewController, UINavigationBarDelegate {
         }
     }
     
-    // TODO: Change this to a Realm database so that it can be reloaded later. This is going to be a lot of changes to the underlying code
     private lazy var userCellNotePossibilities: [[[CellNotePossibility]]] = {
         let size = self.puzzle.size
         return Array(repeating:Array(repeating:Array(repeating: CellNotePossibility.none, count: size), count: size), count: size)
     }()
-/*    private var userCellNotePossibilities = Array(repeating:Array(repeating:Array(repeating: CellNotePossibility.none, count: 9), count: 9), count: 9) {
-        didSet {
-            for (row, columns) in userCellNotePossibilities.enumerated().filter({ $0.offset < puzzle.size }) {
-                for (column, cellPossibilities) in columns.enumerated().filter({ $0.offset < puzzle.size }) {
-                    var cellNoteNeedsUpdating = false
-                    
-                    for (number, possibility) in cellPossibilities.enumerated().filter({ $0.offset < puzzle.size }) {
-                        if oldValue[row][column][number] != possibility {
-                            cellNoteNeedsUpdating = true
-                        }
-                    }
-                    
-                    if cellNoteNeedsUpdating {
-                        let numberToSplitAt = (puzzle.size >= 6 ? Int((Double(puzzle.size) / 2.0).rounded(.up)) : -1)
-                        let noteString = userCellNotePossibilities[row][column].enumerated().filter({ $0.offset < puzzle.size }).reduce("") {
-                            $0 + ($1.element == .none ? " " : "\($1.offset + 1)") + ($1.offset + 1 == numberToSplitAt ? "\n" : "")
-                        }
-                        
-                        
-                        gridRowStacks[row].rowCells[column].cell.note = noteString
-                    }
-                }
-            }
-        }
-    } */
+
     
     // MARK: - Gesture Recognizers      
     func viewTappedGesture(recognizer: UITapGestureRecognizer) {
@@ -330,11 +305,24 @@ class PuzzleViewController: UIViewController, UINavigationBarDelegate {
     @IBAction func nextPuzzle(_ sender: UIButton) {
         // this can be used by either the success screen or the skiPuzzle button
         if sender.currentTitle == "Next Puzzle" {
-            goToNextPuzle()
+            if PuzzleProducts.puzzleAllowance.allowance == 0 {
+                let alert = self.alertOutOfPuzzlesAndCanPurchase(mentionWeeklyAllowance: PuzzleProducts.userIsWeekly, actionOnConfirm: segueToStore)
+                self.showAlert(alert)
+            } else {
+                goToNextPuzle()
+            }
         } else {
-            // skip puzzle clicked us. Prompt user first
+            // skip puzzle clicked us.
+            // preload a puzzle if they can skip
             puzzleLoader.preloadPuzzleForSize(puzzle.size, withPuzzleId: playerProgress.activePuzzleId + 1)
-            alertUserYesNoMessage(title: "Skip Puzzle?", message: "Are you sure you want to skip this puzzle?", actionOnConfirm: skipPuzzle)
+            if PuzzleProducts.puzzleAllowance.allowance == 0 {
+                // If the user is out of puzzles, tell them they have to buy (or wait for weekly)
+                let alert = self.alertOutOfPuzzlesAndCanPurchase(mentionWeeklyAllowance: PuzzleProducts.userIsWeekly, messageOverride: "You cannot skip the puzzle until you have more puzzles.", actionOnConfirm: segueToStore)
+                self.showAlert(alert)
+            } else {
+                // if the user has puzzles, then tell them that skipping will consume a puzzle and confirm first
+                alertUserYesNoMessage(title: "Skip Puzzle?", message: "Are you sure you want to skip this puzzle? Skipping will use a puzzle allowance.", actionOnConfirm: skipPuzzle)
+            }
         }
         
     }
@@ -350,7 +338,7 @@ class PuzzleViewController: UIViewController, UINavigationBarDelegate {
             // TODO: if you ever implement replay, then the incrementPuzzleId function will need to support a "to:" parameter
             incrementPlayerPuzzleProgress()
             setPuzzleProgress(to: false)
-            puzzleLoader.preloadPuzzleForSize(puzzle.size, withPuzzleId: playerProgress.activePuzzleId + 1)
+            puzzleLoader.preloadPuzzleForSize(puzzle.size, withPuzzleId: playerProgress.activePuzzleId)
             successOverlayView.isHidden = false
         }
     }
@@ -371,6 +359,11 @@ class PuzzleViewController: UIViewController, UINavigationBarDelegate {
     }
     
     // MARK: - Private Helper Functions
+    private func segueToStore() {
+        DebugUtil.print("Seguing to the puzzle store from puzzle grid")
+        performSegue(withIdentifier: "Puzzle Store Segue", sender: self)
+    }
+    
     private func identifyCellPositionForCellContainerView(_ cell: CellContainerView) -> CellPosition? {
         if let rowContainer = cell.superview as? GridRowView {
             let cellCol = rowContainer.subviews.index(of: cell)!

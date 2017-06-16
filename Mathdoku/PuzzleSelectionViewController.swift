@@ -61,7 +61,7 @@ class PuzzleSelectionViewController: UIViewController {
         super.viewDidAppear(animated)
         
         // see if we can get a new weekly allowawnce (if we are in weekly allowance mode)
-        switch PuzzleProducts.getPuzzleRefreshMode() {
+        switch PuzzleProducts.puzzleRefreshMode {
         case .error(let error): DebugUtil.print("Error getting the puzzle refresh mode: \(error)")
         case .purchase:
             DebugUtil.print("Entering purchase block -- nothing should be done since purchasers don't get weekly grants")
@@ -145,7 +145,7 @@ class PuzzleSelectionViewController: UIViewController {
                 } else {
                     // else the player does not have puzzle allowance to play. Prompt to buy or wait
                     let mentionWeeklyAllowance: Bool
-                    switch PuzzleProducts.getPuzzleRefreshMode() {
+                    switch PuzzleProducts.puzzleRefreshMode {
                     case .weekly: mentionWeeklyAllowance = true
                     default: mentionWeeklyAllowance = false
                     }

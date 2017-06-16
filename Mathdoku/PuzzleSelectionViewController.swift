@@ -89,16 +89,14 @@ class PuzzleSelectionViewController: UIViewController {
     }
     
     func addAllowanceNotification() {
-        if let puzzleAllowance = realm.objects(Allowances.self).filter("allowanceId == '\(AllowanceTypes.puzzle.id())'").first {
-            puzzleAllowanceNotification = puzzleAllowance.addNotificationBlock { [weak self] change in
-                switch change {
-                case .change(_):
-                    self?.updatePuzzlesRemainingLabel()
-                case .error(let error):
-                    DebugUtil.print("An error occurred on the puzzle allowance notifications:\n\(error)")
-                case .deleted:
-                    DebugUtil.print("The object was deleted.")
-                }
+        puzzleAllowanceNotification = PuzzleProducts.puzzleAllowance.addNotificationBlock { [weak self] change in
+            switch change {
+            case .change(_):
+                self?.updatePuzzlesRemainingLabel()
+            case .error(let error):
+                DebugUtil.print("An error occurred on the puzzle allowance notifications:\n\(error)")
+            case .deleted:
+                DebugUtil.print("The object was deleted.")
             }
         }
     }

@@ -12,12 +12,12 @@ import StoreKit
 class StoreViewController: UIViewController {
     @IBOutlet weak var puzzle100Title: UILabel!
     @IBOutlet weak var puzzle100Description: UILabel!
-    @IBOutlet weak var puzzle100Buy: UIButton! { didSet { puzzle100Buy.isEnabled = true } }
+    @IBOutlet weak var puzzle100Buy: UIButton!
     private var puzzle100Product: SKProduct?
 
     @IBOutlet weak var puzzle1000Title: UILabel!
     @IBOutlet weak var puzzle1000Description: UILabel!
-    @IBOutlet weak var puzzle1000Buy: UIButton! { didSet { puzzle1000Buy.isEnabled = true } }
+    @IBOutlet weak var puzzle1000Buy: UIButton!
     private var puzzle1000Product: SKProduct?
     
     @IBOutlet weak var puzzle100Container: StoreProductContainerView! {
@@ -40,6 +40,7 @@ class StoreViewController: UIViewController {
             puzzle100Title.text = loadedPuzzle.title
             puzzle100Description.text = loadedPuzzle.description
             puzzle100Buy.setTitle("Buy for \(loadedPuzzle.price)", for: .normal)
+            puzzle100Buy.isEnabled = true
             puzzle100Product = loadedPuzzle.product
         } else {
             // if it isn't loaded, then let's get the information from the store
@@ -48,6 +49,7 @@ class StoreViewController: UIViewController {
                     self?.puzzle100Title.text = product.localizedTitle
                     self?.puzzle100Description.text = product.localizedDescription
                     self?.puzzle100Buy.setTitle("Buy for \(product.localizedPrice!)", for: .normal)
+                    self?.puzzle100Buy.isEnabled = true
                     self?.puzzle100Product = product
                     
                     // save the details in case the page is loaded again
@@ -72,6 +74,7 @@ class StoreViewController: UIViewController {
             puzzle1000Title.text = loadedPuzzle.title
             puzzle1000Description.text = loadedPuzzle.description
             puzzle1000Buy.setTitle("Buy for \(loadedPuzzle.price)", for: .normal)
+            puzzle1000Buy.isEnabled = true
             puzzle1000Product = loadedPuzzle.product
         } else {
             // if it isn't loaded, then let's get the information from the store
@@ -80,6 +83,7 @@ class StoreViewController: UIViewController {
                     self?.puzzle1000Title.text = product.localizedTitle
                     self?.puzzle1000Description.text = product.localizedDescription
                     self?.puzzle1000Buy.setTitle("Buy for \(product.localizedPrice!)", for: .normal)
+                    self?.puzzle1000Buy.isEnabled = true
                     self?.puzzle1000Product = product
                     
                     // save the details in case the page is loaded again
@@ -100,6 +104,10 @@ class StoreViewController: UIViewController {
     }
     
     @IBAction func purchaseProduct(_ sender: UIButton) {
+        let alert = self.alertWithTitle("Purchasing Disabled", message: "In App Purchases are disabled during the beta to prevent accidental charges.")
+        self.showAlert(alert)
+        // TODO: uncomment to reenable IAP
+        /*
         if let label = sender.accessibilityLabel {
             switch label {
             case "puzzle100":
@@ -112,7 +120,7 @@ class StoreViewController: UIViewController {
                 }
             default: break
             }
-        }
+        }*/
     }
     
 }

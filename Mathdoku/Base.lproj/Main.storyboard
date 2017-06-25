@@ -11,10 +11,10 @@
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
-        <!--Navigation Controller-->
+        <!--Main Menu-->
         <scene sceneID="F47-v4-Mvq">
             <objects>
-                <navigationController id="5IB-Io-PmN" sceneMemberID="viewController">
+                <navigationController title="Main Menu" id="5IB-Io-PmN" sceneMemberID="viewController">
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="h8o-jW-pSZ">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
@@ -2003,7 +2003,7 @@
                                             <color key="titleColor" red="0.98624199628829956" green="0.7796865701675415" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                         </state>
                                         <connections>
-                                            <segue destination="Jpq-TH-rJm" kind="show" id="7np-qO-LhL"/>
+                                            <segue destination="aMs-Dn-KHo" kind="show" id="xLI-Ki-6wz"/>
                                         </connections>
                                     </button>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="RgT-JL-YqG">
@@ -2177,6 +2177,14 @@
             </objects>
             <point key="canvasLocation" x="941.60000000000002" y="-379.16041979010498"/>
         </scene>
+        <!--How to Play-->
+        <scene sceneID="rjt-Y3-3Sn">
+            <objects>
+                <pageViewController autoresizesArchivedViewToFullSize="NO" title="How to Play" transitionStyle="scroll" navigationOrientation="horizontal" spineLocation="none" id="aMs-Dn-KHo" customClass="HowToPlayPageViewController" customModule="Mathdoku" customModuleProvider="target" sceneMemberID="viewController"/>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="Ahp-cR-2ac" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1062" y="421"/>
+        </scene>
         <!--View Controller-->
         <scene sceneID="iDC-Xy-FHw">
             <objects>
@@ -2208,34 +2216,58 @@
             <point key="canvasLocation" x="399" y="423"/>
         </scene>
         <!--View Controller-->
-        <scene sceneID="YYR-Fg-urs">
+        <scene sceneID="A5e-XH-ykX">
             <objects>
-                <viewController id="Jpq-TH-rJm" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="GreenViewController" id="86y-Yo-suh" sceneMemberID="viewController">
                     <layoutGuides>
-                        <viewControllerLayoutGuide type="top" id="eV5-zQ-HQ2"/>
-                        <viewControllerLayoutGuide type="bottom" id="9p8-VA-B09"/>
+                        <viewControllerLayoutGuide type="top" id="vie-BW-jZD"/>
+                        <viewControllerLayoutGuide type="bottom" id="5G1-bp-zpT"/>
                     </layoutGuides>
-                    <view key="view" contentMode="scaleToFill" id="3Hp-Qm-oDY">
+                    <view key="view" contentMode="scaleToFill" id="apj-34-mrd">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="736"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <subviews>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="How to Play" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="V6d-ft-uJs">
-                                <rect key="frame" x="161.66666666666666" y="357.66666666666669" width="91" height="21"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                <nil key="textColor"/>
-                                <nil key="highlightedColor"/>
-                            </label>
-                        </subviews>
-                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                        <constraints>
-                            <constraint firstItem="V6d-ft-uJs" firstAttribute="centerY" secondItem="3Hp-Qm-oDY" secondAttribute="centerY" id="332-KA-4mz"/>
-                            <constraint firstItem="V6d-ft-uJs" firstAttribute="centerX" secondItem="3Hp-Qm-oDY" secondAttribute="centerX" id="faO-lJ-9eG"/>
-                        </constraints>
+                        <color key="backgroundColor" red="0.23018704354763031" green="0.77713233232498169" blue="0.3158949613571167" alpha="1" colorSpace="calibratedRGB"/>
                     </view>
                 </viewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="zMO-Xq-wpU" userLabel="First Responder" sceneMemberID="firstResponder"/>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="lPI-8K-uGq" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1065" y="422"/>
+            <point key="canvasLocation" x="594" y="1190"/>
+        </scene>
+        <!--View Controller-->
+        <scene sceneID="673-kY-a4A">
+            <objects>
+                <viewController storyboardIdentifier="RedViewController" id="icP-GD-LeO" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="Q9A-dV-FyS"/>
+                        <viewControllerLayoutGuide type="bottom" id="3gd-ed-les"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="hK7-xp-w8t">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="736"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" red="0.85043728351593018" green="0.21816034615039825" blue="0.15920260548591614" alpha="1" colorSpace="calibratedRGB"/>
+                    </view>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="Zx4-Oo-Yic" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1229" y="1189"/>
+        </scene>
+        <!--View Controller-->
+        <scene sceneID="1LO-c8-LCY">
+            <objects>
+                <viewController storyboardIdentifier="BlueViewController" id="tbF-mN-Pt0" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="RjQ-BQ-wbq"/>
+                        <viewControllerLayoutGuide type="bottom" id="YNX-Dt-y0n"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="v1I-FQ-Q7p">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="736"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" red="0.19376453757286072" green="0.50850099325180054" blue="0.85232251882553101" alpha="1" colorSpace="calibratedRGB"/>
+                    </view>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="YGE-1G-gmB" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1872" y="1189"/>
         </scene>
         <!--Store-->
         <scene sceneID="yF9-3f-Vrm">

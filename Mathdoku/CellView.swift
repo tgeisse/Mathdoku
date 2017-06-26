@@ -31,7 +31,7 @@ class CellView: UIView {
         case foe
         case other
         
-        func borderWeight() -> CGFloat {
+        var borderWeight: CGFloat {
             switch self {
             case .friend: return 0.25
             case .foe: return 1.2
@@ -39,7 +39,7 @@ class CellView: UIView {
             }
         }
         
-        func borderColor() -> UIColor {
+        var borderColor: UIColor {
             switch self {
             case .friend: return .black
             case .foe: return .black
@@ -126,9 +126,9 @@ class CellView: UIView {
     }
  
     private func addBorders() {
-        self.layer.addBorder(edge: .top, color: topBorder.borderColor(), thickness: topBorder.borderWeight())
-        self.layer.addBorder(edge: .right, color: rightBorder.borderColor(), thickness: rightBorder.borderWeight())
-        self.layer.addBorder(edge: .bottom, color: bottomBorder.borderColor(), thickness: bottomBorder.borderWeight())
-        self.layer.addBorder(edge: .left, color: leftBorder.borderColor(), thickness: leftBorder.borderWeight())
+        self.layer.addBorder(edge: .top, color: topBorder.borderColor, thickness: topBorder.borderWeight)
+        self.layer.addBorder(edge: .right, color: rightBorder.borderColor, thickness: rightBorder.borderWeight)
+        self.layer.addBorder(edge: .bottom, color: bottomBorder.borderColor, thickness: bottomBorder.borderWeight)
+        self.layer.addBorder(edge: .left, color: leftBorder.borderColor, thickness: leftBorder.borderWeight)
     }
 }

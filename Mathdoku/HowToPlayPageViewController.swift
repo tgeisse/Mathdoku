@@ -23,6 +23,17 @@ class HowToPlayPageViewController: UIPageViewController {
         }
     }
     
+    override func viewDidLayoutSubviews() {
+        super.viewDidLayoutSubviews()
+        for view in self.view.subviews {
+            if view is UIScrollView {
+                view.frame = UIScreen.main.bounds
+            } else if view is UIPageControl {
+                view.backgroundColor = UIColor.clear
+            }
+        }
+    }
+    
     private(set) lazy var orderedViewControllers: [UIViewController] = {
         return [self.newColoredViewController(color: "Green"),
                 self.newColoredViewController(color: "Red"),
@@ -77,7 +88,15 @@ extension HowToPlayPageViewController: UIPageViewControllerDataSource {
         return orderedViewControllers[nextIndex]
     }
     
+    private func setupPageControl() {
+        let appearance = UIPageControl.appearance()
+        appearance.pageIndicatorTintColor = UIColor.gray
+        appearance.currentPageIndicatorTintColor = UIColor.white
+        appearance.backgroundColor = UIColor.clear
+    }
+    
     func presentationCount(for pageViewController: UIPageViewController) -> Int {
+        setupPageControl()
         return orderedViewControllers.count
     }
     

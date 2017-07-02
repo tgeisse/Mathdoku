@@ -35,13 +35,12 @@ class HowToPlayPageViewController: UIPageViewController {
     }
     
     private(set) lazy var orderedViewControllers: [UIViewController] = {
-        return [self.newColoredViewController(color: "Green"),
-                self.newColoredViewController(color: "Red"),
-                self.newColoredViewController(color: "Blue")]
+        return [self.tutorialViewControllerForPage(1),
+                self.tutorialViewControllerForPage(2)]
     }()
     
-    private func newColoredViewController(color: String) -> UIViewController {
-        return UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "\(color)ViewController")
+    private func tutorialViewControllerForPage(_ page: Int) -> UIViewController {
+        return UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "TutorialPage\(page)")
     }
 }
 

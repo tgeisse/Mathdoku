@@ -339,9 +339,9 @@
 			isa = PBXGroup;
 			children = (
 				95C2BD2D1EBECC01008A62D0 /* PuzzleViewController.swift */,
-				95C082581EABC8B8008B7C2E /* CellView.swift */,
 				95E9D1171EB963A400F51A4B /* GridRowView.swift */,
 				95E9D1191EB963BB00F51A4B /* CellContainerView.swift */,
+				95C082581EABC8B8008B7C2E /* CellView.swift */,
 			);
 			name = PuzzleView;
 			path = ..;

@@ -8,7 +8,7 @@
 
 import Foundation
 
-struct CellPosition {
+struct CellPosition: Hashable {
     let row: Int
     let col: Int
     var position: (row: Int, col: Int) {
@@ -39,5 +39,13 @@ struct CellPosition {
     static func -(leftHandSide: CellPosition, rightHandSide: Int) -> CellPosition {
         let newCellId = leftHandSide.cellId - rightHandSide
         return CellPosition(cellId: newCellId, puzzleSize: leftHandSide.size)
+    }
+    
+    var hashValue: Int {
+        return self.cellId
+    }
+    
+    static func == (lhs: CellPosition, rhs: CellPosition) -> Bool {
+        return lhs.cellId == rhs.cellId
     }
 }

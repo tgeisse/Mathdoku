@@ -431,7 +431,8 @@ class PuzzleViewController: UIViewController, UINavigationBarDelegate {
         // If we are being called from viewDidLoad, then we are loading from Realm - no need to initiate a save
         if withIdentifier.contains("viewDidLoad") != true {
             DebugUtil.print("Entering Cell Note Save. Check the identifier: \(withIdentifier)")
-            asyncWriteCellNotes(userCellNotePossibilities)
+            asyncWriteNotesForCells(atPositions: atPositions)
+            //asyncWriteCellNotes(userCellNotePossibilities)
         }
     }
 
@@ -448,8 +449,80 @@ class PuzzleViewController: UIViewController, UINavigationBarDelegate {
     }
     
     // MARK: - Realm helper functions
+    private func asyncWriteNotesForCells(atPositions: [CellPosition]) {
+        let puzzleSize = puzzle.size
+        // (1) get a dictionary mapping of the notes we need to save with their respective positions
+        var notesToSave = Dictionary<CellPosition, [CellNotePossibility]>()
+        
+        for cell in atPositions {
+            notesToSave[cell] = userCellNotePossibilities[cell.row][cell.col]
+        }
+        
+        // (2) dispatch onto another queue
+        DispatchQueue.global(qos: .userInitiated).async {
+            do {
+                let realm = try Realm()
+                
+                // (3) get the existing puzzle note items in the realm database to be updated
+                // we should already have a playerProgress if we make it this far, we just may not have any puzzleNotes if this is a first run
+                if let puzzleNotes = realm.objects(PlayerProgress.self).filter("puzzleSize == \(puzzleSize)").first?.puzzleProgress?.puzzleNotes {
+                    // (4) open a realm writing block
+                    try realm.write {
+                        // (5) loop through the cells passed to us
+                        for savingNote in notesToSave {
+                            let cell = savingNote.key // the key is the cell position of the note
+                            let possibilities = savingNote.value // the possibilities are the breakdown of notes in the cell
+                            
+                            // (6) check to see if a PuzzleNote exists for this cell
+                            let puzzleNoteQuery = puzzleNotes.filter("cellId == \(cell.cellId)")
+                            let puzzleNoteForCell: PuzzleNote
+                            
+                            if puzzleNoteQuery.count == 0 {
+                                // (7) if a PuzzleNote does not exist for this cell, then create one
+                                puzzleNoteForCell = PuzzleNote()
+                                puzzleNoteForCell.cellId = cell.cellId
+                                puzzleNotes.append(puzzleNoteForCell)
+                                
+                            } else {
+                                // (7b) otherwise, get the first element in the query - this is our puzzleNote for the cell
+                                puzzleNoteForCell = puzzleNoteQuery.first!
+                            }
+                            
+                            // (8) now that we have our puzzleNote, let's add the CellNote Possibilities to it
+                            for (index, possibility) in possibilities.enumerated() {
+                                let possibilityIndex = index + 1
+                                let cellNoteQuery = puzzleNoteForCell.notes.filter("note == \(possibilityIndex)")
+                                let puzzleCellNote: PuzzleCellNote
+                                
+                                if cellNoteQuery.count == 0 {
+                                    // (9) if we do not yet have a PuzzleCellNote for this note, then add it
+                                    puzzleCellNote = PuzzleCellNote()
+                                    puzzleCellNote.note = possibilityIndex
+                                    puzzleNoteForCell.notes.append(puzzleCellNote)
+                                } else {
+                                    // (9b) or, if we have one, then get the first element in the query - this is our CellNote for this note
+                                    puzzleCellNote = cellNoteQuery.first!
+                                }
+                                
+                                // (10) change the cell note possibility. It's an int, so:
+                                //                  -1: impossible
+                                //                   0: none
+                                //                   1: possible
+                                //puzzleCellNote.possibility = (possibility == .impossible ? -1 : (possibility == .possible ? 1 : 0))
+                                puzzleCellNote.possibility = possibility.rawValue
+                            }
+                        }
+                    }
+                }
+                
+            } catch (let error) {
+                fatalError("Error trying to async save the cell notes: \(error)")
+            }
+        }
+    }
+    
 // TODO: allow this to take in a range of cells to update to limit the loops
-    private func asyncWriteCellNotes(_ notes: [[[CellNotePossibility]]]) {
+/*    private func asyncWriteCellNotes(_ notes: [[[CellNotePossibility]]]) {
         let puzzleSize = puzzle.size
         
         DispatchQueue.global(qos: .userInitiated).async {
@@ -511,7 +584,7 @@ class PuzzleViewController: UIViewController, UINavigationBarDelegate {
                 fatalError("Error trying to async save the cell notes:\n\(error)")
             }
         }
-    }
+    } */
     
     private func asyncWriteGuessForCells(atPositions: [CellPosition], withAnswer: Int?) {
         let puzzleSize = puzzle.size

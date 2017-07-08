@@ -62,6 +62,7 @@
 		95FBB8FB1E9AD13F00B0E662 /* MathdokuUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 95FBB8FA1E9AD13F00B0E662 /* MathdokuUITests.swift */; };
 		95FBB90A1E9AD97300B0E662 /* Puzzle.swift in Sources */ = {isa = PBXBuildFile; fileRef = 95FBB9091E9AD97300B0E662 /* Puzzle.swift */; };
 		95FBB90C1E9AD9E900B0E662 /* Cell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 95FBB90B1E9AD9E900B0E662 /* Cell.swift */; };
+		95FFC6D51F118CA300DF964A /* AdViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 95FFC6D41F118CA300DF964A /* AdViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -156,6 +157,8 @@
 		95FBB8FC1E9AD13F00B0E662 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		95FBB9091E9AD97300B0E662 /* Puzzle.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Puzzle.swift; sourceTree = "<group>"; };
 		95FBB90B1E9AD9E900B0E662 /* Cell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Cell.swift; sourceTree = "<group>"; };
+		95FFC6D01F118C2200DF964A /* iAd.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = iAd.framework; path = System/Library/Frameworks/iAd.framework; sourceTree = SDKROOT; };
+		95FFC6D41F118CA300DF964A /* AdViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = AdViewController.swift; path = Mathdoku/AdViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -283,6 +286,7 @@
 				95FBB8EE1E9AD13F00B0E662 /* MathdokuTests */,
 				95FBB8F91E9AD13F00B0E662 /* MathdokuUITests */,
 				95FBB8D81E9AD13F00B0E662 /* Products */,
+				95FFC6CF1F118C2200DF964A /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -338,6 +342,7 @@
 		95FBB9081E9AD95B00B0E662 /* PuzzleView */ = {
 			isa = PBXGroup;
 			children = (
+				95FFC6D41F118CA300DF964A /* AdViewController.swift */,
 				95C2BD2D1EBECC01008A62D0 /* PuzzleViewController.swift */,
 				95E9D1171EB963A400F51A4B /* GridRowView.swift */,
 				95E9D1191EB963BB00F51A4B /* CellContainerView.swift */,
@@ -345,6 +350,14 @@
 			);
 			name = PuzzleView;
 			path = ..;
+			sourceTree = "<group>";
+		};
+		95FFC6CF1F118C2200DF964A /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				95FFC6D01F118C2200DF964A /* iAd.framework */,
+			);
+			name = Frameworks;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -507,6 +520,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				95FFC6D51F118CA300DF964A /* AdViewController.swift in Sources */,
 				9502E5CC1EEDF66E0048BE1B /* AppleReceiptValidator.swift in Sources */,
 				9502E5CE1EEDF66E0048BE1B /* InAppProductQueryRequest.swift in Sources */,
 				9502E5D91EEDF66E0048BE1B /* RestorePurchasesController.swift in Sources */,

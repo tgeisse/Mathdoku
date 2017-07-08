@@ -36,7 +36,13 @@ class HowToPlayPageViewController: UIPageViewController {
     
     private(set) lazy var orderedViewControllers: [UIViewController] = {
         return [self.tutorialViewControllerForPage(1),
-                self.tutorialViewControllerForPage(2)]
+                self.tutorialViewControllerForPage(2),
+                self.tutorialViewControllerForPage(3),
+                self.tutorialViewControllerForPage(4),
+                self.tutorialViewControllerForPage(5),
+                self.tutorialViewControllerForPage(6),
+                self.tutorialViewControllerForPage(7),
+                self.tutorialViewControllerForPage(8)]
     }()
     
     private func tutorialViewControllerForPage(_ page: Int) -> UIViewController {

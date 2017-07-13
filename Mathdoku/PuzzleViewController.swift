@@ -521,6 +521,7 @@ class PuzzleViewController: UIViewController, UINavigationBarDelegate {
         }
     }
     
+// TODO: allow this to take in a range of cells to update to limit the loops
 /*    private func asyncWriteCellNotes(_ notes: [[[CellNotePossibility]]]) {
         let puzzleSize = puzzle.size
         
@@ -559,7 +560,7 @@ class PuzzleViewController: UIViewController, UINavigationBarDelegate {
                                     let puzzleCellNote: PuzzleCellNote
                                     
                                     if cellNoteQuery.count == 0 {
-            ¡                            // (4) if we do not yet have a PuzzleCellNote for this note, then add it
+                                        // (4) if we do not yet have a PuzzleCellNote for this note, then add it
                                         puzzleCellNote = PuzzleCellNote()
                                         puzzleCellNote.note = note
                                         puzzleNoteForCell.notes.append(puzzleCellNote)

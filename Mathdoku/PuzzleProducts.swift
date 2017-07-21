@@ -37,6 +37,7 @@ struct PuzzleProducts {
         var refreshMode: PuzzleRefreshMode?
         var puzzleAllowance: Allowances?
         
+        /*
         func determineRefreshMode() -> PuzzleRefreshMode {
             if let puzzleAllowance = realm.objects(Allowances.self).filter("allowanceId = '\(AllowanceTypes.puzzle.id())'").first {
                 
@@ -50,7 +51,7 @@ struct PuzzleProducts {
             }
             
             return refreshMode!
-        }
+        } */
         
         func queryPuzzleAllowance() -> Allowances {
             puzzleAllowance = realm.objects(Allowances.self).filter("allowanceId = '\(AllowanceTypes.puzzle.id())'").first!
@@ -79,13 +80,22 @@ struct PuzzleProducts {
     }
     
     static var puzzleRefreshMode: PuzzleRefreshMode {
+        if puzzleAllowance.lastPurchaseDate.timeIntervalSince1970 < puzzleAllowance.lastRefreshDate.timeIntervalSince1970 {
+            return .weekly
+        } else {
+            return .purchase
+        }
+    }
+    
+    /*
+    static var puzzleRefreshMode: PuzzleRefreshMode {
         get {
             return loadedInfo.refreshMode ?? loadedInfo.determineRefreshMode()
         }
         set {
             loadedInfo.refreshMode = newValue
         }
-    }
+    }*/
     
     static func getLoadedPuzzleProductInfo(productId: String) -> LoadedProduct? {
         return loadedInfo.loadedPuzzleProducts[productId]

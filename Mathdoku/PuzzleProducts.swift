@@ -36,22 +36,7 @@ struct PuzzleProducts {
         }()
         var refreshMode: PuzzleRefreshMode?
         var puzzleAllowance: Allowances?
-        
-        /*
-        func determineRefreshMode() -> PuzzleRefreshMode {
-            if let puzzleAllowance = realm.objects(Allowances.self).filter("allowanceId = '\(AllowanceTypes.puzzle.id())'").first {
-                
-                if puzzleAllowance.lastPurchaseDate.timeIntervalSince1970 < puzzleAllowance.lastRefreshDate.timeIntervalSince1970 {
-                    refreshMode = .weekly
-                } else {
-                    refreshMode = .purchase
-                }
-            } else {
-                refreshMode = .error("Unable to find an allowance for \(AllowanceTypes.puzzle.id())")
-            }
-            
-            return refreshMode!
-        } */
+        var adsSetting: Bool?
         
         func queryPuzzleAllowance() -> Allowances {
             puzzleAllowance = realm.objects(Allowances.self).filter("allowanceId = '\(AllowanceTypes.puzzle.id())'").first!
@@ -60,14 +45,14 @@ struct PuzzleProducts {
     }
     
     static var userIsWeekly: Bool {
-        switch self.puzzleRefreshMode {
+        switch puzzleRefreshMode {
         case .weekly: return true
         default: return false
         }
     }
     
     static var userHasPurchased: Bool {
-        switch self.puzzleRefreshMode {
+        switch puzzleRefreshMode {
         case .purchase: return true
         default: return false
         }
@@ -87,15 +72,14 @@ struct PuzzleProducts {
         }
     }
     
-    /*
-    static var puzzleRefreshMode: PuzzleRefreshMode {
+    static var adsEnabled: Bool {
         get {
-            return loadedInfo.refreshMode ?? loadedInfo.determineRefreshMode()
+            return true
         }
         set {
-            loadedInfo.refreshMode = newValue
+            // do something
         }
-    }*/
+    }
     
     static func getLoadedPuzzleProductInfo(productId: String) -> LoadedProduct? {
         return loadedInfo.loadedPuzzleProducts[productId]

@@ -30,7 +30,7 @@ struct CellPosition: Hashable {
         self.cellId = cellId
         self.size = size
     }
-    
+    /*
     static func +(leftHandSide: CellPosition, rightHandSide: Int) -> CellPosition {
         let newCellId = leftHandSide.cellId + rightHandSide
         return CellPosition(cellId: newCellId, puzzleSize: leftHandSide.size)
@@ -39,7 +39,7 @@ struct CellPosition: Hashable {
     static func -(leftHandSide: CellPosition, rightHandSide: Int) -> CellPosition {
         let newCellId = leftHandSide.cellId - rightHandSide
         return CellPosition(cellId: newCellId, puzzleSize: leftHandSide.size)
-    }
+    }*/
     
     var hashValue: Int {
         return self.cellId

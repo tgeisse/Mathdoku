@@ -132,7 +132,7 @@ class PuzzleViewController: UIViewController, UINavigationBarDelegate {
                             return gridRowStacks[$0.row].rowCells[$0.col]
                         }
                         
-                        // if my old valud is not in the friendsToSelectedCells (new)
+                        // if my old value is not in the friendsToSelectedCells (new)
                         // then set the oldvalue to unselected
                         if let oldCell = oldValue, friendsToSelectedCell.contains(oldCell) == false {
                             oldCell.currentHighlightState = .unselected
@@ -193,7 +193,11 @@ class PuzzleViewController: UIViewController, UINavigationBarDelegate {
     
     private lazy var userCellNotePossibilities: [[[CellNotePossibility]]] = {
         let size = self.puzzle.size
-        return Array(repeating:Array(repeating:Array(repeating: CellNotePossibility.none, count: size), count: size), count: size)
+        return Array(repeating:
+                        Array(repeating:
+                                Array(repeating: CellNotePossibility.none, count: self.puzzle.size)
+                            , count: self.puzzle.size)
+                    , count: self.puzzle.size)
     }()
 
     
@@ -677,15 +681,16 @@ class PuzzleViewController: UIViewController, UINavigationBarDelegate {
         for key in puzzle.cages.keys {
             if let cage = puzzle.cages[key] {
                 let cell: (row: Int, col: Int) = (cage.firstCell / puzzle.size, cage.firstCell % puzzle.size)
-                let hintToAdd = puzzle.cages[key]?.hintText ?? "#ERR#"
-                
-                gridRowStacks[cell.row].rowCells[cell.col].cell.hint = hintToAdd
+                gridRowStacks[cell.row].rowCells[cell.col].cell.hint = puzzle.cages[key]?.hintText ?? "#ERR#"
             }
             
         }
     }
     
     private func hideUnneededRowsAndCells() {
+        gridRowStacks[0..<puzzle.size].forEach{ $0.subviews[puzzle.size..<9].forEach{ $0.isHidden = true } }
+        gridRowStacks[puzzle.size..<9].forEach{ $0.isHidden = true }
+        /*
         for row in 0..<9 {
             if row >= puzzle.size {
                 // the row is not needed for this puzzle size
@@ -699,7 +704,7 @@ class PuzzleViewController: UIViewController, UINavigationBarDelegate {
                     gridRowStacks[row].subviews[col].isHidden = true
                 }
             }
-        }
+        }*/
     }
     
     // MARK: - View Lifecycle

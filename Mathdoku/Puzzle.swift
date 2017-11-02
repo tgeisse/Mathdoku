@@ -20,7 +20,7 @@ class Puzzle {
             return false
         }
         
-        return cells.filter { $0.userGuess == $0.answer } .count == cells.count
+        return cells.filter { $0.correctGuess } .count == cells.count
         
         /*
         if cells.filter( { $0.userGuess != nil }).count != cells.count {

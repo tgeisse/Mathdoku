@@ -104,10 +104,6 @@ class StoreViewController: UIViewController {
     }
     
     @IBAction func purchaseProduct(_ sender: UIButton) {
-        let alert = self.alertWithTitle("Purchasing Disabled", message: "In App Purchases are disabled during the beta to prevent accidental charges.")
-        self.showAlert(alert)
-        // TODO: uncomment to reenable IAP
-        /*
         if let label = sender.accessibilityLabel {
             switch label {
             case "puzzle100":
@@ -120,7 +116,7 @@ class StoreViewController: UIViewController {
                 }
             default: break
             }
-        }*/
+        }
     }
     
 }

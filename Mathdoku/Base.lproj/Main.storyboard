@@ -1864,7 +1864,7 @@
                                         <rect key="frame" x="2" y="2" width="371" height="88"/>
                                         <subviews>
                                             <stackView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="CPI-QO-tz1">
-                                                <rect key="frame" x="5" y="9.5" width="361" height="69"/>
+                                                <rect key="frame" x="10" y="9.5" width="356" height="69"/>
                                                 <subviews>
                                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Success!" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumFontSize="29" translatesAutoresizingMaskIntoConstraints="NO" id="QVm-ct-MvB">
                                                         <rect key="frame" x="0.0" y="0.0" width="206.5" height="69"/>
@@ -1873,10 +1873,10 @@
                                                         <nil key="highlightedColor"/>
                                                     </label>
                                                     <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="fillProportionally" alignment="center" translatesAutoresizingMaskIntoConstraints="NO" id="7VR-xl-ym7">
-                                                        <rect key="frame" x="206.5" y="0.0" width="154.5" height="69"/>
+                                                        <rect key="frame" x="206.5" y="0.0" width="149.5" height="69"/>
                                                         <subviews>
                                                             <button opaque="NO" contentMode="scaleToFill" horizontalCompressionResistancePriority="1000" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="CXf-DC-e1y">
-                                                                <rect key="frame" x="21" y="0.0" width="113" height="39"/>
+                                                                <rect key="frame" x="18.5" y="0.0" width="113" height="39"/>
                                                                 <fontDescription key="fontDescription" type="system" pointSize="22"/>
                                                                 <state key="normal" title="Next Puzzle"/>
                                                                 <connections>
@@ -1884,7 +1884,7 @@
                                                                 </connections>
                                                             </button>
                                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="gNU-2M-jz7">
-                                                                <rect key="frame" x="39.5" y="39" width="76" height="30"/>
+                                                                <rect key="frame" x="37" y="39" width="76" height="30"/>
                                                                 <state key="normal" title="Main Menu"/>
                                                                 <connections>
                                                                     <action selector="mainMenu:" destination="nDg-KA-uk0" eventType="touchUpInside" id="YuC-Ke-5dP"/>
@@ -1893,12 +1893,15 @@
                                                         </subviews>
                                                     </stackView>
                                                 </subviews>
+                                                <constraints>
+                                                    <constraint firstItem="QVm-ct-MvB" firstAttribute="leading" secondItem="CPI-QO-tz1" secondAttribute="leading" id="2xl-YG-yQ3"/>
+                                                </constraints>
                                             </stackView>
                                         </subviews>
                                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                         <constraints>
                                             <constraint firstItem="CPI-QO-tz1" firstAttribute="centerY" secondItem="MmD-Ul-GYJ" secondAttribute="centerY" id="dSP-BG-bqb"/>
-                                            <constraint firstItem="CPI-QO-tz1" firstAttribute="leading" secondItem="MmD-Ul-GYJ" secondAttribute="leading" constant="5" id="iv1-g7-vei"/>
+                                            <constraint firstItem="CPI-QO-tz1" firstAttribute="leading" secondItem="MmD-Ul-GYJ" secondAttribute="leading" constant="10" id="iv1-g7-vei"/>
                                             <constraint firstAttribute="trailing" secondItem="CPI-QO-tz1" secondAttribute="trailing" constant="5" id="phQ-90-aQg"/>
                                         </constraints>
                                         <userDefinedRuntimeAttributes>
@@ -2848,7 +2851,7 @@
                                 <color key="shadowColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                             </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="In the Green cage, the cells multiply to be 6. Knowing the cells are a 2 and 3, then 2x3 = 6 fits." textAlignment="center" lineBreakMode="wordWrap" numberOfLines="4" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="r0y-qL-Q6O">
-                                <rect key="frame" x="16.5" y="520" width="343" height="87"/>
+                                <rect key="frame" x="16" y="520" width="343" height="87"/>
                                 <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="18"/>
                                 <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <nil key="highlightedColor"/>
@@ -2990,7 +2993,7 @@
                                 <color key="shadowColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                             </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="In the Purple cage, 3-1 = 2. Order of the values in cells does not matter. In this case, the top cell is the 1." textAlignment="center" lineBreakMode="wordWrap" numberOfLines="4" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="8dc-t6-VdR">
-                                <rect key="frame" x="16.5" y="520" width="343" height="87"/>
+                                <rect key="frame" x="16" y="520" width="343" height="87"/>
                                 <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="18"/>
                                 <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <nil key="highlightedColor"/>
@@ -3132,7 +3135,7 @@
                                 <color key="shadowColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                             </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Remember that columns and rows use a digit only once. This will give you hints to completing a puzzle." textAlignment="center" lineBreakMode="wordWrap" numberOfLines="4" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="VLv-N5-iUv">
-                                <rect key="frame" x="16.5" y="520" width="343" height="87"/>
+                                <rect key="frame" x="16" y="520" width="343" height="87"/>
                                 <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="18"/>
                                 <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <nil key="highlightedColor"/>
@@ -3274,7 +3277,7 @@
                                 <color key="shadowColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                             </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Using cage hints and process of elimintation, keep going until you've solved the puzzle!" textAlignment="center" lineBreakMode="wordWrap" numberOfLines="4" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="aRw-4r-fMT">
-                                <rect key="frame" x="16.5" y="520" width="343" height="87"/>
+                                <rect key="frame" x="16" y="520" width="343" height="87"/>
                                 <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="18"/>
                                 <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <nil key="highlightedColor"/>

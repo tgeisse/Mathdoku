@@ -89,7 +89,7 @@ class PuzzleSelectionViewController: UIViewController {
     }
     
     func addAllowanceNotification() {
-        puzzleAllowanceNotification = PuzzleProducts.puzzleAllowance.addNotificationBlock { [weak self] change in
+        puzzleAllowanceNotification = PuzzleProducts.puzzleAllowance.observe { [weak self] change in
             switch change {
             case .change(_):
                 self?.updatePuzzlesRemainingLabel()
@@ -165,7 +165,7 @@ class PuzzleSelectionViewController: UIViewController {
     }
     
     deinit {
-        puzzleAllowanceNotification?.stop()
+        puzzleAllowanceNotification?.invalidate()
     }
 }
 

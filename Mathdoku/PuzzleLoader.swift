@@ -191,7 +191,7 @@ class PuzzleLoader {
         
         // parse the cages
         for cage in puzzleCages.components(separatedBy: " ") {
-            if cage.characters.count >= 3 {
+            if cage.count >= 3 {
                 let cageIndex = cage.index(cage.startIndex, offsetBy: 0)
                 let operationIndex = cage.index(cage.startIndex, offsetBy: 1)
                 let totalIndex = cage.index(cage.startIndex, offsetBy: 2)

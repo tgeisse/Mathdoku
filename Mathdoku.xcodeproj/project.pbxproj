@@ -58,29 +58,10 @@
 		95FBB8DB1E9AD13F00B0E662 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 95FBB8DA1E9AD13F00B0E662 /* AppDelegate.swift */; };
 		95FBB8E01E9AD13F00B0E662 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 95FBB8DE1E9AD13F00B0E662 /* Main.storyboard */; };
 		95FBB8E21E9AD13F00B0E662 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 95FBB8E11E9AD13F00B0E662 /* Assets.xcassets */; };
-		95FBB8F01E9AD13F00B0E662 /* MathdokuTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 95FBB8EF1E9AD13F00B0E662 /* MathdokuTests.swift */; };
-		95FBB8FB1E9AD13F00B0E662 /* MathdokuUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 95FBB8FA1E9AD13F00B0E662 /* MathdokuUITests.swift */; };
 		95FBB90A1E9AD97300B0E662 /* Puzzle.swift in Sources */ = {isa = PBXBuildFile; fileRef = 95FBB9091E9AD97300B0E662 /* Puzzle.swift */; };
 		95FBB90C1E9AD9E900B0E662 /* Cell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 95FBB90B1E9AD9E900B0E662 /* Cell.swift */; };
 		95FFC6D51F118CA300DF964A /* AdViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 95FFC6D41F118CA300DF964A /* AdViewController.swift */; };
 /* End PBXBuildFile section */
-
-/* Begin PBXContainerItemProxy section */
-		95FBB8EC1E9AD13F00B0E662 /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = 95FBB8CF1E9AD13F00B0E662 /* Project object */;
-			proxyType = 1;
-			remoteGlobalIDString = 95FBB8D61E9AD13F00B0E662;
-			remoteInfo = Mathdoku;
-		};
-		95FBB8F71E9AD13F00B0E662 /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = 95FBB8CF1E9AD13F00B0E662 /* Project object */;
-			proxyType = 1;
-			remoteGlobalIDString = 95FBB8D61E9AD13F00B0E662;
-			remoteInfo = Mathdoku;
-		};
-/* End PBXContainerItemProxy section */
 
 /* Begin PBXCopyFilesBuildPhase section */
 		9555607E1ECD3500006C9F2D /* Embed Frameworks */ = {
@@ -149,12 +130,6 @@
 		95FBB8DF1E9AD13F00B0E662 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		95FBB8E11E9AD13F00B0E662 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		95FBB8E61E9AD13F00B0E662 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		95FBB8EB1E9AD13F00B0E662 /* MathdokuTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = MathdokuTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
-		95FBB8EF1E9AD13F00B0E662 /* MathdokuTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MathdokuTests.swift; sourceTree = "<group>"; };
-		95FBB8F11E9AD13F00B0E662 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		95FBB8F61E9AD13F00B0E662 /* MathdokuUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = MathdokuUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
-		95FBB8FA1E9AD13F00B0E662 /* MathdokuUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MathdokuUITests.swift; sourceTree = "<group>"; };
-		95FBB8FC1E9AD13F00B0E662 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		95FBB9091E9AD97300B0E662 /* Puzzle.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Puzzle.swift; sourceTree = "<group>"; };
 		95FBB90B1E9AD9E900B0E662 /* Cell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Cell.swift; sourceTree = "<group>"; };
 		95FFC6D01F118C2200DF964A /* iAd.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = iAd.framework; path = System/Library/Frameworks/iAd.framework; sourceTree = SDKROOT; };
@@ -168,20 +143,6 @@
 			files = (
 				955560841ECD3690006C9F2D /* RealmSwift.framework in Frameworks */,
 				955560821ECD3690006C9F2D /* Realm.framework in Frameworks */,
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-		95FBB8E81E9AD13F00B0E662 /* Frameworks */ = {
-			isa = PBXFrameworksBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-		95FBB8F31E9AD13F00B0E662 /* Frameworks */ = {
-			isa = PBXFrameworksBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -283,8 +244,6 @@
 				955560801ECD3690006C9F2D /* Realm.framework */,
 				955560811ECD3690006C9F2D /* RealmSwift.framework */,
 				95FBB8D91E9AD13F00B0E662 /* Mathdoku */,
-				95FBB8EE1E9AD13F00B0E662 /* MathdokuTests */,
-				95FBB8F91E9AD13F00B0E662 /* MathdokuUITests */,
 				95FBB8D81E9AD13F00B0E662 /* Products */,
 				95FFC6CF1F118C2200DF964A /* Frameworks */,
 			);
@@ -294,8 +253,6 @@
 			isa = PBXGroup;
 			children = (
 				95FBB8D71E9AD13F00B0E662 /* Mathdoku.app */,
-				95FBB8EB1E9AD13F00B0E662 /* MathdokuTests.xctest */,
-				95FBB8F61E9AD13F00B0E662 /* MathdokuUITests.xctest */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -319,24 +276,6 @@
 				956ED5E61EECA1490030B7FC /* Settings.bundle */,
 			);
 			path = Mathdoku;
-			sourceTree = "<group>";
-		};
-		95FBB8EE1E9AD13F00B0E662 /* MathdokuTests */ = {
-			isa = PBXGroup;
-			children = (
-				95FBB8EF1E9AD13F00B0E662 /* MathdokuTests.swift */,
-				95FBB8F11E9AD13F00B0E662 /* Info.plist */,
-			);
-			path = MathdokuTests;
-			sourceTree = "<group>";
-		};
-		95FBB8F91E9AD13F00B0E662 /* MathdokuUITests */ = {
-			isa = PBXGroup;
-			children = (
-				95FBB8FA1E9AD13F00B0E662 /* MathdokuUITests.swift */,
-				95FBB8FC1E9AD13F00B0E662 /* Info.plist */,
-			);
-			path = MathdokuUITests;
 			sourceTree = "<group>";
 		};
 		95FBB9081E9AD95B00B0E662 /* PuzzleView */ = {
@@ -382,42 +321,6 @@
 			productReference = 95FBB8D71E9AD13F00B0E662 /* Mathdoku.app */;
 			productType = "com.apple.product-type.application";
 		};
-		95FBB8EA1E9AD13F00B0E662 /* MathdokuTests */ = {
-			isa = PBXNativeTarget;
-			buildConfigurationList = 95FBB9021E9AD13F00B0E662 /* Build configuration list for PBXNativeTarget "MathdokuTests" */;
-			buildPhases = (
-				95FBB8E71E9AD13F00B0E662 /* Sources */,
-				95FBB8E81E9AD13F00B0E662 /* Frameworks */,
-				95FBB8E91E9AD13F00B0E662 /* Resources */,
-			);
-			buildRules = (
-			);
-			dependencies = (
-				95FBB8ED1E9AD13F00B0E662 /* PBXTargetDependency */,
-			);
-			name = MathdokuTests;
-			productName = MathdokuTests;
-			productReference = 95FBB8EB1E9AD13F00B0E662 /* MathdokuTests.xctest */;
-			productType = "com.apple.product-type.bundle.unit-test";
-		};
-		95FBB8F51E9AD13F00B0E662 /* MathdokuUITests */ = {
-			isa = PBXNativeTarget;
-			buildConfigurationList = 95FBB9051E9AD13F00B0E662 /* Build configuration list for PBXNativeTarget "MathdokuUITests" */;
-			buildPhases = (
-				95FBB8F21E9AD13F00B0E662 /* Sources */,
-				95FBB8F31E9AD13F00B0E662 /* Frameworks */,
-				95FBB8F41E9AD13F00B0E662 /* Resources */,
-			);
-			buildRules = (
-			);
-			dependencies = (
-				95FBB8F81E9AD13F00B0E662 /* PBXTargetDependency */,
-			);
-			name = MathdokuUITests;
-			productName = MathdokuUITests;
-			productReference = 95FBB8F61E9AD13F00B0E662 /* MathdokuUITests.xctest */;
-			productType = "com.apple.product-type.bundle.ui-testing";
-		};
 /* End PBXNativeTarget section */
 
 /* Begin PBXProject section */
@@ -434,22 +337,8 @@
 					95FBB8D61E9AD13F00B0E662 = {
 						CreatedOnToolsVersion = 8.3.1;
 						DevelopmentTeam = 57TCLD34EQ;
-						LastSwiftMigration = 0900;
+						LastSwiftMigration = "";
 						ProvisioningStyle = Automatic;
-					};
-					95FBB8EA1E9AD13F00B0E662 = {
-						CreatedOnToolsVersion = 8.3.1;
-						DevelopmentTeam = 47RY6X4KE6;
-						LastSwiftMigration = 0900;
-						ProvisioningStyle = Automatic;
-						TestTargetID = 95FBB8D61E9AD13F00B0E662;
-					};
-					95FBB8F51E9AD13F00B0E662 = {
-						CreatedOnToolsVersion = 8.3.1;
-						DevelopmentTeam = 47RY6X4KE6;
-						LastSwiftMigration = 0900;
-						ProvisioningStyle = Automatic;
-						TestTargetID = 95FBB8D61E9AD13F00B0E662;
 					};
 				};
 			};
@@ -467,8 +356,6 @@
 			projectRoot = "";
 			targets = (
 				95FBB8D61E9AD13F00B0E662 /* Mathdoku */,
-				95FBB8EA1E9AD13F00B0E662 /* MathdokuTests */,
-				95FBB8F51E9AD13F00B0E662 /* MathdokuUITests */,
 			);
 		};
 /* End PBXProject section */
@@ -482,20 +369,6 @@
 				956505EB1EDFD67300C97D73 /* LaunchScreen.storyboard in Resources */,
 				95FBB8E21E9AD13F00B0E662 /* Assets.xcassets in Resources */,
 				95FBB8E01E9AD13F00B0E662 /* Main.storyboard in Resources */,
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-		95FBB8E91E9AD13F00B0E662 /* Resources */ = {
-			isa = PBXResourcesBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-		95FBB8F41E9AD13F00B0E662 /* Resources */ = {
-			isa = PBXResourcesBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -571,36 +444,7 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		95FBB8E71E9AD13F00B0E662 /* Sources */ = {
-			isa = PBXSourcesBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-				95FBB8F01E9AD13F00B0E662 /* MathdokuTests.swift in Sources */,
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-		95FBB8F21E9AD13F00B0E662 /* Sources */ = {
-			isa = PBXSourcesBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-				95FBB8FB1E9AD13F00B0E662 /* MathdokuUITests.swift in Sources */,
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
 /* End PBXSourcesBuildPhase section */
-
-/* Begin PBXTargetDependency section */
-		95FBB8ED1E9AD13F00B0E662 /* PBXTargetDependency */ = {
-			isa = PBXTargetDependency;
-			target = 95FBB8D61E9AD13F00B0E662 /* Mathdoku */;
-			targetProxy = 95FBB8EC1E9AD13F00B0E662 /* PBXContainerItemProxy */;
-		};
-		95FBB8F81E9AD13F00B0E662 /* PBXTargetDependency */ = {
-			isa = PBXTargetDependency;
-			target = 95FBB8D61E9AD13F00B0E662 /* Mathdoku */;
-			targetProxy = 95FBB8F71E9AD13F00B0E662 /* PBXContainerItemProxy */;
-		};
-/* End PBXTargetDependency section */
 
 /* Begin PBXVariantGroup section */
 		95FBB8DE1E9AD13F00B0E662 /* Main.storyboard */ = {
@@ -766,70 +610,6 @@
 			};
 			name = Release;
 		};
-		95FBB9031E9AD13F00B0E662 /* Debug */ = {
-			isa = XCBuildConfiguration;
-			buildSettings = {
-				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
-				BUNDLE_LOADER = "$(TEST_HOST)";
-				DEVELOPMENT_TEAM = 47RY6X4KE6;
-				FRAMEWORK_SEARCH_PATHS = "$(PROJECT_DIR)";
-				INFOPLIST_FILE = MathdokuTests/Info.plist;
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
-				OTHER_LDFLAGS = "";
-				PRODUCT_BUNDLE_IDENTIFIER = com.geissefamily.taylor.MathdokuTests;
-				PRODUCT_NAME = "$(TARGET_NAME)";
-				SWIFT_VERSION = 3.0;
-				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/Mathdoku.app/Mathdoku";
-			};
-			name = Debug;
-		};
-		95FBB9041E9AD13F00B0E662 /* Release */ = {
-			isa = XCBuildConfiguration;
-			buildSettings = {
-				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
-				BUNDLE_LOADER = "$(TEST_HOST)";
-				DEVELOPMENT_TEAM = 47RY6X4KE6;
-				FRAMEWORK_SEARCH_PATHS = "$(PROJECT_DIR)";
-				INFOPLIST_FILE = MathdokuTests/Info.plist;
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
-				OTHER_LDFLAGS = "";
-				PRODUCT_BUNDLE_IDENTIFIER = com.geissefamily.taylor.MathdokuTests;
-				PRODUCT_NAME = "$(TARGET_NAME)";
-				SWIFT_VERSION = 3.0;
-				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/Mathdoku.app/Mathdoku";
-			};
-			name = Release;
-		};
-		95FBB9061E9AD13F00B0E662 /* Debug */ = {
-			isa = XCBuildConfiguration;
-			buildSettings = {
-				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
-				DEVELOPMENT_TEAM = 47RY6X4KE6;
-				INFOPLIST_FILE = MathdokuUITests/Info.plist;
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
-				OTHER_LDFLAGS = "";
-				PRODUCT_BUNDLE_IDENTIFIER = com.geissefamily.taylor.MathdokuUITests;
-				PRODUCT_NAME = "$(TARGET_NAME)";
-				SWIFT_VERSION = 3.0;
-				TEST_TARGET_NAME = Mathdoku;
-			};
-			name = Debug;
-		};
-		95FBB9071E9AD13F00B0E662 /* Release */ = {
-			isa = XCBuildConfiguration;
-			buildSettings = {
-				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
-				DEVELOPMENT_TEAM = 47RY6X4KE6;
-				INFOPLIST_FILE = MathdokuUITests/Info.plist;
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
-				OTHER_LDFLAGS = "";
-				PRODUCT_BUNDLE_IDENTIFIER = com.geissefamily.taylor.MathdokuUITests;
-				PRODUCT_NAME = "$(TARGET_NAME)";
-				SWIFT_VERSION = 3.0;
-				TEST_TARGET_NAME = Mathdoku;
-			};
-			name = Release;
-		};
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
@@ -847,24 +627,6 @@
 			buildConfigurations = (
 				95FBB9001E9AD13F00B0E662 /* Debug */,
 				95FBB9011E9AD13F00B0E662 /* Release */,
-			);
-			defaultConfigurationIsVisible = 0;
-			defaultConfigurationName = Release;
-		};
-		95FBB9021E9AD13F00B0E662 /* Build configuration list for PBXNativeTarget "MathdokuTests" */ = {
-			isa = XCConfigurationList;
-			buildConfigurations = (
-				95FBB9031E9AD13F00B0E662 /* Debug */,
-				95FBB9041E9AD13F00B0E662 /* Release */,
-			);
-			defaultConfigurationIsVisible = 0;
-			defaultConfigurationName = Release;
-		};
-		95FBB9051E9AD13F00B0E662 /* Build configuration list for PBXNativeTarget "MathdokuUITests" */ = {
-			isa = XCConfigurationList;
-			buildConfigurations = (
-				95FBB9061E9AD13F00B0E662 /* Debug */,
-				95FBB9071E9AD13F00B0E662 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;

@@ -8,6 +8,12 @@
 
 import UIKit
 
+// Defaults extension for settings variables
+extension DefaultsKeys {
+    static let singleNoteCellSelection = DefaultsKey<Bool>("singleNoteCellSelection")
+    static let rotateAfterCellEntry = DefaultsKey<Bool>("rotateAfterCellEntry")
+}
+
 class SettingsViewController: UITableViewController {
 
     override func viewDidLoad() {
@@ -20,6 +26,4 @@ class SettingsViewController: UITableViewController {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
     }
-    
-
 }

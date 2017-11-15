@@ -296,8 +296,8 @@
 		95FBB9081E9AD95B00B0E662 /* PuzzleView */ = {
 			isa = PBXGroup;
 			children = (
-				95FFC6D41F118CA300DF964A /* AdViewController.swift */,
 				95C2BD2D1EBECC01008A62D0 /* PuzzleViewController.swift */,
+				95FFC6D41F118CA300DF964A /* AdViewController.swift */,
 				95E9D1171EB963A400F51A4B /* GridRowView.swift */,
 				95E9D1191EB963BB00F51A4B /* CellContainerView.swift */,
 				95C082581EABC8B8008B7C2E /* CellView.swift */,

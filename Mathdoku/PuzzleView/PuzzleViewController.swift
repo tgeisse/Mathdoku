@@ -271,13 +271,18 @@ class PuzzleViewController: UIViewController, UINavigationBarDelegate {
     }
     
     @IBAction func validatePuzzleEntries(_ sender: UIButton) {
-        let guessedCellValidations = puzzle.getGuessedCellPositionsWithGuessValidation()
-        
-        // then animate the guess validation and re-enable gesture recognizers after the second animation
-        for (guessedCellPosition, correctGuess) in guessedCellValidations {
-            let cell = gridRowStacks[guessedCellPosition.row].rowCells[guessedCellPosition.col]
-            
-            cell.currentValidationState = (correctGuess ? .valid : .invalid)
+        DispatchQueue.global(qos: .userInitiated).async { [weak self] in
+            if let guessedCellValidations = self?.puzzle.getGuessedCellPositionsWithGuessValidation() {
+                // then animate the guess validation and re-enable gesture recognizers after the second animation
+                for (guessedCellPosition, correctGuess) in guessedCellValidations {
+                    
+                    DispatchQueue.main.async {
+                        if let cell = self?.gridRowStacks[guessedCellPosition.row].rowCells[guessedCellPosition.col] {
+                            cell.currentValidationState = (correctGuess ? .valid : .invalid)
+                        }
+                    }
+                }
+            }
         }
     }
     

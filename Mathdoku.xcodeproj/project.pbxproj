@@ -37,6 +37,8 @@
 		956505EB1EDFD67300C97D73 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 956505EA1EDFD67300C97D73 /* LaunchScreen.storyboard */; };
 		956ED5E71EECA1490030B7FC /* Settings.bundle in Resources */ = {isa = PBXBuildFile; fileRef = 956ED5E61EECA1490030B7FC /* Settings.bundle */; };
 		959632E41ED115A100CAFC5D /* CellPosition.swift in Sources */ = {isa = PBXBuildFile; fileRef = 959632E31ED115A100CAFC5D /* CellPosition.swift */; };
+		9598A3A21FBC020800AE48E2 /* SettingsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9598A3A11FBC020800AE48E2 /* SettingsViewController.swift */; };
+		9598A3A51FBC1B9400AE48E2 /* SwiftyUserDefaults.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9598A3A41FBC1B9400AE48E2 /* SwiftyUserDefaults.swift */; };
 		95A196221ED2A32A0038D40C /* PuzzleProgress.swift in Sources */ = {isa = PBXBuildFile; fileRef = 95A196211ED2A32A0038D40C /* PuzzleProgress.swift */; };
 		95A196241ED2A3310038D40C /* PuzzleGuess.swift in Sources */ = {isa = PBXBuildFile; fileRef = 95A196231ED2A3310038D40C /* PuzzleGuess.swift */; };
 		95A196261ED2A33E0038D40C /* PuzzleNote.swift in Sources */ = {isa = PBXBuildFile; fileRef = 95A196251ED2A33E0038D40C /* PuzzleNote.swift */; };
@@ -107,6 +109,8 @@
 		956505EA1EDFD67300C97D73 /* LaunchScreen.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = LaunchScreen.storyboard; sourceTree = "<group>"; };
 		956ED5E61EECA1490030B7FC /* Settings.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; path = Settings.bundle; sourceTree = "<group>"; };
 		959632E31ED115A100CAFC5D /* CellPosition.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CellPosition.swift; sourceTree = "<group>"; };
+		9598A3A11FBC020800AE48E2 /* SettingsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsViewController.swift; sourceTree = "<group>"; };
+		9598A3A41FBC1B9400AE48E2 /* SwiftyUserDefaults.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SwiftyUserDefaults.swift; sourceTree = "<group>"; };
 		95A196211ED2A32A0038D40C /* PuzzleProgress.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PuzzleProgress.swift; sourceTree = "<group>"; };
 		95A196231ED2A3310038D40C /* PuzzleGuess.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PuzzleGuess.swift; sourceTree = "<group>"; };
 		95A196251ED2A33E0038D40C /* PuzzleNote.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PuzzleNote.swift; sourceTree = "<group>"; };
@@ -192,6 +196,16 @@
 			path = Model;
 			sourceTree = "<group>";
 		};
+		9598A3A31FBC1B4B00AE48E2 /* Libraries */ = {
+			isa = PBXGroup;
+			children = (
+				955560691ECD2989006C9F2D /* SwiftyJSON.swift */,
+				9598A3A41FBC1B9400AE48E2 /* SwiftyUserDefaults.swift */,
+				9502E5B61EEDF66E0048BE1B /* SwiftyStoreKit */,
+			);
+			path = Libraries;
+			sourceTree = "<group>";
+		};
 		95A196201ED2A3130038D40C /* RealmModel */ = {
 			isa = PBXGroup;
 			children = (
@@ -211,6 +225,7 @@
 			children = (
 				95C082631EB1ACE3008B7C2E /* PuzzleSelectionViewController.swift */,
 				9544E33C1F001E8000F37ED7 /* HowToPlayPageViewController.swift */,
+				9598A3A11FBC020800AE48E2 /* SettingsViewController.swift */,
 			);
 			name = "Menu View Controllers";
 			path = MenuViewControllers;
@@ -229,7 +244,6 @@
 			isa = PBXGroup;
 			children = (
 				95E9D1111EB81C2B00F51A4B /* CALayerExtensions.swift */,
-				955560691ECD2989006C9F2D /* SwiftyJSON.swift */,
 				9512736D1ED803F000588467 /* Stack.swift */,
 				951273711EDE898200588467 /* DebugUtil.swift */,
 				95D7B0C51EEA5F6600764738 /* Utility.swift */,
@@ -261,7 +275,7 @@
 		95FBB8D91E9AD13F00B0E662 /* Mathdoku */ = {
 			isa = PBXGroup;
 			children = (
-				9502E5B61EEDF66E0048BE1B /* SwiftyStoreKit */,
+				9598A3A31FBC1B4B00AE48E2 /* Libraries */,
 				9502E5E11EEE159C0048BE1B /* PuzzlePurchasing */,
 				95E9D1101EB81C0C00F51A4B /* Utility */,
 				95C082621EB1AC84008B7C2E /* Menu View Controllers */,
@@ -421,11 +435,13 @@
 				959632E41ED115A100CAFC5D /* CellPosition.swift in Sources */,
 				95FBB8DB1E9AD13F00B0E662 /* AppDelegate.swift in Sources */,
 				9502E5D31EEDF66E0048BE1B /* PaymentQueueController.swift in Sources */,
+				9598A3A21FBC020800AE48E2 /* SettingsViewController.swift in Sources */,
 				9502E5CD1EEDF66E0048BE1B /* CompleteTransactionsController.swift in Sources */,
 				95F1A4561EEFB50B0019CBE6 /* StoreProductContainerView.swift in Sources */,
 				9502E5CF1EEDF66E0048BE1B /* InAppReceipt.swift in Sources */,
 				9502E5D11EEDF66E0048BE1B /* InAppReceiptVerificator.swift in Sources */,
 				9502E5D81EEDF66E0048BE1B /* ProductsInfoController.swift in Sources */,
+				9598A3A51FBC1B9400AE48E2 /* SwiftyUserDefaults.swift in Sources */,
 				95E9D1121EB81C2B00F51A4B /* CALayerExtensions.swift in Sources */,
 				95C082591EABC8B8008B7C2E /* CellView.swift in Sources */,
 				95D7B0BF1EE64C9800764738 /* PuzzlesSolved.swift in Sources */,

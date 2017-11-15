@@ -24,7 +24,6 @@
 		9502E5DE1EEE080F0048BE1B /* ViewControllerExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9502E5DD1EEE080F0048BE1B /* ViewControllerExtensions.swift */; };
 		9502E5E01EEE158B0048BE1B /* PuzzlePurchase.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9502E5DF1EEE158B0048BE1B /* PuzzlePurchase.swift */; };
 		9502E5E31EEE16020048BE1B /* PuzzleProducts.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9502E5E21EEE16020048BE1B /* PuzzleProducts.swift */; };
-		950B41A61FBBF42F00CE0FBD /* Colors.swift in Sources */ = {isa = PBXBuildFile; fileRef = 950B41A51FBBF42F00CE0FBD /* Colors.swift */; };
 		9512736E1ED803F000588467 /* Stack.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9512736D1ED803F000588467 /* Stack.swift */; };
 		951273701ED80A4A00588467 /* PreloadedPuzzle.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9512736F1ED80A4A00588467 /* PreloadedPuzzle.swift */; };
 		951273721EDE898200588467 /* DebugUtil.swift in Sources */ = {isa = PBXBuildFile; fileRef = 951273711EDE898200588467 /* DebugUtil.swift */; };
@@ -97,7 +96,6 @@
 		9502E5DD1EEE080F0048BE1B /* ViewControllerExtensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ViewControllerExtensions.swift; sourceTree = "<group>"; };
 		9502E5DF1EEE158B0048BE1B /* PuzzlePurchase.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PuzzlePurchase.swift; sourceTree = "<group>"; };
 		9502E5E21EEE16020048BE1B /* PuzzleProducts.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PuzzleProducts.swift; sourceTree = "<group>"; };
-		950B41A51FBBF42F00CE0FBD /* Colors.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Colors.swift; sourceTree = "<group>"; };
 		9512736D1ED803F000588467 /* Stack.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Stack.swift; sourceTree = "<group>"; };
 		9512736F1ED80A4A00588467 /* PreloadedPuzzle.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PreloadedPuzzle.swift; sourceTree = "<group>"; };
 		951273711EDE898200588467 /* DebugUtil.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DebugUtil.swift; sourceTree = "<group>"; };
@@ -231,7 +229,6 @@
 			isa = PBXGroup;
 			children = (
 				95E9D1111EB81C2B00F51A4B /* CALayerExtensions.swift */,
-				950B41A51FBBF42F00CE0FBD /* Colors.swift */,
 				955560691ECD2989006C9F2D /* SwiftyJSON.swift */,
 				9512736D1ED803F000588467 /* Stack.swift */,
 				951273711EDE898200588467 /* DebugUtil.swift */,
@@ -408,7 +405,6 @@
 				9502E5E31EEE16020048BE1B /* PuzzleProducts.swift in Sources */,
 				9502E5DB1EEDF66E0048BE1B /* SwiftyStoreKit+Types.swift in Sources */,
 				95A196261ED2A33E0038D40C /* PuzzleNote.swift in Sources */,
-				950B41A61FBBF42F00CE0FBD /* Colors.swift in Sources */,
 				9502E5DE1EEE080F0048BE1B /* ViewControllerExtensions.swift in Sources */,
 				9502E5D21EEDF66E0048BE1B /* OS.swift in Sources */,
 				95B41B8B1E9CAB94003D8C28 /* Cage.swift in Sources */,

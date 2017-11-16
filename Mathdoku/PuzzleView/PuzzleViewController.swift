@@ -224,13 +224,20 @@ class PuzzleViewController: UIViewController, UINavigationBarDelegate {
                         // determine which tapped subview to process
                         let processingSubview = (recognizer.numberOfTapsRequired == 2 ? secondTappedSubview : tappedSubview)
                         
-                        if let noteCellToRemove = selectedNoteCells.index(of: processingSubview) {
-                            // if the tapped cell was already in the selectedNoteCells array
-                            // then remove it
-                            selectedNoteCells.remove(at: noteCellToRemove)
+                        // check to see if only a single cell can be selected at a time
+                        if Defaults[.singleNoteCellSelection] {
+                            // single note selection is enabled
+                            selectedNoteCells = [processingSubview]
                         } else {
-                            // otherwise append it
-                            selectedNoteCells.append(processingSubview)
+                            // multiple note selection is enabled
+                            if let noteCellToRemove = selectedNoteCells.index(of: processingSubview) {
+                                // if the tapped cell was already in the selectedNoteCells array
+                                // then remove it
+                                selectedNoteCells.remove(at: noteCellToRemove)
+                            } else {
+                                // otherwise append it
+                                selectedNoteCells.append(processingSubview)
+                            }
                         }
                     }
                 }

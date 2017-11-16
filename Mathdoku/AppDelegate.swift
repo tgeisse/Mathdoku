@@ -91,6 +91,9 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
             }
         }
         
+        // initiatile user defaults
+        Settings.initialize()
+        
         return true
     }
 

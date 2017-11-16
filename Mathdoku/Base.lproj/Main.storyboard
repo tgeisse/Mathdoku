@@ -2217,7 +2217,7 @@
                                             </subviews>
                                             <constraints>
                                                 <constraint firstItem="VQ7-pm-fRj" firstAttribute="leading" secondItem="MWm-56-phH" secondAttribute="leadingMargin" id="CeM-cT-xKl"/>
-                                                <constraint firstAttribute="bottomMargin" secondItem="VQ7-pm-fRj" secondAttribute="bottom" id="KEV-Fr-HBm"/>
+                                                <constraint firstAttribute="bottomMargin" relation="greaterThanOrEqual" secondItem="VQ7-pm-fRj" secondAttribute="bottom" id="KEV-Fr-HBm"/>
                                                 <constraint firstAttribute="trailing" secondItem="imp-zf-gmU" secondAttribute="trailing" constant="15" id="Tte-me-LJS"/>
                                                 <constraint firstItem="imp-zf-gmU" firstAttribute="centerY" secondItem="MWm-56-phH" secondAttribute="centerY" id="pZ9-XK-qX4"/>
                                                 <constraint firstItem="VQ7-pm-fRj" firstAttribute="centerY" secondItem="MWm-56-phH" secondAttribute="centerY" id="siT-x1-g83"/>
@@ -2226,7 +2226,7 @@
                                             </constraints>
                                         </tableViewCellContentView>
                                     </tableViewCell>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="none" indentationWidth="10" id="wsw-9J-oCl">
+                                    <tableViewCell hidden="YES" clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="none" indentationWidth="10" id="wsw-9J-oCl">
                                         <rect key="frame" x="0.0" y="99.5" width="375" height="44"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="wsw-9J-oCl" id="bB5-7w-ZB2">
@@ -2244,7 +2244,7 @@
                                                 </switch>
                                             </subviews>
                                             <constraints>
-                                                <constraint firstAttribute="bottomMargin" secondItem="v4L-iQ-6lX" secondAttribute="bottom" id="0mk-5p-p0v"/>
+                                                <constraint firstAttribute="bottomMargin" relation="greaterThanOrEqual" secondItem="v4L-iQ-6lX" secondAttribute="bottom" id="0mk-5p-p0v"/>
                                                 <constraint firstAttribute="trailing" secondItem="aaq-vd-WWh" secondAttribute="trailing" constant="15" id="5Eq-Yc-1rR"/>
                                                 <constraint firstItem="v4L-iQ-6lX" firstAttribute="leading" secondItem="bB5-7w-ZB2" secondAttribute="leadingMargin" id="FvH-IY-LkC"/>
                                                 <constraint firstItem="aaq-vd-WWh" firstAttribute="centerY" secondItem="bB5-7w-ZB2" secondAttribute="centerY" id="ITt-LW-JeO"/>
@@ -2268,8 +2268,8 @@
                                                 <switch opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" contentHorizontalAlignment="center" contentVerticalAlignment="center" translatesAutoresizingMaskIntoConstraints="NO" id="XYu-eH-s6q">
                                                     <rect key="frame" x="311" y="6" width="51" height="31"/>
                                                 </switch>
-                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Select single cell during note entry" textAlignment="natural" lineBreakMode="wordWrap" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Yon-d3-59U">
-                                                    <rect key="frame" x="16" y="11" width="264.5" height="22"/>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Rotate to next cell after guess" textAlignment="natural" lineBreakMode="wordWrap" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Yon-d3-59U">
+                                                    <rect key="frame" x="16" y="11" width="228" height="22"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                     <nil key="textColor"/>
                                                     <nil key="highlightedColor"/>
@@ -2282,19 +2282,19 @@
                                                 <constraint firstItem="Yon-d3-59U" firstAttribute="top" secondItem="rn1-Y6-AJd" secondAttribute="topMargin" id="NJz-wL-gtb"/>
                                                 <constraint firstItem="Yon-d3-59U" firstAttribute="leading" secondItem="rn1-Y6-AJd" secondAttribute="leadingMargin" id="NOs-72-wp1"/>
                                                 <constraint firstItem="XYu-eH-s6q" firstAttribute="centerY" secondItem="rn1-Y6-AJd" secondAttribute="centerY" id="f7w-aB-xsL"/>
-                                                <constraint firstAttribute="bottomMargin" secondItem="Yon-d3-59U" secondAttribute="bottom" id="lfF-Eh-SYI"/>
+                                                <constraint firstAttribute="bottomMargin" relation="greaterThanOrEqual" secondItem="Yon-d3-59U" secondAttribute="bottom" id="lfF-Eh-SYI"/>
                                             </constraints>
                                         </tableViewCellContentView>
                                     </tableViewCell>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="none" indentationWidth="10" id="N33-OD-ZVI">
+                                    <tableViewCell hidden="YES" clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="none" indentationWidth="10" id="N33-OD-ZVI">
                                         <rect key="frame" x="0.0" y="243.5" width="375" height="44"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="N33-OD-ZVI" id="Fpf-LB-ZRg">
                                             <rect key="frame" x="0.0" y="0.0" width="375" height="43.5"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
-                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Rotate to next cell after entry" textAlignment="natural" lineBreakMode="wordWrap" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="6l7-Yu-hiL">
-                                                    <rect key="frame" x="16" y="10" width="222" height="23"/>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Highlight guesses of the same number" textAlignment="natural" lineBreakMode="wordWrap" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="6l7-Yu-hiL">
+                                                    <rect key="frame" x="16" y="0.0" width="190.5" height="33"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                     <nil key="textColor"/>
                                                     <nil key="highlightedColor"/>
@@ -2307,9 +2307,38 @@
                                                 <constraint firstItem="6l7-Yu-hiL" firstAttribute="centerY" secondItem="Fpf-LB-ZRg" secondAttribute="centerY" id="8uP-6D-pq5"/>
                                                 <constraint firstItem="6l7-Yu-hiL" firstAttribute="leading" secondItem="Fpf-LB-ZRg" secondAttribute="leadingMargin" id="CJL-wc-grX"/>
                                                 <constraint firstItem="yyN-Gp-sdv" firstAttribute="centerY" secondItem="Fpf-LB-ZRg" secondAttribute="centerY" id="CzG-jm-htD"/>
-                                                <constraint firstAttribute="bottomMargin" secondItem="6l7-Yu-hiL" secondAttribute="bottom" id="N9Z-9n-0i5"/>
+                                                <constraint firstAttribute="bottomMargin" relation="greaterThanOrEqual" secondItem="6l7-Yu-hiL" secondAttribute="bottom" id="N9Z-9n-0i5"/>
                                                 <constraint firstAttribute="trailing" relation="greaterThanOrEqual" secondItem="6l7-Yu-hiL" secondAttribute="trailing" constant="79" id="V3L-ay-h0x"/>
                                                 <constraint firstAttribute="trailing" secondItem="yyN-Gp-sdv" secondAttribute="trailing" constant="15" id="mCw-Sp-edo"/>
+                                                <constraint firstItem="6l7-Yu-hiL" firstAttribute="top" secondItem="Fpf-LB-ZRg" secondAttribute="top" id="uFr-le-F2W"/>
+                                            </constraints>
+                                        </tableViewCellContentView>
+                                    </tableViewCell>
+                                    <tableViewCell hidden="YES" clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="none" indentationWidth="10" id="llh-XA-1cZ">
+                                        <rect key="frame" x="0.0" y="287.5" width="375" height="44"/>
+                                        <autoresizingMask key="autoresizingMask"/>
+                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="llh-XA-1cZ" id="E1H-GL-qb0">
+                                            <rect key="frame" x="0.0" y="0.0" width="375" height="43.5"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                            <subviews>
+                                                <switch opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" contentHorizontalAlignment="center" contentVerticalAlignment="center" translatesAutoresizingMaskIntoConstraints="NO" id="pda-gz-L5g">
+                                                    <rect key="frame" x="311" y="6" width="51" height="31"/>
+                                                </switch>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Highlight entry if it conflicts" textAlignment="natural" lineBreakMode="wordWrap" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="uga-Qo-Evp">
+                                                    <rect key="frame" x="16" y="11" width="210.5" height="22"/>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                    <nil key="textColor"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                            </subviews>
+                                            <constraints>
+                                                <constraint firstAttribute="trailing" relation="greaterThanOrEqual" secondItem="uga-Qo-Evp" secondAttribute="trailing" constant="79" id="5tL-tw-oUr"/>
+                                                <constraint firstItem="uga-Qo-Evp" firstAttribute="centerY" secondItem="E1H-GL-qb0" secondAttribute="centerY" id="HRE-Kg-kfW"/>
+                                                <constraint firstItem="uga-Qo-Evp" firstAttribute="top" secondItem="E1H-GL-qb0" secondAttribute="topMargin" id="LhP-vN-2VE"/>
+                                                <constraint firstAttribute="trailing" secondItem="pda-gz-L5g" secondAttribute="trailing" constant="15" id="YfE-0B-g8x"/>
+                                                <constraint firstItem="pda-gz-L5g" firstAttribute="centerY" secondItem="E1H-GL-qb0" secondAttribute="centerY" id="YjI-M9-CBa"/>
+                                                <constraint firstItem="uga-Qo-Evp" firstAttribute="leading" secondItem="E1H-GL-qb0" secondAttribute="leadingMargin" id="otT-7K-tpa"/>
+                                                <constraint firstAttribute="bottomMargin" relation="greaterThanOrEqual" secondItem="uga-Qo-Evp" secondAttribute="bottom" id="pBD-Nk-LHp"/>
                                             </constraints>
                                         </tableViewCellContentView>
                                     </tableViewCell>
@@ -2321,6 +2350,9 @@
                             <outlet property="delegate" destination="YgF-xD-UUZ" id="Cv6-mH-3JW"/>
                         </connections>
                     </tableView>
+                    <connections>
+                        <outlet property="singleCellNoteTakingSwitch" destination="imp-zf-gmU" id="ibK-No-Eqm"/>
+                    </connections>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="iat-bM-AIG" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
@@ -3513,6 +3545,6 @@
         <image name="Validate" width="24" height="24"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="XBZ-Fs-Oh5"/>
+        <segue reference="Pxp-fq-W8Y"/>
     </inferredMetricsTieBreakers>
 </document>

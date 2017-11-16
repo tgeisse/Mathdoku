@@ -36,6 +36,7 @@
 		955560851ECD3690006C9F2D /* RealmSwift.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 955560811ECD3690006C9F2D /* RealmSwift.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		956505EB1EDFD67300C97D73 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 956505EA1EDFD67300C97D73 /* LaunchScreen.storyboard */; };
 		956ED5E71EECA1490030B7FC /* Settings.bundle in Resources */ = {isa = PBXBuildFile; fileRef = 956ED5E61EECA1490030B7FC /* Settings.bundle */; };
+		9572FDC41FBD500300963CFD /* Settings.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9572FDC31FBD500300963CFD /* Settings.swift */; };
 		959632E41ED115A100CAFC5D /* CellPosition.swift in Sources */ = {isa = PBXBuildFile; fileRef = 959632E31ED115A100CAFC5D /* CellPosition.swift */; };
 		9598A3A21FBC020800AE48E2 /* SettingsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9598A3A11FBC020800AE48E2 /* SettingsViewController.swift */; };
 		9598A3A51FBC1B9400AE48E2 /* SwiftyUserDefaults.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9598A3A41FBC1B9400AE48E2 /* SwiftyUserDefaults.swift */; };
@@ -108,6 +109,7 @@
 		955560811ECD3690006C9F2D /* RealmSwift.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = RealmSwift.framework; sourceTree = "<group>"; };
 		956505EA1EDFD67300C97D73 /* LaunchScreen.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = LaunchScreen.storyboard; sourceTree = "<group>"; };
 		956ED5E61EECA1490030B7FC /* Settings.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; path = Settings.bundle; sourceTree = "<group>"; };
+		9572FDC31FBD500300963CFD /* Settings.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Settings.swift; sourceTree = "<group>"; };
 		959632E31ED115A100CAFC5D /* CellPosition.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CellPosition.swift; sourceTree = "<group>"; };
 		9598A3A11FBC020800AE48E2 /* SettingsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsViewController.swift; sourceTree = "<group>"; };
 		9598A3A41FBC1B9400AE48E2 /* SwiftyUserDefaults.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SwiftyUserDefaults.swift; sourceTree = "<group>"; };
@@ -192,6 +194,7 @@
 				95FBB9091E9AD97300B0E662 /* Puzzle.swift */,
 				95B41B8A1E9CAB94003D8C28 /* Cage.swift */,
 				95FBB90B1E9AD9E900B0E662 /* Cell.swift */,
+				9572FDC31FBD500300963CFD /* Settings.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -455,6 +458,7 @@
 				9502E5E01EEE158B0048BE1B /* PuzzlePurchase.swift in Sources */,
 				95D7B0BB1EE64AB900764738 /* Allowances.swift in Sources */,
 				9502E5D01EEDF66E0048BE1B /* InAppReceiptRefreshRequest.swift in Sources */,
+				9572FDC41FBD500300963CFD /* Settings.swift in Sources */,
 				95C082641EB1ACE3008B7C2E /* PuzzleSelectionViewController.swift in Sources */,
 				9544E33B1EF0EA5D00F37ED7 /* TimeIntervalExtension.swift in Sources */,
 			);

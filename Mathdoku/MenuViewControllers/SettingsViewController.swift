@@ -8,22 +8,15 @@
 
 import UIKit
 
-// Defaults extension for settings variables
-extension DefaultsKeys {
-    static let singleNoteCellSelection = DefaultsKey<Bool>("singleNoteCellSelection")
-    static let rotateAfterCellEntry = DefaultsKey<Bool>("rotateAfterCellEntry")
-}
-
 class SettingsViewController: UITableViewController {
-
-    override func viewDidLoad() {
-        super.viewDidLoad()
-
-        // Do any additional setup after loading the view.
+    @IBOutlet weak var singleCellNoteTakingSwitch: UISwitch! {
+        didSet {
+            DebugUtil.print("Will set the state of the Cell Note Taking switch")
+        }
+        
+        willSet {
+            DebugUtil.print("Cell Note Taking switch was changed")
+        }
     }
-
-    override func didReceiveMemoryWarning() {
-        super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
-    }
+    
 }

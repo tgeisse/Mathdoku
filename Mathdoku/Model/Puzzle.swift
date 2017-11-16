@@ -21,19 +21,6 @@ class Puzzle {
         }
         
         return cells.filter { $0.correctGuess } .count == cells.count
-        
-        /*
-        if cells.filter( { $0.userGuess != nil }).count != cells.count {
-            return false
-        }
-        
-        for cell in cells {
-            if cell.correctGuess == false {
-                return false
-            }
-        }
-        
-        return true*/
     }
     
     init(size puzzleSize: Int, cells puzzleCells: [Cell], cages puzzleCages: Dictionary<String, Cage>) {
@@ -101,11 +88,10 @@ class Puzzle {
     }
     */
     func getFriendliesForCell(_ cell: CellPosition) -> [CellPosition] {
-        let friendlyCells = cages[cells[cell.cellId].cage]?.cells
         var friendlyPositions = [CellPosition]()
         
-        if friendlyCells != nil {
-            for friendlyCell in friendlyCells! {
+        if let friendlyCells = cages[cells[cell.cellId].cage]?.cells {
+            for friendlyCell in friendlyCells {
                 if friendlyCell != cell.cellId {
                     friendlyPositions.append(CellPosition(cellId: friendlyCell, puzzleSize: size))
                 }
@@ -113,6 +99,20 @@ class Puzzle {
         }
         
         return friendlyPositions
+    }
+    
+    func getUnfilledFriendliesForCell(_ cell: CellPosition) -> [CellPosition] {
+        var unfilledFriendlyPositions = [CellPosition]()
+        
+        if let friendlyCells = cages[cells[cell.cellId].cage]?.cells {
+            for friendlyCell in friendlyCells {
+                if cells[friendlyCell].userGuess == nil {
+                    unfilledFriendlyPositions.append(CellPosition(cellId: friendlyCell, puzzleSize: size))
+                }
+            }
+        }
+        
+        return unfilledFriendlyPositions
     }
     
     /*

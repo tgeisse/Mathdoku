@@ -252,6 +252,14 @@ class PuzzleViewController: UIViewController, UINavigationBarDelegate {
             case .guessing:
                 if let cellPosition = selectedCellPosition {
                     setGuessForCells(atPositions: [cellPosition], withAnswer: num)
+                    
+                    // if auto rotate is enabled, then rotate to the next free cell
+                    if Defaults[.rotateAfterCellEntry] {
+                        DebugUtil.print("auto rotation turned on -- rotating to next cell in friendly group")
+                        if let nextCell = puzzle.getUnfilledFriendliesForCell(cellPosition).first {
+                            selectedCell = gridRowStacks[nextCell.row].rowCells[nextCell.col]
+                        }
+                    }
                 }
             case .notePossible, .noteImpossible:
                 setNotesForCells(atPositions: selectedNoteCellsPositions, withNotes: [num])

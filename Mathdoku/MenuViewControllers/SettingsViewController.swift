@@ -26,7 +26,7 @@ class SettingsViewController: UITableViewController {
         case 1:
             // single cell toggle
             Defaults[.singleNoteCellSelection] = singleCellNoteTakingSwitch.isOn
-        case 2:
+        case 3:
             Defaults[.rotateAfterCellEntry] = rotateAfterGuessSwitch.isOn
         default:
             return

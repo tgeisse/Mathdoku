@@ -2212,7 +2212,7 @@
                                                     </connections>
                                                 </switch>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Select single cell during note entry" textAlignment="natural" lineBreakMode="wordWrap" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="VQ7-pm-fRj">
-                                                    <rect key="frame" x="16" y="13" width="264.5" height="17.5"/>
+                                                    <rect key="frame" x="16" y="11" width="264.5" height="20.5"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                     <nil key="textColor"/>
                                                     <nil key="highlightedColor"/>
@@ -2221,10 +2221,10 @@
                                             <constraints>
                                                 <constraint firstItem="VQ7-pm-fRj" firstAttribute="leading" secondItem="MWm-56-phH" secondAttribute="leadingMargin" id="CeM-cT-xKl"/>
                                                 <constraint firstAttribute="trailing" secondItem="imp-zf-gmU" secondAttribute="trailing" constant="15" id="Tte-me-LJS"/>
+                                                <constraint firstAttribute="bottomMargin" relation="greaterThanOrEqual" secondItem="VQ7-pm-fRj" secondAttribute="bottom" id="c59-Hv-iGy"/>
                                                 <constraint firstItem="imp-zf-gmU" firstAttribute="centerY" secondItem="MWm-56-phH" secondAttribute="centerY" id="pZ9-XK-qX4"/>
-                                                <constraint firstItem="VQ7-pm-fRj" firstAttribute="centerY" secondItem="MWm-56-phH" secondAttribute="centerY" id="siT-x1-g83"/>
-                                                <constraint firstItem="VQ7-pm-fRj" firstAttribute="top" relation="greaterThanOrEqual" secondItem="MWm-56-phH" secondAttribute="topMargin" constant="2" id="y0b-aZ-eaO"/>
-                                                <constraint firstAttribute="trailing" relation="greaterThanOrEqual" secondItem="VQ7-pm-fRj" secondAttribute="trailing" constant="79" id="z5O-A9-WHi"/>
+                                                <constraint firstItem="VQ7-pm-fRj" firstAttribute="top" secondItem="MWm-56-phH" secondAttribute="topMargin" id="y0b-aZ-eaO"/>
+                                                <constraint firstAttribute="right" relation="greaterThanOrEqual" secondItem="VQ7-pm-fRj" secondAttribute="right" constant="79" id="z5O-A9-WHi"/>
                                             </constraints>
                                         </tableViewCellContentView>
                                     </tableViewCell>
@@ -2236,7 +2236,7 @@
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Update notes automatically" textAlignment="natural" lineBreakMode="wordWrap" numberOfLines="0" baselineAdjustment="alignBaselines" enabled="NO" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="v4L-iQ-6lX">
-                                                    <rect key="frame" x="16" y="13" width="209.5" height="18.5"/>
+                                                    <rect key="frame" x="16" y="11" width="209.5" height="20.5"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                     <nil key="textColor"/>
                                                     <nil key="highlightedColor"/>
@@ -2249,9 +2249,9 @@
                                                 <constraint firstAttribute="trailing" secondItem="aaq-vd-WWh" secondAttribute="trailing" constant="15" id="5Eq-Yc-1rR"/>
                                                 <constraint firstItem="v4L-iQ-6lX" firstAttribute="leading" secondItem="bB5-7w-ZB2" secondAttribute="leadingMargin" id="FvH-IY-LkC"/>
                                                 <constraint firstItem="aaq-vd-WWh" firstAttribute="centerY" secondItem="bB5-7w-ZB2" secondAttribute="centerY" id="ITt-LW-JeO"/>
-                                                <constraint firstAttribute="trailing" relation="greaterThanOrEqual" secondItem="v4L-iQ-6lX" secondAttribute="trailing" constant="79" id="XVN-he-i5i"/>
-                                                <constraint firstItem="v4L-iQ-6lX" firstAttribute="centerY" secondItem="bB5-7w-ZB2" secondAttribute="centerY" id="Xh9-qk-5dt"/>
-                                                <constraint firstItem="v4L-iQ-6lX" firstAttribute="top" relation="greaterThanOrEqual" secondItem="bB5-7w-ZB2" secondAttribute="topMargin" constant="2" id="rpP-I7-kdt"/>
+                                                <constraint firstAttribute="bottomMargin" relation="greaterThanOrEqual" secondItem="v4L-iQ-6lX" secondAttribute="bottom" id="Un1-HX-QXq"/>
+                                                <constraint firstAttribute="right" relation="greaterThanOrEqual" secondItem="v4L-iQ-6lX" secondAttribute="right" constant="79" id="XVN-he-i5i"/>
+                                                <constraint firstItem="v4L-iQ-6lX" firstAttribute="top" secondItem="bB5-7w-ZB2" secondAttribute="topMargin" id="rpP-I7-kdt"/>
                                             </constraints>
                                         </tableViewCellContentView>
                                     </tableViewCell>
@@ -2273,17 +2273,17 @@
                                                     </connections>
                                                 </switch>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Rotate to next cell after guess" textAlignment="natural" lineBreakMode="wordWrap" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Yon-d3-59U">
-                                                    <rect key="frame" x="16" y="13" width="228" height="18.5"/>
+                                                    <rect key="frame" x="16" y="11" width="228" height="20.5"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                     <nil key="textColor"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                             </subviews>
                                             <constraints>
-                                                <constraint firstItem="Yon-d3-59U" firstAttribute="centerY" secondItem="rn1-Y6-AJd" secondAttribute="centerY" id="7f0-Lc-hyC"/>
                                                 <constraint firstAttribute="trailing" secondItem="XYu-eH-s6q" secondAttribute="trailing" constant="15" id="Hfj-3P-dN3"/>
-                                                <constraint firstAttribute="trailing" relation="greaterThanOrEqual" secondItem="Yon-d3-59U" secondAttribute="trailing" constant="79" id="LQ0-2t-dqF"/>
-                                                <constraint firstItem="Yon-d3-59U" firstAttribute="top" relation="greaterThanOrEqual" secondItem="rn1-Y6-AJd" secondAttribute="topMargin" constant="2" id="NJz-wL-gtb"/>
+                                                <constraint firstAttribute="bottomMargin" relation="greaterThanOrEqual" secondItem="Yon-d3-59U" secondAttribute="bottom" id="IBd-oJ-Tda"/>
+                                                <constraint firstAttribute="right" relation="greaterThanOrEqual" secondItem="Yon-d3-59U" secondAttribute="right" constant="79" id="LQ0-2t-dqF"/>
+                                                <constraint firstItem="Yon-d3-59U" firstAttribute="top" secondItem="rn1-Y6-AJd" secondAttribute="topMargin" id="NJz-wL-gtb"/>
                                                 <constraint firstItem="Yon-d3-59U" firstAttribute="leading" secondItem="rn1-Y6-AJd" secondAttribute="leadingMargin" id="NOs-72-wp1"/>
                                                 <constraint firstItem="XYu-eH-s6q" firstAttribute="centerY" secondItem="rn1-Y6-AJd" secondAttribute="centerY" id="f7w-aB-xsL"/>
                                             </constraints>
@@ -2300,7 +2300,7 @@
                                                     <rect key="frame" x="311" y="6" width="51" height="31"/>
                                                 </switch>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Hightlight numbers equal to guess" textAlignment="natural" lineBreakMode="wordWrap" numberOfLines="0" baselineAdjustment="alignBaselines" enabled="NO" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Q8z-vc-PDF">
-                                                    <rect key="frame" x="16" y="13" width="262.5" height="18.5"/>
+                                                    <rect key="frame" x="16" y="11" width="262.5" height="20.5"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                     <nil key="textColor"/>
                                                     <nil key="highlightedColor"/>
@@ -2308,10 +2308,10 @@
                                             </subviews>
                                             <constraints>
                                                 <constraint firstAttribute="trailing" secondItem="LZx-qb-W5H" secondAttribute="trailing" constant="15" id="ApN-23-rka"/>
-                                                <constraint firstItem="Q8z-vc-PDF" firstAttribute="centerY" secondItem="l43-5S-6Ws" secondAttribute="centerY" id="Hkd-bx-Acj"/>
-                                                <constraint firstAttribute="trailing" relation="greaterThanOrEqual" secondItem="Q8z-vc-PDF" secondAttribute="trailing" constant="79" id="QuT-gL-cXK"/>
-                                                <constraint firstItem="Q8z-vc-PDF" firstAttribute="top" relation="greaterThanOrEqual" secondItem="l43-5S-6Ws" secondAttribute="topMargin" constant="2" id="ooh-Mw-FoV"/>
+                                                <constraint firstAttribute="right" relation="greaterThanOrEqual" secondItem="Q8z-vc-PDF" secondAttribute="right" constant="79" id="QuT-gL-cXK"/>
+                                                <constraint firstItem="Q8z-vc-PDF" firstAttribute="top" secondItem="l43-5S-6Ws" secondAttribute="topMargin" id="ooh-Mw-FoV"/>
                                                 <constraint firstItem="LZx-qb-W5H" firstAttribute="centerY" secondItem="l43-5S-6Ws" secondAttribute="centerY" id="p3Y-a9-WlE"/>
+                                                <constraint firstAttribute="bottomMargin" relation="greaterThanOrEqual" secondItem="Q8z-vc-PDF" secondAttribute="bottom" id="qvO-qY-R2o"/>
                                                 <constraint firstItem="Q8z-vc-PDF" firstAttribute="leading" secondItem="l43-5S-6Ws" secondAttribute="leadingMargin" id="sAj-Kc-5Me"/>
                                             </constraints>
                                         </tableViewCellContentView>
@@ -2327,18 +2327,18 @@
                                                     <rect key="frame" x="311" y="6" width="51" height="31"/>
                                                 </switch>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Highlight guess if it conflicts" textAlignment="natural" lineBreakMode="wordWrap" numberOfLines="0" baselineAdjustment="alignBaselines" enabled="NO" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="uga-Qo-Evp">
-                                                    <rect key="frame" x="16" y="13" width="216.5" height="18.5"/>
+                                                    <rect key="frame" x="16" y="11" width="216.5" height="20.5"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                     <nil key="textColor"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                             </subviews>
                                             <constraints>
-                                                <constraint firstAttribute="trailing" relation="greaterThanOrEqual" secondItem="uga-Qo-Evp" secondAttribute="trailing" constant="79" id="5tL-tw-oUr"/>
-                                                <constraint firstItem="uga-Qo-Evp" firstAttribute="centerY" secondItem="E1H-GL-qb0" secondAttribute="centerY" id="HRE-Kg-kfW"/>
-                                                <constraint firstItem="uga-Qo-Evp" firstAttribute="top" relation="greaterThanOrEqual" secondItem="E1H-GL-qb0" secondAttribute="topMargin" constant="2" id="LhP-vN-2VE"/>
+                                                <constraint firstAttribute="right" relation="greaterThanOrEqual" secondItem="uga-Qo-Evp" secondAttribute="right" constant="79" id="5tL-tw-oUr"/>
+                                                <constraint firstItem="uga-Qo-Evp" firstAttribute="top" secondItem="E1H-GL-qb0" secondAttribute="topMargin" id="LhP-vN-2VE"/>
                                                 <constraint firstAttribute="trailing" secondItem="pda-gz-L5g" secondAttribute="trailing" constant="15" id="YfE-0B-g8x"/>
                                                 <constraint firstItem="pda-gz-L5g" firstAttribute="centerY" secondItem="E1H-GL-qb0" secondAttribute="centerY" id="YjI-M9-CBa"/>
+                                                <constraint firstAttribute="bottomMargin" relation="greaterThanOrEqual" secondItem="uga-Qo-Evp" secondAttribute="bottom" id="jKu-g9-LUL"/>
                                                 <constraint firstItem="uga-Qo-Evp" firstAttribute="leading" secondItem="E1H-GL-qb0" secondAttribute="leadingMargin" id="otT-7K-tpa"/>
                                             </constraints>
                                         </tableViewCellContentView>

@@ -636,7 +636,7 @@ class PuzzleViewController: UIViewController, UINavigationBarDelegate {
     
     private func hideUnneededRowsAndCells() {
         gridRowStacks[0..<puzzle.size].forEach{ $0.subviews[puzzle.size..<9].forEach{ $0.isHidden = true } }
-        gridRowStacks[puzzle.size..<9].forEach{ $0.isHidden = true }ç
+        gridRowStacks[puzzle.size..<9].forEach{ $0.isHidden = true }
     }
     
     // MARK: - View Lifecycle

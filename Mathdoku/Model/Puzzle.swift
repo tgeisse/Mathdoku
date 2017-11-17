@@ -33,12 +33,30 @@ class Puzzle {
         return cells[cellPosition.cellId].userGuess != nil
     }
     
-    private func setGuessForCellId(_ cellId: Int, guess: Int?) {
-        cells[cellId].userGuess = guess
+    /// Sets the guess for a cell at a given cell position. Setting the guess to nil will clear the current value.
+    ///
+    /// - Parameters:
+    ///   - cellPosition: location of the cell
+    ///   - guess: guess being saved. nil will erase the entry
+    func setGuessForCellPosition(_ cellPosition: CellPosition, guess: Int?) {
+        cells[cellPosition.cellId].userGuess = guess
     }
     
-    func setGuessForCellPosition(_ cellPosition: CellPosition, guess: Int?) {
-        setGuessForCellId(cellPosition.cellId, guess: guess)
+    func checkIfGuessConflictsWithAnotherCell(forCell cellPosition: CellPosition) -> Bool {
+        let guess = cells[cellPosition.cellId].userGuess ?? -1
+        
+        // check to see if the row has a conflicting number
+        for ii in 0..<size {
+            let rowCellCheckId = cellPosition.row * size + ii
+            let colCellCheckId = cellPosition.col + ii * size
+            
+            if (rowCellCheckId != cellPosition.cellId && cells[rowCellCheckId].userGuess == guess) || (colCellCheckId != cellPosition.cellId && cells[colCellCheckId].userGuess == guess) {
+                return true
+            }
+            
+        }
+        
+        return false
     }
     
     func getGuessedCellPositionsWithGuessValidation() -> [(cellPosition: CellPosition, correctGuess: Bool)] {
@@ -67,26 +85,7 @@ class Puzzle {
         
         return ungessedCells
     }
-    /*
-    func friendlyCellIdsForCellPosition(_ cellPosition: (Int, Int)) -> [Int]? {
-        return friendlyCellIdsForCellId(cellIdForPosition(cellPosition))
-    }
     
-    private func friendlyCellIdsForCellId(_ cellId: Int) -> [Int]? {
-        var friendlyCells = cages[cells[cellId].cage]?.cells
-        
-        if friendlyCells != nil {
-            for index in 0..<friendlyCells!.count {
-                if friendlyCells![index] == cellId {
-                    friendlyCells!.remove(at: index)
-                    break
-                }
-            }
-        }
-        
-        return friendlyCells
-    }
-    */
     func getFriendliesForCell(_ cell: CellPosition) -> [CellPosition] {
         var friendlyPositions = [CellPosition]()
         
@@ -114,13 +113,6 @@ class Puzzle {
         
         return unfilledFriendlyPositions
     }
-    
-    /*
-    func neighborsInSameCageForCellAtPosition(_ cellPosition: (Int, Int)) -> (north: Bool, east: Bool, south: Bool, west: Bool)? {
-    
-        return neighborsInSameCageForCell(cellIdForPosition(cellPosition))
-    }
- */
     
     func neighborsInSameCageForCell(_ cellPosition: CellPosition) -> (north: Bool, east: Bool, south: Bool, west: Bool)? {
         
@@ -157,21 +149,4 @@ class Puzzle {
     private func positionForCell(_ cell: Int) -> (row: Int, col: Int) {
         return (cell / size, cell % size)
     }
-    
-    
-    /*
-     private func getCellIdsForCageGroupOfCellId(_ cellId: Int) -> [Int]? {
-     if cellId > cells.endIndex || cellId < cells.startIndex {
-     return nil
-     } else {
-     return cages[cells[cellId].cage]?.cells
-     }
-     }
-     
-     private func cellIdForPosition(_ cellPosition: (row: Int, col: Int)) -> Int {
-     return (cellPosition.row * size) + cellPosition.col
-     }
-     */
-    
-    
 }

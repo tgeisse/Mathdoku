@@ -6,12 +6,6 @@
 //  Copyright © 2017 Taylor Geisse. All rights reserved.
 //
 
-/*
- TODO:
- - The NoteRequest Handler should be on didSet, instead of in a function
- 
- */
-
 import UIKit
 import RealmSwift
 
@@ -543,71 +537,6 @@ class PuzzleViewController: UIViewController, UINavigationBarDelegate {
         }
     }
     
-// TODO: allow this to take in a range of cells to update to limit the loops
-/*    private func asyncWriteCellNotes(_ notes: [[[CellNotePossibility]]]) {
-        let puzzleSize = puzzle.size
-        
-        DispatchQueue.global(qos: .userInitiated).async {
-            do {
-                let realm = try Realm()
-                if let puzzleNotes = realm.objects(PlayerProgress.self).filter("puzzleSize == \(puzzleSize)").first?.puzzleProgress?.puzzleNotes {
-                
-                //if /*let puzzleProgress = self?.puzzleProgress,*/ let puzzleNotes = self?.puzzleProgress.puzzleNotes, let puzzleSize = self?.puzzle.size {
-                    // if we can still get the puzzleNotes and the puzzleSize, 
-                    // then we have enough information to save everything
-                    try realm.write {
-                        for (row, columns) in notes.enumerated() {
-                            for (col, notePossibilities) in columns.enumerated() {
-                                let cell = CellPosition(row: row, col: col, puzzleSize: puzzleSize)
-                                
-                                // (1) check to see if a PuzzleNote exists for this cell
-                                let puzzleNoteQuery = puzzleNotes.filter("cellId == \(cell.cellId)")
-                                let puzzleNoteForCell: PuzzleNote
-                                
-                                if puzzleNoteQuery.count == 0 {
-                                    // (2) if a PuzzleNote does not exist for this cell, then create one
-                                    puzzleNoteForCell = PuzzleNote()
-                                    puzzleNoteForCell.cellId = cell.cellId
-                                    puzzleNotes.append(puzzleNoteForCell)
-                                    
-                                } else {
-                                    // (2b) otherwise, get the first element in the query - this is our puzzleNote for the cell
-                                    puzzleNoteForCell = puzzleNoteQuery.first!
-                                }
-                                
-                                // (3) now that we have our puzzleNote, let's add the CellNote Possibilities to it
-                                for (index, possibility) in notePossibilities.enumerated() {
-                                    let note = index + 1
-                                    let cellNoteQuery = puzzleNoteForCell.notes.filter("note == \(note)")
-                                    let puzzleCellNote: PuzzleCellNote
-                                    
-                                    if cellNoteQuery.count == 0 {
-                                        // (4) if we do not yet have a PuzzleCellNote for this note, then add it
-                                        puzzleCellNote = PuzzleCellNote()
-                                        puzzleCellNote.note = note
-                                        puzzleNoteForCell.notes.append(puzzleCellNote)
-                                    } else {
-                                        // (4b) or, if we have one, then get the first element in the query - this is our CellNote for this note
-                                        puzzleCellNote = cellNoteQuery.first!
-                                    }
-                                    
-                                    // (5) change the cell note possibility. It's an int, so:
-                                    //                  -1: impossible
-                                    //                   0: none
-                                    //                   1: possible
-                                    //puzzleCellNote.possibility = (possibility == .impossible ? -1 : (possibility == .possible ? 1 : 0))
-                                    puzzleCellNote.possibility = possibility.rawValue
-                                }
-                            }
-                        }
-                    }
-                }
-            } catch (let error) {
-                fatalError("Error trying to async save the cell notes:\n\(error)")
-            }
-        }
-    } */
-    
     private func asyncWriteGuessForCells(atPositions: [CellPosition], withAnswer: Int?) {
         let puzzleSize = puzzle.size
         
@@ -707,22 +636,7 @@ class PuzzleViewController: UIViewController, UINavigationBarDelegate {
     
     private func hideUnneededRowsAndCells() {
         gridRowStacks[0..<puzzle.size].forEach{ $0.subviews[puzzle.size..<9].forEach{ $0.isHidden = true } }
-        gridRowStacks[puzzle.size..<9].forEach{ $0.isHidden = true }
-        /*
-        for row in 0..<9 {
-            if row >= puzzle.size {
-                // the row is not needed for this puzzle size
-                // hide the row
-                gridRowStacks[row].isHidden = true
-            } else {
-                // this row is needed. Check each column to see if it is needed
-                for col in puzzle.size..<9 {
-                    // column cell is not needed for this puzzle size
-                    // hide the individual cell
-                    gridRowStacks[row].subviews[col].isHidden = true
-                }
-            }
-        }*/
+        gridRowStacks[puzzle.size..<9].forEach{ $0.isHidden = true }ç
     }
     
     // MARK: - View Lifecycle

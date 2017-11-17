@@ -42,6 +42,40 @@ class Puzzle {
         cells[cellPosition.cellId].userGuess = guess
     }
     
+    func identifyConflictingGuesses() -> [CellPosition] {
+        var conflictingCellPositions: Set<CellPosition> = []
+        
+        for i in 1...size {
+            let cellPosWithGuess = identifyCellsWithGuess(i)
+            var rowCells: Dictionary<Int, Set<CellPosition>> = [:]
+            var colCells: Dictionary<Int, Set<CellPosition>> = [:]
+            
+            for cellPos in cellPosWithGuess {
+                var rowSet = rowCells[cellPos.row] ?? []
+                var colSet = colCells[cellPos.col] ?? []
+                
+                rowSet.insert(cellPos)
+                colSet.insert(cellPos)
+                
+                rowCells[cellPos.row] = rowSet
+                colCells[cellPos.col] = colSet
+                
+                if rowSet.count > 1 {
+                    conflictingCellPositions = conflictingCellPositions.union(rowSet)
+                }
+                if colSet.count > 1 {
+                    conflictingCellPositions = conflictingCellPositions.union(colSet)
+                }
+            }
+        }
+        
+        return Array(conflictingCellPositions)
+    }
+    
+    func identifyCellsWithGuess(_ guess: Int) -> [CellPosition] {
+        return cells.enumerated().filter { $0.element.userGuess == guess } .map { CellPosition(cellId: $0.offset, puzzleSize: size) }
+    }
+    
     func checkIfGuessConflictsWithAnotherCell(forCell cellPosition: CellPosition) -> Bool {
         let guess = cells[cellPosition.cellId].userGuess ?? -1
         

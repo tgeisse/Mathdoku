@@ -25,6 +25,7 @@ class CellView: UIView {
     var bottomBorder: CellAllegiance = .other { didSet { if oldValue != bottomBorder { setNeedsDisplay() } } }
     var rightBorder: CellAllegiance = .other { didSet { if oldValue != rightBorder { setNeedsDisplay() } } }
     var leftBorder: CellAllegiance = .other { didSet { if oldValue != leftBorder { setNeedsDisplay() } } }
+    private var guessAllegiance: UInt8 = 0 { didSet { if oldValue != guessAllegiance { setNeedsDisplay() } } }
     
     enum CellAllegiance {
         case friend
@@ -48,6 +49,18 @@ class CellView: UIView {
         }
     }
     
+    enum GuessAllegiance: UInt8 {
+        case equal = 0b000000001
+        case conflict = 0b000000010
+        
+        var shadowColor: UIColor {
+            switch self {
+            case .equal: return .green
+            case .conflict: return .red
+            }
+        }
+    }
+    
     private var scaleFactor: CGFloat {
         return bounds.maxX / 100
     }
@@ -55,6 +68,17 @@ class CellView: UIView {
     private let defaultTextSizeForGuess: CGFloat = 55.0
     private let defaultTextSizeForNotes: CGFloat = 36.0
     
+    func addGuessAllegiance(_ allegiance: GuessAllegiance) {
+        guessAllegiance = guessAllegiance | allegiance.rawValue
+    }
+    
+    func removeGuessAllegiance(_ allegiance: GuessAllegiance) {
+        guessAllegiance = guessAllegiance & ~allegiance.rawValue
+    }
+    
+    func toggleGuessAllegiance(_ allegiance: GuessAllegiance) {
+        guessAllegiance = guessAllegiance ^ allegiance.rawValue
+    }
     
     // Only override draw() if you perform custom drawing.
     // An empty implementation adversely affects performance during animation.
@@ -90,16 +114,27 @@ class CellView: UIView {
     
     private func addGuessText() {
         if guess != nil {
-            let shadow = NSShadow()
-            shadow.shadowColor = UIColor.red
-            shadow.shadowBlurRadius = 9.0
-            shadow.shadowOffset = CGSize(width: 0, height: 0)
             
             var guessTextAttributes: [String : Any] = [
                 NSFontAttributeName: UIFont.boldSystemFont(ofSize: defaultTextSizeForGuess * scaleFactor)
             ]
             
-            guessTextAttributes[NSShadowAttributeName] = shadow
+            if Defaults[.highlightConflictingEntries] == true && (guessAllegiance & GuessAllegiance.conflict.rawValue) == GuessAllegiance.conflict.rawValue {
+                let shadow = NSShadow()
+                shadow.shadowColor = GuessAllegiance.conflict.shadowColor
+                shadow.shadowBlurRadius = 9.0
+                shadow.shadowOffset = CGSize(width: 0, height: 0)
+                
+                guessTextAttributes[NSShadowAttributeName] = shadow
+            } else if Defaults[.highlightSameGuessEntry] == true && (guessAllegiance & GuessAllegiance.equal.rawValue) == GuessAllegiance.equal.rawValue {
+                let shadow = NSShadow()
+                shadow.shadowColor = GuessAllegiance.equal.shadowColor
+                shadow.shadowBlurRadius = 9.0
+                shadow.shadowOffset = CGSize(width: 0, height: 0)
+                
+                guessTextAttributes[NSShadowAttributeName] = shadow
+            }
+            
             
             let guessText = NSAttributedString(string: guess!, attributes: guessTextAttributes)
             

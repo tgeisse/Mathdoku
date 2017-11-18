@@ -249,6 +249,7 @@ class PuzzleViewController: UIViewController, UINavigationBarDelegate {
                 if let cellPosition = selectedCellPosition {
                     setGuessForCells(atPositions: [cellPosition], withAnswer: num)
                     highlightCellsWithSameGuess()
+                    highlightConflictingCellGuesses()
                     
                     // if auto rotate is enabled, then rotate to the next free cell
                     if Defaults[.rotateAfterCellEntry] {
@@ -272,6 +273,8 @@ class PuzzleViewController: UIViewController, UINavigationBarDelegate {
                 if puzzle.cellIsGuessedAtPosition(cellPosition) {
                     // if the puzzle has a guess, erase it
                     setGuessForCells(atPositions: [cellPosition], withAnswer: nil)
+                    highlightCellsWithSameGuess()
+                    highlightConflictingCellGuesses()
                 } else {
                     // if the puzzle does not have a guess, then erase its notes
                     setNotesForCells(atPositions: [cellPosition], withNotes: nil)
@@ -380,9 +383,42 @@ class PuzzleViewController: UIViewController, UINavigationBarDelegate {
         if Defaults[.highlightSameGuessEntry] == true {
             // get the current selected cell's value
             if let selectedCellPos = selectedCellPosition {
+                // go through the grid and remove equal from all cells
+                gridRowStacks.forEach {
+                    $0.rowCells.forEach {
+                        $0.cell.removeGuessAllegiance(.equal)
+                    }
+                }
+                
+                // get the cells with the same guess
                 let cellsWithSameGuess = puzzle.identifyCellsWithSameGuessAsCell(selectedCellPos)
                 
+                // debug print
                 DebugUtil.print("\(cellsWithSameGuess)")
+                
+                // add equal to all of the cells
+                cellsWithSameGuess.forEach {
+                    gridRowStacks[$0.row].rowCells[$0.col].cell.addGuessAllegiance(.equal)
+                }
+            }
+        }
+    }
+    
+    private func highlightConflictingCellGuesses() {
+        if Defaults[.highlightConflictingEntries] == true {
+            // remove the conflicting status from all cells
+            gridRowStacks.forEach {
+                $0.rowCells.forEach {
+                    $0.cell.removeGuessAllegiance(.conflict)
+                }
+            }
+            
+            // get all of the conflicting cells
+            let conflictingCells = puzzle.identifyConflictingGuesses()
+            
+            // add the conflicting flag to each of the conflicting cells
+            conflictingCells.forEach {
+                gridRowStacks[$0.row].rowCells[$0.col].cell.addGuessAllegiance(.conflict)
             }
         }
     }
@@ -702,6 +738,8 @@ class PuzzleViewController: UIViewController, UINavigationBarDelegate {
                     setNotesForCells(atPositions: [cellPos], withNotes: noteInts, overridePossibilty: notePossibility)
                 }
             }
+            
+            highlightConflictingCellGuesses()
         } else {
             // the puzzle is not in progress, so reset the guess and notes
             // TODO: we will eventually want to add some logic to this else statement so that it does not always execute

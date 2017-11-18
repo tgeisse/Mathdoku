@@ -76,6 +76,11 @@ class Puzzle {
         return cells.enumerated().filter { $0.element.userGuess == guess } .map { CellPosition(cellId: $0.offset, puzzleSize: size) }
     }
     
+    func identifyCellsWithSameGuessAsCell(_ cell: CellPosition) -> [CellPosition] {
+        return identifyCellsWithGuess(cells[cell.cellId].userGuess)
+    }
+    
+    /*
     func checkIfGuessConflictsWithAnotherCell(forCell cellPosition: CellPosition) -> Bool {
         let guess = cells[cellPosition.cellId].userGuess ?? -1
         
@@ -91,7 +96,7 @@ class Puzzle {
         }
         
         return false
-    }
+    }*/
     
     func getGuessedCellPositionsWithGuessValidation() -> [(cellPosition: CellPosition, correctGuess: Bool)] {
         var guessedCellPositionsWithGuessValidation = [(cellPosition: CellPosition, correctGuess: Bool)]()

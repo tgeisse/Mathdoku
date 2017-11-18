@@ -373,6 +373,15 @@ class PuzzleViewController: UIViewController, UINavigationBarDelegate {
     }
     
     // MARK: - Private Helper Functions
+    private func highlightCellsWithSameGuess() {
+        if Defaults[.highlightSameGuessEntry] == true {
+            // get the current selected cell's value
+            if let selectedCellPos = selectedCellPosition {
+                
+            }
+        }
+    }
+    
     private func segueToStore() {
         DebugUtil.print("Seguing to the puzzle store from puzzle grid")
         performSegue(withIdentifier: "Puzzle Store Segue", sender: self)

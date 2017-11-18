@@ -12,6 +12,7 @@ import Foundation
 extension DefaultsKeys {
     static let singleNoteCellSelection = DefaultsKey<Bool>("singleNoteCellSelection")
     static let rotateAfterCellEntry = DefaultsKey<Bool>("rotateAfterCellEntry")
+    static let highlightSameGuessEntry = DefaultsKey<Bool>("highlightSameGuessEntry")
 }
 
 struct Settings {
@@ -22,6 +23,10 @@ struct Settings {
         
         if !Defaults.hasKey(.rotateAfterCellEntry) {
             Defaults[.rotateAfterCellEntry] = false
+        }
+        
+        if !Defaults.hasKey(.highlightSameGuessEntry) {
+            Defaults[.highlightSameGuessEntry] = true
         }
     }
 }

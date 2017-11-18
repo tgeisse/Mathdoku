@@ -77,7 +77,11 @@ class Puzzle {
     }
     
     func identifyCellsWithSameGuessAsCell(_ cell: CellPosition) -> [CellPosition] {
-        return identifyCellsWithGuess(cells[cell.cellId].userGuess)
+        if let guess = cells[cell.cellId].userGuess {
+            return identifyCellsWithGuess(guess)
+        } else {
+            return []
+        }
     }
     
     /*

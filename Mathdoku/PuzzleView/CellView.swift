@@ -90,9 +90,16 @@ class CellView: UIView {
     
     private func addGuessText() {
         if guess != nil {
-            let guessTextAttributes: [String : Any] = [
+            let shadow = NSShadow()
+            shadow.shadowColor = UIColor.red
+            shadow.shadowBlurRadius = 9.0
+            shadow.shadowOffset = CGSize(width: 0, height: 0)
+            
+            var guessTextAttributes: [String : Any] = [
                 NSFontAttributeName: UIFont.boldSystemFont(ofSize: defaultTextSizeForGuess * scaleFactor)
             ]
+            
+            guessTextAttributes[NSShadowAttributeName] = shadow
             
             let guessText = NSAttributedString(string: guess!, attributes: guessTextAttributes)
             

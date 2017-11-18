@@ -139,6 +139,8 @@ class PuzzleViewController: UIViewController, UINavigationBarDelegate {
                     selectedCellPosition = nil
                 }
             }
+            
+            highlightCellsWithSameGuess()
         }
     }
     
@@ -246,6 +248,7 @@ class PuzzleViewController: UIViewController, UINavigationBarDelegate {
             case .guessing:
                 if let cellPosition = selectedCellPosition {
                     setGuessForCells(atPositions: [cellPosition], withAnswer: num)
+                    highlightCellsWithSameGuess()
                     
                     // if auto rotate is enabled, then rotate to the next free cell
                     if Defaults[.rotateAfterCellEntry] {
@@ -377,7 +380,9 @@ class PuzzleViewController: UIViewController, UINavigationBarDelegate {
         if Defaults[.highlightSameGuessEntry] == true {
             // get the current selected cell's value
             if let selectedCellPos = selectedCellPosition {
+                let cellsWithSameGuess = puzzle.identifyCellsWithSameGuessAsCell(selectedCellPos)
                 
+                DebugUtil.print("\(cellsWithSameGuess)")
             }
         }
     }

@@ -35,6 +35,7 @@
 		955560841ECD3690006C9F2D /* RealmSwift.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 955560811ECD3690006C9F2D /* RealmSwift.framework */; };
 		955560851ECD3690006C9F2D /* RealmSwift.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 955560811ECD3690006C9F2D /* RealmSwift.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		956505EB1EDFD67300C97D73 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 956505EA1EDFD67300C97D73 /* LaunchScreen.storyboard */; };
+		9568B3111FC0F244000502A4 /* Colors.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9568B3101FC0F244000502A4 /* Colors.swift */; };
 		956ED5E71EECA1490030B7FC /* Settings.bundle in Resources */ = {isa = PBXBuildFile; fileRef = 956ED5E61EECA1490030B7FC /* Settings.bundle */; };
 		9572FDC41FBD500300963CFD /* Settings.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9572FDC31FBD500300963CFD /* Settings.swift */; };
 		959632E41ED115A100CAFC5D /* CellPosition.swift in Sources */ = {isa = PBXBuildFile; fileRef = 959632E31ED115A100CAFC5D /* CellPosition.swift */; };
@@ -108,6 +109,7 @@
 		955560801ECD3690006C9F2D /* Realm.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = Realm.framework; sourceTree = "<group>"; };
 		955560811ECD3690006C9F2D /* RealmSwift.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = RealmSwift.framework; sourceTree = "<group>"; };
 		956505EA1EDFD67300C97D73 /* LaunchScreen.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = LaunchScreen.storyboard; sourceTree = "<group>"; };
+		9568B3101FC0F244000502A4 /* Colors.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Colors.swift; sourceTree = "<group>"; };
 		956ED5E61EECA1490030B7FC /* Settings.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; path = Settings.bundle; sourceTree = "<group>"; };
 		9572FDC31FBD500300963CFD /* Settings.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Settings.swift; sourceTree = "<group>"; };
 		959632E31ED115A100CAFC5D /* CellPosition.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CellPosition.swift; sourceTree = "<group>"; };
@@ -252,6 +254,7 @@
 				95D7B0C51EEA5F6600764738 /* Utility.swift */,
 				9502E5DD1EEE080F0048BE1B /* ViewControllerExtensions.swift */,
 				9544E33A1EF0EA5D00F37ED7 /* TimeIntervalExtension.swift */,
+				9568B3101FC0F244000502A4 /* Colors.swift */,
 			);
 			path = Utility;
 			sourceTree = "<group>";
@@ -443,6 +446,7 @@
 				95F1A4561EEFB50B0019CBE6 /* StoreProductContainerView.swift in Sources */,
 				9502E5CF1EEDF66E0048BE1B /* InAppReceipt.swift in Sources */,
 				9502E5D11EEDF66E0048BE1B /* InAppReceiptVerificator.swift in Sources */,
+				9568B3111FC0F244000502A4 /* Colors.swift in Sources */,
 				9502E5D81EEDF66E0048BE1B /* ProductsInfoController.swift in Sources */,
 				9598A3A51FBC1B9400AE48E2 /* SwiftyUserDefaults.swift in Sources */,
 				95E9D1121EB81C2B00F51A4B /* CALayerExtensions.swift in Sources */,

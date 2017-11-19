@@ -15,6 +15,12 @@ class SettingsViewController: UITableViewController {
         }
     }
     
+    @IBOutlet weak var updateNotesAutomaticallySwitch: UISwitch! {
+        didSet {
+            updateNotesAutomaticallySwitch.setOn(Defaults[.clearNotesAfterGuessEntry], animated: false)
+        }
+    }
+    
     @IBOutlet weak var rotateAfterGuessSwitch: UISwitch! {
         didSet {
             rotateAfterGuessSwitch.setOn(Defaults[.rotateAfterCellEntry], animated: false)
@@ -40,6 +46,8 @@ class SettingsViewController: UITableViewController {
         case 1:
             // single cell toggle
             Defaults[.singleNoteCellSelection] = singleCellNoteTakingSwitch.isOn
+        case 2:
+            Defaults[.clearNotesAfterGuessEntry] = updateNotesAutomaticallySwitch.isOn
         case 3:
             Defaults[.rotateAfterCellEntry] = rotateAfterGuessSwitch.isOn
         case 4:

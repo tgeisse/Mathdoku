@@ -375,12 +375,23 @@ class PuzzleViewController: UIViewController, UINavigationBarDelegate {
     }
     
     // MARK: - Private Helper Functions
-    private func removeNotesAfterGuess() {
+    private func removePossibleNotesAfterGuess(_ guess: Int, atCell cell: CellPosition) {
         if Defaults[.clearNotesAfterGuessEntry] == true {
+            let guessIndex = guess - 1
+            var cellsToRemoveNoteForGuess: Set<CellPosition> = []
+            
             // loop through the size of the puzzle
             for i in 0..<puzzle.size {
-                let rowCell = i + puzzle.size * 1
+                if userCellNotePossibilities[cell.row][i][guessIndex] == .possible {
+                    cellsToRemoveNoteForGuess.insert(CellPosition(row: cell.row, col: i, puzzleSize: puzzle.size))
+                }
+                
+                if userCellNotePossibilities[i][cell.col][guessIndex] == .possible {
+                    cellsToRemoveNoteForGuess.insert(CellPosition(row: i, col: cell.col, puzzleSize: puzzle.size))
+                }
             }
+            
+            setNotesForCells(atPositions: Array(cellsToRemoveNoteForGuess), withNotes: [guess])
         }
     }
     
@@ -457,6 +468,12 @@ class PuzzleViewController: UIViewController, UINavigationBarDelegate {
             asyncWriteGuessForCells(atPositions: atPositions, withAnswer: withAnswer)
             highlightCellsWithSameGuess()
             highlightConflictingCellGuesses()
+            
+            if let guess = withAnswer {
+                atPositions.forEach {
+                    removePossibleNotesAfterGuess(guess, atCell: $0)
+                }
+            }
         }
         
         // check to see if this entry solved the puzzle

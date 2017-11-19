@@ -8,6 +8,7 @@
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="13527"/>
         <capability name="Aspect ratio constraints" minToolsVersion="5.1"/>
         <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
+        <capability name="Stack View standard spacing" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <customFonts key="customFonts">
@@ -1796,11 +1797,11 @@
                                     </button>
                                 </subviews>
                             </stackView>
-                            <stackView opaque="NO" contentMode="scaleToFill" distribution="fillProportionally" spacing="30" translatesAutoresizingMaskIntoConstraints="NO" id="jwr-Nw-upL">
+                            <stackView opaque="NO" contentMode="scaleToFill" distribution="fillEqually" spacingType="standard" translatesAutoresizingMaskIntoConstraints="NO" id="jwr-Nw-upL">
                                 <rect key="frame" x="16" y="632" width="343" height="30"/>
                                 <subviews>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Sm6-a5-DLg">
-                                        <rect key="frame" x="0.0" y="0.0" width="27" height="30"/>
+                                        <rect key="frame" x="0.0" y="0.0" width="50.5" height="30"/>
                                         <inset key="contentEdgeInsets" minX="-1" minY="3" maxX="0.0" maxY="3"/>
                                         <state key="normal" image="Reveal"/>
                                         <connections>
@@ -1808,7 +1809,7 @@
                                         </connections>
                                     </button>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="h7N-Yv-oXc">
-                                        <rect key="frame" x="57" y="0.0" width="27.5" height="30"/>
+                                        <rect key="frame" x="58.5" y="0.0" width="50.5" height="30"/>
                                         <inset key="contentEdgeInsets" minX="-1" minY="3" maxX="0.0" maxY="3"/>
                                         <state key="normal" image="Validate"/>
                                         <connections>
@@ -1816,7 +1817,7 @@
                                         </connections>
                                     </button>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="vsc-Wv-C18">
-                                        <rect key="frame" x="114.5" y="0.0" width="27" height="30"/>
+                                        <rect key="frame" x="117" y="0.0" width="50.5" height="30"/>
                                         <inset key="contentEdgeInsets" minX="-1" minY="3" maxX="0.0" maxY="3"/>
                                         <state key="normal" image="Note"/>
                                         <connections>
@@ -1824,7 +1825,7 @@
                                         </connections>
                                     </button>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="oL1-nb-OAU">
-                                        <rect key="frame" x="171.5" y="0.0" width="27.5" height="30"/>
+                                        <rect key="frame" x="175.5" y="0.0" width="50.5" height="30"/>
                                         <inset key="contentEdgeInsets" minX="-1" minY="3" maxX="0.0" maxY="3"/>
                                         <state key="normal" image="Erase"/>
                                         <connections>
@@ -1832,14 +1833,14 @@
                                         </connections>
                                     </button>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="GLK-Nx-3n7">
-                                        <rect key="frame" x="229" y="0.0" width="28" height="30"/>
+                                        <rect key="frame" x="234" y="0.0" width="50.5" height="30"/>
                                         <state key="normal" image="ResetPuzzle"/>
                                         <connections>
                                             <action selector="resetPuzzle:" destination="nDg-KA-uk0" eventType="touchUpInside" id="Bse-zN-eBi"/>
                                         </connections>
                                     </button>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="rmE-4M-kBZ">
-                                        <rect key="frame" x="287" y="0.0" width="56" height="30"/>
+                                        <rect key="frame" x="292.5" y="0.0" width="50.5" height="30"/>
                                         <state key="normal" image="SkipPuzzle"/>
                                         <connections>
                                             <action selector="nextPuzzle:" destination="nDg-KA-uk0" eventType="touchUpInside" id="EsE-UV-uUZ"/>

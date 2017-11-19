@@ -1935,7 +1935,13 @@
                             <constraint firstItem="wyl-Zo-V74" firstAttribute="top" secondItem="cz5-jJ-q7d" secondAttribute="bottom" id="swQ-x1-du4"/>
                         </constraints>
                     </view>
-                    <navigationItem key="navigationItem" title="Puzzle Play!" id="0xT-sI-dfA"/>
+                    <navigationItem key="navigationItem" title="Puzzle Play!" id="0xT-sI-dfA">
+                        <barButtonItem key="rightBarButtonItem" title="Item" image="Settings" id="1Pg-dV-BN7">
+                            <connections>
+                                <segue destination="YgF-xD-UUZ" kind="show" id="dLt-uX-8yK"/>
+                            </connections>
+                        </barButtonItem>
+                    </navigationItem>
                     <connections>
                         <outlet property="puzzleGridSuperview" destination="VV0-a5-BBu" id="Igg-1r-fiI"/>
                         <outlet property="successOverlayView" destination="qSi-51-JRo" id="tVG-oh-jte"/>
@@ -3547,10 +3553,12 @@
         <image name="Note" width="24" height="24"/>
         <image name="ResetPuzzle" width="24" height="24"/>
         <image name="Reveal" width="24" height="24"/>
+        <image name="Settings" width="24" height="24"/>
         <image name="SkipPuzzle" width="24" height="24"/>
         <image name="Validate" width="24" height="24"/>
     </resources>
     <inferredMetricsTieBreakers>
         <segue reference="Pxp-fq-W8Y"/>
+        <segue reference="dLt-uX-8yK"/>
     </inferredMetricsTieBreakers>
 </document>

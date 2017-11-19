@@ -36,6 +36,7 @@
 		955560851ECD3690006C9F2D /* RealmSwift.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 955560811ECD3690006C9F2D /* RealmSwift.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		956505EB1EDFD67300C97D73 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 956505EA1EDFD67300C97D73 /* LaunchScreen.storyboard */; };
 		9568B3111FC0F244000502A4 /* Colors.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9568B3101FC0F244000502A4 /* Colors.swift */; };
+		9568B3131FC1FE46000502A4 /* StoreKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9568B3121FC1FE46000502A4 /* StoreKit.framework */; };
 		956ED5E71EECA1490030B7FC /* Settings.bundle in Resources */ = {isa = PBXBuildFile; fileRef = 956ED5E61EECA1490030B7FC /* Settings.bundle */; };
 		9572FDC41FBD500300963CFD /* Settings.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9572FDC31FBD500300963CFD /* Settings.swift */; };
 		959632E41ED115A100CAFC5D /* CellPosition.swift in Sources */ = {isa = PBXBuildFile; fileRef = 959632E31ED115A100CAFC5D /* CellPosition.swift */; };
@@ -110,6 +111,7 @@
 		955560811ECD3690006C9F2D /* RealmSwift.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = RealmSwift.framework; sourceTree = "<group>"; };
 		956505EA1EDFD67300C97D73 /* LaunchScreen.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = LaunchScreen.storyboard; sourceTree = "<group>"; };
 		9568B3101FC0F244000502A4 /* Colors.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Colors.swift; sourceTree = "<group>"; };
+		9568B3121FC1FE46000502A4 /* StoreKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = StoreKit.framework; path = System/Library/Frameworks/StoreKit.framework; sourceTree = SDKROOT; };
 		956ED5E61EECA1490030B7FC /* Settings.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; path = Settings.bundle; sourceTree = "<group>"; };
 		9572FDC31FBD500300963CFD /* Settings.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Settings.swift; sourceTree = "<group>"; };
 		959632E31ED115A100CAFC5D /* CellPosition.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CellPosition.swift; sourceTree = "<group>"; };
@@ -149,6 +151,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				9568B3131FC1FE46000502A4 /* StoreKit.framework in Frameworks */,
 				955560841ECD3690006C9F2D /* RealmSwift.framework in Frameworks */,
 				955560821ECD3690006C9F2D /* Realm.framework in Frameworks */,
 			);
@@ -314,6 +317,7 @@
 		95FFC6CF1F118C2200DF964A /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				9568B3121FC1FE46000502A4 /* StoreKit.framework */,
 				95FFC6D01F118C2200DF964A /* iAd.framework */,
 			);
 			name = Frameworks;
@@ -359,6 +363,11 @@
 						DevelopmentTeam = 57TCLD34EQ;
 						LastSwiftMigration = 0910;
 						ProvisioningStyle = Automatic;
+						SystemCapabilities = {
+							com.apple.InAppPurchase = {
+								enabled = 1;
+							};
+						};
 					};
 				};
 			};

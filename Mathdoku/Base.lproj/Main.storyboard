@@ -1936,7 +1936,7 @@
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" title="Puzzle Play!" id="0xT-sI-dfA">
-                        <barButtonItem key="rightBarButtonItem" title="Item" image="Settings" id="1Pg-dV-BN7">
+                        <barButtonItem key="rightBarButtonItem" image="Settings" id="1Pg-dV-BN7">
                             <connections>
                                 <segue destination="YgF-xD-UUZ" kind="show" id="dLt-uX-8yK"/>
                             </connections>

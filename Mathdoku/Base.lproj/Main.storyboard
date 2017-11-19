@@ -1644,11 +1644,11 @@
                                 </constraints>
                             </stackView>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="cz5-jJ-q7d">
-                                <rect key="frame" x="0.0" y="575" width="375" height="92"/>
+                                <rect key="frame" x="0.0" y="573" width="375" height="94"/>
                                 <color key="backgroundColor" red="0.76470588240000004" green="0.87450980389999999" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                             </view>
                             <stackView opaque="NO" contentMode="scaleToFill" distribution="fillEqually" spacing="5" translatesAutoresizingMaskIntoConstraints="NO" id="s7w-CZ-Lpe">
-                                <rect key="frame" x="15" y="580" width="345" height="46"/>
+                                <rect key="frame" x="15" y="578" width="345" height="46"/>
                                 <subviews>
                                     <button opaque="NO" contentMode="scaleToFill" horizontalCompressionResistancePriority="250" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="og2-nG-xNg">
                                         <rect key="frame" x="0.0" y="0.0" width="34" height="46"/>
@@ -1797,74 +1797,64 @@
                                 </subviews>
                             </stackView>
                             <stackView opaque="NO" contentMode="scaleToFill" distribution="fillProportionally" spacing="30" translatesAutoresizingMaskIntoConstraints="NO" id="jwr-Nw-upL">
-                                <rect key="frame" x="16" y="634" width="343" height="30"/>
+                                <rect key="frame" x="16" y="632" width="343" height="30"/>
                                 <subviews>
-                                    <stackView opaque="NO" contentMode="scaleToFill" distribution="fillEqually" spacing="10" translatesAutoresizingMaskIntoConstraints="NO" id="G7s-aD-7dY">
-                                        <rect key="frame" x="0.0" y="0.0" width="209" height="30"/>
-                                        <subviews>
-                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="oL1-nb-OAU">
-                                                <rect key="frame" x="0.0" y="0.0" width="45" height="30"/>
-                                                <inset key="contentEdgeInsets" minX="-1" minY="3" maxX="0.0" maxY="3"/>
-                                                <state key="normal" image="Erase"/>
-                                                <connections>
-                                                    <action selector="eraseGuessOrNotes:" destination="nDg-KA-uk0" eventType="touchUpInside" id="2x9-9U-uqh"/>
-                                                </connections>
-                                            </button>
-                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="vsc-Wv-C18">
-                                                <rect key="frame" x="55" y="0.0" width="44.5" height="30"/>
-                                                <inset key="contentEdgeInsets" minX="-1" minY="3" maxX="0.0" maxY="3"/>
-                                                <state key="normal" image="Note"/>
-                                                <connections>
-                                                    <action selector="toggleNotes:" destination="nDg-KA-uk0" eventType="touchUpInside" id="g0r-fr-og5"/>
-                                                </connections>
-                                            </button>
-                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="h7N-Yv-oXc">
-                                                <rect key="frame" x="109.5" y="0.0" width="45" height="30"/>
-                                                <inset key="contentEdgeInsets" minX="-1" minY="3" maxX="0.0" maxY="3"/>
-                                                <state key="normal" image="Validate"/>
-                                                <connections>
-                                                    <action selector="validatePuzzleEntries:" destination="nDg-KA-uk0" eventType="touchUpInside" id="DBX-77-cwx"/>
-                                                </connections>
-                                            </button>
-                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Sm6-a5-DLg">
-                                                <rect key="frame" x="164.5" y="0.0" width="44.5" height="30"/>
-                                                <inset key="contentEdgeInsets" minX="-1" minY="3" maxX="0.0" maxY="3"/>
-                                                <state key="normal" image="Reveal"/>
-                                                <connections>
-                                                    <action selector="randomReveal:" destination="nDg-KA-uk0" eventType="touchUpInside" id="l8P-xm-H1m"/>
-                                                </connections>
-                                            </button>
-                                        </subviews>
-                                    </stackView>
-                                    <stackView opaque="NO" contentMode="scaleToFill" distribution="fillEqually" translatesAutoresizingMaskIntoConstraints="NO" id="8hP-E5-crR">
-                                        <rect key="frame" x="239" y="0.0" width="104" height="30"/>
-                                        <subviews>
-                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="GLK-Nx-3n7">
-                                                <rect key="frame" x="0.0" y="0.0" width="52" height="30"/>
-                                                <state key="normal" image="ResetPuzzle"/>
-                                                <connections>
-                                                    <action selector="resetPuzzle:" destination="nDg-KA-uk0" eventType="touchUpInside" id="Bse-zN-eBi"/>
-                                                </connections>
-                                            </button>
-                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="rmE-4M-kBZ">
-                                                <rect key="frame" x="52" y="0.0" width="52" height="30"/>
-                                                <state key="normal" image="SkipPuzzle"/>
-                                                <connections>
-                                                    <action selector="nextPuzzle:" destination="nDg-KA-uk0" eventType="touchUpInside" id="EsE-UV-uUZ"/>
-                                                </connections>
-                                            </button>
-                                        </subviews>
-                                    </stackView>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Sm6-a5-DLg">
+                                        <rect key="frame" x="0.0" y="0.0" width="27" height="30"/>
+                                        <inset key="contentEdgeInsets" minX="-1" minY="3" maxX="0.0" maxY="3"/>
+                                        <state key="normal" image="Reveal"/>
+                                        <connections>
+                                            <action selector="randomReveal:" destination="nDg-KA-uk0" eventType="touchUpInside" id="l8P-xm-H1m"/>
+                                        </connections>
+                                    </button>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="h7N-Yv-oXc">
+                                        <rect key="frame" x="57" y="0.0" width="27.5" height="30"/>
+                                        <inset key="contentEdgeInsets" minX="-1" minY="3" maxX="0.0" maxY="3"/>
+                                        <state key="normal" image="Validate"/>
+                                        <connections>
+                                            <action selector="validatePuzzleEntries:" destination="nDg-KA-uk0" eventType="touchUpInside" id="DBX-77-cwx"/>
+                                        </connections>
+                                    </button>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="vsc-Wv-C18">
+                                        <rect key="frame" x="114.5" y="0.0" width="27" height="30"/>
+                                        <inset key="contentEdgeInsets" minX="-1" minY="3" maxX="0.0" maxY="3"/>
+                                        <state key="normal" image="Note"/>
+                                        <connections>
+                                            <action selector="toggleNotes:" destination="nDg-KA-uk0" eventType="touchUpInside" id="g0r-fr-og5"/>
+                                        </connections>
+                                    </button>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="oL1-nb-OAU">
+                                        <rect key="frame" x="171.5" y="0.0" width="27.5" height="30"/>
+                                        <inset key="contentEdgeInsets" minX="-1" minY="3" maxX="0.0" maxY="3"/>
+                                        <state key="normal" image="Erase"/>
+                                        <connections>
+                                            <action selector="eraseGuessOrNotes:" destination="nDg-KA-uk0" eventType="touchUpInside" id="2x9-9U-uqh"/>
+                                        </connections>
+                                    </button>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="GLK-Nx-3n7">
+                                        <rect key="frame" x="229" y="0.0" width="28" height="30"/>
+                                        <state key="normal" image="ResetPuzzle"/>
+                                        <connections>
+                                            <action selector="resetPuzzle:" destination="nDg-KA-uk0" eventType="touchUpInside" id="Bse-zN-eBi"/>
+                                        </connections>
+                                    </button>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="rmE-4M-kBZ">
+                                        <rect key="frame" x="287" y="0.0" width="56" height="30"/>
+                                        <state key="normal" image="SkipPuzzle"/>
+                                        <connections>
+                                            <action selector="nextPuzzle:" destination="nDg-KA-uk0" eventType="touchUpInside" id="EsE-UV-uUZ"/>
+                                        </connections>
+                                    </button>
                                 </subviews>
                             </stackView>
                             <view hidden="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="qSi-51-JRo">
-                                <rect key="frame" x="0.0" y="575" width="375" height="92"/>
+                                <rect key="frame" x="0.0" y="573" width="375" height="94"/>
                                 <subviews>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="MmD-Ul-GYJ">
-                                        <rect key="frame" x="2" y="2" width="371" height="88"/>
+                                        <rect key="frame" x="2" y="2" width="371" height="90"/>
                                         <subviews>
                                             <stackView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="CPI-QO-tz1">
-                                                <rect key="frame" x="10" y="9.5" width="356" height="69"/>
+                                                <rect key="frame" x="10" y="10.5" width="356" height="69"/>
                                                 <subviews>
                                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Success!" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumFontSize="29" translatesAutoresizingMaskIntoConstraints="NO" id="QVm-ct-MvB">
                                                         <rect key="frame" x="0.0" y="0.0" width="206.5" height="69"/>
@@ -1928,7 +1918,7 @@
                             <constraint firstItem="qSi-51-JRo" firstAttribute="top" secondItem="cz5-jJ-q7d" secondAttribute="top" id="7bH-6z-SoZ"/>
                             <constraint firstItem="qSi-51-JRo" firstAttribute="leading" secondItem="EMF-4R-esq" secondAttribute="leading" id="Eet-Bk-qB3"/>
                             <constraint firstItem="s7w-CZ-Lpe" firstAttribute="leading" secondItem="EMF-4R-esq" secondAttribute="leading" constant="15" id="JIR-Sa-JpP"/>
-                            <constraint firstItem="wyl-Zo-V74" firstAttribute="top" secondItem="jwr-Nw-upL" secondAttribute="bottom" constant="3" id="LAH-oc-mrf"/>
+                            <constraint firstItem="wyl-Zo-V74" firstAttribute="top" secondItem="jwr-Nw-upL" secondAttribute="bottom" constant="5" id="LAH-oc-mrf"/>
                             <constraint firstAttribute="trailing" secondItem="VV0-a5-BBu" secondAttribute="trailing" constant="2" id="MaS-4C-WR8"/>
                             <constraint firstAttribute="trailing" secondItem="s7w-CZ-Lpe" secondAttribute="trailing" constant="15" id="N5P-VD-iur"/>
                             <constraint firstItem="cz5-jJ-q7d" firstAttribute="top" secondItem="s7w-CZ-Lpe" secondAttribute="top" constant="-5" id="Szg-u0-TCz"/>

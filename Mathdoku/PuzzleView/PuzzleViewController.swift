@@ -248,8 +248,6 @@ class PuzzleViewController: UIViewController, UINavigationBarDelegate {
             case .guessing:
                 if let cellPosition = selectedCellPosition {
                     setGuessForCells(atPositions: [cellPosition], withAnswer: num)
-                    highlightCellsWithSameGuess()
-                    highlightConflictingCellGuesses()
                     
                     // if auto rotate is enabled, then rotate to the next free cell
                     if Defaults[.rotateAfterCellEntry] {
@@ -273,8 +271,6 @@ class PuzzleViewController: UIViewController, UINavigationBarDelegate {
                 if puzzle.cellIsGuessedAtPosition(cellPosition) {
                     // if the puzzle has a guess, erase it
                     setGuessForCells(atPositions: [cellPosition], withAnswer: nil)
-                    highlightCellsWithSameGuess()
-                    highlightConflictingCellGuesses()
                 } else {
                     // if the puzzle does not have a guess, then erase its notes
                     setNotesForCells(atPositions: [cellPosition], withNotes: nil)
@@ -380,7 +376,12 @@ class PuzzleViewController: UIViewController, UINavigationBarDelegate {
     
     // MARK: - Private Helper Functions
     private func removeNotesAfterGuess() {
-        
+        if Defaults[.clearNotesAfterGuessEntry] == true {
+            // loop through the size of the puzzle
+            for i in 0..<puzzle.size {
+                let rowCell = i + puzzle.size * 1
+            }
+        }
     }
     
     private func highlightCellsWithSameGuess() {
@@ -454,6 +455,8 @@ class PuzzleViewController: UIViewController, UINavigationBarDelegate {
         if withIdentifier.contains("viewDidLoad") != true {
             DebugUtil.print("Entering Guess Save. Check the identifier: \(withIdentifier)")
             asyncWriteGuessForCells(atPositions: atPositions, withAnswer: withAnswer)
+            highlightCellsWithSameGuess()
+            highlightConflictingCellGuesses()
         }
         
         // check to see if this entry solved the puzzle

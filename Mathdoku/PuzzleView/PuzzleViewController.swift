@@ -379,6 +379,10 @@ class PuzzleViewController: UIViewController, UINavigationBarDelegate {
     }
     
     // MARK: - Private Helper Functions
+    private func removeNotesAfterGuess() {
+        
+    }
+    
     private func highlightCellsWithSameGuess() {
         if Defaults[.highlightSameGuessEntry] == true {
             // get the current selected cell's value

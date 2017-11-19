@@ -11,6 +11,8 @@ import Foundation
 // Defaults extension for settings variables
 extension DefaultsKeys {
     static let singleNoteCellSelection = DefaultsKey<Bool>("singleNoteCellSelection")
+    static let clearNotesAfterGuessEntry = DefaultsKey<Bool>("clearNotesAfterGuessEntry")
+    
     static let rotateAfterCellEntry = DefaultsKey<Bool>("rotateAfterCellEntry")
     
     static let highlightSameGuessEntry = DefaultsKey<Bool>("highlightSameGuessEntry")
@@ -21,6 +23,10 @@ struct Settings {
     static func initialize() {
         if !Defaults.hasKey(.singleNoteCellSelection) {
             Defaults[.singleNoteCellSelection] = false
+        }
+        
+        if !Defaults.hasKey(.clearNotesAfterGuessEntry) {
+            Defaults[.clearNotesAfterGuessEntry] = true
         }
         
         if !Defaults.hasKey(.rotateAfterCellEntry) {

@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		8336D4FC8161CC44C65F908F /* Pods_Mathdoku.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 27B6C3B9D7393F6EFC9176CA /* Pods_Mathdoku.framework */; };
 		9502E5CC1EEDF66E0048BE1B /* AppleReceiptValidator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9502E5B71EEDF66E0048BE1B /* AppleReceiptValidator.swift */; };
 		9502E5CD1EEDF66E0048BE1B /* CompleteTransactionsController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9502E5B81EEDF66E0048BE1B /* CompleteTransactionsController.swift */; };
 		9502E5CE1EEDF66E0048BE1B /* InAppProductQueryRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9502E5B91EEDF66E0048BE1B /* InAppProductQueryRequest.swift */; };
@@ -85,6 +86,8 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
+		27B6C3B9D7393F6EFC9176CA /* Pods_Mathdoku.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Mathdoku.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		3BC01DF3DD546476D89F7543 /* Pods-Mathdoku.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Mathdoku.debug.xcconfig"; path = "Pods/Target Support Files/Pods-Mathdoku/Pods-Mathdoku.debug.xcconfig"; sourceTree = "<group>"; };
 		9502E5B71EEDF66E0048BE1B /* AppleReceiptValidator.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AppleReceiptValidator.swift; sourceTree = "<group>"; };
 		9502E5B81EEDF66E0048BE1B /* CompleteTransactionsController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CompleteTransactionsController.swift; sourceTree = "<group>"; };
 		9502E5B91EEDF66E0048BE1B /* InAppProductQueryRequest.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = InAppProductQueryRequest.swift; sourceTree = "<group>"; };
@@ -146,6 +149,7 @@
 		95FBB90B1E9AD9E900B0E662 /* Cell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Cell.swift; sourceTree = "<group>"; };
 		95FFC6D01F118C2200DF964A /* iAd.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = iAd.framework; path = System/Library/Frameworks/iAd.framework; sourceTree = SDKROOT; };
 		95FFC6D41F118CA300DF964A /* AdViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AdViewController.swift; sourceTree = "<group>"; };
+		F41B6E2D82BEB28B8FADADD3 /* Pods-Mathdoku.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Mathdoku.release.xcconfig"; path = "Pods/Target Support Files/Pods-Mathdoku/Pods-Mathdoku.release.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -157,12 +161,22 @@
 				9568B3131FC1FE46000502A4 /* StoreKit.framework in Frameworks */,
 				955560841ECD3690006C9F2D /* RealmSwift.framework in Frameworks */,
 				955560821ECD3690006C9F2D /* Realm.framework in Frameworks */,
+				8336D4FC8161CC44C65F908F /* Pods_Mathdoku.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		599782A8731822E7F32F4D48 /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				3BC01DF3DD546476D89F7543 /* Pods-Mathdoku.debug.xcconfig */,
+				F41B6E2D82BEB28B8FADADD3 /* Pods-Mathdoku.release.xcconfig */,
+			);
+			name = Pods;
+			sourceTree = "<group>";
+		};
 		9502E5B61EEDF66E0048BE1B /* SwiftyStoreKit */ = {
 			isa = PBXGroup;
 			children = (
@@ -273,6 +287,7 @@
 				95FBB8D91E9AD13F00B0E662 /* Mathdoku */,
 				95FBB8D81E9AD13F00B0E662 /* Products */,
 				95FFC6CF1F118C2200DF964A /* Frameworks */,
+				599782A8731822E7F32F4D48 /* Pods */,
 			);
 			sourceTree = "<group>";
 		};
@@ -323,6 +338,7 @@
 				9568B3141FC1FF1A000502A4 /* AdSupport.framework */,
 				9568B3121FC1FE46000502A4 /* StoreKit.framework */,
 				95FFC6D01F118C2200DF964A /* iAd.framework */,
+				27B6C3B9D7393F6EFC9176CA /* Pods_Mathdoku.framework */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";
@@ -334,11 +350,14 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 95FBB8FF1E9AD13F00B0E662 /* Build configuration list for PBXNativeTarget "Mathdoku" */;
 			buildPhases = (
+				72EC30814EF0ED3499C19700 /* [CP] Check Pods Manifest.lock */,
 				95FBB8D31E9AD13F00B0E662 /* Sources */,
 				95FBB8D41E9AD13F00B0E662 /* Frameworks */,
 				95FBB8D51E9AD13F00B0E662 /* Resources */,
 				9555607E1ECD3500006C9F2D /* Embed Frameworks */,
 				9555607F1ECD362C006C9F2D /* ShellScript */,
+				A82D7CDF6981615008186848 /* [CP] Embed Pods Frameworks */,
+				B1E8A33EE82481DEF04D6E0E /* [CP] Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -408,6 +427,24 @@
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXShellScriptBuildPhase section */
+		72EC30814EF0ED3499C19700 /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-Mathdoku-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
 		9555607F1ECD362C006C9F2D /* ShellScript */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
@@ -420,6 +457,36 @@
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
 			shellScript = "bash \"${BUILT_PRODUCTS_DIR}/${FRAMEWORKS_FOLDER_PATH}/Realm.framework/strip-frameworks.sh\"";
+		};
+		A82D7CDF6981615008186848 /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-Mathdoku/Pods-Mathdoku-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		B1E8A33EE82481DEF04D6E0E /* [CP] Copy Pods Resources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Copy Pods Resources";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-Mathdoku/Pods-Mathdoku-resources.sh\"\n";
+			showEnvVarsInLog = 0;
 		};
 /* End PBXShellScriptBuildPhase section */
 
@@ -604,10 +671,11 @@
 		};
 		95FBB9001E9AD13F00B0E662 /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 3BC01DF3DD546476D89F7543 /* Pods-Mathdoku.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CLANG_ENABLE_MODULES = YES;
-				CONFIGURATION_BUILD_DIR = "$(BUILD_DIR)/$(CONFIGURATION)";
+				CONFIGURATION_BUILD_DIR = "$(BUILD_DIR)/$(CONFIGURATION)$(EFFECTIVE_PLATFORM_NAME)";
 				DEVELOPMENT_TEAM = 57TCLD34EQ;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
@@ -627,10 +695,11 @@
 		};
 		95FBB9011E9AD13F00B0E662 /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = F41B6E2D82BEB28B8FADADD3 /* Pods-Mathdoku.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CLANG_ENABLE_MODULES = YES;
-				CONFIGURATION_BUILD_DIR = "$(BUILD_DIR)/$(CONFIGURATION)";
+				CONFIGURATION_BUILD_DIR = "$(BUILD_DIR)/$(CONFIGURATION)$(EFFECTIVE_PLATFORM_NAME)";
 				DEVELOPMENT_TEAM = 57TCLD34EQ;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",

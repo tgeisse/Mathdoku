@@ -8,6 +8,7 @@
 
 import UIKit
 import RealmSwift
+import Firebase
 
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate {
@@ -33,6 +34,10 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
                 }
             }
         }
+        
+        // Use Firebase library to configure APIs
+        FirebaseApp.configure()
+        Analytics.logEvent(AnalyticsEventAppOpen, parameters: [:])
         
         return true
     }

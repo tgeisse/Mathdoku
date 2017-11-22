@@ -8,6 +8,7 @@
 
 import UIKit
 import RealmSwift
+import Firebase
 
 class PuzzleSelectionViewController: UIViewController {
     let puzzleLoader = PuzzleLoader()
@@ -111,11 +112,6 @@ class PuzzleSelectionViewController: UIViewController {
     }
     
     // MARK: - In-App Purchase methods
-    func initiateIAPTransaction() {
-        DebugUtil.print("Initiating an in app purchase")
-        
-    }
-    
     func segueToStore() {
         DebugUtil.print("Seguing to the puzzle store")
         performSegue(withIdentifier: "Store Segue", sender: self)

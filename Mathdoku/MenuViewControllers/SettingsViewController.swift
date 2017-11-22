@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import Firebase
 
 class SettingsViewController: UITableViewController {
     @IBOutlet weak var singleCellNoteTakingSwitch: UISwitch! {
@@ -42,20 +43,40 @@ class SettingsViewController: UITableViewController {
     
     @IBAction func switchValueChanged(_ sender: UISwitch) {
         DebugUtil.print("Switching on tag \(sender.tag)")
+        let settingName: String
+        let settingVariant: String
+        
         switch sender.tag {
         case 1:
             // single cell toggle
             Defaults[.singleNoteCellSelection] = singleCellNoteTakingSwitch.isOn
+            settingName = "singleCell"
+            settingVariant = "\(Defaults[.singleNoteCellSelection])"
         case 2:
             Defaults[.clearNotesAfterGuessEntry] = updateNotesAutomaticallySwitch.isOn
+            settingName = "autoNotes"
+            settingVariant = "\(Defaults[.clearNotesAfterGuessEntry])"
         case 3:
             Defaults[.rotateAfterCellEntry] = rotateAfterGuessSwitch.isOn
+            settingName = "rotateCell"
+            settingVariant = "\(Defaults[.rotateAfterCellEntry])"
         case 4:
             Defaults[.highlightSameGuessEntry] = highlightSimilarGuessesSwitch.isOn
+            settingName = "highlightSame"
+            settingVariant = "\(Defaults[.highlightSameGuessEntry])"
         case 5:
             Defaults[.highlightConflictingEntries] = highlightConflictingGuessSwitch.isOn
+            settingName = "highlightConflict"
+            settingVariant = "\(Defaults[.highlightConflictingEntries])"
         default:
-            return
+            settingName = "default"
+            settingVariant = "none"
         }
+        
+        Analytics.logEvent(AnalyticsEventSelectContent, parameters: [
+            AnalyticsParameterItemID: "id-toggleSetting",
+            AnalyticsParameterItemName: settingName,
+            AnalyticsParameterItemVariant: settingVariant
+            ])
     }
 }

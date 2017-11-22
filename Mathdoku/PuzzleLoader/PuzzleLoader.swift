@@ -6,8 +6,8 @@
 //  Copyright © 2017 Taylor Geisse. All rights reserved.
 //
 
-import Foundation
 import UIKit
+import Firebase
 
 enum PuzzleLoaderStatusCode {
     case success(Puzzle)
@@ -22,40 +22,6 @@ class PuzzleLoader {
     class func getPuzzleForSize(_ size: Int, atPuzzleCount: Int) -> PuzzleLoaderStatusCode {
         return .error("Not implemented yet")
     }
-    
-   // let realm = try! Realm()
-   // let playerProgress = try! Realm().objects(PlayerProgress.self)
-   // var notificationToken: NotificationToken? = nil
-   // var modTriggerCount = 0
-    
- /*   func startNotifications() {
-        // register a realm notification listener to preload puzzles as player progresses
-        notificationToken = playerProgress.addNotificationBlock { [weak self] (changes: RealmCollectionChange) in
-            switch changes {
-            case .initial:
-                break
-            case .update(_, _, _, let modifications):
-                for mod in modifications {
-                    self?.modTriggerCount += 1
-                    print("Modification triggered. This trigger number \(self?.modTriggerCount ?? -1)")
-                    if let puzzleSize = self?.playerProgress[mod].puzzleSize,
-                        let activePuzzleId = self?.playerProgress[mod].activePuzzleId {
-                     
-                        self?.preloadPuzzleForSize(puzzleSize, withPuzzleId: activePuzzleId)
-                    }
-                }
-            case .error(let error):
-                print("There was an error with the notification loader:\n\(error)")
-            }
-            
-        }
-     }  
-     
-     /*   deinit {
-     notificationToken?.stop()
-     }
-     */*/
-    
     
     /// Preload a puzzle of a certain size given a puzzle ID. If a puzzle with the same puzzle ID is
     /// already preloaded, then this function will not load it a second time
@@ -83,6 +49,13 @@ class PuzzleLoader {
                     self?.preloadedPuzzles[size]?.insert(puzzle)
                 }
             }
+            
+            // let's track that the number was changed only when the user selected a size
+            Analytics.logEvent(AnalyticsEventSelectContent, parameters: [
+                AnalyticsParameterItemID: "id-loadPuzzle",
+                AnalyticsParameterItemName: "puzzleSize-\(size)",
+                AnalyticsParameterItemVariant: "\(pId)"
+                ])
             
             DebugUtil.print("about to release the lock")
             objc_sync_exit(self)

@@ -55,7 +55,15 @@ class PuzzleViewController: UIViewController, UINavigationBarDelegate {
             puzzleGridSuperview.addGestureRecognizer(doubleTapRecognizer)
         }
     }
-    @IBOutlet var gridRowStacks: [GridRowView]!
+    //@IBOutlet var gridRowStacks: [GridRowView]!
+    
+    private var gridRowStacks: [GridRowView] {
+        guard let returnValue = puzzleGridSuperview.subviews as? [GridRowView] else {
+            fatalError("A view that is not a Grid Row View made it into the puzzle grid.")
+        }
+        
+        return returnValue
+    }
     
     // MARK: - Interface Buttons that may need hiding
     @IBOutlet weak var userGuessButton9: UIButton! { didSet { userGuessButton9.isHidden = puzzle.size < 9 }}

@@ -48,6 +48,10 @@
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Ibv-3n-jdk">
+                                <rect key="frame" x="0.0" y="64" width="375" height="509"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                            </view>
                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="fillEqually" translatesAutoresizingMaskIntoConstraints="NO" id="VV0-a5-BBu">
                                 <rect key="frame" x="2" y="148" width="371" height="371"/>
                                 <subviews>
@@ -1922,10 +1926,14 @@
                             <constraint firstItem="cz5-jJ-q7d" firstAttribute="top" secondItem="s7w-CZ-Lpe" secondAttribute="top" constant="-5" id="Szg-u0-TCz"/>
                             <constraint firstItem="jwr-Nw-upL" firstAttribute="leading" secondItem="EMF-4R-esq" secondAttribute="leadingMargin" id="TBT-4p-sac"/>
                             <constraint firstAttribute="trailingMargin" secondItem="jwr-Nw-upL" secondAttribute="trailing" id="WBH-Zo-6iI"/>
+                            <constraint firstItem="kkh-Iw-mYH" firstAttribute="trailing" secondItem="Ibv-3n-jdk" secondAttribute="trailing" id="WM4-qW-RV1"/>
                             <constraint firstItem="kkh-Iw-mYH" firstAttribute="trailing" secondItem="qSi-51-JRo" secondAttribute="trailing" id="WiW-iq-ruM"/>
                             <constraint firstItem="cz5-jJ-q7d" firstAttribute="leading" secondItem="kkh-Iw-mYH" secondAttribute="leading" id="cQ6-hA-PeA"/>
                             <constraint firstItem="kkh-Iw-mYH" firstAttribute="bottom" secondItem="qSi-51-JRo" secondAttribute="bottom" id="cwa-Rl-wan"/>
+                            <constraint firstItem="cz5-jJ-q7d" firstAttribute="top" secondItem="Ibv-3n-jdk" secondAttribute="bottom" id="dfe-hS-HC3"/>
                             <constraint firstItem="VV0-a5-BBu" firstAttribute="top" relation="greaterThanOrEqual" secondItem="kkh-Iw-mYH" secondAttribute="top" priority="750" constant="5" id="e5R-gz-V2w"/>
+                            <constraint firstItem="kkh-Iw-mYH" firstAttribute="leading" secondItem="Ibv-3n-jdk" secondAttribute="leading" id="fgJ-9U-mBm"/>
+                            <constraint firstItem="kkh-Iw-mYH" firstAttribute="top" secondItem="Ibv-3n-jdk" secondAttribute="top" id="geJ-5f-hAC"/>
                             <constraint firstItem="VV0-a5-BBu" firstAttribute="centerY" secondItem="EMF-4R-esq" secondAttribute="centerY" priority="800" id="i6C-lx-Dtn"/>
                             <constraint firstItem="jwr-Nw-upL" firstAttribute="top" secondItem="s7w-CZ-Lpe" secondAttribute="bottom" constant="8" id="jgg-I6-GtX"/>
                             <constraint firstItem="kkh-Iw-mYH" firstAttribute="trailing" secondItem="cz5-jJ-q7d" secondAttribute="trailing" id="mx3-6J-zos"/>

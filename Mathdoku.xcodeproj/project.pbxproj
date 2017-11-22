@@ -63,6 +63,7 @@
 		95F1A4561EEFB50B0019CBE6 /* StoreProductContainerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 95F1A4551EEFB50B0019CBE6 /* StoreProductContainerView.swift */; };
 		95F1A4581EEFC3A40019CBE6 /* StoreViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 95F1A4571EEFC3A40019CBE6 /* StoreViewController.swift */; };
 		95F869071FC3E923006D3921 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 95F869061FC3E923006D3921 /* GoogleService-Info.plist */; };
+		95F869081FC51779006D3921 /* iAd.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 95FFC6D01F118C2200DF964A /* iAd.framework */; };
 		95FBB8DB1E9AD13F00B0E662 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 95FBB8DA1E9AD13F00B0E662 /* AppDelegate.swift */; };
 		95FBB8E01E9AD13F00B0E662 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 95FBB8DE1E9AD13F00B0E662 /* Main.storyboard */; };
 		95FBB8E21E9AD13F00B0E662 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 95FBB8E11E9AD13F00B0E662 /* Assets.xcassets */; };
@@ -159,6 +160,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				95F869081FC51779006D3921 /* iAd.framework in Frameworks */,
 				9568B3151FC1FF2B000502A4 /* AdSupport.framework in Frameworks */,
 				9568B3131FC1FE46000502A4 /* StoreKit.framework in Frameworks */,
 				955560841ECD3690006C9F2D /* RealmSwift.framework in Frameworks */,

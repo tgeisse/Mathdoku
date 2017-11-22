@@ -34,6 +34,13 @@ class PuzzleLoader {
             objc_sync_enter(self)
             DebugUtil.print("took the lock")
             
+            // let's track that the number was changed only when the user selected a size
+            Analytics.logEvent(AnalyticsEventSelectContent, parameters: [
+                AnalyticsParameterItemID: "id-loadPuzzle",
+                AnalyticsParameterItemName: "puzzleSize-\(size)",
+                AnalyticsParameterItemVariant: "\(pId)"
+                ])
+            
             if self?.preloadedPuzzles[size] == nil {
                 self?.preloadedPuzzles[size] = Set()
             }
@@ -49,13 +56,6 @@ class PuzzleLoader {
                     self?.preloadedPuzzles[size]?.insert(puzzle)
                 }
             }
-            
-            // let's track that the number was changed only when the user selected a size
-            Analytics.logEvent(AnalyticsEventSelectContent, parameters: [
-                AnalyticsParameterItemID: "id-loadPuzzle",
-                AnalyticsParameterItemName: "puzzleSize-\(size)",
-                AnalyticsParameterItemVariant: "\(pId)"
-                ])
             
             DebugUtil.print("about to release the lock")
             objc_sync_exit(self)

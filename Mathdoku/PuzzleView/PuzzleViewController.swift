@@ -8,6 +8,7 @@
 
 import UIKit
 import RealmSwift
+import Firebase
 
 @IBDesignable
 class PuzzleViewController: UIViewController, UINavigationBarDelegate {
@@ -264,7 +265,6 @@ class PuzzleViewController: UIViewController, UINavigationBarDelegate {
     }
     
     @IBAction func eraseGuessOrNotes(_ sender: UIButton) {
-        // TODO: evaluate whether or not pressing erase in note mode should also erase gueses
         switch entryMode {
         case .guessing:
             if let cellPosition = selectedCellPosition {
@@ -294,6 +294,11 @@ class PuzzleViewController: UIViewController, UINavigationBarDelegate {
                     }
                 }
             }
+            
+            // log an event to capture usage of this feature
+            Analytics.logEvent(AnalyticsEventSelectContent, parameters: [
+                AnalyticsParameterItemID: "id-puzzleValidation"
+                ])
         }
     }
     
@@ -307,6 +312,11 @@ class PuzzleViewController: UIViewController, UINavigationBarDelegate {
             setGuessForCells(atPositions: [randomCell.cellPosition], withAnswer: randomCell.answer)
             selectedCell = gridRowStacks[randomCell.cellPosition.row].rowCells[randomCell.cellPosition.col]
         }
+        
+        // log an event to capture usage of this feature
+        Analytics.logEvent(AnalyticsEventSelectContent, parameters: [
+            AnalyticsParameterItemID: "id-randomGuessReveal"
+            ])
     }
     
     @IBAction func toggleNotes(_ sender: UIButton) {
@@ -321,6 +331,12 @@ class PuzzleViewController: UIViewController, UINavigationBarDelegate {
     @IBAction func nextPuzzle(_ sender: UIButton) {
         // this can be used by either the success screen or the skiPuzzle button
         if sender.currentTitle == "Next Puzzle" {
+            // analytics - puzzle was successfully completed
+            Analytics.logEvent(AnalyticsEventSelectContent, parameters: [
+                AnalyticsParameterItemID: "id-nextPuzzle",
+                AnalyticsParameterItemName: "puzzleCompleted"
+                ])
+            
             if PuzzleProducts.puzzleAllowance.allowance == 0 {
                 let alert = self.alertOutOfPuzzlesAndCanPurchase(mentionWeeklyAllowance: PuzzleProducts.userIsWeekly, actionOnConfirm: segueToStore)
                 self.showAlert(alert)
@@ -328,6 +344,13 @@ class PuzzleViewController: UIViewController, UINavigationBarDelegate {
                 goToNextPuzle()
             }
         } else {
+            // analytics - puzzle is trying to be skipped
+            Analytics.logEvent(AnalyticsEventSelectContent, parameters: [
+                AnalyticsParameterItemID: "id-nextPuzzle",
+                AnalyticsParameterItemName: "puzzleSkip"
+                ])
+            
+            
             // skip puzzle clicked us.
             // preload a puzzle if they can skip
             puzzleLoader.preloadPuzzleForSize(puzzle.size, withPuzzleId: playerProgress.activePuzzleId + 1)
@@ -360,6 +383,11 @@ class PuzzleViewController: UIViewController, UINavigationBarDelegate {
     }
     
     private func skipPuzzle() {
+        // track that the puzzle has been skipped
+        Analytics.logEvent(AnalyticsEventSelectContent, parameters: [
+            AnalyticsParameterItemID: "id-puzzleSkipped"
+            ])
+        
         incrementPlayerPuzzleProgress()
         goToNextPuzle()
     }

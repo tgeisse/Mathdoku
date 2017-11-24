@@ -816,13 +816,13 @@ class PuzzleViewController: UIViewController, UINavigationBarDelegate {
             consumePuzzleAllowance()
         }
         
-        // check if the user has made a purchase
-        if PuzzleProducts.userHasPurchased {
-            // if the user has made a purchase, then hide the ad view
+        // check if ads are supposed to be enabled
+        if PuzzleProducts.adsEnabled == false {
+            // if ads are not to be enabled, then hide the ad view
             bannerView.isHidden = true
             bannerViewHeight.constant = 0
         } else {
-            // if the user has not made a purchase, then load and display an add
+            // if ads are supposed to be show, then load and display an add
             // configure banner view ads
             #if DEBUG
                 // test ads when building for debug mode

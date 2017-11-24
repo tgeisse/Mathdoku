@@ -34,9 +34,7 @@ struct PuzzleProducts {
                 fatalError("Error creating a realm in PuzzleProducts.LoadedInformation:\n\(error)")
             }
         }()
-        var refreshMode: PuzzleRefreshMode?
         var puzzleAllowance: Allowances?
-        var adsSetting: Bool?
         
         func queryPuzzleAllowance() -> Allowances {
             puzzleAllowance = realm.objects(Allowances.self).filter("allowanceId = '\(AllowanceTypes.puzzle.id())'").first!
@@ -73,12 +71,7 @@ struct PuzzleProducts {
     }
     
     static var adsEnabled: Bool {
-        get {
-            return true
-        }
-        set {
-            // do something
-        }
+        return !userHasPurchased
     }
     
     static func getLoadedPuzzleProductInfo(productId: String) -> LoadedProduct? {

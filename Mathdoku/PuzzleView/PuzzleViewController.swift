@@ -9,11 +9,14 @@
 import UIKit
 import RealmSwift
 import Firebase
+import GoogleMobileAds
 
 @IBDesignable
 class PuzzleViewController: UIViewController, UINavigationBarDelegate {
     var puzzle: Puzzle!
     var puzzleLoader: PuzzleLoader!
+    
+    @IBOutlet weak var bannerView: GADBannerView!
     
     // MARK: - Realm properties
     private lazy var realm: Realm = { return try! Realm() }()
@@ -811,6 +814,17 @@ class PuzzleViewController: UIViewController, UINavigationBarDelegate {
             // since this is a new puzzle, then we will need to consume a puzzle allowance
             consumePuzzleAllowance()
         }
+        
+        // configure banner view ads
+        #if DEBUG
+            // test ads when building for debug mode
+            bannerView.adUnitID = "ca-app-pub-3940256099942544/2934735716"
+        #else
+            // real ads for releases
+            bannerView.adUnitID = "ca-app-pub-6013095233601848~7942243511"
+        #endif
+        bannerView.rootViewController = self
+        bannerView.load(GADRequest())
         
         DebugUtil.print("viewDidLoad")
         loadingEnded = Date()

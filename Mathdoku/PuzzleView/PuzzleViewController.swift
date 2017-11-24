@@ -17,6 +17,7 @@ class PuzzleViewController: UIViewController, UINavigationBarDelegate {
     var puzzleLoader: PuzzleLoader!
     
     @IBOutlet weak var bannerView: GADBannerView!
+    @IBOutlet weak var bannerViewHeight: NSLayoutConstraint!
     
     // MARK: - Realm properties
     private lazy var realm: Realm = { return try! Realm() }()
@@ -815,16 +816,25 @@ class PuzzleViewController: UIViewController, UINavigationBarDelegate {
             consumePuzzleAllowance()
         }
         
-        // configure banner view ads
-        #if DEBUG
-            // test ads when building for debug mode
-            bannerView.adUnitID = "ca-app-pub-3940256099942544/2934735716"
-        #else
-            // real ads for releases
-            bannerView.adUnitID = "ca-app-pub-6013095233601848~7942243511"
-        #endif
-        bannerView.rootViewController = self
-        bannerView.load(GADRequest())
+        // check if the user has made a purchase
+        if PuzzleProducts.userHasPurchased {
+            // if the user has made a purchase, then hide the ad view
+            bannerView.isHidden = true
+            bannerViewHeight.constant = 0
+        } else {
+            // if the user has not made a purchase, then load and display an add
+            // configure banner view ads
+            #if DEBUG
+                // test ads when building for debug mode
+                bannerView.adUnitID = "ca-app-pub-3940256099942544/2934735716"
+            #else
+                // real ads for releases
+                bannerView.adUnitID = "ca-app-pub-6013095233601848~7942243511"
+            #endif
+            bannerView.rootViewController = self
+            bannerView.load(GADRequest())
+        }
+        
         
         DebugUtil.print("viewDidLoad")
         loadingEnded = Date()

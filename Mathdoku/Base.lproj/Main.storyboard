@@ -1970,6 +1970,7 @@
                     </navigationItem>
                     <connections>
                         <outlet property="bannerView" destination="2pN-ox-hmy" id="R1d-6g-zvk"/>
+                        <outlet property="bannerViewHeight" destination="biR-8Q-M36" id="nU5-qf-Xhp"/>
                         <outlet property="puzzleGridSuperview" destination="VV0-a5-BBu" id="Igg-1r-fiI"/>
                         <outlet property="successOverlayView" destination="qSi-51-JRo" id="tVG-oh-jte"/>
                         <outlet property="userGuessButton4" destination="rJr-Ox-0k6" id="bXO-h3-lu4"/>

@@ -17,6 +17,8 @@ extension DefaultsKeys {
     
     static let highlightSameGuessEntry = DefaultsKey<Bool>("highlightSameGuessEntry")
     static let highlightConflictingEntries = DefaultsKey<Bool>("highlightConflictingEntries")
+    
+    static let fillInGiveMes = DefaultsKey<Bool>("fillInGiveMes")
 }
 
 struct Settings {
@@ -39,6 +41,10 @@ struct Settings {
         
         if !Defaults.hasKey(.highlightConflictingEntries) {
             Defaults[.highlightConflictingEntries] = true
+        }
+        
+        if !Defaults.hasKey(.fillInGiveMes) {
+            Defaults[.fillInGiveMes] = false
         }
     }
 }

@@ -41,13 +41,8 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         Analytics.logEvent(AnalyticsEventAppOpen, parameters: [:])
         
         // Initialize the Google Mobile Ads SDK.
-        #if DEBUG
-            // if in debug mode, use the test Ads ad unit ID
-            GADMobileAds.configure(withApplicationID: "ca-app-pub-3940256099942544/2934735716") 
-        #else
-            // in production, use the mathdokue ad unit id
-            GADMobileAds.configure(withApplicationID: "ca-app-pub-6013095233601848~7942243511")
-        #endif
+        // AdMob app id
+        GADMobileAds.configure(withApplicationID: "ca-app-pub-6013095233601848~7942243511")
         
         return true
     }

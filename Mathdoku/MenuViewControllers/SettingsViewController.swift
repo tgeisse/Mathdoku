@@ -40,6 +40,12 @@ class SettingsViewController: UITableViewController {
     }
 }
     
+    @IBOutlet weak var fillInGiveMeSwitch: UISwitch! {
+        didSet{
+            fillInGiveMeSwitch.setOn(Defaults[.fillInGiveMes], animated: false)
+        }
+    }
+    
     
     @IBAction func switchValueChanged(_ sender: UISwitch) {
         DebugUtil.print("Switching on tag \(sender.tag)")
@@ -68,6 +74,10 @@ class SettingsViewController: UITableViewController {
             Defaults[.highlightConflictingEntries] = highlightConflictingGuessSwitch.isOn
             settingName = "highlightConflict"
             settingVariant = "\(Defaults[.highlightConflictingEntries])"
+        case 6:
+            Defaults[.fillInGiveMes] = fillInGiveMeSwitch.isOn
+            settingName = "fillInGiveMes"
+            settingVariant = "\(Defaults[.fillInGiveMes])"
         default:
             settingName = "default"
             settingVariant = "none"

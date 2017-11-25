@@ -29,6 +29,10 @@ class Puzzle {
         cages = puzzleCages
     }
     
+    func answerForPosition(_ cellPosition: CellPosition) -> Int {
+        return cells[cellPosition.cellId].answer
+    }
+    
     func cellIsGuessedAtPosition(_ cellPosition: CellPosition) -> Bool {
         return cells[cellPosition.cellId].userGuess != nil
     }

@@ -728,7 +728,6 @@ class PuzzleViewController: UIViewController, UINavigationBarDelegate {
                 cellView.hint = nil
                 
                 // if we were able to get a cellView and its allegiences, then set the borders
-                
                 cellView.topBorder = (cellPosition.row == 0 ? .other : (cellNeighborAllegience.north ? .friend : .foe))
                 
                 cellView.rightBorder = (cellPosition.col == puzzle.size - 1 ? .other : (cellNeighborAllegience.east ? .friend : .foe))
@@ -741,11 +740,19 @@ class PuzzleViewController: UIViewController, UINavigationBarDelegate {
         
         for key in puzzle.cages.keys {
             if let cage = puzzle.cages[key] {
-                let cell: (row: Int, col: Int) = (cage.firstCell / puzzle.size, cage.firstCell % puzzle.size)
+                let cell = CellPosition(row: cage.firstCell / puzzle.size, col: cage.firstCell % puzzle.size, puzzleSize: puzzle.size)
+                // let cell: (row: Int, col: Int) = (cage.firstCell / puzzle.size, cage.firstCell % puzzle.size)
                 gridRowStacks[cell.row].rowCells[cell.col].cell.hint = puzzle.cages[key]?.hintText ?? "#ERR#"
+                
+                // if the user has enabled give-me-fill-ins, then do that here
+                if cage.operation == "_" && Defaults[.fillInGiveMes] {
+                    setGuessForCells(atPositions: [cell], withAnswer: puzzle.answerForPosition(cell))
+                }
             }
             
         }
+        
+        
     }
     
     private func hideUnneededRowsAndCells() {
@@ -829,7 +836,7 @@ class PuzzleViewController: UIViewController, UINavigationBarDelegate {
                 bannerView.adUnitID = "ca-app-pub-3940256099942544/2934735716"
             #else
                 // real ads for releases
-                bannerView.adUnitID = "ca-app-pub-6013095233601848~7942243511"
+                bannerView.adUnitID = "ca-app-pub-6013095233601848/5094263489"
             #endif
             bannerView.rootViewController = self
             bannerView.load(GADRequest())

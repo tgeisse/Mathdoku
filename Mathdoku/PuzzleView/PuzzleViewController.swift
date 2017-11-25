@@ -828,6 +828,7 @@ class PuzzleViewController: UIViewController, UINavigationBarDelegate {
             // if ads are not to be enabled, then hide the ad view
             bannerView.isHidden = true
             bannerViewHeight.constant = 0
+            bannerView.layoutIfNeeded()
         } else {
             // if ads are supposed to be show, then load and display an add
             // configure banner view ads

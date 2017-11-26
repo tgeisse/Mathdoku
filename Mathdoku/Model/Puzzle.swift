@@ -42,11 +42,6 @@ class Puzzle {
         return returnValue
     }
     
-    /*
-    func cellIsUnitCell(_ cellPosition: CellPosition) -> Bool {
-        return cages[cells[cellPosition.cellId].cage]?.operation == "_"
-    }*/
-    
     func answerForPosition(_ cellPosition: CellPosition) -> Int {
         return cells[cellPosition.cellId].answer
     }

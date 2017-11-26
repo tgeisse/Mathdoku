@@ -410,13 +410,22 @@ class PuzzleViewController: UIViewController, UINavigationBarDelegate {
         consumePuzzleAllowance()
         puzzle = puzzleLoader.loadNewPuzzleForSize(puzzle.size, withPuzzleId: playerProgress.activePuzzleId)
         writePuzzleToGrid()
+        fillInUnitCells()
         setPuzzleProgress(to: true)
         successOverlayView.isHidden = true
     }
     
     // MARK: - Private Helper Functions
+    private func fillInUnitCells() {
+        if Defaults[.fillInGiveMes] {
+            puzzle.getUnitCellsWithAnswers().forEach {
+                setGuessForCells(atPositions: [$0.cell], withAnswer: $0.answer)
+            }
+        }
+    }
+    
     private func removePossibleNotesAfterGuess(_ guess: Int, atCell cell: CellPosition) {
-        if Defaults[.clearNotesAfterGuessEntry] == true {
+        if Defaults[.clearNotesAfterGuessEntry] {
             let guessIndex = guess - 1
             var cellsToRemoveNoteForGuess: Set<CellPosition> = []
             
@@ -436,7 +445,7 @@ class PuzzleViewController: UIViewController, UINavigationBarDelegate {
     }
     
     private func highlightCellsWithSameGuess() {
-        if Defaults[.highlightSameGuessEntry] == true {
+        if Defaults[.highlightSameGuessEntry] {
             // get the current selected cell's value
             if let selectedCellPos = selectedCellPosition {
                 // go through the grid and remove equal from all cells
@@ -461,7 +470,7 @@ class PuzzleViewController: UIViewController, UINavigationBarDelegate {
     }
     
     private func highlightConflictingCellGuesses() {
-        if Defaults[.highlightConflictingEntries] == true {
+        if Defaults[.highlightConflictingEntries] {
             // remove the conflicting status from all cells
             gridRowStacks.forEach {
                 $0.rowCells.forEach {
@@ -743,16 +752,8 @@ class PuzzleViewController: UIViewController, UINavigationBarDelegate {
                 let cell = CellPosition(row: cage.firstCell / puzzle.size, col: cage.firstCell % puzzle.size, puzzleSize: puzzle.size)
                 // let cell: (row: Int, col: Int) = (cage.firstCell / puzzle.size, cage.firstCell % puzzle.size)
                 gridRowStacks[cell.row].rowCells[cell.col].cell.hint = puzzle.cages[key]?.hintText ?? "#ERR#"
-                
-                // if the user has enabled give-me-fill-ins, then do that here
-                if cage.operation == "_" && Defaults[.fillInGiveMes] {
-                    setGuessForCells(atPositions: [cell], withAnswer: puzzle.answerForPosition(cell))
-                }
             }
-            
         }
-        
-        
     }
     
     private func hideUnneededRowsAndCells() {
@@ -789,7 +790,11 @@ class PuzzleViewController: UIViewController, UINavigationBarDelegate {
             // will want to write the saved state to the grid here
             for savedGuess in puzzleProgress.puzzleGuesses.filter("guess != nil") {
                 let cellPos = CellPosition(cellId: savedGuess.cellId, puzzleSize: puzzle.size)
-                setGuessForCells(atPositions: [cellPos], withAnswer: savedGuess.guess.value)
+                
+               // if puzzle.cellIsUnitCell(cellPos) == false ||
+                 //   (puzzle.cellIsUnitCell(cellPos) == true && Defaults[.fillInGiveMes] == false) {
+                    setGuessForCells(atPositions: [cellPos], withAnswer: savedGuess.guess.value)
+                //}
             }
             
             for savedNote in puzzleProgress.puzzleNotes {
@@ -822,6 +827,9 @@ class PuzzleViewController: UIViewController, UINavigationBarDelegate {
             // since this is a new puzzle, then we will need to consume a puzzle allowance
             consumePuzzleAllowance()
         }
+        
+        // fill in the unit cells (give me cells)
+        fillInUnitCells()
         
         // check if ads are supposed to be enabled
         if PuzzleProducts.adsEnabled == false {

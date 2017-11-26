@@ -29,6 +29,24 @@ class Puzzle {
         cages = puzzleCages
     }
     
+    func getUnitCellsWithAnswers() -> [(cell: CellPosition, answer: Int)] {
+        var returnValue: [(cell: CellPosition, answer: Int)] = []
+        
+        cages.values.filter({ $0.operation == "_" }).forEach { cage in
+            returnValue.append(
+                (CellPosition(cellId: cage.firstCell, puzzleSize: self.size),
+                 cage.total)
+            )
+        }
+        
+        return returnValue
+    }
+    
+    /*
+    func cellIsUnitCell(_ cellPosition: CellPosition) -> Bool {
+        return cages[cells[cellPosition.cellId].cage]?.operation == "_"
+    }*/
+    
     func answerForPosition(_ cellPosition: CellPosition) -> Int {
         return cells[cellPosition.cellId].answer
     }

@@ -588,6 +588,7 @@ class PuzzleViewController: UIViewController, UINavigationBarDelegate {
     }
     
     // MARK: - Realm helper functions
+    let realmQueue = DispatchQueue(label: "com.geissefamily.taylor.realmQueue", qos: .userInitiated)
     private func asyncWriteNotesForCells(atPositions: [CellPosition]) {
         let puzzleSize = puzzle.size
         // (1) get a dictionary mapping of the notes we need to save with their respective positions
@@ -598,7 +599,7 @@ class PuzzleViewController: UIViewController, UINavigationBarDelegate {
         }
         
         // (2) dispatch onto another queue
-        DispatchQueue.global(qos: .userInitiated).async {
+        realmQueue.async {
             do {
                 let realm = try Realm()
                 
@@ -663,7 +664,7 @@ class PuzzleViewController: UIViewController, UINavigationBarDelegate {
     private func asyncWriteGuessForCells(atPositions: [CellPosition], withAnswer: Int?) {
         let puzzleSize = puzzle.size
         
-        DispatchQueue.global(qos: .userInitiated).async {
+        realmQueue.async {
             do {
                 let realm = try Realm()
                 if let puzzleGuesses = realm.objects(PlayerProgress.self).filter("puzzleSize == \(puzzleSize)").first?.puzzleProgress?.puzzleGuesses {

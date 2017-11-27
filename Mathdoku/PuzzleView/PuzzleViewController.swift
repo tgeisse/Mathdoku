@@ -326,9 +326,9 @@ class PuzzleViewController: UIViewController, UINavigationBarDelegate {
         }
         
         // log an event to capture usage of this feature
-        Analytics.logEvent(AnalyticsEventSelectContent, parameters: [
+        /*Analytics.logEvent(AnalyticsEventSelectContent, parameters: [
             AnalyticsParameterItemID: "id-randomGuessReveal"
-            ])
+            ]) */
     }
     
     @IBAction func toggleNotes(_ sender: UIButton) {
@@ -445,25 +445,35 @@ class PuzzleViewController: UIViewController, UINavigationBarDelegate {
     }
     
     private func highlightCellsWithSameGuess() {
-        if Defaults[.highlightSameGuessEntry] {
-            // get the current selected cell's value
-            if let selectedCellPos = selectedCellPosition {
+        let queue = DispatchQueue(label: "com.geissefamily.taylor.highlightSame", qos: .userInitiated)
+        
+        queue.async { [weak self] in
+            DebugUtil.print("1. just been dispatched into the highlightSame queue. Clearing all flags")
+            DispatchQueue.main.async {
+                DebugUtil.print("a. removing highlights from all cells")
                 // go through the grid and remove equal from all cells
-                gridRowStacks.forEach {
+                self?.gridRowStacks.forEach {
                     $0.rowCells.forEach {
                         $0.cell.removeGuessAllegiance(.equal)
                     }
                 }
-                
-                // get the cells with the same guess
-                let cellsWithSameGuess = puzzle.identifyCellsWithSameGuessAsCell(selectedCellPos)
-                
-                // debug print
-                DebugUtil.print("\(cellsWithSameGuess)")
-                
-                // add equal to all of the cells
-                cellsWithSameGuess.forEach {
-                    gridRowStacks[$0.row].rowCells[$0.col].cell.addGuessAllegiance(.equal)
+                DebugUtil.print("b. done removing highlights from all cells")
+            }
+        
+            if Defaults[.highlightSameGuessEntry] {
+                DebugUtil.print("2. user has same guess highlighting enabled")
+                // get the current selected cell's value and the cells with the same guess
+                if let selectedCellPos = self?.selectedCellPosition,
+                    let cellsWithSameGuess = self?.puzzle.identifyCellsWithSameGuessAsCell(selectedCellPos) {
+                    // add equal to all of the cells
+                    DebugUtil.print("3. able to find cells with same guess")
+                    DispatchQueue.main.async {
+                        DebugUtil.print("c. dispatched highlighting to main queue")
+                        cellsWithSameGuess.forEach {
+                            self?.gridRowStacks[$0.row].rowCells[$0.col].cell.addGuessAllegiance(.equal)
+                        }
+                        DebugUtil.print("d. done highlighting")
+                    }
                 }
             }
         }
@@ -571,7 +581,6 @@ class PuzzleViewController: UIViewController, UINavigationBarDelegate {
         if withIdentifier.contains("viewDidLoad") != true {
             DebugUtil.print("Entering Cell Note Save. Check the identifier: \(withIdentifier)")
             asyncWriteNotesForCells(atPositions: atPositions)
-            //asyncWriteCellNotes(userCellNotePossibilities)
         }
     }
 

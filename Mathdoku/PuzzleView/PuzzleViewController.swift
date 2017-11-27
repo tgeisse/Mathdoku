@@ -16,8 +16,19 @@ class PuzzleViewController: UIViewController, UINavigationBarDelegate {
     var puzzle: Puzzle!
     var puzzleLoader: PuzzleLoader!
     
+    // MARK: - References to View Items
+    @IBOutlet weak var successOverlayView: UIView!
+    
     @IBOutlet weak var bannerView: GADBannerView!
     @IBOutlet weak var bannerViewHeight: NSLayoutConstraint!
+    
+    private var gridRowStacks: [GridRowView] {
+        guard let returnValue = puzzleGridSuperview.subviews as? [GridRowView] else {
+            fatalError("A view that is not a Grid Row View made it into the puzzle grid.")
+        }
+        
+        return returnValue
+    }
     
     // MARK: - Realm properties
     private lazy var realm: Realm = { return try! Realm() }()
@@ -46,7 +57,7 @@ class PuzzleViewController: UIViewController, UINavigationBarDelegate {
         }
     }
     
-    // MARK: - Tap Gesture Recognizers
+    // MARK: - Tap Gesture Recognizer Registration
     @IBOutlet weak var puzzleGridSuperview: UIStackView! {
         didSet {
             // add a tap gesture recognizer to the puzzle grid
@@ -59,15 +70,6 @@ class PuzzleViewController: UIViewController, UINavigationBarDelegate {
             puzzleGridSuperview.addGestureRecognizer(doubleTapRecognizer)
         }
     }
-    //@IBOutlet var gridRowStacks: [GridRowView]!
-    
-    private var gridRowStacks: [GridRowView] {
-        guard let returnValue = puzzleGridSuperview.subviews as? [GridRowView] else {
-            fatalError("A view that is not a Grid Row View made it into the puzzle grid.")
-        }
-        
-        return returnValue
-    }
     
     // MARK: - Interface Buttons that may need hiding
     @IBOutlet weak var userGuessButton9: UIButton! { didSet { userGuessButton9.isHidden = puzzle.size < 9 }}
@@ -76,9 +78,6 @@ class PuzzleViewController: UIViewController, UINavigationBarDelegate {
     @IBOutlet weak var userGuessButton6: UIButton! { didSet { userGuessButton6.isHidden = puzzle.size < 6 }}
     @IBOutlet weak var userGuessButton5: UIButton! { didSet { userGuessButton5.isHidden = puzzle.size < 5 }}
     @IBOutlet weak var userGuessButton4: UIButton! { didSet { userGuessButton4.isHidden = puzzle.size < 4 }}
-    
-    // MARK: - Interface success screen outlets
-    @IBOutlet weak var successOverlayView: UIView!
     
     // MARK: - Entry Mode Toggle Variables
     private enum EntryModes {
@@ -417,7 +416,7 @@ class PuzzleViewController: UIViewController, UINavigationBarDelegate {
         successOverlayView.isHidden = true
     }
     
-    // MARK: - Private Helper Functions
+    // MARK: - User Assisting Functions
     private func fillInUnitCells() {
         if Defaults[.fillInGiveMes] {
             puzzle.getUnitCellsWithAnswers().forEach {
@@ -514,22 +513,7 @@ class PuzzleViewController: UIViewController, UINavigationBarDelegate {
         }
     }
     
-    private func segueToStore() {
-        DebugUtil.print("Seguing to the puzzle store from puzzle grid")
-        performSegue(withIdentifier: "Puzzle Store Segue", sender: self)
-    }
-    
-    private func identifyCellPositionForCellContainerView(_ cell: CellContainerView) -> CellPosition? {
-        if let rowContainer = cell.superview as? GridRowView {
-            let cellCol = rowContainer.subviews.index(of: cell)!
-            let cellRow = gridRowStacks.index(of: rowContainer)!
-            
-            return CellPosition(row: cellRow, col: cellCol, puzzleSize: puzzle.size)
-        } else {
-            return nil
-        }
-    }
-    
+    // MARK: - Update cell values
     private func setGuessForCells(atPositions: [CellPosition], withAnswer: Int?, withIdentifier: String = #function) {
         for atPosition in atPositions {
             gridRowStacks[atPosition.row].rowCells[atPosition.col].cell.guess = (withAnswer == nil ? nil : "\(withAnswer!)")
@@ -599,6 +583,23 @@ class PuzzleViewController: UIViewController, UINavigationBarDelegate {
         if withIdentifier.contains("viewDidLoad") != true {
             DebugUtil.print("Entering Cell Note Save. Check the identifier: \(withIdentifier)")
             asyncWriteNotesForCells(atPositions: atPositions)
+        }
+    }
+    
+    // MARK: - Private Helper Functions
+    private func segueToStore() {
+        DebugUtil.print("Seguing to the puzzle store from puzzle grid")
+        performSegue(withIdentifier: "Puzzle Store Segue", sender: self)
+    }
+    
+    private func identifyCellPositionForCellContainerView(_ cell: CellContainerView) -> CellPosition? {
+        if let rowContainer = cell.superview as? GridRowView {
+            let cellCol = rowContainer.subviews.index(of: cell)!
+            let cellRow = gridRowStacks.index(of: rowContainer)!
+            
+            return CellPosition(row: cellRow, col: cellCol, puzzleSize: puzzle.size)
+        } else {
+            return nil
         }
     }
 
@@ -730,7 +731,6 @@ class PuzzleViewController: UIViewController, UINavigationBarDelegate {
         puzzleProgress.setInProgress(to: to, withRealm: realm)
     }
 
-    // MARK: - Puzzle Setup Functions
     private func consumePuzzleAllowance() {
         DebugUtil.print("Consuming a puzzle allowance")
         if let allowance = realm.objects(Allowances.self).filter("allowanceId = '\(AllowanceTypes.puzzle.id())'").first {
@@ -738,6 +738,7 @@ class PuzzleViewController: UIViewController, UINavigationBarDelegate {
         }
     }
     
+    // MARK: - Puzzle Setup Functions
     private func resetCellNotesAndGuesses() {
         // (1) build an array of CellPositions that matches the size of the puzzle
         var cellPositions = [CellPosition]()

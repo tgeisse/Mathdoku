@@ -807,9 +807,13 @@ class PuzzleViewController: UIViewController, UINavigationBarDelegate {
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         DebugUtil.print("viewWillAppear")
-        //highlightCellsWithSameGuess()
-        //highlightConflictingCellGuesses()
+        
+        // fill in the unit cells (give me cells)
+        fillInUnitCells()
+        
+        // highlight conflicting and equal guesses
         highlightGuesses(for: [.equal, .conflict])
+        
         loadingEnded = Date()
     }
     override func viewDidLoad() {
@@ -857,9 +861,6 @@ class PuzzleViewController: UIViewController, UINavigationBarDelegate {
             // since this is a new puzzle, then we will need to consume a puzzle allowance
             consumePuzzleAllowance()
         }
-        
-        // fill in the unit cells (give me cells)
-        fillInUnitCells()
         
         // check if ads are supposed to be enabled
         if PuzzleProducts.adsEnabled == false {

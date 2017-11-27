@@ -326,9 +326,9 @@ class PuzzleViewController: UIViewController, UINavigationBarDelegate {
         }
         
         // log an event to capture usage of this feature
-        /*Analytics.logEvent(AnalyticsEventSelectContent, parameters: [
+        Analytics.logEvent(AnalyticsEventSelectContent, parameters: [
             AnalyticsParameterItemID: "id-randomGuessReveal"
-            ]) */
+            ])
     }
     
     @IBAction func toggleNotes(_ sender: UIButton) {
@@ -464,7 +464,8 @@ class PuzzleViewController: UIViewController, UINavigationBarDelegate {
                 DebugUtil.print("2. user has same guess highlighting enabled")
                 // get the current selected cell's value and the cells with the same guess
                 if let selectedCellPos = self?.selectedCellPosition,
-                    let cellsWithSameGuess = self?.puzzle.identifyCellsWithSameGuessAsCell(selectedCellPos) {
+                    let cellsWithSameGuess = self?.puzzle.identifyCellsWithSameGuessAsCell(selectedCellPos),
+                    cellsWithSameGuess.count > 0 {
                     // add equal to all of the cells
                     DebugUtil.print("3. able to find cells with same guess")
                     DispatchQueue.main.async {
@@ -480,6 +481,9 @@ class PuzzleViewController: UIViewController, UINavigationBarDelegate {
     }
     
     private func highlightConflictingCellGuesses() {
+        let queue = DispatchQueue(label: "com.geissefamily.taylor.highlightConflict", qos: .userInitiated)
+        
+        
         if Defaults[.highlightConflictingEntries] {
             // remove the conflicting status from all cells
             gridRowStacks.forEach {

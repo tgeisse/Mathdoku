@@ -2272,12 +2272,42 @@
                                             </constraints>
                                         </tableViewCellContentView>
                                     </tableViewCell>
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="none" indentationWidth="10" id="ooY-yx-hAc">
+                                        <rect key="frame" x="0.0" y="143.5" width="375" height="44"/>
+                                        <autoresizingMask key="autoresizingMask"/>
+                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="ooY-yx-hAc" id="O8s-n8-3G9">
+                                            <rect key="frame" x="0.0" y="0.0" width="375" height="43.5"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                            <subviews>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Double tap to enter note mode" textAlignment="natural" lineBreakMode="wordWrap" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="RXp-f6-60u">
+                                                    <rect key="frame" x="16" y="11" width="234.5" height="20.5"/>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                    <nil key="textColor"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                                <switch opaque="NO" tag="7" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" contentHorizontalAlignment="center" contentVerticalAlignment="center" translatesAutoresizingMaskIntoConstraints="NO" id="5UF-dM-pHB">
+                                                    <rect key="frame" x="311" y="6.5" width="51" height="31"/>
+                                                    <connections>
+                                                        <action selector="switchValueChanged:" destination="YgF-xD-UUZ" eventType="valueChanged" id="BtE-FS-Yfk"/>
+                                                    </connections>
+                                                </switch>
+                                            </subviews>
+                                            <constraints>
+                                                <constraint firstItem="RXp-f6-60u" firstAttribute="top" secondItem="O8s-n8-3G9" secondAttribute="topMargin" id="04G-hS-sY9"/>
+                                                <constraint firstAttribute="trailing" secondItem="5UF-dM-pHB" secondAttribute="trailing" constant="15" id="D2t-T4-F3u"/>
+                                                <constraint firstAttribute="bottomMargin" relation="greaterThanOrEqual" secondItem="RXp-f6-60u" secondAttribute="bottom" id="IPy-Yj-dei"/>
+                                                <constraint firstAttribute="right" relation="greaterThanOrEqual" secondItem="RXp-f6-60u" secondAttribute="right" constant="79" id="NU3-oT-OUE"/>
+                                                <constraint firstItem="5UF-dM-pHB" firstAttribute="centerY" secondItem="O8s-n8-3G9" secondAttribute="centerY" id="UYg-c4-sUL"/>
+                                                <constraint firstItem="RXp-f6-60u" firstAttribute="leading" secondItem="O8s-n8-3G9" secondAttribute="leadingMargin" id="nAs-hX-3jk"/>
+                                            </constraints>
+                                        </tableViewCellContentView>
+                                    </tableViewCell>
                                 </cells>
                             </tableViewSection>
                             <tableViewSection headerTitle="Guess Entry Settings" id="id8-AT-XMi">
                                 <cells>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="none" indentationWidth="10" id="yuc-mq-tEZ">
-                                        <rect key="frame" x="0.0" y="199.5" width="375" height="44"/>
+                                        <rect key="frame" x="0.0" y="243.5" width="375" height="44"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="yuc-mq-tEZ" id="rn1-Y6-AJd">
                                             <rect key="frame" x="0.0" y="0.0" width="375" height="43.5"/>
@@ -2307,7 +2337,7 @@
                                         </tableViewCellContentView>
                                     </tableViewCell>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="none" indentationWidth="10" id="oLa-4v-0QS">
-                                        <rect key="frame" x="0.0" y="243.5" width="375" height="44"/>
+                                        <rect key="frame" x="0.0" y="287.5" width="375" height="44"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="oLa-4v-0QS" id="l43-5S-6Ws">
                                             <rect key="frame" x="0.0" y="0.0" width="375" height="43.5"/>
@@ -2337,7 +2367,7 @@
                                         </tableViewCellContentView>
                                     </tableViewCell>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="none" indentationWidth="10" id="llh-XA-1cZ">
-                                        <rect key="frame" x="0.0" y="287.5" width="375" height="44"/>
+                                        <rect key="frame" x="0.0" y="331.5" width="375" height="44"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="llh-XA-1cZ" id="E1H-GL-qb0">
                                             <rect key="frame" x="0.0" y="0.0" width="375" height="43.5"/>
@@ -2367,7 +2397,7 @@
                                         </tableViewCellContentView>
                                     </tableViewCell>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="none" indentationWidth="10" id="tfT-cU-KC1">
-                                        <rect key="frame" x="0.0" y="331.5" width="375" height="44"/>
+                                        <rect key="frame" x="0.0" y="375.5" width="375" height="44"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="tfT-cU-KC1" id="yDg-L9-iXL">
                                             <rect key="frame" x="0.0" y="0.0" width="375" height="43.5"/>
@@ -2405,6 +2435,7 @@
                         </connections>
                     </tableView>
                     <connections>
+                        <outlet property="doubleTapNoteModeSwitch" destination="5UF-dM-pHB" id="RUi-gs-jLF"/>
                         <outlet property="fillInGiveMeSwitch" destination="4cv-Nh-riz" id="0Ff-0c-w39"/>
                         <outlet property="highlightConflictingGuessSwitch" destination="pda-gz-L5g" id="mPs-9t-4En"/>
                         <outlet property="highlightSimilarGuessesSwitch" destination="LZx-qb-W5H" id="oYS-5o-Z26"/>

@@ -19,6 +19,8 @@ extension DefaultsKeys {
     static let highlightConflictingEntries = DefaultsKey<Bool>("highlightConflictingEntries")
     
     static let fillInGiveMes = DefaultsKey<Bool>("fillInGiveMes")
+
+    static let doubleTapToggleNoteMode = DefaultsKey<Bool>("doubleTapToggleNoteMode")
 }
 
 struct Settings {
@@ -45,6 +47,10 @@ struct Settings {
         
         if !Defaults.hasKey(.fillInGiveMes) {
             Defaults[.fillInGiveMes] = false
+        }
+        
+        if !Defaults.hasKey(.doubleTapToggleNoteMode) {
+            Defaults[.doubleTapToggleNoteMode] = true
         }
     }
 }

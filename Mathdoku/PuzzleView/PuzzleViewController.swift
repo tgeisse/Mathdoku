@@ -151,10 +151,9 @@ class PuzzleViewController: UIViewController, UINavigationBarDelegate {
                     friendsToSelectedCell = []
                     selectedCellPosition = nil
                 }
+                
+                highlightGuesses(for: .equal)
             }
-            
-            // highlightCellsWithSameGuess()
-            highlightGuesses(for: .equal)
         }
     }
     
@@ -224,7 +223,9 @@ class PuzzleViewController: UIViewController, UINavigationBarDelegate {
                 
                 // if the tapgesture passed two us is a double tap AND the tapped subviews are the same
                 if recognizer.numberOfTapsRequired == 2 && tappedSubview == secondTappedSubview {
-                    toggleEntryMode()
+                    if Defaults[.doubleTapToggleNoteMode] {
+                        toggleEntryMode()
+                    }
                 } else {
                     // else if the tapGesture was a single click OR a double click with 2 different tapped subviews
                     switch entryMode {
@@ -452,13 +453,13 @@ class PuzzleViewController: UIViewController, UINavigationBarDelegate {
     }
     
     private func highlightGuesses(for allegiance: CellView.GuessAllegiance) {
-        let queueLabel: String
+        let queueName: String
         let identifyCellsNeedingAllegiance: () -> [CellPosition]
         
         DebugUtil.print("a. request to highlight guesses. Setting necessary default vars")
         switch allegiance {
         case .equal:
-            queueLabel = "com.geissefamily.taylor.highlightSame"
+            queueName = "highlightSame"
             identifyCellsNeedingAllegiance = { [weak self] in
                 if let selectedCell = self?.selectedCellPosition,
                     let cellsWithSameGuess = self?.puzzle.identifyCellsWithSameGuessAsCell(selectedCell) {
@@ -469,7 +470,7 @@ class PuzzleViewController: UIViewController, UINavigationBarDelegate {
             }
             
         case .conflict:
-            queueLabel = "com.geissefamily.taylor.highlightConflict"
+            queueName = "highlightConflict"
             identifyCellsNeedingAllegiance = { [weak self] in
                 if let conflictingCells = self?.puzzle.identifyConflictingGuesses() {
                     return conflictingCells
@@ -479,9 +480,10 @@ class PuzzleViewController: UIViewController, UINavigationBarDelegate {
             }
         }
         
+        let queueLabel = "com.geissefamily.taylor.\(queueName)"
         DispatchQueue(label: queueLabel, qos: .userInitiated).async { [weak self] in
             // (1) identify cells with the guess allegiance and remove the allegiance on cells with it
-            DebugUtil.print("1. entered into queue \(queueLabel.components(separatedBy: ".").last ?? "#ERR#"). Clearing cells currently with allegiance")
+            DebugUtil.print("1. entered into queue \(queueName). Clearing cells currently with allegiance")
             DispatchQueue.main.async {
                 DebugUtil.print("b. dispatching to main queue: remove guess allegiance from cells currently holding it")
                 self?.gridRowStacks.forEach {

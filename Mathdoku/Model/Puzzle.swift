@@ -101,24 +101,6 @@ class Puzzle {
         }
     }
     
-    /*
-    func checkIfGuessConflictsWithAnotherCell(forCell cellPosition: CellPosition) -> Bool {
-        let guess = cells[cellPosition.cellId].userGuess ?? -1
-        
-        // check to see if the row has a conflicting number
-        for ii in 0..<size {
-            let rowCellCheckId = cellPosition.row * size + ii
-            let colCellCheckId = cellPosition.col + ii * size
-            
-            if (rowCellCheckId != cellPosition.cellId && cells[rowCellCheckId].userGuess == guess) || (colCellCheckId != cellPosition.cellId && cells[colCellCheckId].userGuess == guess) {
-                return true
-            }
-            
-        }
-        
-        return false
-    }*/
-    
     func getGuessedCellPositionsWithGuessValidation() -> [(cellPosition: CellPosition, correctGuess: Bool)] {
         var guessedCellPositionsWithGuessValidation = [(cellPosition: CellPosition, correctGuess: Bool)]()
         

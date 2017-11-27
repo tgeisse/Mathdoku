@@ -41,8 +41,14 @@ class SettingsViewController: UITableViewController {
 }
     
     @IBOutlet weak var fillInGiveMeSwitch: UISwitch! {
-        didSet{
+        didSet {
             fillInGiveMeSwitch.setOn(Defaults[.fillInGiveMes], animated: false)
+        }
+    }
+    
+    @IBOutlet weak var doubleTapNoteModeSwitch: UISwitch! {
+        didSet {
+            doubleTapNoteModeSwitch.setOn(Defaults[.doubleTapToggleNoteMode], animated: false)
         }
     }
     
@@ -78,6 +84,10 @@ class SettingsViewController: UITableViewController {
             Defaults[.fillInGiveMes] = fillInGiveMeSwitch.isOn
             settingName = "fillInGiveMes"
             settingVariant = "\(Defaults[.fillInGiveMes])"
+        case 7:
+            Defaults[.doubleTapToggleNoteMode] = doubleTapNoteModeSwitch.isOn
+            settingName = "doubleTapMode"
+            settingVariant = "\(Defaults[.doubleTapToggleNoteMode])"
         default:
             settingName = "default"
             settingVariant = "none"

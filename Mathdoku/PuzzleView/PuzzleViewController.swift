@@ -446,35 +446,46 @@ class PuzzleViewController: UIViewController, UINavigationBarDelegate {
     
     private func highlightCellsWithSameGuess() {
         let queue = DispatchQueue(label: "com.geissefamily.taylor.highlightSame", qos: .userInitiated)
+        let puzzleSize = puzzle.size
         
         queue.async { [weak self] in
-            DebugUtil.print("1. just been dispatched into the highlightSame queue. Clearing all flags")
-            DispatchQueue.main.async {
-                DebugUtil.print("a. removing highlights from all cells")
-                // go through the grid and remove equal from all cells
-                self?.gridRowStacks.forEach {
-                    $0.rowCells.forEach {
-                        $0.cell.removeGuessAllegiance(.equal)
+            // sync to the main queue to get an array of cells with the allegiance
+            DebugUtil.print("1. dispatched into the highlightSame queue")
+            var cellsWithAllegiance: [CellPosition] = []
+            DispatchQueue.main.sync {
+                self?.gridRowStacks.enumerated().forEach { (rowIndex, row) in
+                    row.rowCells.enumerated().forEach { (colIndex, col) in
+                        if col.cell.hasGuessAllegiance(.equal) {
+                            cellsWithAllegiance.append(CellPosition(row: rowIndex, col: colIndex, puzzleSize: puzzleSize))
+                        }
                     }
                 }
-                DebugUtil.print("b. done removing highlights from all cells")
             }
-        
-            if Defaults[.highlightSameGuessEntry] {
-                DebugUtil.print("2. user has same guess highlighting enabled")
-                // get the current selected cell's value and the cells with the same guess
-                if let selectedCellPos = self?.selectedCellPosition,
-                    let cellsWithSameGuess = self?.puzzle.identifyCellsWithSameGuessAsCell(selectedCellPos),
-                    cellsWithSameGuess.count > 0 {
-                    // add equal to all of the cells
-                    DebugUtil.print("3. able to find cells with same guess")
-                    DispatchQueue.main.async {
-                        DebugUtil.print("c. dispatched highlighting to main queue")
-                        cellsWithSameGuess.forEach {
-                            self?.gridRowStacks[$0.row].rowCells[$0.col].cell.addGuessAllegiance(.equal)
-                        }
-                        DebugUtil.print("d. done highlighting")
+            DebugUtil.print("2. identified \(cellsWithAllegiance.count) cells currently with allegiance")
+            
+            // now identiy cells that will need the allegiance flag
+            var cellsNeedingAllegiance: [CellPosition] = []
+            if let selectedCell = self?.selectedCellPosition, let cellsWithSameGuess = self?.puzzle.identifyCellsWithSameGuessAsCell(selectedCell) {
+                cellsNeedingAllegiance = cellsWithSameGuess
+            }
+            DebugUtil.print("3. identified \(cellsNeedingAllegiance.count) cells needing the allegiance flag")
+            
+            // cells that need un-highlighting are those that are in the WITH but not in the NEEDING
+            let cellsToUnhighlight = cellsWithAllegiance.filter { !cellsNeedingAllegiance.contains($0) }
+            
+            // check if we have cells to change highlighting
+            if cellsToUnhighlight.count > 0 || cellsNeedingAllegiance.count > 0 {
+                // dispatch back to the main thread the cells needing to have their highlighting changed
+                DebugUtil.print("4. dispatch to main queue to highlight(\(cellsNeedingAllegiance.count)) / unhighlight(\(cellsToUnhighlight.count)) cells")
+                DispatchQueue.main.async {
+                    DebugUtil.print("c. dispatched highlighting to main queue")
+                    cellsToUnhighlight.forEach {
+                        self?.gridRowStacks[$0.row].rowCells[$0.col].cell.removeGuessAllegiance(.equal)
                     }
+                    cellsNeedingAllegiance.forEach {
+                        self?.gridRowStacks[$0.row].rowCells[$0.col].cell.addGuessAllegiance(.equal)
+                    }
+                    DebugUtil.print("d. done highlighting")
                 }
             }
         }
@@ -484,20 +495,44 @@ class PuzzleViewController: UIViewController, UINavigationBarDelegate {
         let queue = DispatchQueue(label: "com.geissefamily.taylor.highlightConflict", qos: .userInitiated)
         
         
-        if Defaults[.highlightConflictingEntries] {
-            // remove the conflicting status from all cells
-            gridRowStacks.forEach {
-                $0.rowCells.forEach {
-                    $0.cell.removeGuessAllegiance(.conflict)
+        queue.async { [weak self] in
+            DebugUtil.print("1. just dispatched into highlightConflict queue. Clearing conflict highlights")
+            // identify cells that are currently highlight to be unhighlighted
+            var cellsToUnhighlight: [CellView] = []
+            DispatchQueue.main.sync {
+                self?.gridRowStacks.forEach {
+                    $0.rowCells.forEach {
+                        if $0.cell.hasGuessAllegiance(.conflict) {
+                            cellsToUnhighlight.append($0.cell)
+                        }
+                    }
+                }
+            }
+            
+            // if we have any cells to unhighlight
+            if cellsToUnhighlight.count > 0 {
+                // then dispatch the unhighlighting to the main queue
+                DispatchQueue.main.async {
+                    DebugUtil.print("a. removing highlights from all cells")
+                    cellsToUnhighlight.forEach {
+                        $0.removeGuessAllegiance(.conflict)
+                    }
+                    DebugUtil.print("b. done removing highlights from all cells")
                 }
             }
             
             // get all of the conflicting cells
-            let conflictingCells = puzzle.identifyConflictingGuesses()
-            
-            // add the conflicting flag to each of the conflicting cells
-            conflictingCells.forEach {
-                gridRowStacks[$0.row].rowCells[$0.col].cell.addGuessAllegiance(.conflict)
+            DebugUtil.print("2. Identifying cells that need to be highlighted")
+            if let conflictingCells = self?.puzzle.identifyConflictingGuesses() {
+                DebugUtil.print("3. able to find cells with same guess")
+                DispatchQueue.main.async {
+                    DebugUtil.print("c. dispatched highlighting to main queue")
+                    // add the conflicting flag to each of the conflicting cells
+                    conflictingCells.forEach {
+                        self?.gridRowStacks[$0.row].rowCells[$0.col].cell.addGuessAllegiance(.conflict)
+                    }
+                    DebugUtil.print("d. done highlighting")
+                }
             }
         }
     }
@@ -787,6 +822,8 @@ class PuzzleViewController: UIViewController, UINavigationBarDelegate {
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
         DebugUtil.print("viewDidAppear")
+        highlightCellsWithSameGuess()
+        highlightConflictingCellGuesses()
         loadingEnded = Date()
     }
     override func viewWillAppear(_ animated: Bool) {
@@ -828,8 +865,6 @@ class PuzzleViewController: UIViewController, UINavigationBarDelegate {
                     setNotesForCells(atPositions: [cellPos], withNotes: noteInts, overridePossibilty: notePossibility)
                 }
             }
-            
-            highlightConflictingCellGuesses()
         } else {
             // the puzzle is not in progress, so reset the guess and notes
             // TODO: we will eventually want to add some logic to this else statement so that it does not always execute

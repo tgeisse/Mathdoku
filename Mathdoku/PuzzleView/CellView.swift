@@ -68,6 +68,10 @@ class CellView: UIView {
     private let defaultTextSizeForGuess: CGFloat = 55.0
     private let defaultTextSizeForNotes: CGFloat = 36.0
     
+    func hasGuessAllegiance(_ allegiance: GuessAllegiance) -> Bool {
+        return guessAllegiance & allegiance.rawValue > 0
+    }
+    
     func addGuessAllegiance(_ allegiance: GuessAllegiance) {
         guessAllegiance = guessAllegiance | allegiance.rawValue
     }

@@ -1986,7 +1986,7 @@
             </objects>
             <point key="canvasLocation" x="1963.4765624999998" y="-379.6875"/>
         </scene>
-        <!--Main Menu-->
+        <!--Puzzle Selection View Controller-->
         <scene sceneID="7If-lw-KqK">
             <objects>
                 <viewController id="sGM-lu-8rP" customClass="PuzzleSelectionViewController" customModule="Mathdoku" customModuleProvider="target" sceneMemberID="viewController">
@@ -2183,7 +2183,9 @@
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="fh5-SD-W4q"/>
                     </view>
-                    <navigationItem key="navigationItem" title="Main Menu" id="ncW-pq-VLM"/>
+                    <navigationItem key="navigationItem" id="ncW-pq-VLM">
+                        <barButtonItem key="backBarButtonItem" title="Main Menu" id="dpC-4c-Vb8"/>
+                    </navigationItem>
                     <connections>
                         <outlet property="puzzlesRemainingLabel" destination="r3V-fF-OKm" id="AQP-oW-ALB"/>
                         <outlet property="startPuzzle" destination="eWV-Pc-I3t" id="GZ2-yr-dRw"/>
@@ -2201,7 +2203,7 @@
             </objects>
             <point key="canvasLocation" x="1062" y="421"/>
         </scene>
-        <!--Settings View Controller-->
+        <!--Settings-->
         <scene sceneID="sxR-ip-7MJ">
             <objects>
                 <tableViewController id="YgF-xD-UUZ" customClass="SettingsViewController" customModule="Mathdoku" customModuleProvider="target" sceneMemberID="viewController">
@@ -2225,8 +2227,8 @@
                                                         <action selector="switchValueChanged:" destination="YgF-xD-UUZ" eventType="valueChanged" id="vHl-b6-bQU"/>
                                                     </connections>
                                                 </switch>
-                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Select single cell during note entry" textAlignment="natural" lineBreakMode="wordWrap" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="VQ7-pm-fRj">
-                                                    <rect key="frame" x="16" y="11" width="264.5" height="20.5"/>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Select one cell while entering notes" textAlignment="natural" lineBreakMode="wordWrap" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="VQ7-pm-fRj">
+                                                    <rect key="frame" x="16" y="11" width="270.5" height="20.5"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                     <nil key="textColor"/>
                                                     <nil key="highlightedColor"/>
@@ -2279,8 +2281,8 @@
                                             <rect key="frame" x="0.0" y="0.0" width="375" height="43.5"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
-                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Double tap to enter note mode" textAlignment="natural" lineBreakMode="wordWrap" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="RXp-f6-60u">
-                                                    <rect key="frame" x="16" y="11" width="234.5" height="20.5"/>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Double tap to toggle note mode" textAlignment="natural" lineBreakMode="wordWrap" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="RXp-f6-60u">
+                                                    <rect key="frame" x="16" y="11" width="243" height="20.5"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                     <nil key="textColor"/>
                                                     <nil key="highlightedColor"/>
@@ -2379,8 +2381,8 @@
                                                         <action selector="switchValueChanged:" destination="YgF-xD-UUZ" eventType="valueChanged" id="uCD-RI-cIZ"/>
                                                     </connections>
                                                 </switch>
-                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Highlight guess if it conflicts" textAlignment="natural" lineBreakMode="wordWrap" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="uga-Qo-Evp">
-                                                    <rect key="frame" x="16" y="11" width="216.5" height="20.5"/>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Highlight conflicting guesses" textAlignment="natural" lineBreakMode="wordWrap" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="uga-Qo-Evp">
+                                                    <rect key="frame" x="16" y="11" width="221.5" height="20.5"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                     <nil key="textColor"/>
                                                     <nil key="highlightedColor"/>
@@ -2434,6 +2436,7 @@
                             <outlet property="delegate" destination="YgF-xD-UUZ" id="Cv6-mH-3JW"/>
                         </connections>
                     </tableView>
+                    <navigationItem key="navigationItem" title="Settings" id="DH5-ph-4wk"/>
                     <connections>
                         <outlet property="doubleTapNoteModeSwitch" destination="5UF-dM-pHB" id="RUi-gs-jLF"/>
                         <outlet property="fillInGiveMeSwitch" destination="4cv-Nh-riz" id="0Ff-0c-w39"/>
@@ -3609,7 +3612,7 @@
         <image name="Validate" width="24" height="24"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="Pxp-fq-W8Y"/>
-        <segue reference="dLt-uX-8yK"/>
+        <segue reference="XBZ-Fs-Oh5"/>
+        <segue reference="v3n-3L-gwk"/>
     </inferredMetricsTieBreakers>
 </document>

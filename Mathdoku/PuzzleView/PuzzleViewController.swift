@@ -419,6 +419,7 @@ class PuzzleViewController: UIViewController, UINavigationBarDelegate {
     // MARK: - User Assisting Functions
     private func fillInUnitCells() {
         if Defaults[.fillInGiveMes] {
+            DebugUtil.print("filling in give me / unit cells")
             puzzle.getUnitCellsWithAnswers().forEach {
                 setGuessForCells(atPositions: [$0.cell], withAnswer: $0.answer)
             }

@@ -39,6 +39,8 @@
 		9568B3111FC0F244000502A4 /* Colors.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9568B3101FC0F244000502A4 /* Colors.swift */; };
 		9568B3131FC1FE46000502A4 /* StoreKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9568B3121FC1FE46000502A4 /* StoreKit.framework */; };
 		9568B3151FC1FF2B000502A4 /* AdSupport.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9568B3141FC1FF1A000502A4 /* AdSupport.framework */; };
+		956CB0461FCD478200FDB589 /* NewInterface.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 956CB0451FCD478200FDB589 /* NewInterface.storyboard */; };
+		956CB0481FCFD94700FDB589 /* TutorialSinglePageViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 956CB0471FCFD94700FDB589 /* TutorialSinglePageViewController.swift */; };
 		956ED5E71EECA1490030B7FC /* Settings.bundle in Resources */ = {isa = PBXBuildFile; fileRef = 956ED5E61EECA1490030B7FC /* Settings.bundle */; };
 		9572FDC41FBD500300963CFD /* Settings.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9572FDC31FBD500300963CFD /* Settings.swift */; };
 		959632E41ED115A100CAFC5D /* CellPosition.swift in Sources */ = {isa = PBXBuildFile; fileRef = 959632E31ED115A100CAFC5D /* CellPosition.swift */; };
@@ -119,6 +121,8 @@
 		9568B3101FC0F244000502A4 /* Colors.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Colors.swift; sourceTree = "<group>"; };
 		9568B3121FC1FE46000502A4 /* StoreKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = StoreKit.framework; path = System/Library/Frameworks/StoreKit.framework; sourceTree = SDKROOT; };
 		9568B3141FC1FF1A000502A4 /* AdSupport.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AdSupport.framework; path = System/Library/Frameworks/AdSupport.framework; sourceTree = SDKROOT; };
+		956CB0451FCD478200FDB589 /* NewInterface.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = NewInterface.storyboard; sourceTree = "<group>"; };
+		956CB0471FCFD94700FDB589 /* TutorialSinglePageViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TutorialSinglePageViewController.swift; sourceTree = "<group>"; };
 		956ED5E61EECA1490030B7FC /* Settings.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; path = Settings.bundle; sourceTree = "<group>"; };
 		9572FDC31FBD500300963CFD /* Settings.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Settings.swift; sourceTree = "<group>"; };
 		959632E31ED115A100CAFC5D /* CellPosition.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CellPosition.swift; sourceTree = "<group>"; };
@@ -255,6 +259,7 @@
 				95C082631EB1ACE3008B7C2E /* PuzzleSelectionViewController.swift */,
 				9544E33C1F001E8000F37ED7 /* HowToPlayPageViewController.swift */,
 				9598A3A11FBC020800AE48E2 /* SettingsViewController.swift */,
+				956CB0471FCFD94700FDB589 /* TutorialSinglePageViewController.swift */,
 			);
 			name = "Menu View Controllers";
 			path = MenuViewControllers;
@@ -316,6 +321,7 @@
 				95A196201ED2A3130038D40C /* RealmModel */,
 				95FBB8DA1E9AD13F00B0E662 /* AppDelegate.swift */,
 				95FBB8DE1E9AD13F00B0E662 /* Main.storyboard */,
+				956CB0451FCD478200FDB589 /* NewInterface.storyboard */,
 				956505EA1EDFD67300C97D73 /* LaunchScreen.storyboard */,
 				95FBB8E11E9AD13F00B0E662 /* Assets.xcassets */,
 				95F869061FC3E923006D3921 /* GoogleService-Info.plist */,
@@ -425,6 +431,7 @@
 				956ED5E71EECA1490030B7FC /* Settings.bundle in Resources */,
 				956505EB1EDFD67300C97D73 /* LaunchScreen.storyboard in Resources */,
 				95F869071FC3E923006D3921 /* GoogleService-Info.plist in Resources */,
+				956CB0461FCD478200FDB589 /* NewInterface.storyboard in Resources */,
 				95FBB8E21E9AD13F00B0E662 /* Assets.xcassets in Resources */,
 				95FBB8E01E9AD13F00B0E662 /* Main.storyboard in Resources */,
 			);
@@ -506,6 +513,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				956CB0481FCFD94700FDB589 /* TutorialSinglePageViewController.swift in Sources */,
 				95FFC6D51F118CA300DF964A /* AdViewController.swift in Sources */,
 				9502E5CC1EEDF66E0048BE1B /* AppleReceiptValidator.swift in Sources */,
 				9502E5CE1EEDF66E0048BE1B /* InAppProductQueryRequest.swift in Sources */,

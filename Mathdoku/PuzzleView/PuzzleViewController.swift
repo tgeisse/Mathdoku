@@ -452,14 +452,16 @@ class PuzzleViewController: UIViewController, UINavigationBarDelegate {
         }
     }
     
+    private let highlightSameQueue = DispatchQueue(label: "com.geissefamily.taylor.highlightSame", qos: .userInitiated)
+    private let highlightConflictQueue = DispatchQueue(label: "com.geissefamily.taylor.highlightConflict", qos: .userInitiated)
     private func highlightGuesses(for allegiance: CellView.GuessAllegiance) {
-        let queueName: String
+        let queue: DispatchQueue
         let identifyCellsNeedingAllegiance: () -> [CellPosition]
         
         DebugUtil.print("a. request to highlight guesses. Setting necessary default vars")
         switch allegiance {
         case .equal:
-            queueName = "highlightSame"
+            queue = highlightSameQueue
             identifyCellsNeedingAllegiance = { [weak self] in
                 if let selectedCell = self?.selectedCellPosition,
                     let cellsWithSameGuess = self?.puzzle.identifyCellsWithSameGuessAsCell(selectedCell) {
@@ -470,7 +472,7 @@ class PuzzleViewController: UIViewController, UINavigationBarDelegate {
             }
             
         case .conflict:
-            queueName = "highlightConflict"
+            queue = highlightConflictQueue
             identifyCellsNeedingAllegiance = { [weak self] in
                 if let conflictingCells = self?.puzzle.identifyConflictingGuesses() {
                     return conflictingCells
@@ -480,8 +482,7 @@ class PuzzleViewController: UIViewController, UINavigationBarDelegate {
             }
         }
         
-        let queueLabel = "com.geissefamily.taylor.\(queueName)"
-        DispatchQueue(label: queueLabel, qos: .userInitiated).async { [weak self] in
+        queue.async { [weak self] in
             // (1) identify cells with the guess allegiance and remove the allegiance on cells with it
             DebugUtil.print("1. entered into queue \(queueName). Clearing cells currently with allegiance")
             DispatchQueue.main.async {

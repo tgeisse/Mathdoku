@@ -454,14 +454,17 @@ class PuzzleViewController: UIViewController, UINavigationBarDelegate {
     
     private let highlightSameQueue = DispatchQueue(label: "com.geissefamily.taylor.highlightSame", qos: .userInitiated)
     private let highlightConflictQueue = DispatchQueue(label: "com.geissefamily.taylor.highlightConflict", qos: .userInitiated)
+    private let highlightRequests = HighlightRequestQueue()
     private func highlightGuesses(for allegiance: CellView.GuessAllegiance) {
         let queue: DispatchQueue
+        let queueName: String
         let identifyCellsNeedingAllegiance: () -> [CellPosition]
         
         DebugUtil.print("a. request to highlight guesses. Setting necessary default vars")
         switch allegiance {
         case .equal:
             queue = highlightSameQueue
+            queueName = "highlightSame"
             identifyCellsNeedingAllegiance = { [weak self] in
                 if let selectedCell = self?.selectedCellPosition,
                     let cellsWithSameGuess = self?.puzzle.identifyCellsWithSameGuessAsCell(selectedCell) {
@@ -473,6 +476,7 @@ class PuzzleViewController: UIViewController, UINavigationBarDelegate {
             
         case .conflict:
             queue = highlightConflictQueue
+            queueName = "highlightConflict"
             identifyCellsNeedingAllegiance = { [weak self] in
                 if let conflictingCells = self?.puzzle.identifyConflictingGuesses() {
                     return conflictingCells
@@ -482,35 +486,46 @@ class PuzzleViewController: UIViewController, UINavigationBarDelegate {
             }
         }
         
+        highlightRequests.addRequest(for: allegiance)
         queue.async { [weak self] in
-            // (1) identify cells with the guess allegiance and remove the allegiance on cells with it
-            DebugUtil.print("1. entered into queue \(queueName). Clearing cells currently with allegiance")
-            DispatchQueue.main.async {
-                DebugUtil.print("b. dispatching to main queue: remove guess allegiance from cells currently holding it")
-                self?.gridRowStacks.forEach {
-                    $0.rowCells.forEach {
-                        if $0.cell.hasGuessAllegiance(allegiance) {
-                            $0.cell.removeGuessAllegiance(allegiance)
+            // (1) see how many outstanding requests to highlight this type of allegiance
+            let outstandingRequests = self?.highlightRequests.numberRequests(for: allegiance) ?? 0
+            DebugUtil.print("1. entered into queue \(queueName). There are \(outstandingRequests) outstanding requests to process")
+            
+            if outstandingRequests > 0 {
+                // (2) identify cells with the guess allegiance and remove the allegiance on cells with it
+                DebugUtil.print("2. have highlight requests for allegiance \(queueName). Clearing current allegiance flags")
+                DispatchQueue.main.async {
+                    DebugUtil.print("b. dispatching to main queue: remove guess allegiance \(queueName) from cells currently holding it")
+                    self?.gridRowStacks.forEach {
+                        $0.rowCells.forEach {
+                            if $0.cell.hasGuessAllegiance(allegiance) {
+                                $0.cell.removeGuessAllegiance(allegiance)
+                            }
                         }
                     }
+                    DebugUtil.print("c. done removing guess allegiance \(queueName) from cells")
                 }
-                DebugUtil.print("c. done removing guess allegiance from cells")
-            }
-            
-            // (2) identify cells needing the allegiance flag set
-            DebugUtil.print("2. identifying cells needing allegiance flag set")
-            let cellsNeedingAllegiance = identifyCellsNeedingAllegiance()
-            
-            // (3) if we have cells needing the allegiance, then dispatch back to main queue and make updates
-            DebugUtil.print("3. identified \(cellsNeedingAllegiance.count) cell\(cellsNeedingAllegiance.count == 1 ? "" : "s") needing allegiance flag set")
-            if cellsNeedingAllegiance.count > 0 {
-                DispatchQueue.main.async {
-                    DebugUtil.print("d. on main queue to add cell allegiance flag")
-                    cellsNeedingAllegiance.forEach {
-                        self?.gridRowStacks[$0.row].rowCells[$0.col].cell.addGuessAllegiance(allegiance)
+                
+                // (3) identify cells needing the allegiance flag set
+                DebugUtil.print("3. identifying cells needing allegiance flag set")
+                let cellsNeedingAllegiance = identifyCellsNeedingAllegiance()
+                
+                // (4) if we have cells needing the allegiance, then dispatch back to main queue and make updates
+                DebugUtil.print("4. identified \(cellsNeedingAllegiance.count) cell\(cellsNeedingAllegiance.count == 1 ? "" : "s") needing allegiance flag set")
+                if cellsNeedingAllegiance.count > 0 {
+                    DispatchQueue.main.async {
+                        DebugUtil.print("d. on main queue to add cell allegiance flag \(queueName)")
+                        cellsNeedingAllegiance.forEach {
+                            self?.gridRowStacks[$0.row].rowCells[$0.col].cell.addGuessAllegiance(allegiance)
+                        }
+                        DebugUtil.print("e. finished adding allegiance flag \(queueName)")
                     }
-                    DebugUtil.print("e. finished adding allegiance flag")
                 }
+                
+                // (5) clearing the request queue for the allegiance
+                self?.highlightRequests.clearRequests(for: allegiance)
+                DebugUtil.print("5. cleared requests queue for allegiance \(queueName)")
             }
         }
     }

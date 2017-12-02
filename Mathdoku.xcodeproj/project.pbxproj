@@ -41,6 +41,7 @@
 		9568B3151FC1FF2B000502A4 /* AdSupport.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9568B3141FC1FF1A000502A4 /* AdSupport.framework */; };
 		956CB0461FCD478200FDB589 /* NewInterface.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 956CB0451FCD478200FDB589 /* NewInterface.storyboard */; };
 		956CB0481FCFD94700FDB589 /* TutorialSinglePageViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 956CB0471FCFD94700FDB589 /* TutorialSinglePageViewController.swift */; };
+		956CB04A1FD1ADE400FDB589 /* HighlightRequestQueue.swift in Sources */ = {isa = PBXBuildFile; fileRef = 956CB0491FD1ADE400FDB589 /* HighlightRequestQueue.swift */; };
 		956ED5E71EECA1490030B7FC /* Settings.bundle in Resources */ = {isa = PBXBuildFile; fileRef = 956ED5E61EECA1490030B7FC /* Settings.bundle */; };
 		9572FDC41FBD500300963CFD /* Settings.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9572FDC31FBD500300963CFD /* Settings.swift */; };
 		959632E41ED115A100CAFC5D /* CellPosition.swift in Sources */ = {isa = PBXBuildFile; fileRef = 959632E31ED115A100CAFC5D /* CellPosition.swift */; };
@@ -123,6 +124,7 @@
 		9568B3141FC1FF1A000502A4 /* AdSupport.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AdSupport.framework; path = System/Library/Frameworks/AdSupport.framework; sourceTree = SDKROOT; };
 		956CB0451FCD478200FDB589 /* NewInterface.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = NewInterface.storyboard; sourceTree = "<group>"; };
 		956CB0471FCFD94700FDB589 /* TutorialSinglePageViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TutorialSinglePageViewController.swift; sourceTree = "<group>"; };
+		956CB0491FD1ADE400FDB589 /* HighlightRequestQueue.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HighlightRequestQueue.swift; sourceTree = "<group>"; };
 		956ED5E61EECA1490030B7FC /* Settings.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; path = Settings.bundle; sourceTree = "<group>"; };
 		9572FDC31FBD500300963CFD /* Settings.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Settings.swift; sourceTree = "<group>"; };
 		959632E31ED115A100CAFC5D /* CellPosition.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CellPosition.swift; sourceTree = "<group>"; };
@@ -220,6 +222,7 @@
 		9555608E1ECEBE53006C9F2D /* Model */ = {
 			isa = PBXGroup;
 			children = (
+				956CB0491FD1ADE400FDB589 /* HighlightRequestQueue.swift */,
 				959632E31ED115A100CAFC5D /* CellPosition.swift */,
 				95FBB9091E9AD97300B0E662 /* Puzzle.swift */,
 				95B41B8A1E9CAB94003D8C28 /* Cage.swift */,
@@ -545,6 +548,7 @@
 				95F1A4561EEFB50B0019CBE6 /* StoreProductContainerView.swift in Sources */,
 				9502E5CF1EEDF66E0048BE1B /* InAppReceipt.swift in Sources */,
 				9502E5D11EEDF66E0048BE1B /* InAppReceiptVerificator.swift in Sources */,
+				956CB04A1FD1ADE400FDB589 /* HighlightRequestQueue.swift in Sources */,
 				9568B3111FC0F244000502A4 /* Colors.swift in Sources */,
 				9502E5D81EEDF66E0048BE1B /* ProductsInfoController.swift in Sources */,
 				9598A3A51FBC1B9400AE48E2 /* SwiftyUserDefaults.swift in Sources */,

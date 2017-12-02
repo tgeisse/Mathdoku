@@ -13,34 +13,6 @@ import StoreKit
 typealias PuzzlePurchaseTuple = (product: SKProduct, buysAllowance: Int)
 
 struct PuzzlePurchase {
-    /*
-    fileprivate static var loadedPuzzleProducts = [PuzzlePurchaseTuple]()
-    
-    static func purchaseOptionsAlertForLoadedProducts() -> UIAlertController {
-        let alert = UIAlertController(title: "Select Puzzle Pack", message: "How many additional puzzles would you like?", preferredStyle: .actionSheet)
-        
-        for productTuple in loadedPuzzleProducts.sorted(by: { $0.buysAllowance < $1.buysAllowance })
-        {
-            alert.addAction(UIAlertAction(title: productTuple.product.localizedTitle + " - " + productTuple.product.localizedPrice!, style: .default, handler: { action in
-                
-                switch action.style {
-                case .default:
-                    DebugUtil.print("alert default case")
-                    initiateIAPForPuzzleProduct(productTuple.product, buysAllowance: productTuple.buysAllowance)
-                case .cancel:
-                    DebugUtil.print("alert cancel case")
-                case .destructive:
-                    DebugUtil.print("alert destructive case")
-                }
-                
-            }))
-        }
-        
-        alert.addAction(UIAlertAction(title: "Cancel Purchase", style: .cancel))
-        
-        return alert
-    } */
-    
     static func weeklyPuzzleAllowanceGrantAvailable(withPuzzleAllowance withAllowance: Allowances? = nil,
                                                     withRealm: Realm? = nil) -> Bool {
         

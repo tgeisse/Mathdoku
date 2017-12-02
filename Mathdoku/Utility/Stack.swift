@@ -9,7 +9,7 @@
 import Foundation
 
 struct Stack<T> {
-    var items = [T]()
+    private var items = [T]()
     
     mutating func push(_ item: T) {
         items.append(item)
@@ -17,6 +17,12 @@ struct Stack<T> {
     
     mutating func pop() -> T {
         return items.removeLast()
+    }
+    
+    mutating func popAll() -> [T] {
+        let stackCopy = items
+        items = []
+        return stackCopy
     }
     
     var peek: T? {

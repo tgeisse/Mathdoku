@@ -39,7 +39,6 @@
 		9568B3111FC0F244000502A4 /* Colors.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9568B3101FC0F244000502A4 /* Colors.swift */; };
 		9568B3131FC1FE46000502A4 /* StoreKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9568B3121FC1FE46000502A4 /* StoreKit.framework */; };
 		9568B3151FC1FF2B000502A4 /* AdSupport.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9568B3141FC1FF1A000502A4 /* AdSupport.framework */; };
-		956CB0461FCD478200FDB589 /* NewInterface.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 956CB0451FCD478200FDB589 /* NewInterface.storyboard */; };
 		956CB0481FCFD94700FDB589 /* TutorialSinglePageViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 956CB0471FCFD94700FDB589 /* TutorialSinglePageViewController.swift */; };
 		956CB04A1FD1ADE400FDB589 /* HighlightRequestQueue.swift in Sources */ = {isa = PBXBuildFile; fileRef = 956CB0491FD1ADE400FDB589 /* HighlightRequestQueue.swift */; };
 		956ED5E71EECA1490030B7FC /* Settings.bundle in Resources */ = {isa = PBXBuildFile; fileRef = 956ED5E61EECA1490030B7FC /* Settings.bundle */; };
@@ -122,7 +121,6 @@
 		9568B3101FC0F244000502A4 /* Colors.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Colors.swift; sourceTree = "<group>"; };
 		9568B3121FC1FE46000502A4 /* StoreKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = StoreKit.framework; path = System/Library/Frameworks/StoreKit.framework; sourceTree = SDKROOT; };
 		9568B3141FC1FF1A000502A4 /* AdSupport.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AdSupport.framework; path = System/Library/Frameworks/AdSupport.framework; sourceTree = SDKROOT; };
-		956CB0451FCD478200FDB589 /* NewInterface.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = NewInterface.storyboard; sourceTree = "<group>"; };
 		956CB0471FCFD94700FDB589 /* TutorialSinglePageViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TutorialSinglePageViewController.swift; sourceTree = "<group>"; };
 		956CB0491FD1ADE400FDB589 /* HighlightRequestQueue.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HighlightRequestQueue.swift; sourceTree = "<group>"; };
 		956ED5E61EECA1490030B7FC /* Settings.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; path = Settings.bundle; sourceTree = "<group>"; };
@@ -324,7 +322,6 @@
 				95A196201ED2A3130038D40C /* RealmModel */,
 				95FBB8DA1E9AD13F00B0E662 /* AppDelegate.swift */,
 				95FBB8DE1E9AD13F00B0E662 /* Main.storyboard */,
-				956CB0451FCD478200FDB589 /* NewInterface.storyboard */,
 				956505EA1EDFD67300C97D73 /* LaunchScreen.storyboard */,
 				95FBB8E11E9AD13F00B0E662 /* Assets.xcassets */,
 				95F869061FC3E923006D3921 /* GoogleService-Info.plist */,
@@ -434,7 +431,6 @@
 				956ED5E71EECA1490030B7FC /* Settings.bundle in Resources */,
 				956505EB1EDFD67300C97D73 /* LaunchScreen.storyboard in Resources */,
 				95F869071FC3E923006D3921 /* GoogleService-Info.plist in Resources */,
-				956CB0461FCD478200FDB589 /* NewInterface.storyboard in Resources */,
 				95FBB8E21E9AD13F00B0E662 /* Assets.xcassets in Resources */,
 				95FBB8E01E9AD13F00B0E662 /* Main.storyboard in Resources */,
 			);

@@ -11,6 +11,7 @@ import Foundation
 struct DebugUtil {
     static func print(_ items: Any..., separator: String = " ", terminator: String = "\n", function: String = #function) {
         #if DEBUG
+    
             
             var idx = items.startIndex
             let endIdx = items.endIndex

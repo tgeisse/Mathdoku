@@ -19,114 +19,80 @@ class PuzzleLoader {
     private let puzzlesPerFile = 4000
     private var preloadedPuzzles: Dictionary<Int, Set<PreloadedPuzzle>> = [:]
     
-    class func getPuzzleForSize(_ size: Int, atPuzzleCount: Int) -> PuzzleLoaderStatusCode {
-        return .error("Not implemented yet")
+    // Saving JSON files that have been loaded into memory so they don't have to be loaded again
+    private var loadedJSONS: Dictionary<String, JSON> = [:]
+    private var loadedPuzzles: Dictionary<String, Puzzle> = [:]
+    
+    // ID Forming Closures
+    private let createPuzzleId: (Int, Int) -> String = { (size, pId) in
+        return "\(size)-\(pId)"
     }
     
-    /// Preload a puzzle of a certain size given a puzzle ID. If a puzzle with the same puzzle ID is
-    /// already preloaded, then this function will not load it a second time
-    ///
-    /// - Parameter size: the size of the puzzle grid
-    /// - Parameter withPuzzleId: the puzzle ID to preload
-    func preloadPuzzleForSize(_ size: Int, withPuzzleId pId: Int) {
-        DispatchQueue.global(qos: .background).async { [weak self] in
-            DebugUtil.print("about to take the lock")
-            objc_sync_enter(self)
-            DebugUtil.print("took the lock")
-            
-            // let's track that the number was changed only when the user selected a size
+    // Dispatch Queue for any puzzle loading and fetching. Needs to be sequel
+    private let queue = DispatchQueue(label: "com.geissefamily.taylor.puzzleLoader", qos: .userInitiated)
+    
+    func preloadPuzzle(forSize size: Int, withPuzzleId pId: Int) {
+        // create the puzzle Id used to identify the puzzle in the dictinoary
+        let puzzleId = createPuzzleId(size, pId)
+        
+        queue.async { [weak self] in
+            // track what puzzle sizes are getting preloaded.
             Analytics.logEvent(AnalyticsEventSelectContent, parameters: [
-                AnalyticsParameterItemID: "id-loadPuzzle",
+                AnalyticsParameterItemID: "id-preloadPuzzle",
                 AnalyticsParameterItemName: "puzzleSize-\(size)",
                 AnalyticsParameterItemVariant: "\(pId)"
                 ])
             
-            if self?.preloadedPuzzles[size] == nil {
-                self?.preloadedPuzzles[size] = Set()
+            if self?.loadedPuzzles[puzzleId] == nil {
+                // we don't have the puzzle loaded already
+                self?.loadedPuzzles[puzzleId] = self?.loadPuzzleFromJson(forSize: size, withPuzzleId: pId)
             }
-            
-            if self?.preloadedPuzzles[size]?.filter({ $0.puzzleId == pId }).count == 0 {
-                // we don't have a puzzle loaded yet for this pId, so let's do that
-                if let newPuzzle = self?.loadNewPuzzleFromJSON(puzzleSize: size, withPuzzleId: pId) {
-                    let puzzle = PreloadedPuzzle(puzzleId: pId,
-                                                 solution: newPuzzle.solution,
-                                                 cageGrid: newPuzzle.cageGrid,
-                                                 cageOps: newPuzzle.cageOps)
-                    
-                    self?.preloadedPuzzles[size]?.insert(puzzle)
-                }
-            }
-            
-            DebugUtil.print("about to release the lock")
-            objc_sync_exit(self)
-            DebugUtil.print("released the lock")
         }
     }
     
-    /// Loads a new puzzle, either from memory or new from the file, and returns a puzzle parsed object.
-    ///
-    /// - Parameters:
-    ///   - size: the size of the puzzle grid
-    ///   - pId: the puzzle ID to be loaded
-    /// - Returns: the puzzle object
-    func loadNewPuzzleForSize(_ size: Int, withPuzzleId pId: Int) -> Puzzle {
-        let newPuzzle: (solution: String, cageGrid: String, cageOps: String)
-
-        DebugUtil.print("about to take the lock")
-        objc_sync_enter(self)
-        DebugUtil.print("took the lock")
+    func fetchPuzzle(forSize size: Int, withPuzzleId pId: Int) -> Puzzle {
+        var returnPuzzle: Puzzle!
+        let puzzleId = createPuzzleId(size, pId)
         
-        let preloadedPuzzlesForSize = preloadedPuzzles[size]?.filter({ $0.puzzleId == pId })
+        queue.sync {
+            Analytics.logEvent(AnalyticsEventSelectContent, parameters: [
+                AnalyticsParameterItemID: "id-fetchPuzzle",
+                AnalyticsParameterItemName: "puzzleSize-\(size)",
+                AnalyticsParameterItemVariant: "\(pId)"
+                ])
+            
+            returnPuzzle = loadedPuzzles[puzzleId] ?? loadPuzzleFromJson(forSize: size, withPuzzleId: pId)
+        }
         
-        if preloadedPuzzlesForSize?.count != 0, let puzzleForId = preloadedPuzzlesForSize?[0] {
-            // if we have a preloaded puzzle with our puzzle ID, then we can use that
-            DebugUtil.print("Loading a pre-loaded puzzle for pid: \(pId)")
-            newPuzzle = (puzzleForId.solution, puzzleForId.cageGrid, puzzleForId.cageOps)
+        return returnPuzzle
+    }
+    
+    private func loadPuzzleFromJson(forSize size: Int, withPuzzleId pId: Int) -> Puzzle {
+        // create the resource Id, used for loading the resource and for storing the preloaded JSON
+        let resourceId = "\(size)all-\(1 + (pId / puzzlesPerFile))"
+        let relativePuzzleId = pId % puzzlesPerFile
+        
+        let puzzleJsonObj = loadedJSONS[resourceId] ?? loadJsonFromDataAsset(resourceName: resourceId)
+        let decompiledPuzzle = puzzleJsonObj["puzzles"][relativePuzzleId]
+        
+        if let solution = decompiledPuzzle["solution"].string,
+            let cageGrid = decompiledPuzzle["cageGrid"].string,
+            let cageOps = decompiledPuzzle["cageOps"].string {
+            
+            return parseNewPuzzleFromStrings(puzzleSize: size, puzzleSolution: solution, puzzleCageGrid: cageGrid, puzzleCages: cageOps)
         } else {
-            // otherwise, load a new one
-            DebugUtil.print("Loading a new puzzle for pid: \(pId)")
-            newPuzzle = loadNewPuzzleFromJSON(puzzleSize: size, withPuzzleId: pId)!
-        }
-        
-        DebugUtil.print("about to release the lock")
-        objc_sync_exit(self)
-        DebugUtil.print("released the lock")
-        
-        return parseNewPuzzleFromStrings(puzzleSize: size, puzzleSolution: newPuzzle.solution, puzzleCageGrid: newPuzzle.cageGrid, puzzleCages: newPuzzle.cageOps)
-    }
-    
-    /// Purges all preloaded puzzles.
-    func purgePreloadedPuzzles() {
-        for key in preloadedPuzzles.keys {
-            preloadedPuzzles[key]! = Set()
+            return parseNewPuzzleFromStrings(puzzleSize: size, puzzleSolution: "", puzzleCageGrid: "", puzzleCages: "")
         }
     }
     
-    /// This function will load the puzzle from a JSON file.
-    ///
-    /// - Parameters:
-    ///   - size: the size the puzzle grid
-    ///   - pId: the puzzle ID to load
-    /// - Returns: the puzzle represented as flat strings
-    private func loadNewPuzzleFromJSON(puzzleSize size: Int, withPuzzleId pId: Int) -> (solution: String, cageGrid: String, cageOps: String)? {
-        let puzzleResource = "\(size)all-1"
-        
-        DebugUtil.print("Entering JSON loader and attempting to load json: \(puzzleResource) @ \(pId)")
-        
-        if let asset = NSDataAsset(name: puzzleResource, bundle: Bundle.main) {
-            do {
-                let jsonObj = try JSON(data: asset.data)
-                let puzzle = jsonObj["puzzles"][pId]
-                
-                if let solution = puzzle["solution"].string, let cageGrid = puzzle["cageGrid"].string, let cageOps = puzzle["cageOps"].string {
-                    return (solution, cageGrid, cageOps)
-                }
-            } catch let error {
-                DebugUtil.print(error.localizedDescription)
-            }
+    private func loadJsonFromDataAsset(resourceName resource: String) -> JSON {
+        let dataAsset = NSDataAsset(name: resource, bundle: Bundle.main)
+        do {
+            let jsonObj = try JSON(data: dataAsset!.data)
+            return jsonObj
+        } catch let error {
+            fatalError("Unable to locate the asset with name \(resource) - \(error)")
         }
-        
-        return nil
     }
     
     /// Given a flat representation of a puzzle, this function will parse the strings into a Puzzle object.
@@ -180,7 +146,119 @@ class PuzzleLoader {
         }
         
         return Puzzle(size: size, cells: cells, cages: cages)
+        
+    }
+    
+    // MARK: - Older Functions being replaced
+    
+    /// Preload a puzzle of a certain size given a puzzle ID. If a puzzle with the same puzzle ID is
+    /// already preloaded, then this function will not load it a second time
+    ///
+    /// - Parameter size: the size of the puzzle grid
+    /// - Parameter withPuzzleId: the puzzle ID to preload
+    @available(*, deprecated, message: "Use preloadPuzzle()")
+    func preloadPuzzleForSize(_ size: Int, withPuzzleId pId: Int) {
+        DispatchQueue.global(qos: .background).async { [weak self] in
+            DebugUtil.print("about to take the lock")
+            objc_sync_enter(self)
+            DebugUtil.print("took the lock")
+            
+            // let's track that the number was changed only when the user selected a size
+            Analytics.logEvent(AnalyticsEventSelectContent, parameters: [
+                AnalyticsParameterItemID: "id-loadPuzzle",
+                AnalyticsParameterItemName: "puzzleSize-\(size)",
+                AnalyticsParameterItemVariant: "\(pId)"
+                ])
+            
+            if self?.preloadedPuzzles[size] == nil {
+                self?.preloadedPuzzles[size] = Set()
+            }
+            
+            if self?.preloadedPuzzles[size]?.filter({ $0.puzzleId == pId }).count == 0 {
+                // we don't have a puzzle loaded yet for this pId, so let's do that
+                if let newPuzzle = self?.loadNewPuzzleFromJSON(puzzleSize: size, withPuzzleId: pId) {
+                    let puzzle = PreloadedPuzzle(puzzleId: pId,
+                                                 solution: newPuzzle.solution,
+                                                 cageGrid: newPuzzle.cageGrid,
+                                                 cageOps: newPuzzle.cageOps)
+                    
+                    self?.preloadedPuzzles[size]?.insert(puzzle)
+                }
+            }
+            
+            DebugUtil.print("about to release the lock")
+            objc_sync_exit(self)
+            DebugUtil.print("released the lock")
+        }
+    }
+    
+    /// Loads a new puzzle, either from memory or new from the file, and returns a puzzle parsed object.
+    ///
+    /// - Parameters:
+    ///   - size: the size of the puzzle grid
+    ///   - pId: the puzzle ID to be loaded
+    /// - Returns: the puzzle object
+    @available(*, deprecated, message: "use fetchPuzzle()")
+    func loadNewPuzzleForSize(_ size: Int, withPuzzleId pId: Int) -> Puzzle {
+        let newPuzzle: (solution: String, cageGrid: String, cageOps: String)
 
+        DebugUtil.print("about to take the lock")
+        objc_sync_enter(self)
+        DebugUtil.print("took the lock")
+        
+        let preloadedPuzzlesForSize = preloadedPuzzles[size]?.filter({ $0.puzzleId == pId })
+        
+        if preloadedPuzzlesForSize?.count != 0, let puzzleForId = preloadedPuzzlesForSize?[0] {
+            // if we have a preloaded puzzle with our puzzle ID, then we can use that
+            DebugUtil.print("Loading a pre-loaded puzzle for pid: \(pId)")
+            newPuzzle = (puzzleForId.solution, puzzleForId.cageGrid, puzzleForId.cageOps)
+        } else {
+            // otherwise, load a new one
+            DebugUtil.print("Loading a new puzzle for pid: \(pId)")
+            newPuzzle = loadNewPuzzleFromJSON(puzzleSize: size, withPuzzleId: pId)!
+        }
+        
+        DebugUtil.print("about to release the lock")
+        objc_sync_exit(self)
+        DebugUtil.print("released the lock")
+        
+        return parseNewPuzzleFromStrings(puzzleSize: size, puzzleSolution: newPuzzle.solution, puzzleCageGrid: newPuzzle.cageGrid, puzzleCages: newPuzzle.cageOps)
+    }
+    
+    /// Purges all preloaded puzzles.
+    @available(*, deprecated, message: "Not yet replaced")
+    func purgePreloadedPuzzles() {
+        for key in preloadedPuzzles.keys {
+            preloadedPuzzles[key]! = Set()
+        }
+    }
+    
+    /// This function will load the puzzle from a JSON file.
+    ///
+    /// - Parameters:
+    ///   - size: the size the puzzle grid
+    ///   - pId: the puzzle ID to load
+    /// - Returns: the puzzle represented as flat strings
+    @available(*, deprecated, message: "Use loadPuzzleFromJson()")
+    private func loadNewPuzzleFromJSON(puzzleSize size: Int, withPuzzleId pId: Int) -> (solution: String, cageGrid: String, cageOps: String)? {
+        let puzzleResource = "\(size)all-1"
+        
+        DebugUtil.print("Entering JSON loader and attempting to load json: \(puzzleResource) @ \(pId)")
+        
+        if let asset = NSDataAsset(name: puzzleResource, bundle: Bundle.main) {
+            do {
+                let jsonObj = try JSON(data: asset.data)
+                let puzzle = jsonObj["puzzles"][pId]
+                
+                if let solution = puzzle["solution"].string, let cageGrid = puzzle["cageGrid"].string, let cageOps = puzzle["cageOps"].string {
+                    return (solution, cageGrid, cageOps)
+                }
+            } catch let error {
+                DebugUtil.print(error.localizedDescription)
+            }
+        }
+        
+        return nil
     }
 
 }

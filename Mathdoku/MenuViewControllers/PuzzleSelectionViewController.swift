@@ -19,7 +19,7 @@ class PuzzleSelectionViewController: UIViewController {
     
     var selectedPuzzleSize: Int = -1 {
         didSet{
-            puzzleLoader.preloadPuzzleForSize(selectedPuzzleSize, withPuzzleId: activePuzzleId)
+            puzzleLoader.preloadPuzzle(forSize: selectedPuzzleSize, withPuzzleId: activePuzzleId)
         }
     }
     var selectedButton: UIButton? {
@@ -155,7 +155,7 @@ class PuzzleSelectionViewController: UIViewController {
                 fatalError("Unexpected destination: \(segue.destination)")
             }
             
-            puzzleViewController.puzzle = puzzleLoader.loadNewPuzzleForSize(selectedPuzzleSize, withPuzzleId: activePuzzleId)
+            puzzleViewController.puzzle = puzzleLoader.fetchPuzzle(forSize: selectedPuzzleSize, withPuzzleId: activePuzzleId)
             puzzleViewController.puzzleLoader = puzzleLoader
         }
     }

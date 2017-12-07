@@ -366,7 +366,7 @@ class PuzzleViewController: UIViewController, UINavigationBarDelegate {
             
             // skip puzzle clicked us.
             // preload a puzzle if they can skip
-            puzzleLoader.preloadPuzzleForSize(puzzle.size, withPuzzleId: playerProgress.activePuzzleId + 1)
+            puzzleLoader.preloadPuzzle(forSize: puzzle.size, withPuzzleId: playerProgress.activePuzzleId + 1)
             if PuzzleProducts.puzzleAllowance.allowance == 0 {
                 // If the user is out of puzzles, tell them they have to buy (or wait for weekly)
                 let alert = self.alertOutOfPuzzlesAndCanPurchase(mentionWeeklyAllowance: PuzzleProducts.userIsWeekly, messageOverride: "You cannot skip this puzzle until you have more to play.", actionOnConfirm: segueToStore)
@@ -390,7 +390,7 @@ class PuzzleViewController: UIViewController, UINavigationBarDelegate {
             // TODO: if you ever implement replay, then the incrementPuzzleId function will need to support a "to:" parameter
             incrementPlayerPuzzleProgress()
             setPuzzleProgress(to: false)
-            puzzleLoader.preloadPuzzleForSize(puzzle.size, withPuzzleId: playerProgress.activePuzzleId)
+            puzzleLoader.preloadPuzzle(forSize: puzzle.size, withPuzzleId: playerProgress.activePuzzleId)
             successOverlayView.isHidden = false
         }
     }
@@ -409,7 +409,7 @@ class PuzzleViewController: UIViewController, UINavigationBarDelegate {
         selectedCell = nil
         resetCellNotesAndGuesses()
         consumePuzzleAllowance()
-        puzzle = puzzleLoader.loadNewPuzzleForSize(puzzle.size, withPuzzleId: playerProgress.activePuzzleId)
+        puzzle = puzzleLoader.fetchPuzzle(forSize: puzzle.size, withPuzzleId: playerProgress.activePuzzleId)
         writePuzzleToGrid()
         fillInUnitCells()
         setPuzzleProgress(to: true)

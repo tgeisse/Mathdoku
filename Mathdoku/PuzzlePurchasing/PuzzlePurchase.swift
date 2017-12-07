@@ -9,6 +9,7 @@
 import RealmSwift
 import UIKit
 import StoreKit
+import SwiftyStoreKit
 
 typealias PuzzlePurchaseTuple = (product: SKProduct, buysAllowance: Int)
 
@@ -58,7 +59,8 @@ struct PuzzlePurchase {
     }
     
     static func initiateIAPForPuzzleProduct(_ product: SKProduct, puzzleProduct: PuzzleProduct) {
-        SwiftyStoreKit.purchaseProduct(product, atomically: true) { result in
+        DebugUtil.print("Initiating a purchase for product \(puzzleProduct)")
+        SwiftyStoreKit.purchaseProduct(product, quantity: 1, atomically: true) { result in
             switch result {
             case .success(let purchase):
                 DebugUtil.print("Purchase Success: \(purchase.productId)")

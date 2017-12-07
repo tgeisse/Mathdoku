@@ -10,6 +10,7 @@ import UIKit
 import RealmSwift
 import Firebase
 import GoogleMobileAds
+import SwiftyStoreKit
 
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate {

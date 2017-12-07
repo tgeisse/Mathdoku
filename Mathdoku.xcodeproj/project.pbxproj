@@ -8,20 +8,6 @@
 
 /* Begin PBXBuildFile section */
 		8336D4FC8161CC44C65F908F /* Pods_Mathdoku.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 27B6C3B9D7393F6EFC9176CA /* Pods_Mathdoku.framework */; };
-		9502E5CC1EEDF66E0048BE1B /* AppleReceiptValidator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9502E5B71EEDF66E0048BE1B /* AppleReceiptValidator.swift */; };
-		9502E5CD1EEDF66E0048BE1B /* CompleteTransactionsController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9502E5B81EEDF66E0048BE1B /* CompleteTransactionsController.swift */; };
-		9502E5CE1EEDF66E0048BE1B /* InAppProductQueryRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9502E5B91EEDF66E0048BE1B /* InAppProductQueryRequest.swift */; };
-		9502E5CF1EEDF66E0048BE1B /* InAppReceipt.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9502E5BA1EEDF66E0048BE1B /* InAppReceipt.swift */; };
-		9502E5D01EEDF66E0048BE1B /* InAppReceiptRefreshRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9502E5BB1EEDF66E0048BE1B /* InAppReceiptRefreshRequest.swift */; };
-		9502E5D11EEDF66E0048BE1B /* InAppReceiptVerificator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9502E5BC1EEDF66E0048BE1B /* InAppReceiptVerificator.swift */; };
-		9502E5D21EEDF66E0048BE1B /* OS.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9502E5BD1EEDF66E0048BE1B /* OS.swift */; };
-		9502E5D31EEDF66E0048BE1B /* PaymentQueueController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9502E5BE1EEDF66E0048BE1B /* PaymentQueueController.swift */; };
-		9502E5D41EEDF66E0048BE1B /* PaymentsController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9502E5BF1EEDF66E0048BE1B /* PaymentsController.swift */; };
-		9502E5D81EEDF66E0048BE1B /* ProductsInfoController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9502E5C71EEDF66E0048BE1B /* ProductsInfoController.swift */; };
-		9502E5D91EEDF66E0048BE1B /* RestorePurchasesController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9502E5C81EEDF66E0048BE1B /* RestorePurchasesController.swift */; };
-		9502E5DA1EEDF66E0048BE1B /* SKProduct+LocalizedPrice.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9502E5C91EEDF66E0048BE1B /* SKProduct+LocalizedPrice.swift */; };
-		9502E5DB1EEDF66E0048BE1B /* SwiftyStoreKit+Types.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9502E5CA1EEDF66E0048BE1B /* SwiftyStoreKit+Types.swift */; };
-		9502E5DC1EEDF66E0048BE1B /* SwiftyStoreKit.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9502E5CB1EEDF66E0048BE1B /* SwiftyStoreKit.swift */; };
 		9502E5DE1EEE080F0048BE1B /* ViewControllerExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9502E5DD1EEE080F0048BE1B /* ViewControllerExtensions.swift */; };
 		9502E5E01EEE158B0048BE1B /* PuzzlePurchase.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9502E5DF1EEE158B0048BE1B /* PuzzlePurchase.swift */; };
 		9502E5E31EEE16020048BE1B /* PuzzleProducts.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9502E5E21EEE16020048BE1B /* PuzzleProducts.swift */; };
@@ -92,20 +78,6 @@
 /* Begin PBXFileReference section */
 		27B6C3B9D7393F6EFC9176CA /* Pods_Mathdoku.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Mathdoku.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		3BC01DF3DD546476D89F7543 /* Pods-Mathdoku.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Mathdoku.debug.xcconfig"; path = "Pods/Target Support Files/Pods-Mathdoku/Pods-Mathdoku.debug.xcconfig"; sourceTree = "<group>"; };
-		9502E5B71EEDF66E0048BE1B /* AppleReceiptValidator.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AppleReceiptValidator.swift; sourceTree = "<group>"; };
-		9502E5B81EEDF66E0048BE1B /* CompleteTransactionsController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CompleteTransactionsController.swift; sourceTree = "<group>"; };
-		9502E5B91EEDF66E0048BE1B /* InAppProductQueryRequest.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = InAppProductQueryRequest.swift; sourceTree = "<group>"; };
-		9502E5BA1EEDF66E0048BE1B /* InAppReceipt.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = InAppReceipt.swift; sourceTree = "<group>"; };
-		9502E5BB1EEDF66E0048BE1B /* InAppReceiptRefreshRequest.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = InAppReceiptRefreshRequest.swift; sourceTree = "<group>"; };
-		9502E5BC1EEDF66E0048BE1B /* InAppReceiptVerificator.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = InAppReceiptVerificator.swift; sourceTree = "<group>"; };
-		9502E5BD1EEDF66E0048BE1B /* OS.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = OS.swift; sourceTree = "<group>"; };
-		9502E5BE1EEDF66E0048BE1B /* PaymentQueueController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PaymentQueueController.swift; sourceTree = "<group>"; };
-		9502E5BF1EEDF66E0048BE1B /* PaymentsController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PaymentsController.swift; sourceTree = "<group>"; };
-		9502E5C71EEDF66E0048BE1B /* ProductsInfoController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ProductsInfoController.swift; sourceTree = "<group>"; };
-		9502E5C81EEDF66E0048BE1B /* RestorePurchasesController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RestorePurchasesController.swift; sourceTree = "<group>"; };
-		9502E5C91EEDF66E0048BE1B /* SKProduct+LocalizedPrice.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "SKProduct+LocalizedPrice.swift"; sourceTree = "<group>"; };
-		9502E5CA1EEDF66E0048BE1B /* SwiftyStoreKit+Types.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "SwiftyStoreKit+Types.swift"; sourceTree = "<group>"; };
-		9502E5CB1EEDF66E0048BE1B /* SwiftyStoreKit.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SwiftyStoreKit.swift; sourceTree = "<group>"; };
 		9502E5DD1EEE080F0048BE1B /* ViewControllerExtensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ViewControllerExtensions.swift; sourceTree = "<group>"; };
 		9502E5DF1EEE158B0048BE1B /* PuzzlePurchase.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PuzzlePurchase.swift; sourceTree = "<group>"; };
 		9502E5E21EEE16020048BE1B /* PuzzleProducts.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PuzzleProducts.swift; sourceTree = "<group>"; };
@@ -185,27 +157,6 @@
 			name = Pods;
 			sourceTree = "<group>";
 		};
-		9502E5B61EEDF66E0048BE1B /* SwiftyStoreKit */ = {
-			isa = PBXGroup;
-			children = (
-				9502E5B71EEDF66E0048BE1B /* AppleReceiptValidator.swift */,
-				9502E5B81EEDF66E0048BE1B /* CompleteTransactionsController.swift */,
-				9502E5B91EEDF66E0048BE1B /* InAppProductQueryRequest.swift */,
-				9502E5BA1EEDF66E0048BE1B /* InAppReceipt.swift */,
-				9502E5BB1EEDF66E0048BE1B /* InAppReceiptRefreshRequest.swift */,
-				9502E5BC1EEDF66E0048BE1B /* InAppReceiptVerificator.swift */,
-				9502E5BD1EEDF66E0048BE1B /* OS.swift */,
-				9502E5BE1EEDF66E0048BE1B /* PaymentQueueController.swift */,
-				9502E5BF1EEDF66E0048BE1B /* PaymentsController.swift */,
-				9502E5C71EEDF66E0048BE1B /* ProductsInfoController.swift */,
-				9502E5C81EEDF66E0048BE1B /* RestorePurchasesController.swift */,
-				9502E5C91EEDF66E0048BE1B /* SKProduct+LocalizedPrice.swift */,
-				9502E5CA1EEDF66E0048BE1B /* SwiftyStoreKit+Types.swift */,
-				9502E5CB1EEDF66E0048BE1B /* SwiftyStoreKit.swift */,
-			);
-			path = SwiftyStoreKit;
-			sourceTree = "<group>";
-		};
 		9502E5E11EEE159C0048BE1B /* PuzzlePurchasing */ = {
 			isa = PBXGroup;
 			children = (
@@ -235,7 +186,6 @@
 			children = (
 				955560691ECD2989006C9F2D /* SwiftyJSON.swift */,
 				9598A3A41FBC1B9400AE48E2 /* SwiftyUserDefaults.swift */,
-				9502E5B61EEDF66E0048BE1B /* SwiftyStoreKit */,
 			);
 			path = Libraries;
 			sourceTree = "<group>";
@@ -478,11 +428,13 @@
 			inputPaths = (
 				"${SRCROOT}/Pods/Target Support Files/Pods-Mathdoku/Pods-Mathdoku-frameworks.sh",
 				"${BUILT_PRODUCTS_DIR}/GoogleToolboxForMac/GoogleToolboxForMac.framework",
+				"${BUILT_PRODUCTS_DIR}/SwiftyStoreKit/SwiftyStoreKit.framework",
 				"${BUILT_PRODUCTS_DIR}/nanopb/nanopb.framework",
 			);
 			name = "[CP] Embed Pods Frameworks";
 			outputPaths = (
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/GoogleToolboxForMac.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/SwiftyStoreKit.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/nanopb.framework",
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -514,20 +466,13 @@
 			files = (
 				956CB0481FCFD94700FDB589 /* TutorialSinglePageViewController.swift in Sources */,
 				95FFC6D51F118CA300DF964A /* AdViewController.swift in Sources */,
-				9502E5CC1EEDF66E0048BE1B /* AppleReceiptValidator.swift in Sources */,
-				9502E5CE1EEDF66E0048BE1B /* InAppProductQueryRequest.swift in Sources */,
-				9502E5D91EEDF66E0048BE1B /* RestorePurchasesController.swift in Sources */,
-				9502E5D41EEDF66E0048BE1B /* PaymentsController.swift in Sources */,
 				95E9D11A1EB963BB00F51A4B /* CellContainerView.swift in Sources */,
 				95B41B891E9CA99B003D8C28 /* PuzzleLoader.swift in Sources */,
 				9502E5E31EEE16020048BE1B /* PuzzleProducts.swift in Sources */,
-				9502E5DB1EEDF66E0048BE1B /* SwiftyStoreKit+Types.swift in Sources */,
 				95A196261ED2A33E0038D40C /* PuzzleNote.swift in Sources */,
 				9502E5DE1EEE080F0048BE1B /* ViewControllerExtensions.swift in Sources */,
-				9502E5D21EEDF66E0048BE1B /* OS.swift in Sources */,
 				95B41B8B1E9CAB94003D8C28 /* Cage.swift in Sources */,
 				95C2C43D1ECEBF2E0007D3F1 /* PlayerProgress.swift in Sources */,
-				9502E5DC1EEDF66E0048BE1B /* SwiftyStoreKit.swift in Sources */,
 				95A196221ED2A32A0038D40C /* PuzzleProgress.swift in Sources */,
 				951273701ED80A4A00588467 /* PreloadedPuzzle.swift in Sources */,
 				95FBB90A1E9AD97300B0E662 /* Puzzle.swift in Sources */,
@@ -535,18 +480,12 @@
 				95A196281ED2A3460038D40C /* PuzzleCellNote.swift in Sources */,
 				95FBB90C1E9AD9E900B0E662 /* Cell.swift in Sources */,
 				95E9D1181EB963A400F51A4B /* GridRowView.swift in Sources */,
-				9502E5DA1EEDF66E0048BE1B /* SKProduct+LocalizedPrice.swift in Sources */,
 				959632E41ED115A100CAFC5D /* CellPosition.swift in Sources */,
 				95FBB8DB1E9AD13F00B0E662 /* AppDelegate.swift in Sources */,
-				9502E5D31EEDF66E0048BE1B /* PaymentQueueController.swift in Sources */,
 				9598A3A21FBC020800AE48E2 /* SettingsViewController.swift in Sources */,
-				9502E5CD1EEDF66E0048BE1B /* CompleteTransactionsController.swift in Sources */,
 				95F1A4561EEFB50B0019CBE6 /* StoreProductContainerView.swift in Sources */,
-				9502E5CF1EEDF66E0048BE1B /* InAppReceipt.swift in Sources */,
-				9502E5D11EEDF66E0048BE1B /* InAppReceiptVerificator.swift in Sources */,
 				956CB04A1FD1ADE400FDB589 /* HighlightRequestQueue.swift in Sources */,
 				9568B3111FC0F244000502A4 /* Colors.swift in Sources */,
-				9502E5D81EEDF66E0048BE1B /* ProductsInfoController.swift in Sources */,
 				9598A3A51FBC1B9400AE48E2 /* SwiftyUserDefaults.swift in Sources */,
 				95E9D1121EB81C2B00F51A4B /* CALayerExtensions.swift in Sources */,
 				95C082591EABC8B8008B7C2E /* CellView.swift in Sources */,
@@ -560,7 +499,6 @@
 				9512736E1ED803F000588467 /* Stack.swift in Sources */,
 				9502E5E01EEE158B0048BE1B /* PuzzlePurchase.swift in Sources */,
 				95D7B0BB1EE64AB900764738 /* Allowances.swift in Sources */,
-				9502E5D01EEDF66E0048BE1B /* InAppReceiptRefreshRequest.swift in Sources */,
 				9572FDC41FBD500300963CFD /* Settings.swift in Sources */,
 				95C082641EB1ACE3008B7C2E /* PuzzleSelectionViewController.swift in Sources */,
 				9544E33B1EF0EA5D00F37ED7 /* TimeIntervalExtension.swift in Sources */,

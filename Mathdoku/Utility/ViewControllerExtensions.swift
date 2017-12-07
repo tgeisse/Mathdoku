@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import SwiftyStoreKit
 
 extension UIViewController {
     func alertWithTitle(_ title: String, message: String, buttonLabel: String = "OK") -> UIAlertController {

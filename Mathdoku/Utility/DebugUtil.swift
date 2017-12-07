@@ -17,7 +17,7 @@ struct DebugUtil {
             let endIdx = items.endIndex
             
             repeat {
-                Swift.print("\(function): \(items[idx])", separator: separator, terminator: idx == (endIdx - 1) ? terminator : separator)
+                Swift.print("Mathdoku.\(function): \(items[idx])", separator: separator, terminator: idx == (endIdx - 1) ? terminator : separator)
                 idx += 1
             }
                 while idx < endIdx

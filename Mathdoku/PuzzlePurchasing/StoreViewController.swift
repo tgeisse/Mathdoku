@@ -8,6 +8,7 @@
 
 import UIKit
 import StoreKit
+import SwiftyStoreKit
 
 class StoreViewController: UIViewController {
     @IBOutlet weak var puzzle100Title: UILabel!

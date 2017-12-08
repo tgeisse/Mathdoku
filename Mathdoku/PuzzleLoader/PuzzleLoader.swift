@@ -73,6 +73,7 @@ class PuzzleLoader {
         let relativePuzzleId = pId % puzzlesPerFile
         
         let puzzleJsonObj = loadedJSONS[resourceId] ?? loadJsonFromDataAsset(resourceName: resourceId)
+        loadedJSONS[resourceId] = puzzleJsonObj
         let decompiledPuzzle = puzzleJsonObj["puzzles"][relativePuzzleId]
         
         if let solution = decompiledPuzzle["solution"].string,

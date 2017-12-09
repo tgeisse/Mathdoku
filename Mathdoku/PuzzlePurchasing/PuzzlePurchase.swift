@@ -60,7 +60,8 @@ struct PuzzlePurchase {
     
     static func initiateIAPForPuzzleProduct(_ product: SKProduct, puzzleProduct: PuzzleProduct) {
         DebugUtil.print("Initiating a purchase for product \(puzzleProduct)")
-        SwiftyStoreKit.purchaseProduct(product, quantity: 1, atomically: true) { result in
+        SwiftyStoreKit.purchaseProduct(product, atomically: true) { result in
+            DebugUtil.print("Received results for attempted purchase of product \(puzzleProduct)")
             switch result {
             case .success(let purchase):
                 DebugUtil.print("Purchase Success: \(purchase.productId)")

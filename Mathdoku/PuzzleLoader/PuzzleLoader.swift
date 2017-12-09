@@ -43,7 +43,9 @@ class PuzzleLoader {
                 AnalyticsParameterItemVariant: "\(pId)"
                 ])
             
+            DebugUtil.print("Asked to preload a puzzle for size \(size) with id \(pId)")
             if self?.loadedPuzzles[puzzleId] == nil {
+                DebugUtil.print("Preloading a puzzle for size \(size) with id \(pId)")
                 // we don't have the puzzle loaded already
                 self?.loadedPuzzles[puzzleId] = self?.loadPuzzleFromJson(forSize: size, withPuzzleId: pId)
             }

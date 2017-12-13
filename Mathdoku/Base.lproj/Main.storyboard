@@ -1962,7 +1962,7 @@
                     </view>
                     <navigationItem key="navigationItem" title="Puzzle Play!" id="0xT-sI-dfA">
                         <rightBarButtonItems>
-                            <barButtonItem style="plain" id="y6U-CO-oeU">
+                            <barButtonItem id="y6U-CO-oeU">
                                 <button key="customView" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" id="3bR-PW-shd">
                                     <rect key="frame" x="335" y="10" width="24" height="24"/>
                                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
@@ -1972,7 +1972,7 @@
                                     </connections>
                                 </button>
                             </barButtonItem>
-                            <barButtonItem style="plain" id="eEZ-ti-z8I">
+                            <barButtonItem id="eEZ-ti-z8I">
                                 <button key="customView" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" id="ZB1-5M-sXV">
                                     <rect key="frame" x="303" y="10" width="24" height="24"/>
                                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
@@ -3638,7 +3638,7 @@
         <image name="Validate" width="24" height="24"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="XBZ-Fs-Oh5"/>
-        <segue reference="v3n-3L-gwk"/>
+        <segue reference="zPe-Qc-GY2"/>
+        <segue reference="1eU-Tc-Mwc"/>
     </inferredMetricsTieBreakers>
 </document>

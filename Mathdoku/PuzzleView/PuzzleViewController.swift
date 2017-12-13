@@ -309,9 +309,7 @@ class PuzzleViewController: UIViewController, UINavigationBarDelegate {
             }
             
             // log an event to capture usage of this feature
-            Analytics.logEvent(AnalyticsEventSelectContent, parameters: [
-                AnalyticsParameterItemID: "id-puzzleValidation"
-                ])
+            AnalyticsWrapper.logEvent(.selectContent, contentType: .featureUsage, id: "id-puzzleValidation")
         }
     }
     
@@ -327,9 +325,7 @@ class PuzzleViewController: UIViewController, UINavigationBarDelegate {
         }
         
         // log an event to capture usage of this feature
-        Analytics.logEvent(AnalyticsEventSelectContent, parameters: [
-            AnalyticsParameterItemID: "id-randomGuessReveal"
-            ])
+        AnalyticsWrapper.logEvent(.selectContent, contentType: .featureUsage, id: "id-randomGuessReveal")
     }
     
     @IBAction func toggleNotes(_ sender: UIButton) {
@@ -344,11 +340,8 @@ class PuzzleViewController: UIViewController, UINavigationBarDelegate {
     @IBAction func nextPuzzle(_ sender: UIButton) {
         // this can be used by either the success screen or the skiPuzzle button
         if sender.currentTitle == "Next Puzzle" {
-            // analytics - puzzle was successfully completed
-            Analytics.logEvent(AnalyticsEventSelectContent, parameters: [
-                AnalyticsParameterItemID: "id-nextPuzzle",
-                AnalyticsParameterItemName: "puzzleCompleted"
-                ])
+            // analytics - going to next puzzle
+            AnalyticsWrapper.logEvent(.selectContent, contentType: .puzzlePlayed, id: "id-nextPuzzle")
             
             if PuzzleProducts.puzzleAllowance.allowance == 0 {
                 let alert = self.alertOutOfPuzzlesAndCanPurchase(mentionWeeklyAllowance: PuzzleProducts.userIsWeekly, actionOnConfirm: segueToStore)
@@ -358,11 +351,7 @@ class PuzzleViewController: UIViewController, UINavigationBarDelegate {
             }
         } else {
             // analytics - puzzle is trying to be skipped
-            Analytics.logEvent(AnalyticsEventSelectContent, parameters: [
-                AnalyticsParameterItemID: "id-nextPuzzle",
-                AnalyticsParameterItemName: "puzzleSkip"
-                ])
-            
+            AnalyticsWrapper.logEvent(.selectContent, contentType: .featureUsage, id: "id-skipPuzzle", name: "puzzleSkipRequest")
             
             // skip puzzle clicked us.
             // preload a puzzle if they can skip
@@ -392,14 +381,15 @@ class PuzzleViewController: UIViewController, UINavigationBarDelegate {
             setPuzzleProgress(to: false)
             puzzleLoader.preloadPuzzle(forSize: puzzle.size, withPuzzleId: playerProgress.activePuzzleId)
             successOverlayView.isHidden = false
+            
+            // analytics - puzzle was successfully completed
+            AnalyticsWrapper.logEvent(.selectContent, contentType: .puzzlePlayed, id: "id-puzzleCompleted", name: "puzzleSuccessfullyFilled")
         }
     }
     
     private func skipPuzzle() {
         // track that the puzzle has been skipped
-        Analytics.logEvent(AnalyticsEventSelectContent, parameters: [
-            AnalyticsParameterItemID: "id-puzzleSkipped"
-            ])
+        AnalyticsWrapper.logEvent(.selectContent, contentType: .featureUsage, id: "id-skipPuzzle", name: "puzzleSkipped")
         
         incrementPlayerPuzzleProgress()
         goToNextPuzzle()

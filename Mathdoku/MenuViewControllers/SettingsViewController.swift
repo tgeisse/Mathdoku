@@ -7,7 +7,6 @@
 //
 
 import UIKit
-import Firebase
 
 class SettingsViewController: UITableViewController {
     @IBOutlet weak var singleCellNoteTakingSwitch: UISwitch! {
@@ -93,10 +92,6 @@ class SettingsViewController: UITableViewController {
             settingVariant = "none"
         }
         
-        Analytics.logEvent(AnalyticsEventSelectContent, parameters: [
-            AnalyticsParameterItemID: "id-toggleSetting",
-            AnalyticsParameterItemName: settingName,
-            AnalyticsParameterItemVariant: settingVariant
-            ])
+        AnalyticsWrapper.logEvent(.selectContent, contentType: .userSetting, id: "id-toggleSetting", name: settingName, variant: settingVariant)
     }
 }

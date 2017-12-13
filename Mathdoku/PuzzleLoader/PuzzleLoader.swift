@@ -37,11 +37,7 @@ class PuzzleLoader {
         
         queue.async { [weak self] in
             // track what puzzle sizes are getting preloaded.
-            Analytics.logEvent(AnalyticsEventSelectContent, parameters: [
-                AnalyticsParameterItemID: "id-preloadPuzzle",
-                AnalyticsParameterItemName: "puzzleSize-\(size)",
-                AnalyticsParameterItemVariant: "\(pId)"
-                ])
+            AnalyticsWrapper.logEvent(.selectContent, contentType: .puzzleLoad, id: "id-preloadPuzzle", name: "puzzleSize-\(size)", variant: "\(pId)")
             
             DebugUtil.print("Asked to preload a puzzle for size \(size) with id \(pId)")
             if self?.loadedPuzzles[puzzleId] == nil {
@@ -57,11 +53,7 @@ class PuzzleLoader {
         let puzzleId = createPuzzleId(size, pId)
         
         queue.sync {
-            Analytics.logEvent(AnalyticsEventSelectContent, parameters: [
-                AnalyticsParameterItemID: "id-fetchPuzzle",
-                AnalyticsParameterItemName: "puzzleSize-\(size)",
-                AnalyticsParameterItemVariant: "\(pId)"
-                ])
+            AnalyticsWrapper.logEvent(.selectContent, contentType: .puzzleLoad, id: "id-fetchPuzzle", name: "puzzleSize-\(size)", variant: "\(pId)")
             
             returnPuzzle = loadedPuzzles[puzzleId] ?? loadPuzzleFromJson(forSize: size, withPuzzleId: pId)
         }
@@ -167,11 +159,7 @@ class PuzzleLoader {
             DebugUtil.print("took the lock")
             
             // let's track that the number was changed only when the user selected a size
-            Analytics.logEvent(AnalyticsEventSelectContent, parameters: [
-                AnalyticsParameterItemID: "id-loadPuzzle",
-                AnalyticsParameterItemName: "puzzleSize-\(size)",
-                AnalyticsParameterItemVariant: "\(pId)"
-                ])
+            AnalyticsWrapper.logEvent(.selectContent, contentType: .puzzleLoad, id: "id-loadPuzzle", name: "puzzleSize-\(size)", variant: "\(pId)")
             
             if self?.preloadedPuzzles[size] == nil {
                 self?.preloadedPuzzles[size] = Set()

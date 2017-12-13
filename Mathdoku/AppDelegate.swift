@@ -39,7 +39,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         
         // Use Firebase library to configure APIs
         FirebaseApp.configure()
-        Analytics.logEvent(AnalyticsEventAppOpen, parameters: [:])
+        AnalyticsWrapper.logEvent(.appOpen)
         
         // Initialize the Google Mobile Ads SDK.
         // AdMob app id

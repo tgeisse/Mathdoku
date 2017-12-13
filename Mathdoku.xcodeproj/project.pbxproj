@@ -28,6 +28,7 @@
 		956CB0481FCFD94700FDB589 /* TutorialSinglePageViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 956CB0471FCFD94700FDB589 /* TutorialSinglePageViewController.swift */; };
 		956CB04A1FD1ADE400FDB589 /* HighlightRequestQueue.swift in Sources */ = {isa = PBXBuildFile; fileRef = 956CB0491FD1ADE400FDB589 /* HighlightRequestQueue.swift */; };
 		956ED5E71EECA1490030B7FC /* Settings.bundle in Resources */ = {isa = PBXBuildFile; fileRef = 956ED5E61EECA1490030B7FC /* Settings.bundle */; };
+		957005181FE0EFB300C85822 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 957005171FE0EFB200C85822 /* Assets.xcassets */; };
 		9572FDC41FBD500300963CFD /* Settings.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9572FDC31FBD500300963CFD /* Settings.swift */; };
 		959632E41ED115A100CAFC5D /* CellPosition.swift in Sources */ = {isa = PBXBuildFile; fileRef = 959632E31ED115A100CAFC5D /* CellPosition.swift */; };
 		9598A3A21FBC020800AE48E2 /* SettingsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9598A3A11FBC020800AE48E2 /* SettingsViewController.swift */; };
@@ -54,7 +55,6 @@
 		95F869081FC51779006D3921 /* iAd.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 95FFC6D01F118C2200DF964A /* iAd.framework */; };
 		95FBB8DB1E9AD13F00B0E662 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 95FBB8DA1E9AD13F00B0E662 /* AppDelegate.swift */; };
 		95FBB8E01E9AD13F00B0E662 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 95FBB8DE1E9AD13F00B0E662 /* Main.storyboard */; };
-		95FBB8E21E9AD13F00B0E662 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 95FBB8E11E9AD13F00B0E662 /* Assets.xcassets */; };
 		95FBB90A1E9AD97300B0E662 /* Puzzle.swift in Sources */ = {isa = PBXBuildFile; fileRef = 95FBB9091E9AD97300B0E662 /* Puzzle.swift */; };
 		95FBB90C1E9AD9E900B0E662 /* Cell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 95FBB90B1E9AD9E900B0E662 /* Cell.swift */; };
 		95FFC6D51F118CA300DF964A /* AdViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 95FFC6D41F118CA300DF964A /* AdViewController.swift */; };
@@ -96,6 +96,7 @@
 		956CB0471FCFD94700FDB589 /* TutorialSinglePageViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TutorialSinglePageViewController.swift; sourceTree = "<group>"; };
 		956CB0491FD1ADE400FDB589 /* HighlightRequestQueue.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HighlightRequestQueue.swift; sourceTree = "<group>"; };
 		956ED5E61EECA1490030B7FC /* Settings.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; path = Settings.bundle; sourceTree = "<group>"; };
+		957005171FE0EFB200C85822 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		9572FDC31FBD500300963CFD /* Settings.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Settings.swift; sourceTree = "<group>"; };
 		959632E31ED115A100CAFC5D /* CellPosition.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CellPosition.swift; sourceTree = "<group>"; };
 		9598A3A11FBC020800AE48E2 /* SettingsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsViewController.swift; sourceTree = "<group>"; };
@@ -122,7 +123,6 @@
 		95FBB8D71E9AD13F00B0E662 /* Mathdoku.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Mathdoku.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		95FBB8DA1E9AD13F00B0E662 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		95FBB8DF1E9AD13F00B0E662 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
-		95FBB8E11E9AD13F00B0E662 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		95FBB8E61E9AD13F00B0E662 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		95FBB9091E9AD97300B0E662 /* Puzzle.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Puzzle.swift; sourceTree = "<group>"; };
 		95FBB90B1E9AD9E900B0E662 /* Cell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Cell.swift; sourceTree = "<group>"; };
@@ -273,7 +273,7 @@
 				95FBB8DA1E9AD13F00B0E662 /* AppDelegate.swift */,
 				95FBB8DE1E9AD13F00B0E662 /* Main.storyboard */,
 				956505EA1EDFD67300C97D73 /* LaunchScreen.storyboard */,
-				95FBB8E11E9AD13F00B0E662 /* Assets.xcassets */,
+				957005171FE0EFB200C85822 /* Assets.xcassets */,
 				95F869061FC3E923006D3921 /* GoogleService-Info.plist */,
 				95FBB8E61E9AD13F00B0E662 /* Info.plist */,
 				956ED5E61EECA1490030B7FC /* Settings.bundle */,
@@ -381,8 +381,8 @@
 				956ED5E71EECA1490030B7FC /* Settings.bundle in Resources */,
 				956505EB1EDFD67300C97D73 /* LaunchScreen.storyboard in Resources */,
 				95F869071FC3E923006D3921 /* GoogleService-Info.plist in Resources */,
-				95FBB8E21E9AD13F00B0E662 /* Assets.xcassets in Resources */,
 				95FBB8E01E9AD13F00B0E662 /* Main.storyboard in Resources */,
+				957005181FE0EFB300C85822 /* Assets.xcassets in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

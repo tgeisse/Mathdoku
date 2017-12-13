@@ -898,7 +898,6 @@ class PuzzleViewController: UIViewController, UINavigationBarDelegate {
             bannerView.load(GADRequest())
         }
         
-        
         DebugUtil.print("viewDidLoad")
         loadingEnded = Date()
     }

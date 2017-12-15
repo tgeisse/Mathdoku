@@ -8,7 +8,6 @@
 
 import UIKit
 import RealmSwift
-import Firebase
 
 class PuzzleSelectionViewController: UIViewController {
     let puzzleLoader = PuzzleLoader()
@@ -128,11 +127,9 @@ class PuzzleSelectionViewController: UIViewController {
                 return true
             } else {
                 // else the player does not have puzzle allowance to play. Prompt to buy or wait
-                let mentionWeeklyAllowance: Bool
-                switch PuzzleProducts.puzzleRefreshMode {
-                case .weekly: mentionWeeklyAllowance = true
-                default: mentionWeeklyAllowance = false
-                }
+                let mentionWeeklyAllowance: Bool = PuzzleProducts.userIsWeekly
+                
+                AnalyticsWrapper.logEvent(.selectContent, contentType: .presented, id: "id-mainMenuOutOfPuzzles")
                 
                 let alert = self.alertOutOfPuzzlesAndCanPurchase(mentionWeeklyAllowance: mentionWeeklyAllowance, actionOnConfirm: segueToStore)
                 self.showAlert(alert)

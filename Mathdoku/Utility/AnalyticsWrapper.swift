@@ -26,6 +26,7 @@ struct AnalyticsWrapper {
         case puzzleLoad = "type-puzzleLoad"
         case puzzlePlayed = "type-puzzlePlayed"
         case featureUsage = "type-featureUsage"
+        case presented = "type-presented"
     }
     
     static func logEvent(_ type: EventType,

@@ -8,7 +8,6 @@
 
 import UIKit
 import RealmSwift
-import Firebase
 import GoogleMobileAds
 
 @IBDesignable
@@ -404,6 +403,8 @@ class PuzzleViewController: UIViewController, UINavigationBarDelegate {
         fillInUnitCells()
         setPuzzleProgress(to: true)
         successOverlayView.isHidden = true
+        
+        AnalyticsWrapper.logEvent(.selectContent, contentType: .puzzlePlayed, id: "id-startNextPuzzle", name: "goToNextPuzzle")
     }
     
     // MARK: - User Assisting Functions

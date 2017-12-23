@@ -294,6 +294,9 @@ class PuzzleViewController: UIViewController, UINavigationBarDelegate {
     }
     
     @IBAction func validatePuzzleEntries(_ sender: UIButton) {
+        // log an event to capture usage of this feature
+        AnalyticsWrapper.logEvent(.selectContent, contentType: .featureUsage, id: "id-puzzleValidation")
+        
         DispatchQueue.global(qos: .userInitiated).async { [weak self] in
             if let guessedCellValidations = self?.puzzle.getGuessedCellPositionsWithGuessValidation() {
                 // then animate the guess validation and re-enable gesture recognizers after the second animation
@@ -306,9 +309,6 @@ class PuzzleViewController: UIViewController, UINavigationBarDelegate {
                     }
                 }
             }
-            
-            // log an event to capture usage of this feature
-            AnalyticsWrapper.logEvent(.selectContent, contentType: .featureUsage, id: "id-puzzleValidation")
         }
     }
     

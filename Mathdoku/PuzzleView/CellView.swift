@@ -65,7 +65,7 @@ class CellView: UIView {
         return bounds.maxX / 100
     }
     private let defaultTextSizeForHint: CGFloat = 23.0
-    private let defaultTextSizeForGuess: CGFloat = 55.0
+    private let defaultTextSizeForGuess: CGFloat = 54.0
     private let defaultTextSizeForNotes: CGFloat = 36.0
     
     func hasGuessAllegiance(_ allegiance: GuessAllegiance) -> Bool {
@@ -123,14 +123,14 @@ class CellView: UIView {
                 NSFontAttributeName: UIFont.boldSystemFont(ofSize: defaultTextSizeForGuess * scaleFactor)
             ]
             
-            if Defaults[.highlightConflictingEntries] == true && (guessAllegiance & GuessAllegiance.conflict.rawValue) == GuessAllegiance.conflict.rawValue {
+            if Defaults[.highlightConflictingEntries] == true && hasGuessAllegiance(.conflict) {
                 let shadow = NSShadow()
                 shadow.shadowColor = GuessAllegiance.conflict.shadowColor
                 shadow.shadowBlurRadius = 9.0
                 shadow.shadowOffset = CGSize(width: 0, height: 0)
                 
                 guessTextAttributes[NSShadowAttributeName] = shadow
-            } else if Defaults[.highlightSameGuessEntry] == true && (guessAllegiance & GuessAllegiance.equal.rawValue) == GuessAllegiance.equal.rawValue {
+            } else if Defaults[.highlightSameGuessEntry] == true && hasGuessAllegiance(.equal) {
                 let shadow = NSShadow()
                 shadow.shadowColor = GuessAllegiance.equal.shadowColor
                 shadow.shadowBlurRadius = 9.0

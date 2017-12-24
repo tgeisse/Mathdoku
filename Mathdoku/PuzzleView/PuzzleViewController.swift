@@ -14,7 +14,6 @@ import GoogleMobileAds
 class PuzzleViewController: UIViewController, UINavigationBarDelegate {
     var puzzle: Puzzle!
     var puzzleLoader: PuzzleLoader!
-    var timer: Timer? = nil
     
     // MARK: - References to View Items
     @IBOutlet weak var successOverlayView: UIView!
@@ -28,6 +27,18 @@ class PuzzleViewController: UIViewController, UINavigationBarDelegate {
         }
         
         return returnValue
+    }
+    @IBOutlet weak var gameTimerLabel: UILabel!
+    
+    // MARK: - Game timer properties
+    private var timer: Timer? = nil
+    private var gameTimer = 0 {
+        didSet {
+            // whenever the ameTimer is set, update the label displaying the timer
+            let timeComponents = TimeInterval(gameTimer).components
+            
+            gameTimerLabel.text = String(format: "%02i:%02i:%02i", timeComponents.hours, timeComponents.minutes, timeComponents.seconds)
+        }
     }
     
     // MARK: - Realm properties
@@ -811,6 +822,8 @@ class PuzzleViewController: UIViewController, UINavigationBarDelegate {
         super.viewDidAppear(animated)
         DebugUtil.print("viewDidAppear")
         loadingEnded = Date()
+        
+        gameTimer = 10
     }
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)

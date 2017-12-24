@@ -14,6 +14,9 @@
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <customFonts key="customFonts">
+        <array key="CourierNew.ttf">
+            <string>CourierNewPSMT</string>
+        </array>
         <array key="HelveticaNeue.ttc">
             <string>HelveticaNeue</string>
         </array>
@@ -47,6 +50,12 @@
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" minimumScaleFactor="0.40000000000000002" translatesAutoresizingMaskIntoConstraints="NO" id="6Tq-KK-Rt7">
+                                <rect key="frame" x="151" y="117" width="72.5" height="2"/>
+                                <fontDescription key="fontDescription" name="CourierNewPSMT" family="Courier New" pointSize="24"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="2pN-ox-hmy" customClass="GADBannerView">
                                 <rect key="frame" x="27.5" y="64" width="320" height="50"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
@@ -1947,18 +1956,22 @@
                             <constraint firstItem="kkh-Iw-mYH" firstAttribute="trailing" secondItem="s7w-CZ-Lpe" secondAttribute="trailing" constant="8" id="N5P-VD-iur"/>
                             <constraint firstItem="cz5-jJ-q7d" firstAttribute="top" secondItem="s7w-CZ-Lpe" secondAttribute="top" constant="-5" id="Szg-u0-TCz"/>
                             <constraint firstItem="jwr-Nw-upL" firstAttribute="leading" secondItem="EMF-4R-esq" secondAttribute="leadingMargin" id="TBT-4p-sac"/>
+                            <constraint firstItem="6Tq-KK-Rt7" firstAttribute="centerX" secondItem="kkh-Iw-mYH" secondAttribute="centerX" id="TSd-cT-Oah"/>
                             <constraint firstAttribute="trailingMargin" secondItem="jwr-Nw-upL" secondAttribute="trailing" id="WBH-Zo-6iI"/>
                             <constraint firstItem="kkh-Iw-mYH" firstAttribute="trailing" secondItem="Ibv-3n-jdk" secondAttribute="trailing" id="WM4-qW-RV1"/>
                             <constraint firstItem="kkh-Iw-mYH" firstAttribute="trailing" secondItem="qSi-51-JRo" secondAttribute="trailing" id="WiW-iq-ruM"/>
+                            <constraint firstItem="6Tq-KK-Rt7" firstAttribute="top" relation="greaterThanOrEqual" secondItem="2pN-ox-hmy" secondAttribute="bottom" constant="3" id="Xdf-pZ-AA2"/>
                             <constraint firstItem="cz5-jJ-q7d" firstAttribute="leading" secondItem="kkh-Iw-mYH" secondAttribute="leading" id="cQ6-hA-PeA"/>
                             <constraint firstItem="kkh-Iw-mYH" firstAttribute="bottom" secondItem="qSi-51-JRo" secondAttribute="bottom" id="cwa-Rl-wan"/>
                             <constraint firstItem="s7w-CZ-Lpe" firstAttribute="top" secondItem="Ibv-3n-jdk" secondAttribute="bottom" priority="999" constant="5" id="dfe-hS-HC3"/>
                             <constraint firstItem="kkh-Iw-mYH" firstAttribute="top" secondItem="2pN-ox-hmy" secondAttribute="top" id="fZM-W4-WUc"/>
                             <constraint firstItem="kkh-Iw-mYH" firstAttribute="leading" secondItem="Ibv-3n-jdk" secondAttribute="leading" id="fgJ-9U-mBm"/>
                             <constraint firstItem="2pN-ox-hmy" firstAttribute="bottom" secondItem="Ibv-3n-jdk" secondAttribute="top" id="geJ-5f-hAC"/>
+                            <constraint firstItem="6Tq-KK-Rt7" firstAttribute="top" secondItem="2pN-ox-hmy" secondAttribute="bottom" priority="250" constant="10" id="hJm-Cs-90j"/>
                             <constraint firstItem="jwr-Nw-upL" firstAttribute="top" secondItem="s7w-CZ-Lpe" secondAttribute="bottom" constant="8" id="jgg-I6-GtX"/>
                             <constraint firstItem="kkh-Iw-mYH" firstAttribute="trailing" secondItem="cz5-jJ-q7d" secondAttribute="trailing" id="mx3-6J-zos"/>
                             <constraint firstAttribute="bottom" secondItem="cz5-jJ-q7d" secondAttribute="bottom" id="swQ-x1-du4"/>
+                            <constraint firstItem="VV0-a5-BBu" firstAttribute="top" relation="greaterThanOrEqual" secondItem="6Tq-KK-Rt7" secondAttribute="bottom" id="zdG-ut-4yx"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="kkh-Iw-mYH"/>
                     </view>
@@ -1989,6 +2002,7 @@
                     <connections>
                         <outlet property="bannerView" destination="2pN-ox-hmy" id="R1d-6g-zvk"/>
                         <outlet property="bannerViewHeight" destination="biR-8Q-M36" id="nU5-qf-Xhp"/>
+                        <outlet property="gameTimerLabel" destination="6Tq-KK-Rt7" id="1Ek-jg-Dp3"/>
                         <outlet property="puzzleGridSuperview" destination="VV0-a5-BBu" id="Igg-1r-fiI"/>
                         <outlet property="successOverlayView" destination="qSi-51-JRo" id="tVG-oh-jte"/>
                         <outlet property="userGuessButton4" destination="rJr-Ox-0k6" id="bXO-h3-lu4"/>

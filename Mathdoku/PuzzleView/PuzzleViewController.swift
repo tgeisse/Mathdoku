@@ -210,7 +210,7 @@ class PuzzleViewController: UIViewController, UINavigationBarDelegate {
 
     
     // MARK: - Gesture Recognizers      
-    func viewTappedGesture(recognizer: UITapGestureRecognizer) {
+    @objc func viewTappedGesture(recognizer: UITapGestureRecognizer) {
         if recognizer.state == .ended {
             //DebugUtil.print("Number of taps required: \(recognizer.numberOfTapsRequired)")
             let view = recognizer.view

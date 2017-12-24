@@ -12,7 +12,7 @@ import RealmSwift
 class PuzzleProgress: Object {
     let puzzleGuesses = List<PuzzleGuess>()
     let puzzleNotes = List<PuzzleNote>()
-    dynamic var inProgress = false
+    @objc dynamic var inProgress = false
     
     func setInProgress(to: Bool, withRealm: Realm? = nil) {
         do {

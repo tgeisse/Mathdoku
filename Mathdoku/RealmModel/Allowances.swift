@@ -40,10 +40,10 @@ public enum AllowanceTypes: CustomStringConvertible {
 }
 
 class Allowances: Object {
-    dynamic var allowanceId = ""
-    dynamic var allowance = 0
-    dynamic var lastPurchaseDate = NSDate(timeIntervalSince1970: 1)
-    dynamic var lastRefreshDate = NSDate(timeIntervalSince1970: 1)
+    @objc dynamic var allowanceId = ""
+    @objc dynamic var allowance = 0
+    @objc dynamic var lastPurchaseDate = NSDate(timeIntervalSince1970: 1)
+    @objc dynamic var lastRefreshDate = NSDate(timeIntervalSince1970: 1)
     
     override static func primaryKey() -> String? {
         return "allowanceId"

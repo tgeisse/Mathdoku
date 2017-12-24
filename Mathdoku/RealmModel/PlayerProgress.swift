@@ -10,9 +10,9 @@ import Foundation
 import RealmSwift
 
 class PlayerProgress: Object {
-    dynamic var puzzleSize = 0
-    dynamic var activePuzzleId = 0
-    dynamic var puzzleProgress: PuzzleProgress?
+    @objc dynamic var puzzleSize = 0
+    @objc dynamic var activePuzzleId = 0
+    @objc dynamic var puzzleProgress: PuzzleProgress?
     let puzzlesSolved = List<PuzzlesSolved>()
     
     override static func primaryKey() -> String? {

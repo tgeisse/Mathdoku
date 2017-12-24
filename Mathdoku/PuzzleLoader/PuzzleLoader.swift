@@ -126,7 +126,7 @@ class PuzzleLoader {
                 
                 let cageGroup = String(cage[cageIndex])
                 let operation = String(cage[operationIndex])
-                let totalValue = Int(String(cage.substring(from: totalIndex)))!
+                let totalValue = Int(cage[totalIndex...])!
                 
                 if let cagesCells = cellsForCage[cageGroup] {
                     cages[cageGroup] = Cage(cells: cagesCells, total: totalValue, operation: operation)

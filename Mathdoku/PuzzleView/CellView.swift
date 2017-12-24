@@ -106,8 +106,8 @@ class CellView: UIView {
     
     private func addHintText() {
         if hint != nil {
-            let hintTextAttributes: [String : Any] = [
-                NSFontAttributeName: UIFont.boldSystemFont(ofSize: defaultTextSizeForHint * scaleFactor)
+            let hintTextAttributes: [NSAttributedStringKey : Any] = [
+                NSAttributedStringKey.font: UIFont.boldSystemFont(ofSize: defaultTextSizeForHint * scaleFactor)
             ]
             
             let hintText = NSAttributedString(string: hint!, attributes: hintTextAttributes)
@@ -119,8 +119,8 @@ class CellView: UIView {
     private func addGuessText() {
         if guess != nil {
             
-            var guessTextAttributes: [String : Any] = [
-                NSFontAttributeName: UIFont.boldSystemFont(ofSize: defaultTextSizeForGuess * scaleFactor)
+            var guessTextAttributes: [NSAttributedStringKey : Any] = [
+                NSAttributedStringKey.font: UIFont.boldSystemFont(ofSize: defaultTextSizeForGuess * scaleFactor)
             ]
             
             if Defaults[.highlightConflictingEntries] == true && hasGuessAllegiance(.conflict) {
@@ -129,14 +129,14 @@ class CellView: UIView {
                 shadow.shadowBlurRadius = 9.0
                 shadow.shadowOffset = CGSize(width: 0, height: 0)
                 
-                guessTextAttributes[NSShadowAttributeName] = shadow
+                guessTextAttributes[NSAttributedStringKey.shadow] = shadow
             } else if Defaults[.highlightSameGuessEntry] == true && hasGuessAllegiance(.equal) {
                 let shadow = NSShadow()
                 shadow.shadowColor = GuessAllegiance.equal.shadowColor
                 shadow.shadowBlurRadius = 9.0
                 shadow.shadowOffset = CGSize(width: 0, height: 0)
                 
-                guessTextAttributes[NSShadowAttributeName] = shadow
+                guessTextAttributes[NSAttributedStringKey.shadow] = shadow
             }
             
             
@@ -153,11 +153,11 @@ class CellView: UIView {
     
     private func addNotesText() {
         if guess == nil, note != nil {
-            let noteTextAttributes: [String : Any] = [
-                NSForegroundColorAttributeName: UIColor.init(red:0.0, green: 0.60, blue: 0.0, alpha: 1.0),
+            let noteTextAttributes: [NSAttributedStringKey : Any] = [
+                NSAttributedStringKey.foregroundColor: UIColor.init(red:0.0, green: 0.60, blue: 0.0, alpha: 1.0),
                 //NSFontAttributeName: UIFont.boldSystemFont(ofSize: defaultTextSizeForNotes * (scaleFactor / 1.5))
                 //NSFontAttributeName: UIFont.preferredFont(forTextStyle: .body).withSize(textSizeForNotes)
-                NSFontAttributeName: UIFont(name: "CourierNewPS-BoldMT", size: defaultTextSizeForNotes * (scaleFactor / 1.45)) ?? UIFont.boldSystemFont(ofSize: defaultTextSizeForNotes * (scaleFactor / 1.5))
+                NSAttributedStringKey.font: UIFont(name: "CourierNewPS-BoldMT", size: defaultTextSizeForNotes * (scaleFactor / 1.45)) ?? UIFont.boldSystemFont(ofSize: defaultTextSizeForNotes * (scaleFactor / 1.5))
             ]
             
             let noteText = NSAttributedString(string: note!, attributes: noteTextAttributes)

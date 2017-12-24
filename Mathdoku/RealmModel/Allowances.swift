@@ -9,21 +9,24 @@
 import Foundation
 import RealmSwift
 
-public enum AllowanceTypes {
+public enum AllowanceTypes: CustomStringConvertible {
     case puzzle
     
+    @available(*, deprecated, message: "Use the string descriptor instead")
     func id() -> String {
         switch self {
         case .puzzle: return "puzzle"
         }
     }
     
+    @available(*, deprecated, renamed: "maxRefreshGrants")
     func maxRefreshPeriods() -> Int {
         switch self {
         case .puzzle: return 3
         }
     }
     
+    @available(*, deprecated, renamed: "refreshAllowance")
     func defaultAllowance() -> Int {
         #if DEBUG
             switch self {
@@ -34,6 +37,30 @@ public enum AllowanceTypes {
             case .puzzle: return 10
             }
         #endif
+    }
+    
+    var initialAllowance: Int {
+        switch self {
+        case .puzzle: return 10
+        }
+    }
+    
+    var refreshAllowance: Int {
+        switch self {
+        case .puzzle: return 3
+        }
+    }
+    
+    var maxRefreshGrants: Int {
+        switch self {
+        case .puzzle: return 4
+        }
+    }
+    
+    public var description: String {
+        switch self {
+        case .puzzle: return "puzzle"
+        }
     }
     
     func infiniteAllowance() -> Int { return -1 }
@@ -59,6 +86,7 @@ class Allowances: Object {
             
             try realm.write {
                 allowance = allowance + incrementBy
+                lastRefreshDate = NSDate()
             }
         } catch (let error) {
             fatalError("Error incrementing allowance '\(allowanceId)':\n\(error)")

@@ -14,7 +14,7 @@ typealias LoadedProduct = (product: SKProduct, title: String, description: Strin
 
 enum PuzzleRefreshMode {
     case purchase
-    case weekly
+    case freeUser
     case error(String)
 }
 
@@ -37,14 +37,14 @@ struct PuzzleProducts {
         var puzzleAllowance: Allowances?
         
         func queryPuzzleAllowance() -> Allowances {
-            puzzleAllowance = realm.objects(Allowances.self).filter("allowanceId = '\(AllowanceTypes.puzzle.id())'").first!
+            puzzleAllowance = realm.objects(Allowances.self).filter("allowanceId = '\(AllowanceTypes.puzzle)'").first!
             return puzzleAllowance!
         }
     }
     
-    static var userIsWeekly: Bool {
+    static var userIsFree: Bool {
         switch puzzleRefreshMode {
-        case .weekly: return true
+        case .freeUser: return true
         default: return false
         }
     }
@@ -64,7 +64,7 @@ struct PuzzleProducts {
     
     static var puzzleRefreshMode: PuzzleRefreshMode {
         if puzzleAllowance.lastPurchaseDate.timeIntervalSince1970 < puzzleAllowance.lastRefreshDate.timeIntervalSince1970 {
-            return .weekly
+            return .freeUser
         } else {
             return .purchase
         }

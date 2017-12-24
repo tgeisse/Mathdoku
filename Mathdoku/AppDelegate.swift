@@ -75,12 +75,13 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         // set the default allowance values if they don't exist
         for allowanceType in Utility.iterateEnum(AllowanceTypes.self) {
             // test to see if we have an allowance for this type
-            if realm.objects(Allowances.self).filter("allowanceId == '\(allowanceType.id())'").count == 0 {
+            DebugUtil.print("Granting the initial allowance for \(allowanceType)")
+            if realm.objects(Allowances.self).filter("allowanceId == '\(allowanceType)'").count == 0 {
                 // if an allowance for this type does not exist, then let's add the default value
                 try! realm.write {
                     let newAllowanceRecord = Allowances()
-                    newAllowanceRecord.allowanceId = allowanceType.id()
-                    newAllowanceRecord.allowance = allowanceType.defaultAllowance()
+                    newAllowanceRecord.allowanceId = "\(allowanceType)"
+                    newAllowanceRecord.allowance = allowanceType.initialAllowance
                     newAllowanceRecord.lastRefreshDate = NSDate()
                     realm.add(newAllowanceRecord)
                 }

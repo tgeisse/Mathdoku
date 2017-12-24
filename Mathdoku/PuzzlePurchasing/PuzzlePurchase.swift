@@ -14,17 +14,46 @@ import SwiftyStoreKit
 typealias PuzzlePurchaseTuple = (product: SKProduct, buysAllowance: Int)
 
 struct PuzzlePurchase {
+    @available(*, deprecated, message: "No longer used. Please run the grant block, which will return the number of puzzles granted in its calculations.")
     static func weeklyPuzzleAllowanceGrantAvailable(withPuzzleAllowance withAllowance: Allowances? = nil,
                                                     withRealm: Realm? = nil) -> Bool {
         
         let realm = try! withRealm ?? Realm()
-        if let allowance = withAllowance ?? realm.objects(Allowances.self).filter("allowanceId == '\(AllowanceTypes.puzzle.id())'").first {
+        if let allowance = withAllowance ?? realm.objects(Allowances.self).filter("allowanceId == '\(AllowanceTypes.puzzle)'").first {
         
             return Date().timeIntervalSince(allowance.lastRefreshDate as Date).components.weeks > 0
         }
         return false
     }
     
+    static func grantDailyPuzzleAllowance(withRealm: Realm? = nil) -> Int {
+        let realm = try! Realm()
+        if let allowance = realm.objects(Allowances.self).filter("allowanceId == '\(AllowanceTypes.puzzle)'").first {
+            let calendar = NSCalendar.current
+            let lastRefreshDate = calendar.startOfDay(for: allowance.lastRefreshDate as Date)
+            let today = calendar.startOfDay(for: Date())
+            let daysBetween = calendar.dateComponents([.day], from: lastRefreshDate, to: today).day!
+            
+            DebugUtil.print("Days since last refresh: \(daysBetween)")
+            
+            let refreshPeriodGrants = min(AllowanceTypes.puzzle.maxRefreshGrants, daysBetween)
+            
+            if refreshPeriodGrants > 0 {
+                // if we have periods to grant, then calculate the amount
+                let grantAmount = refreshPeriodGrants * AllowanceTypes.puzzle.refreshAllowance
+                
+                DebugUtil.print("Granting \(grantAmount) additional puzzles")
+                
+                allowance.incrementAllowance(by: grantAmount, withRealm: realm)
+                
+                return grantAmount
+            }
+        }
+        
+        return 0
+    }
+    
+    @available(*, deprecated, message: "Switched to daily refreshes", renamed: "grantDailyPuzzleAllowance")
     static func grantWeeklyPuzzleAllowance(withPuzzleAllowance withAllowance: Allowances? = nil,
                                            withRealm: Realm? = nil) -> Int {
         
@@ -67,7 +96,7 @@ struct PuzzlePurchase {
                 DebugUtil.print("Purchase Success: \(purchase.productId)")
                 do {
                     let realm = try Realm()
-                    let currentAllowance = realm.objects(Allowances.self).filter("allowanceId == '\(AllowanceTypes.puzzle.id())'").first
+                    let currentAllowance = realm.objects(Allowances.self).filter("allowanceId == '\(AllowanceTypes.puzzle)'").first
                     
                     currentAllowance?.incrementAllowance(by: puzzleProduct.buysAllowance, withRealm: realm)
                     try realm.write {

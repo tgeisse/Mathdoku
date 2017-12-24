@@ -57,21 +57,19 @@ class PuzzleSelectionViewController: UIViewController {
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
         
-        // see if we can get a new weekly allowawnce (if we are in weekly allowance mode)
+        // see if we can get a new refresh allowawnce
         switch PuzzleProducts.puzzleRefreshMode {
         case .error(let error): DebugUtil.print("Error getting the puzzle refresh mode: \(error)")
         case .purchase:
-            DebugUtil.print("Entering purchase block -- nothing should be done since purchasers don't get weekly grants")
-        case .weekly:
-            DebugUtil.print("Entering weekly refresh grant block")
-            if PuzzlePurchase.weeklyPuzzleAllowanceGrantAvailable(withPuzzleAllowance: PuzzleProducts.puzzleAllowance, withRealm: realm) {
-                
-                DebugUtil.print("Weekly grant is available -- processing")
-                let puzzlesGranted = PuzzlePurchase.grantWeeklyPuzzleAllowance(withPuzzleAllowance: PuzzleProducts.puzzleAllowance, withRealm: realm)
-                if puzzlesGranted > 0 {
-                    let alert = self.alertWithTitle("Weekly Puzzle Refill!", message: "We've added \(puzzlesGranted) puzzle\(puzzlesGranted == 1 ? "" : "s") to your stash.", buttonLabel: "Game on!")
-                    self.showAlert(alert)
-                }
+            DebugUtil.print("Entering purchase block -- nothing should be done since purchasers don't get refresh grants")
+        case .freeUser:
+            DebugUtil.print("Entering refresh grant block for free users")
+            let puzzlesGranted = PuzzlePurchase.grantDailyPuzzleAllowance(withRealm: realm)
+            
+            if puzzlesGranted > 0 {
+                // puzzles were granted, notify the user
+                let alert = self.alertWithTitle("More Puzzles!", message: "We've added \(puzzlesGranted) puzzle\(puzzlesGranted == 1 ? "" : "s") to your stash.", buttonLabel: "Game on!")
+                self.showAlert(alert)
             }
         }
     }
@@ -127,11 +125,11 @@ class PuzzleSelectionViewController: UIViewController {
                 return true
             } else {
                 // else the player does not have puzzle allowance to play. Prompt to buy or wait
-                let mentionWeeklyAllowance: Bool = PuzzleProducts.userIsWeekly
+                let mentionRefresh: Bool = PuzzleProducts.userIsFree
                 
                 AnalyticsWrapper.logEvent(.selectContent, contentType: .presented, id: "id-mainMenuOutOfPuzzles")
                 
-                let alert = self.alertOutOfPuzzlesAndCanPurchase(mentionWeeklyAllowance: mentionWeeklyAllowance, actionOnConfirm: segueToStore)
+                let alert = self.alertOutOfPuzzlesAndCanPurchase(mentionRefreshPeriod: mentionRefresh, actionOnConfirm: segueToStore)
                 self.showAlert(alert)
                 
                 return false

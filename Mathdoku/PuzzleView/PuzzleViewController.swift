@@ -343,7 +343,7 @@ class PuzzleViewController: UIViewController, UINavigationBarDelegate {
             AnalyticsWrapper.logEvent(.selectContent, contentType: .puzzlePlayed, id: "id-nextPuzzle")
             
             if PuzzleProducts.puzzleAllowance.allowance == 0 {
-                let alert = self.alertOutOfPuzzlesAndCanPurchase(mentionWeeklyAllowance: PuzzleProducts.userIsWeekly, actionOnConfirm: segueToStore)
+                let alert = self.alertOutOfPuzzlesAndCanPurchase(mentionRefreshPeriod: PuzzleProducts.userIsFree, actionOnConfirm: segueToStore)
                 self.showAlert(alert)
             } else {
                 goToNextPuzzle()
@@ -356,8 +356,8 @@ class PuzzleViewController: UIViewController, UINavigationBarDelegate {
             // preload a puzzle if they can skip
             puzzleLoader.preloadPuzzle(forSize: puzzle.size, withPuzzleId: playerProgress.activePuzzleId + 1)
             if PuzzleProducts.puzzleAllowance.allowance == 0 {
-                // If the user is out of puzzles, tell them they have to buy (or wait for weekly)
-                let alert = self.alertOutOfPuzzlesAndCanPurchase(mentionWeeklyAllowance: PuzzleProducts.userIsWeekly, messageOverride: "You cannot skip this puzzle until you have more to play.", actionOnConfirm: segueToStore)
+                // If the user is out of puzzles, tell them they have to buy (or wait for daily)
+                let alert = self.alertOutOfPuzzlesAndCanPurchase(mentionRefreshPeriod: PuzzleProducts.userIsFree, messageOverride: "You cannot skip this puzzle until you have more to play.", actionOnConfirm: segueToStore)
                 self.showAlert(alert)
             } else {
                 // if the user has puzzles, then tell them that skipping will consume a puzzle and confirm first
@@ -740,7 +740,7 @@ class PuzzleViewController: UIViewController, UINavigationBarDelegate {
 
     private func consumePuzzleAllowance() {
         DebugUtil.print("Consuming a puzzle allowance")
-        if let allowance = realm.objects(Allowances.self).filter("allowanceId = '\(AllowanceTypes.puzzle.id())'").first {
+        if let allowance = realm.objects(Allowances.self).filter("allowanceId = '\(AllowanceTypes.puzzle)'").first {
             allowance.decrementAllowance(by: 1, withRealm: realm)
         }
     }

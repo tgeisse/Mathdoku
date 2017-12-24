@@ -12,33 +12,6 @@ import RealmSwift
 public enum AllowanceTypes: CustomStringConvertible {
     case puzzle
     
-    @available(*, deprecated, message: "Use the string descriptor instead")
-    func id() -> String {
-        switch self {
-        case .puzzle: return "puzzle"
-        }
-    }
-    
-    @available(*, deprecated, renamed: "maxRefreshGrants")
-    func maxRefreshPeriods() -> Int {
-        switch self {
-        case .puzzle: return 3
-        }
-    }
-    
-    @available(*, deprecated, renamed: "refreshAllowance")
-    func defaultAllowance() -> Int {
-        #if DEBUG
-            switch self {
-            case .puzzle: return 1
-            }
-        #else
-            switch self {
-            case .puzzle: return 10
-            }
-        #endif
-    }
-    
     var initialAllowance: Int {
         switch self {
         case .puzzle: return 10

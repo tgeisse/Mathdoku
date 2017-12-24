@@ -14,18 +14,6 @@ import SwiftyStoreKit
 typealias PuzzlePurchaseTuple = (product: SKProduct, buysAllowance: Int)
 
 struct PuzzlePurchase {
-    @available(*, deprecated, message: "No longer used. Please run the grant block, which will return the number of puzzles granted in its calculations.")
-    static func weeklyPuzzleAllowanceGrantAvailable(withPuzzleAllowance withAllowance: Allowances? = nil,
-                                                    withRealm: Realm? = nil) -> Bool {
-        
-        let realm = try! withRealm ?? Realm()
-        if let allowance = withAllowance ?? realm.objects(Allowances.self).filter("allowanceId == '\(AllowanceTypes.puzzle)'").first {
-        
-            return Date().timeIntervalSince(allowance.lastRefreshDate as Date).components.weeks > 0
-        }
-        return false
-    }
-    
     static func grantDailyPuzzleAllowance(withRealm: Realm? = nil) -> Int {
         let realm = try! Realm()
         if let allowance = realm.objects(Allowances.self).filter("allowanceId == '\(AllowanceTypes.puzzle)'").first {
@@ -48,40 +36,6 @@ struct PuzzlePurchase {
                 
                 return grantAmount
             }
-        }
-        
-        return 0
-    }
-    
-    @available(*, deprecated, message: "Switched to daily refreshes", renamed: "grantDailyPuzzleAllowance")
-    static func grantWeeklyPuzzleAllowance(withPuzzleAllowance withAllowance: Allowances? = nil,
-                                           withRealm: Realm? = nil) -> Int {
-        
-        let realm = try! withRealm ?? Realm()
-        if let allowance = withAllowance ?? realm.objects(Allowances.self).filter("allowanceId == '\(AllowanceTypes.puzzle.id())'").first {
-            let weeksSinceLastRefresh = Date().timeIntervalSince(allowance.lastRefreshDate as Date).components.weeks
-            
-            let maxRefreshAllowed = AllowanceTypes.puzzle.maxRefreshPeriods() * AllowanceTypes.puzzle.defaultAllowance()
-            
-            let refreshAllowedByTime = AllowanceTypes.puzzle.defaultAllowance() * weeksSinceLastRefresh
-            
-            let allowanceToSetTo = min(maxRefreshAllowed, allowance.allowance + refreshAllowedByTime)
-            
-            let allowanceRefresh = allowanceToSetTo - allowance.allowance
-            
-            DebugUtil.print("Weeks since last refresh: \(weeksSinceLastRefresh) and granting \(allowanceRefresh) puzzles")
-            
-            if allowanceRefresh > 0 {
-                allowance.incrementAllowance(by: allowanceRefresh, withRealm: realm)
-            }
-            
-            if weeksSinceLastRefresh > 0 {
-                try! realm.write {
-                    allowance.lastRefreshDate = NSDate()
-                }
-            }
-            
-            return allowanceRefresh
         }
         
         return 0

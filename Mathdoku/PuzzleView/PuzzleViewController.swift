@@ -14,6 +14,7 @@ import GoogleMobileAds
 class PuzzleViewController: UIViewController, UINavigationBarDelegate {
     var puzzle: Puzzle!
     var puzzleLoader: PuzzleLoader!
+    var timer: Timer? = nil
     
     // MARK: - References to View Items
     @IBOutlet weak var successOverlayView: UIView!

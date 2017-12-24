@@ -22,9 +22,9 @@ struct PuzzlePurchase {
             let today = calendar.startOfDay(for: Date())
             let daysBetween = calendar.dateComponents([.day], from: lastRefreshDate, to: today).day!
             
-            DebugUtil.print("Days since last refresh: \(daysBetween)")
-            
             let refreshPeriodGrants = min(AllowanceTypes.puzzle.maxRefreshGrants, daysBetween)
+            
+            DebugUtil.print("Days since last refresh: \(daysBetween) - refresh periods to be granted: \(refreshPeriodGrants)")
             
             if refreshPeriodGrants > 0 {
                 // if we have periods to grant, then calculate the amount

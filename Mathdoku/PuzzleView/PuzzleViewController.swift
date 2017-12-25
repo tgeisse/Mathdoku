@@ -47,20 +47,18 @@ class PuzzleViewController: UIViewController, UINavigationBarDelegate {
     }
     
     private enum TimerState {
-        case reset
         case stopped
         case start
         case running
         case pause
         case final
+        case reset
     }
     private var timerState: TimerState = .stopped {
         didSet {
             DebugUtil.print("Entering '\(timerState)' timer state")
             
             switch timerState {
-            case .reset:
-                resetTimer()
             case .stopped:
                 break
             case .start:
@@ -72,6 +70,8 @@ class PuzzleViewController: UIViewController, UINavigationBarDelegate {
             case .final:
                 pauseTimer()
                 saveFinalTimer()
+            case .reset:
+                resetTimer()
             }
         }
     }
@@ -444,6 +444,7 @@ class PuzzleViewController: UIViewController, UINavigationBarDelegate {
     
     private func goToNextPuzzle() {
         selectedCell = nil
+        timerState = .reset
         resetCellNotesAndGuesses()
         consumePuzzleAllowance()
         puzzle = puzzleLoader.fetchPuzzle(forSize: puzzle.size, withPuzzleId: playerProgress.activePuzzleId)
@@ -453,6 +454,8 @@ class PuzzleViewController: UIViewController, UINavigationBarDelegate {
         successOverlayView.isHidden = true
         
         AnalyticsWrapper.logEvent(.selectContent, contentType: .puzzlePlayed, id: "id-startNextPuzzle", name: "goToNextPuzzle")
+        
+        timerStartCountdown()
     }
     
     // MARK: - User Assisting Functions

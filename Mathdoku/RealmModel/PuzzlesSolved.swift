@@ -13,5 +13,5 @@ class PuzzlesSolved: Object {
     let forPuzzleSize = LinkingObjects(fromType: PlayerProgress.self, property: "puzzlesSolved")
     @objc dynamic var puzzleId = 0
     @objc dynamic var solvedOn = NSDate()
-    @objc dynamic var timeToSolveInSeconds = 0
+    @objc dynamic var timeToSolve = 0.0
 }

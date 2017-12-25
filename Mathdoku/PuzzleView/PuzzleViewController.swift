@@ -36,11 +36,10 @@ class PuzzleViewController: UIViewController, UINavigationBarDelegate {
     private var gameTimer = 0.0 {
         didSet {
             // whenever the ameTimer is set, update the label displaying the timer
-            let newTimeComponents = TimeInterval(gameTimer).components
+            let timerComponents = TimeInterval(gameTimer).components
             
-            let timerLabel = String(format: "%02i:%02i:%02i", newTimeComponents.hours, newTimeComponents.minutes, newTimeComponents.seconds)
+            let timerLabel = String(format: "%02i:%02i:%02i", timerComponents.hours, timerComponents.minutes, timerComponents.seconds)
             if timerLabel != gameTimerLabel.text {
-                DebugUtil.print("updating timer label")
                 gameTimerLabel.text = timerLabel
             }
         }
@@ -379,7 +378,11 @@ class PuzzleViewController: UIViewController, UINavigationBarDelegate {
     }
     
     @IBAction func resetPuzzle(_ sender: UIButton) {
-        alertUserYesNoMessage(title: "Reset Puzzle?", message: "Are you sure you want to erase all guesses and notes?", actionOnConfirm: resetCellNotesAndGuesses)
+        alertUserYesNoMessage(title: "Reset Puzzle?", message: "Are you sure you want to erase all guesses and notes?", actionOnConfirm: { [weak self] in
+            self?.timerState = .reset
+            self?.resetCellNotesAndGuesses()
+            self?.timerStartCountdown()
+        })
     }
     
     // MARK: - Puzzle progression UI buttons
@@ -705,7 +708,7 @@ class PuzzleViewController: UIViewController, UINavigationBarDelegate {
             withVisualFormat: "V:[superview]-(<=1)-[label]",
             options: NSLayoutFormatOptions.alignAllCenterX,
             metrics: nil,
-            views: ["superview":view, "label":countLabel])
+            views: ["superview":puzzleGridSuperview, "label":countLabel])
         
         view.addConstraints(constraints)
         
@@ -714,7 +717,7 @@ class PuzzleViewController: UIViewController, UINavigationBarDelegate {
             withVisualFormat: "H:[superview]-(<=1)-[label]",
             options: NSLayoutFormatOptions.alignAllCenterY,
             metrics: nil,
-            views: ["superview":view, "label":countLabel])
+            views: ["superview":puzzleGridSuperview, "label":countLabel])
         
         view.addConstraints(constraints)
         
@@ -764,6 +767,7 @@ class PuzzleViewController: UIViewController, UINavigationBarDelegate {
     }
     
     private func startTimer() {
+        timer?.invalidate()
         timer = Timer.scheduledTimer(timeInterval: gameTimerPrecision, target: self, selector: #selector(self.updateTimer), userInfo: nil, repeats: true)
         timerState = .running
     }
@@ -1086,11 +1090,26 @@ class PuzzleViewController: UIViewController, UINavigationBarDelegate {
             bannerView.load(GADRequest())
         }
         
+        // register notification observers
+        NotificationCenter.default.addObserver(forName: Notification.Name.UIApplicationWillResignActive,
+                                               object: nil, queue: nil) { [weak self] notification in
+            self?.timerState = .pause
+        }
+        NotificationCenter.default.addObserver(forName: Notification.Name.UIApplicationDidBecomeActive,
+                                               object: nil, queue: nil) { [weak self] notification in
+            self?.timerState = .start
+        }
+        
         DebugUtil.print("viewDidLoad")
         loadingEnded = Date()
     }
     override func loadView() {
         super.loadView()
         loadingStart = Date()
+    }
+    
+    deinit {
+        // unregister the notification observers
+        NotificationCenter.default.removeObserver(self)
     }
 }

@@ -37,11 +37,11 @@ class PuzzleViewController: UIViewController, UINavigationBarDelegate {
         didSet {
             // whenever the ameTimer is set, update the label displaying the timer
             let newTimeComponents = TimeInterval(gameTimer).components
-            let oldTimeComponents = TimeInterval(oldValue).components
             
-            // only if the seconds have changed should we update the UI
-            if newTimeComponents.seconds != oldTimeComponents.seconds {
-                gameTimerLabel.text = String(format: "%02i:%02i:%02i", newTimeComponents.hours, newTimeComponents.minutes, newTimeComponents.seconds)
+            let timerLabel = String(format: "%02i:%02i:%02i", newTimeComponents.hours, newTimeComponents.minutes, newTimeComponents.seconds)
+            if timerLabel != gameTimerLabel.text {
+                DebugUtil.print("updating timer label")
+                gameTimerLabel.text = timerLabel
             }
         }
     }

@@ -990,22 +990,12 @@ class PuzzleViewController: UIViewController, UINavigationBarDelegate {
     }
     
     // MARK: - View Lifecycle
-    var loadingStart: Date?
-    var loadingEnded: Date? {
-        didSet {
-            if let start = loadingStart, let end = loadingEnded {
-                DebugUtil.print("Difference between loading times: \(end.timeIntervalSince(start))")
-            }
-        }
-    }
     override func viewWillDisappear(_ animated: Bool) {
         super.viewWillDisappear(animated)
         timerState = .pause
     }
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
-        DebugUtil.print("viewDidAppear")
-        loadingEnded = Date()
         
         if timerState == .stopped {
             timerStartCountdown()
@@ -1015,15 +1005,12 @@ class PuzzleViewController: UIViewController, UINavigationBarDelegate {
     }
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
-        DebugUtil.print("viewWillAppear")
         
         // fill in the unit cells (give me cells)
         fillInUnitCells()
         
         // highlight conflicting and equal guesses
         highlightGuesses(for: [.equal, .conflict])
-        
-        loadingEnded = Date()
     }
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -1108,13 +1095,6 @@ class PuzzleViewController: UIViewController, UINavigationBarDelegate {
                                                object: nil, queue: nil) { [weak self] notification in
             self?.timerState = .start
         }
-        
-        DebugUtil.print("viewDidLoad")
-        loadingEnded = Date()
-    }
-    override func loadView() {
-        super.loadView()
-        loadingStart = Date()
     }
     
     deinit {

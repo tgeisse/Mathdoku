@@ -381,6 +381,7 @@ class PuzzleViewController: UIViewController, UINavigationBarDelegate {
         alertUserYesNoMessage(title: "Reset Puzzle?", message: "Are you sure you want to erase all guesses and notes?", actionOnConfirm: { [weak self] in
             self?.timerState = .reset
             self?.resetCellNotesAndGuesses()
+            self?.fillInUnitCells()
             self?.timerStartCountdown()
         })
     }
@@ -681,6 +682,7 @@ class PuzzleViewController: UIViewController, UINavigationBarDelegate {
         let countLabel = UILabel()
         let startingFont = UIFont(name: "Noteworthy-Bold", size: 200.0)
         
+        countLabel.tag = 554455
         countLabel.backgroundColor = .clear
         countLabel.textColor = .red
         countLabel.font = startingFont
@@ -756,7 +758,9 @@ class PuzzleViewController: UIViewController, UINavigationBarDelegate {
                 }, completion: { [weak self] finished in
                     // down counting down. remove the label and start the timer
                     countLabel.removeFromSuperview()
-                    self?.timerState = .start
+                    if finished {
+                        self?.timerState = .start
+                    }
                     // enable the gesture recognizers
                     self?.puzzleGridSuperview.gestureRecognizers?.forEach {
                         $0.isEnabled = true
@@ -1093,6 +1097,11 @@ class PuzzleViewController: UIViewController, UINavigationBarDelegate {
         // register notification observers
         NotificationCenter.default.addObserver(forName: Notification.Name.UIApplicationWillResignActive,
                                                object: nil, queue: nil) { [weak self] notification in
+            
+            self?.view.subviews.forEach({$0.layer.removeAllAnimations()})
+            self?.view.layer.removeAllAnimations()
+            self?.view.viewWithTag(554455)?.removeFromSuperview()
+            self?.view.layoutIfNeeded()
             self?.timerState = .pause
         }
         NotificationCenter.default.addObserver(forName: Notification.Name.UIApplicationDidBecomeActive,

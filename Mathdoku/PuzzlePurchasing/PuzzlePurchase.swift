@@ -41,10 +41,11 @@ struct PuzzlePurchase {
         return 0
     }
     
-    static func initiateIAPForPuzzleProduct(_ product: SKProduct, puzzleProduct: PuzzleProduct) {
+    static func initiateIAPForPuzzleProduct(_ product: SKProduct, puzzleProduct: PuzzleProduct, completion: (() -> ())? = nil) {
         DebugUtil.print("Initiating a purchase for product \(puzzleProduct)")
         SwiftyStoreKit.purchaseProduct(product, atomically: true) { result in
             DebugUtil.print("Received results for attempted purchase of product \(puzzleProduct)")
+            completion?()
             switch result {
             case .success(let purchase):
                 DebugUtil.print("Purchase Success: \(purchase.productId)")

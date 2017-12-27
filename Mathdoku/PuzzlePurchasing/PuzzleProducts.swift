@@ -9,7 +9,9 @@
 import StoreKit
 import RealmSwift
 
-typealias PuzzleProduct = (productIdentifier: String, buysAllowance: Int, disablesAds: Bool)
+typealias PuzzleProduct = (productIdentifier: String, title: String, description: String, promotionalImage: UIImage, forAllowance: AllowanceTypes, buysAllowance: Int, disablesAds: Bool)
+
+@available(*, deprecated, message: "Removing this typalias. Using SKProduct instead.")
 typealias LoadedProduct = (product: SKProduct, title: String, description: String, price: String)
 
 enum PuzzleRefreshMode {
@@ -19,13 +21,22 @@ enum PuzzleRefreshMode {
 }
 
 struct PuzzleProducts {
-    static let puzzle100: PuzzleProduct = ("com.geissefamily.taylor.puzzle100", 100, true)
-    static let puzzle1000: PuzzleProduct = ("com.geissefamily.taylor.puzzle1000", 1000, true)
+    static let PuzzlePacks: [PuzzleProduct] = [
+        ("com.geissefamily.taylor.puzzle100", "100 Puzzles", "Also disables ads!", #imageLiteral(resourceName: "GridImage"), .puzzle, 100, true),
+        ("com.geissefamily.taylor.puzzle250", "250 Puzzles", "Also disables ads!", #imageLiteral(resourceName: "GridImage"), .puzzle, 250, true),
+        ("com.geissefamily.taylor.puzzle500", "500 Puzzles", "Also disables ads!", #imageLiteral(resourceName: "GridImage"), .puzzle, 500, true),
+        ("com.geissefamily.taylor.puzzle1000", "1000 Puzzles", "Also disables ads!", #imageLiteral(resourceName: "GridImage"), .puzzle, 1000, true)
+    ]
     
     private static let loadedInfo = LoadedInformation()
     
     private class LoadedInformation {
-        var loadedPuzzleProducts = Dictionary<String, LoadedProduct>()
+        private let loadedProductsQueue = DispatchQueue(label: "com.geissefamily.taylor.loadedProductsQueue",
+                                                        qos: .default,
+                                                        attributes: .concurrent)
+        
+        private var loadedProducts = Dictionary<String, SKProduct>()
+        
         lazy var realm: Realm = {
             do {
                 let localRealm = try Realm()
@@ -39,6 +50,20 @@ struct PuzzleProducts {
         func queryPuzzleAllowance() -> Allowances {
             puzzleAllowance = realm.objects(Allowances.self).filter("allowanceId = '\(AllowanceTypes.puzzle)'").first!
             return puzzleAllowance!
+        }
+        
+        func setProduct(_ product: SKProduct, forIdentifier pId: String) {
+            loadedProductsQueue.async (flags: .barrier) { [weak self] in
+                self?.loadedProducts[pId] = product
+            }
+        }
+        
+        func getProduct(forIdentifier pId: String) -> SKProduct? {
+            var product: SKProduct? = nil
+            loadedProductsQueue.sync { [weak self] in
+                product = self?.loadedProducts[pId]
+            }
+            return product
         }
     }
     
@@ -74,11 +99,11 @@ struct PuzzleProducts {
         return !userHasPurchased
     }
     
-    static func getLoadedPuzzleProductInfo(productId: String) -> LoadedProduct? {
-        return loadedInfo.loadedPuzzleProducts[productId]
+    static func getLoadedPuzzleProduct(forIdentifier pId: String) -> SKProduct? {
+        return loadedInfo.getProduct(forIdentifier: pId)
     }
     
-    static func setPuzzleProductInfo(productInfo: LoadedProduct) {
-        loadedInfo.loadedPuzzleProducts[productInfo.product.productIdentifier] = productInfo
+    static func setLoadedPuzzleProduct(_ product: SKProduct, forIdentifier pId: String) {
+        loadedInfo.setProduct(product, forIdentifier: pId)
     }
 }

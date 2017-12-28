@@ -442,6 +442,7 @@ class PuzzleViewController: UIViewController, UINavigationBarDelegate {
         // track that the puzzle has been skipped
         AnalyticsWrapper.logEvent(.selectContent, contentType: .featureUsage, id: "id-skipPuzzle", name: "puzzleSkipped")
         
+        removeCountdownTimer()
         incrementPlayerPuzzleProgress()
         goToNextPuzzle()
     }
@@ -678,11 +679,12 @@ class PuzzleViewController: UIViewController, UINavigationBarDelegate {
     }
     
     // MARK: - Timer functions
+    private let countdownTag = 554455
     private func timerStartCountdown() {
         let countLabel = UILabel()
         let startingFont = UIFont(name: "Noteworthy-Bold", size: 200.0)
         
-        countLabel.tag = 554455
+        countLabel.tag = countdownTag
         countLabel.backgroundColor = .clear
         countLabel.textColor = .red
         countLabel.font = startingFont
@@ -768,6 +770,11 @@ class PuzzleViewController: UIViewController, UINavigationBarDelegate {
                 })
             })
         })
+    }
+    
+    private func removeCountdownTimer() {
+        view.viewWithTag(countdownTag)?.removeFromSuperview()
+        view.layoutIfNeeded()
     }
     
     private func startTimer() {
@@ -992,6 +999,7 @@ class PuzzleViewController: UIViewController, UINavigationBarDelegate {
     // MARK: - View Lifecycle
     override func viewWillDisappear(_ animated: Bool) {
         super.viewWillDisappear(animated)
+        removeCountdownTimer()
         timerState = .pause
     }
     override func viewDidAppear(_ animated: Bool) {
@@ -1087,8 +1095,8 @@ class PuzzleViewController: UIViewController, UINavigationBarDelegate {
             
             self?.view.subviews.forEach({$0.layer.removeAllAnimations()})
             self?.view.layer.removeAllAnimations()
-            self?.view.viewWithTag(554455)?.removeFromSuperview()
             self?.view.layoutIfNeeded()
+            self?.removeCountdownTimer()
             self?.timerState = .pause
         }
         NotificationCenter.default.addObserver(forName: Notification.Name.UIApplicationDidBecomeActive,

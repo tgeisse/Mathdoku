@@ -30,6 +30,15 @@ class PuzzleViewController: UIViewController, UINavigationBarDelegate {
     }
     @IBOutlet weak var gameTimerLabel: UILabel!
     
+    // MARK: - Game state properties
+    private enum GameState {
+        case loading
+        case playing
+        case paused
+        case finished
+    }
+    private var gameState = GameState.loading
+    
     // MARK: - Game timer properties
     private var timer: Timer? = nil
     private var gameTimerPrecision = 0.1
@@ -380,6 +389,7 @@ class PuzzleViewController: UIViewController, UINavigationBarDelegate {
     @IBAction func resetPuzzle(_ sender: UIButton) {
         alertUserYesNoMessage(title: "Reset Puzzle?", message: "Are you sure you want to erase all guesses and notes?", actionOnConfirm: { [weak self] in
             self?.timerState = .reset
+            self?.gameState = .loading
             self?.resetCellNotesAndGuesses()
             self?.fillInUnitCells()
             self?.timerStartCountdown()
@@ -428,6 +438,7 @@ class PuzzleViewController: UIViewController, UINavigationBarDelegate {
         if puzzle.isSolved {
             // TODO: if you ever implement replay, then the incrementPuzzleId function will need to support a "to:" parameter
             timerState = .final
+            gameState = .finished
             incrementPlayerPuzzleProgress()
             setPuzzleProgress(to: false)
             puzzleLoader.preloadPuzzle(forSize: puzzle.size, withPuzzleId: playerProgress.activePuzzleId)
@@ -448,6 +459,7 @@ class PuzzleViewController: UIViewController, UINavigationBarDelegate {
     }
     
     private func goToNextPuzzle() {
+        gameState = .loading
         selectedCell = nil
         timerState = .reset
         resetCellNotesAndGuesses()
@@ -461,6 +473,7 @@ class PuzzleViewController: UIViewController, UINavigationBarDelegate {
         AnalyticsWrapper.logEvent(.selectContent, contentType: .puzzlePlayed, id: "id-startNextPuzzle", name: "goToNextPuzzle")
         
         timerStartCountdown()
+        gameState = .playing
     }
     
     // MARK: - User Assisting Functions
@@ -762,6 +775,7 @@ class PuzzleViewController: UIViewController, UINavigationBarDelegate {
                     countLabel.removeFromSuperview()
                     if finished {
                         self?.timerState = .start
+                        self?.gameState = .playing
                     }
                     // enable the gesture recognizers
                     self?.puzzleGridSuperview.gestureRecognizers?.forEach {
@@ -1005,10 +1019,12 @@ class PuzzleViewController: UIViewController, UINavigationBarDelegate {
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
         
-        if timerState == .stopped {
-            timerStartCountdown()
-        } else {
-            timerState = .start
+        if gameState != .finished {
+            if timerState == .stopped {
+                timerStartCountdown()
+            } else {
+                timerState = .start
+            }
         }
     }
     override func viewWillAppear(_ animated: Bool) {
@@ -1098,10 +1114,12 @@ class PuzzleViewController: UIViewController, UINavigationBarDelegate {
             self?.view.layoutIfNeeded()
             self?.removeCountdownTimer()
             self?.timerState = .pause
+            self?.gameState = .paused
         }
         NotificationCenter.default.addObserver(forName: Notification.Name.UIApplicationDidBecomeActive,
                                                object: nil, queue: nil) { [weak self] notification in
             self?.timerState = .start
+            self?.gameState = .playing
         }
     }
     

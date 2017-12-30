@@ -37,7 +37,11 @@ class PuzzleViewController: UIViewController, UINavigationBarDelegate {
         case paused
         case finished
     }
-    private var gameState = GameState.loading
+    private var gameState = GameState.loading {
+        didSet {
+            DebugUtil.print("Game State: \(oldValue) -> \(gameState)")
+        }
+    }
     
     // MARK: - Game timer properties
     private var timer: Timer? = nil
@@ -64,7 +68,7 @@ class PuzzleViewController: UIViewController, UINavigationBarDelegate {
     }
     private var timerState: TimerState = .stopped {
         didSet {
-            DebugUtil.print("Entering '\(timerState)' timer state")
+            DebugUtil.print("Timer State: \(oldValue) -> \(timerState)")
             
             switch timerState {
             case .stopped:
@@ -368,18 +372,20 @@ class PuzzleViewController: UIViewController, UINavigationBarDelegate {
     }
     
     @IBAction func randomReveal(_ sender: UIButton) {
-        let unguessedCells = puzzle.getUnguessedCellPositionsWithAnswers()
-        
-        if unguessedCells.count > 0 {
-            let randomCell = unguessedCells[Int(arc4random_uniform(UInt32(unguessedCells.count)))]
+        if gameState == .playing {
+            let unguessedCells = puzzle.getUnguessedCellPositionsWithAnswers()
             
-            entryMode = .guessing
-            setGuessForCells(atPositions: [randomCell.cellPosition], withAnswer: randomCell.answer)
-            selectedCell = gridRowStacks[randomCell.cellPosition.row].rowCells[randomCell.cellPosition.col]
+            if unguessedCells.count > 0 {
+                let randomCell = unguessedCells[Int(arc4random_uniform(UInt32(unguessedCells.count)))]
+                
+                entryMode = .guessing
+                setGuessForCells(atPositions: [randomCell.cellPosition], withAnswer: randomCell.answer)
+                selectedCell = gridRowStacks[randomCell.cellPosition.row].rowCells[randomCell.cellPosition.col]
+            }
+            
+            // log an event to capture usage of this feature
+            AnalyticsWrapper.logEvent(.selectContent, contentType: .featureUsage, id: "id-randomGuessReveal")
         }
-        
-        // log an event to capture usage of this feature
-        AnalyticsWrapper.logEvent(.selectContent, contentType: .featureUsage, id: "id-randomGuessReveal")
     }
     
     @IBAction func toggleNotes(_ sender: UIButton) {
@@ -399,8 +405,10 @@ class PuzzleViewController: UIViewController, UINavigationBarDelegate {
     // MARK: - Puzzle progression UI buttons
     @IBAction func nextPuzzle(_ sender: UIButton) {
         // this can be used by either the success screen or the skiPuzzle button
+        DebugUtil.print("Entering nextPuzzle")
         if sender.currentTitle == "Next Puzzle" {
             // analytics - going to next puzzle
+            DebugUtil.print("Puzzle was completed")
             AnalyticsWrapper.logEvent(.selectContent, contentType: .puzzlePlayed, id: "id-nextPuzzle")
             
             if PuzzleProducts.puzzleAllowance.allowance == 0 {
@@ -411,6 +419,7 @@ class PuzzleViewController: UIViewController, UINavigationBarDelegate {
             }
         } else {
             // analytics - puzzle is trying to be skipped
+            DebugUtil.print("Request to skip")
             AnalyticsWrapper.logEvent(.selectContent, contentType: .featureUsage, id: "id-skipPuzzle", name: "puzzleSkipRequest")
             
             // skip puzzle clicked us.
@@ -418,10 +427,14 @@ class PuzzleViewController: UIViewController, UINavigationBarDelegate {
             puzzleLoader.preloadPuzzle(forSize: puzzle.size, withPuzzleId: playerProgress.activePuzzleId + 1)
             if PuzzleProducts.puzzleAllowance.allowance == 0 {
                 // If the user is out of puzzles, tell them they have to buy (or wait for daily)
+                DebugUtil.print("Out of puzzles for skip - prompting the user")
                 let alert = self.alertOutOfPuzzlesAndCanPurchase(mentionRefreshPeriod: PuzzleProducts.userIsFree, messageOverride: "You cannot skip this puzzle until you have more to play.", actionOnConfirm: segueToStore)
+                DebugUtil.print("Successfully created alert for skip, out of puzzles")
                 self.showAlert(alert)
+                DebugUtil.print("Successfully displayed alert for skip, out of puzzles")
             } else {
                 // if the user has puzzles, then tell them that skipping will consume a puzzle and confirm first
+                DebugUtil.print("Puzzles available for skip - prompting the user")
                 alertUserYesNoMessage(title: "Skip Puzzle?", message: "Are you sure you want to skip this puzzle? Skipping will use a puzzle allowance.", actionOnConfirm: skipPuzzle)
             }
         }
@@ -473,12 +486,11 @@ class PuzzleViewController: UIViewController, UINavigationBarDelegate {
         AnalyticsWrapper.logEvent(.selectContent, contentType: .puzzlePlayed, id: "id-startNextPuzzle", name: "goToNextPuzzle")
         
         timerStartCountdown()
-        gameState = .playing
     }
     
     // MARK: - User Assisting Functions
     private func fillInUnitCells() {
-        if Defaults[.fillInGiveMes] {
+        if Defaults[.fillInGiveMes] && !puzzle.isSolved {
             DebugUtil.print("filling in give me / unit cells")
             puzzle.getUnitCellsWithAnswers().forEach {
                 setGuessForCells(atPositions: [$0.cell], withAnswer: $0.answer)
@@ -1010,25 +1022,46 @@ class PuzzleViewController: UIViewController, UINavigationBarDelegate {
         gridRowStacks[puzzle.size..<9].forEach{ $0.isHidden = true }
     }
     
-    // MARK: - View Lifecycle
-    override func viewWillDisappear(_ animated: Bool) {
-        super.viewWillDisappear(animated)
+    // MARK: - View Lifecycle State Changes
+    private func setStatesToViewDisappear() {
         removeCountdownTimer()
-        timerState = .pause
-    }
-    override func viewDidAppear(_ animated: Bool) {
-        super.viewDidAppear(animated)
         
+        if [TimerState.stopped, .final, .reset].contains(timerState) == false {
+            timerState = .pause
+        }
+    
+        if gameState == .playing {
+            gameState = .paused
+        }
+    }
+    
+    private func setStatesToViewAppear() {
         if gameState != .finished {
             if timerState == .stopped {
                 timerStartCountdown()
             } else {
                 timerState = .start
+                gameState = .playing
             }
         }
     }
+    
+    // MARK: - View Lifecycle
+    override func viewWillDisappear(_ animated: Bool) {
+        super.viewWillDisappear(animated)
+        DebugUtil.print("")
+        
+        setStatesToViewDisappear()
+    }
+    override func viewDidAppear(_ animated: Bool) {
+        super.viewDidAppear(animated)
+        DebugUtil.print("")
+        
+        setStatesToViewAppear()
+    }
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
+        DebugUtil.print("")
         
         // fill in the unit cells (give me cells)
         fillInUnitCells()
@@ -1038,6 +1071,7 @@ class PuzzleViewController: UIViewController, UINavigationBarDelegate {
     }
     override func viewDidLoad() {
         super.viewDidLoad()
+        DebugUtil.print("")
         hideUnneededRowsAndCells()
         writePuzzleToGrid()
         
@@ -1112,14 +1146,12 @@ class PuzzleViewController: UIViewController, UINavigationBarDelegate {
             self?.view.subviews.forEach({$0.layer.removeAllAnimations()})
             self?.view.layer.removeAllAnimations()
             self?.view.layoutIfNeeded()
-            self?.removeCountdownTimer()
-            self?.timerState = .pause
-            self?.gameState = .paused
+            self?.setStatesToViewDisappear()
         }
         NotificationCenter.default.addObserver(forName: Notification.Name.UIApplicationDidBecomeActive,
                                                object: nil, queue: nil) { [weak self] notification in
-            self?.timerState = .start
-            self?.gameState = .playing
+                                                
+            self?.setStatesToViewAppear()
         }
     }
     

@@ -37,19 +37,26 @@ struct AnalyticsWrapper {
         
         DispatchQueue.global(qos: .utility).async {
             var parameters: [String: String] = [:]
+            var debugPrint = "\(type)"
             
-            if contentType != nil {
-                parameters[AnalyticsParameterContentType] = contentType!.rawValue
+            if let typeRawValue = contentType?.rawValue {
+                parameters[AnalyticsParameterContentType] = typeRawValue
+                debugPrint += ".\(typeRawValue)"
             }
             if id != nil {
                 parameters[AnalyticsParameterItemID] = id!
+                debugPrint += ".\(id!)"
             }
             if name != nil {
                 parameters[AnalyticsParameterItemName] = name!
+                debugPrint += ".\(name!)"
             }
             if variant != nil {
                 parameters[AnalyticsParameterItemVariant] = variant!
+                debugPrint += ".\(variant!)"
             }
+            
+            DebugUtil.print("Logging event \(debugPrint)")
             
             Analytics.logEvent(type.mappedType, parameters: parameters)
         }

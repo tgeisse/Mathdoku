@@ -38,6 +38,7 @@ class PuzzleLoader {
                 DebugUtil.print("Preloading a puzzle for size \(size) with id \(pId)")
                 // we don't have the puzzle loaded already
                 self?.loadedPuzzles[puzzleId] = self?.loadPuzzleFromJson(forSize: size, withPuzzleId: pId)
+                DebugUtil.print("Done preloading a puzzle for size \(size) with id \(pId)")
             }
         }
     }

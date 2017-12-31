@@ -9,22 +9,28 @@
 import Foundation
 
 struct DebugUtil {
+    #if DEBUG
+    static let queue = DispatchQueue(label: "com.geissefamily.taylor.debugPrint")
+    #endif
+    
     static func print(_ items: Any..., separator: String = " ", terminator: String = "\n", function: String = #function) {
         #if DEBUG
-    
-            
-            var idx = items.startIndex
-            let endIdx = items.endIndex
-            let date = Date()
-            let calendar = Calendar.current
-            let dateString = String(format: "%0.2d:%0.2d:%0.2d", calendar.component(.hour, from: date), calendar.component(.minute, from: date), calendar.component(.second, from: date))
-            
-            repeat {
-                Swift.print("Mathdoku.\(function) \(dateString): \(items[idx])", separator: separator, terminator: idx == (endIdx - 1) ? terminator : separator)
-                idx += 1
+            var itemsCopy = items
+            queue.async {
+                let date = Date()
+                let calendar = Calendar.current
+                let dateString = String(format: "%0.2d:%0.2d:%0.2d", calendar.component(.hour, from: date), calendar.component(.minute, from: date), calendar.component(.second, from: date))
+                
+                itemsCopy.insert("\(dateString) Mathdoku.\(function): ", at: 0)
+                
+                var idx = itemsCopy.startIndex
+                let endIdx = itemsCopy.endIndex
+                
+                repeat {
+                    Swift.print("\(itemsCopy[idx])", separator: separator, terminator: (idx == (endIdx - 1) ? terminator : separator))
+                    idx += 1
+                } while idx < endIdx
             }
-                while idx < endIdx
-            
         #endif
     }
 }

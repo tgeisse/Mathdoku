@@ -50,16 +50,6 @@
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="00:00:00" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" minimumScaleFactor="1" translatesAutoresizingMaskIntoConstraints="NO" id="6Tq-KK-Rt7">
-                                <rect key="frame" x="129.5" y="117" width="115.5" height="24"/>
-                                <constraints>
-                                    <constraint firstAttribute="height" constant="24" id="2tz-1m-mGK"/>
-                                    <constraint firstAttribute="width" constant="150" id="rLl-gk-aD5"/>
-                                </constraints>
-                                <fontDescription key="fontDescription" name="CourierNewPSMT" family="Courier New" pointSize="24"/>
-                                <nil key="textColor"/>
-                                <nil key="highlightedColor"/>
-                            </label>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="2pN-ox-hmy" customClass="GADBannerView">
                                 <rect key="frame" x="27.5" y="64" width="320" height="50"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
@@ -1986,6 +1976,16 @@
                                     <constraint firstItem="VV0-a5-BBu" firstAttribute="top" relation="greaterThanOrEqual" secondItem="Ibv-3n-jdk" secondAttribute="top" constant="5" id="wEd-Mv-D9Q"/>
                                 </constraints>
                             </view>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="00:00:00" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" minimumScaleFactor="1" translatesAutoresizingMaskIntoConstraints="NO" id="6Tq-KK-Rt7">
+                                <rect key="frame" x="112" y="558" width="150" height="24"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="24" id="2tz-1m-mGK"/>
+                                    <constraint firstAttribute="width" constant="150" id="rLl-gk-aD5"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" name="CourierNewPSMT" family="Courier New" pointSize="24"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>

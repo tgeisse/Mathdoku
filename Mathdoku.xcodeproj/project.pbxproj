@@ -43,6 +43,7 @@
 		95C082641EB1ACE3008B7C2E /* PuzzleSelectionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 95C082631EB1ACE3008B7C2E /* PuzzleSelectionViewController.swift */; };
 		95C2BD2E1EBECC01008A62D0 /* PuzzleViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 95C2BD2D1EBECC01008A62D0 /* PuzzleViewController.swift */; };
 		95C2C43D1ECEBF2E0007D3F1 /* PlayerProgress.swift in Sources */ = {isa = PBXBuildFile; fileRef = 95C2C43C1ECEBF2E0007D3F1 /* PlayerProgress.swift */; };
+		95CBCC521FF9F735001409B1 /* GameTimerBackgroundView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 95CBCC511FF9F735001409B1 /* GameTimerBackgroundView.swift */; };
 		95D7B0BB1EE64AB900764738 /* Allowances.swift in Sources */ = {isa = PBXBuildFile; fileRef = 95D7B0BA1EE64AB900764738 /* Allowances.swift */; };
 		95D7B0BF1EE64C9800764738 /* PuzzlesSolved.swift in Sources */ = {isa = PBXBuildFile; fileRef = 95D7B0BE1EE64C9800764738 /* PuzzlesSolved.swift */; };
 		95D7B0C61EEA5F6600764738 /* Utility.swift in Sources */ = {isa = PBXBuildFile; fileRef = 95D7B0C51EEA5F6600764738 /* Utility.swift */; };
@@ -108,6 +109,7 @@
 		95C082631EB1ACE3008B7C2E /* PuzzleSelectionViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PuzzleSelectionViewController.swift; sourceTree = "<group>"; };
 		95C2BD2D1EBECC01008A62D0 /* PuzzleViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PuzzleViewController.swift; sourceTree = "<group>"; };
 		95C2C43C1ECEBF2E0007D3F1 /* PlayerProgress.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PlayerProgress.swift; sourceTree = "<group>"; };
+		95CBCC511FF9F735001409B1 /* GameTimerBackgroundView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameTimerBackgroundView.swift; sourceTree = "<group>"; };
 		95D7B0BA1EE64AB900764738 /* Allowances.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Allowances.swift; sourceTree = "<group>"; };
 		95D7B0BE1EE64C9800764738 /* PuzzlesSolved.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PuzzlesSolved.swift; sourceTree = "<group>"; };
 		95D7B0C51EEA5F6600764738 /* Utility.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Utility.swift; sourceTree = "<group>"; };
@@ -280,6 +282,7 @@
 				95E9D1171EB963A400F51A4B /* GridRowView.swift */,
 				95E9D1191EB963BB00F51A4B /* CellContainerView.swift */,
 				95C082581EABC8B8008B7C2E /* CellView.swift */,
+				95CBCC511FF9F735001409B1 /* GameTimerBackgroundView.swift */,
 			);
 			path = PuzzleView;
 			sourceTree = "<group>";
@@ -485,6 +488,7 @@
 				9544E33D1F001E8000F37ED7 /* HowToPlayPageViewController.swift in Sources */,
 				95D7B0C61EEA5F6600764738 /* Utility.swift in Sources */,
 				9555606A1ECD2989006C9F2D /* SwiftyJSON.swift in Sources */,
+				95CBCC521FF9F735001409B1 /* GameTimerBackgroundView.swift in Sources */,
 				9502E5E01EEE158B0048BE1B /* PuzzlePurchase.swift in Sources */,
 				95D7B0BB1EE64AB900764738 /* Allowances.swift in Sources */,
 				9572FDC41FBD500300963CFD /* Settings.swift in Sources */,

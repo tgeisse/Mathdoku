@@ -10,20 +10,36 @@ import UIKit
 
 @IBDesignable
 class GameTimerBackgroundView: UIView {
+    @IBInspectable let dipWidth = CGFloat(150)
+    
     override func draw(_ rect: CGRect) {
         // Drawing code
-        let curvePointDifferential = (self.frame.width / 2) * 0.1
-        let curveControlPoint = (self.frame.height / 2) * 0.05
+        let curveWidth = (self.frame.width / 2) * 0.15
+        // let curveControlPoint = (self.frame.height / 2) * 0.75
+        
+        let widthBorder = max((self.frame.width - dipWidth) / 2, CGFloat(0.0))
+        let leftBorder = widthBorder
+        let rightBorder = self.frame.width - widthBorder
+        
+        let top = CGFloat(0.0)
+        let bottom = CGFloat(self.frame.height)
         
         let path = UIBezierPath()
         
-        path.move(to: CGPoint(x: 0.0, y: 0.0))
-        path.addLine(to: CGPoint(x: curvePointDifferential, y: self.frame.height))
-        path.addLine(to: CGPoint(x: self.frame.width - curvePointDifferential, y: self.frame.height))
-        path.addLine(to: CGPoint(x: self.frame.width, y: 0.0))
+        path.move(to: CGPoint(x: leftBorder, y: top))
+        path.addCurve(to: CGPoint(x: leftBorder + curveWidth, y: bottom),
+                      controlPoint1: CGPoint(x: leftBorder + (curveWidth * 0.6), y: top),
+                      controlPoint2: CGPoint(x: leftBorder + (curveWidth * 0.4), y: bottom))
+        path.addLine(to: CGPoint(x: rightBorder - curveWidth, y: bottom))
+        path.addCurve(to: CGPoint(x: rightBorder, y: top),
+                      controlPoint1: CGPoint(x: rightBorder - (curveWidth * 0.4), y: bottom),
+                      controlPoint2: CGPoint(x: rightBorder - (curveWidth * 0.6), y: top))
         path.close()
         
         UIColor.white.setFill()
         path.fill()
+        
+        UIColor.white.setStroke()
+        path.stroke()
     }
 }

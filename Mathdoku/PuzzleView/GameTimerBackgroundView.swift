@@ -14,7 +14,7 @@ class GameTimerBackgroundView: UIView {
     
     override func draw(_ rect: CGRect) {
         // Drawing code
-        let curveWidth = (self.frame.width / 2) * 0.15
+        let curveWidth = dipWidth * 0.15
         // let curveControlPoint = (self.frame.height / 2) * 0.75
         
         let widthBorder = max((self.frame.width - dipWidth) / 2, CGFloat(0.0))
@@ -22,7 +22,7 @@ class GameTimerBackgroundView: UIView {
         let rightBorder = self.frame.width - widthBorder
         
         let top = CGFloat(0.0)
-        let bottom = CGFloat(self.frame.height)
+        let bottom = CGFloat(self.frame.height - 2.0)
         
         let path = UIBezierPath()
         

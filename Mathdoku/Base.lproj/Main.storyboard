@@ -258,7 +258,7 @@
                                         <subviews>
                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Sm6-a5-DLg">
                                                 <rect key="frame" x="0.0" y="0.0" width="56" height="30"/>
-                                                <color key="tintColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                <color key="tintColor" white="0.33333333333333331" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                 <inset key="contentEdgeInsets" minX="-1" minY="3" maxX="0.0" maxY="3"/>
                                                 <state key="normal" image="Reveal"/>
                                                 <connections>
@@ -291,12 +291,19 @@
                                             </button>
                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="GLK-Nx-3n7">
                                                 <rect key="frame" x="255.5" y="0.0" width="55.5" height="30"/>
+                                                <color key="tintColor" white="0.33333333333333331" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                 <state key="normal" image="moveUndo"/>
+                                                <connections>
+                                                    <action selector="undoMove:" destination="nDg-KA-uk0" eventType="touchUpInside" id="lQA-YV-iu6"/>
+                                                </connections>
                                             </button>
                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="rmE-4M-kBZ">
                                                 <rect key="frame" x="319" y="0.0" width="56" height="30"/>
-                                                <color key="tintColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                <color key="tintColor" white="0.33333333333333331" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                 <state key="normal" image="moveRedo"/>
+                                                <connections>
+                                                    <action selector="redoMove:" destination="nDg-KA-uk0" eventType="touchUpInside" id="AS9-5d-9iz"/>
+                                                </connections>
                                             </button>
                                         </subviews>
                                         <constraints>

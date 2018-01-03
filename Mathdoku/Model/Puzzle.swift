@@ -29,6 +29,10 @@ class Puzzle {
         cages = puzzleCages
     }
     
+    func getCurrentGuess(forCell cell: CellPosition) -> Int? {
+        return cells[cell.cellId].userGuess
+    }
+    
     func getUnitCellsWithAnswers() -> [(cell: CellPosition, answer: Int)] {
         var returnValue: [(cell: CellPosition, answer: Int)] = []
         

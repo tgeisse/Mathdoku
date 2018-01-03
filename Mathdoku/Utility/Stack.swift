@@ -9,23 +9,36 @@
 import Foundation
 
 struct Stack<T> {
-    private var items = [T]()
+    fileprivate var items = [T]()
     
     mutating func push(_ item: T) {
         items.append(item)
     }
     
-    mutating func pop() -> T {
-        return items.removeLast()
+    mutating func pop() -> T? {
+        return items.popLast()
     }
     
     mutating func popAll() -> [T] {
-        let stackCopy = items
-        items = []
-        return stackCopy
+        let returnVal = items
+        items.removeAll()
+        return returnVal
+    }
+    
+    mutating func removeAll() {
+        items.removeAll()
     }
     
     var peek: T? {
         return items.last
     }
+    
+    var isEmpty: Bool {
+        return items.isEmpty
+    }
+    
+    var count: Int {
+        return items.count
+    }
+
 }

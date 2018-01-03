@@ -88,6 +88,9 @@ class PuzzleViewController: UIViewController, UINavigationBarDelegate {
         }
     }
     
+    // MARK: - Game move history
+    private let moveHistory = MoveHistory()
+    
     // MARK: - Realm properties
     private lazy var realm: Realm = { return try! Realm() }()
     private lazy var playerProgress: PlayerProgress = self.loadPlayerProgress()
@@ -402,6 +405,18 @@ class PuzzleViewController: UIViewController, UINavigationBarDelegate {
         })
     }
     
+    @IBAction func undoMove(_ sender: UIButton) {
+        if let move = moveHistory.undo() {
+            processMoveHistory(forCell: move.cell, toValue: move.from)
+        }
+    }
+    
+    @IBAction func redoMove(_ sender: UIButton) {
+        if let move = moveHistory.redo() {
+            processMoveHistory(forCell: move.cell, toValue: move.to)
+        }
+    }
+    
     // MARK: - Puzzle progression UI buttons
     @IBAction func nextPuzzle(_ sender: UIButton) {
         // this can be used by either the success screen or the skiPuzzle button
@@ -604,6 +619,15 @@ class PuzzleViewController: UIViewController, UINavigationBarDelegate {
     // MARK: - Update cell values
     private func setGuessForCells(atPositions: [CellPosition], withAnswer: Int?, withIdentifier: String = #function) {
         for atPosition in atPositions {
+            // save move history if it isn't an move history processing
+            if !withIdentifier.contains("processMoveHistory") {
+                let move: Move
+                move.cell = atPosition
+                move.from = puzzle.getCurrentGuess(forCell: atPosition)
+                move.to = withAnswer
+                moveHistory.makeMove(move)
+            }
+            
             gridRowStacks[atPosition.row].rowCells[atPosition.col].cell.guess = (withAnswer == nil ? nil : "\(withAnswer!)")
             puzzle.setGuessForCellPosition(atPosition, guess: withAnswer)
         }
@@ -675,6 +699,11 @@ class PuzzleViewController: UIViewController, UINavigationBarDelegate {
     }
     
     // MARK: - Private Helper Functions
+    private func processMoveHistory(forCell cell: CellPosition, toValue: Int?) {
+        setGuessForCells(atPositions: [cell], withAnswer: toValue)
+        selectedCell = gridRowStacks[cell.row].rowCells[cell.col]
+    }
+    
     private func segueToStore() {
         DebugUtil.print("Seguing to the puzzle store from puzzle grid")
         performSegue(withIdentifier: "Puzzle Store Segue", sender: self)
@@ -972,6 +1001,8 @@ class PuzzleViewController: UIViewController, UINavigationBarDelegate {
     
     // MARK: - Puzzle Setup Functions
     private func resetCellNotesAndGuesses() {
+        gameState = .loading
+        
         // (1) build an array of CellPositions that matches the size of the puzzle
         var cellPositions = [CellPosition]()
         
@@ -982,6 +1013,11 @@ class PuzzleViewController: UIViewController, UINavigationBarDelegate {
         // (2) use said array to set all of the values for notes and guesses to nil
         setGuessForCells(atPositions: cellPositions, withAnswer: nil)
         setNotesForCells(atPositions: cellPositions, withNotes: nil)
+        
+        // (3) reset the move history
+        moveHistory.reset()
+        
+        gameState = .playing
     }
     
     private func writePuzzleToGrid() {

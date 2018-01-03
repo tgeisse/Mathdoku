@@ -484,6 +484,7 @@ class PuzzleViewController: UIViewController, UINavigationBarDelegate {
         // track that the puzzle has been skipped
         AnalyticsWrapper.logEvent(.selectContent, contentType: .featureUsage, id: "id-skipPuzzle", name: "puzzleSkipped")
         
+        gameState = .loading
         removeCountdownTimer()
         incrementPlayerPuzzleProgress()
         goToNextPuzzle()
@@ -1003,8 +1004,6 @@ class PuzzleViewController: UIViewController, UINavigationBarDelegate {
     
     // MARK: - Puzzle Setup Functions
     private func resetCellNotesAndGuesses() {
-        gameState = .loading
-        
         // (1) build an array of CellPositions that matches the size of the puzzle
         var cellPositions = [CellPosition]()
         
@@ -1018,8 +1017,6 @@ class PuzzleViewController: UIViewController, UINavigationBarDelegate {
         
         // (3) reset the move history
         moveHistory.reset()
-        
-        gameState = .playing
     }
     
     private func writePuzzleToGrid() {

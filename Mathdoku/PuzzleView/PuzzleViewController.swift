@@ -410,12 +410,14 @@ class PuzzleViewController: UIViewController, UINavigationBarDelegate {
     
     @IBAction func undoMove(_ sender: UIButton) {
         if let move = moveHistory.undo() {
+            AnalyticsWrapper.logEvent(.selectContent, contentType: .featureUsage, id: "id-undoMove")
             processMoveHistory(forCell: move.cell, toValue: move.from)
         }
     }
     
     @IBAction func redoMove(_ sender: UIButton) {
         if let move = moveHistory.redo() {
+            AnalyticsWrapper.logEvent(.selectContent, contentType: .featureUsage, id: "id-redoMove")
             processMoveHistory(forCell: move.cell, toValue: move.to)
         }
     }

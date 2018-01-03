@@ -171,6 +171,7 @@
 		9555608E1ECEBE53006C9F2D /* Model */ = {
 			isa = PBXGroup;
 			children = (
+				95CBCC551FFC9890001409B1 /* MoveHistory.swift */,
 				956CB0491FD1ADE400FDB589 /* HighlightRequestQueue.swift */,
 				959632E31ED115A100CAFC5D /* CellPosition.swift */,
 				95FBB9091E9AD97300B0E662 /* Puzzle.swift */,
@@ -288,7 +289,6 @@
 				95E9D1191EB963BB00F51A4B /* CellContainerView.swift */,
 				95C082581EABC8B8008B7C2E /* CellView.swift */,
 				95CBCC511FF9F735001409B1 /* GameTimerBackgroundView.swift */,
-				95CBCC551FFC9890001409B1 /* MoveHistory.swift */,
 			);
 			path = PuzzleView;
 			sourceTree = "<group>";

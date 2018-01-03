@@ -322,6 +322,7 @@ class PuzzleViewController: UIViewController, UINavigationBarDelegate {
             switch entryMode {
             case .guessing:
                 if let cellPosition = selectedCellPosition {
+                    addMoveHistory(forCell: cellPosition, toValue: num)
                     setGuessForCells(atPositions: [cellPosition], withAnswer: num)
                     
                     // if auto rotate is enabled, then rotate to the next free cell
@@ -344,6 +345,7 @@ class PuzzleViewController: UIViewController, UINavigationBarDelegate {
             if let cellPosition = selectedCellPosition {
                 if puzzle.cellIsGuessedAtPosition(cellPosition) {
                     // if the puzzle has a guess, erase it
+                    addMoveHistory(forCell: cellPosition, toValue: nil)
                     setGuessForCells(atPositions: [cellPosition], withAnswer: nil)
                 } else {
                     // if the puzzle does not have a guess, then erase its notes
@@ -382,6 +384,7 @@ class PuzzleViewController: UIViewController, UINavigationBarDelegate {
                 let randomCell = unguessedCells[Int(arc4random_uniform(UInt32(unguessedCells.count)))]
                 
                 entryMode = .guessing
+                addMoveHistory(forCell: randomCell.cellPosition, toValue: randomCell.answer)
                 setGuessForCells(atPositions: [randomCell.cellPosition], withAnswer: randomCell.answer)
                 selectedCell = gridRowStacks[randomCell.cellPosition.row].rowCells[randomCell.cellPosition.col]
             }
@@ -619,15 +622,6 @@ class PuzzleViewController: UIViewController, UINavigationBarDelegate {
     // MARK: - Update cell values
     private func setGuessForCells(atPositions: [CellPosition], withAnswer: Int?, withIdentifier: String = #function) {
         for atPosition in atPositions {
-            // save move history if it isn't an move history processing
-            if !withIdentifier.contains("processMoveHistory") {
-                let move: Move
-                move.cell = atPosition
-                move.from = puzzle.getCurrentGuess(forCell: atPosition)
-                move.to = withAnswer
-                moveHistory.makeMove(move)
-            }
-            
             gridRowStacks[atPosition.row].rowCells[atPosition.col].cell.guess = (withAnswer == nil ? nil : "\(withAnswer!)")
             puzzle.setGuessForCellPosition(atPosition, guess: withAnswer)
         }
@@ -702,6 +696,14 @@ class PuzzleViewController: UIViewController, UINavigationBarDelegate {
     private func processMoveHistory(forCell cell: CellPosition, toValue: Int?) {
         setGuessForCells(atPositions: [cell], withAnswer: toValue)
         selectedCell = gridRowStacks[cell.row].rowCells[cell.col]
+    }
+    
+    private func addMoveHistory(forCell cell: CellPosition, toValue: Int?) {
+        let move: Move
+        move.cell = cell
+        move.from = puzzle.getCurrentGuess(forCell: cell)
+        move.to = toValue
+        moveHistory.makeMove(move)
     }
     
     private func segueToStore() {

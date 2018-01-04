@@ -22,7 +22,7 @@ class GameTimerBackgroundView: UIView {
         let rightBorder = self.frame.width - widthBorder
         
         let top = CGFloat(0.0)
-        let bottom = CGFloat(self.frame.height - 2.0)
+        let bottom = CGFloat(self.frame.height - 0.0)
         
         let path = UIBezierPath()
         

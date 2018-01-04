@@ -120,7 +120,7 @@ class CellView: UIView {
         if guess != nil {
             
             var guessTextAttributes: [NSAttributedStringKey : Any] = [
-                NSAttributedStringKey.font: UIFont.boldSystemFont(ofSize: defaultTextSizeForGuess * scaleFactor)
+                NSAttributedStringKey.font: UIFont.systemFont(ofSize: defaultTextSizeForGuess * scaleFactor)
             ]
             
             if Defaults[.highlightConflictingEntries] == true && hasGuessAllegiance(.conflict) {

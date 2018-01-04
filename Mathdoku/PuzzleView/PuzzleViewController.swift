@@ -404,7 +404,7 @@ class PuzzleViewController: UIViewController, UINavigationBarDelegate {
             self?.gameState = .loading
             self?.resetCellNotesAndGuesses()
             self?.fillInUnitCells()
-            self?.timerStartCountdown()
+            self?.startCountdownTimer()
         })
     }
     
@@ -506,7 +506,7 @@ class PuzzleViewController: UIViewController, UINavigationBarDelegate {
         
         AnalyticsWrapper.logEvent(.selectContent, contentType: .puzzlePlayed, id: "id-startNextPuzzle", name: "goToNextPuzzle")
         
-        timerStartCountdown()
+        startCountdownTimer()
     }
     
     // MARK: - User Assisting Functions
@@ -739,13 +739,13 @@ class PuzzleViewController: UIViewController, UINavigationBarDelegate {
     
     // MARK: - Timer functions
     private let countdownTag = 554455
-    private func timerStartCountdown() {
+    private func startCountdownTimer() {
         let countLabel = UILabel()
         let startingFont = UIFont(name: "Noteworthy-Bold", size: 200.0)
         
         countLabel.tag = countdownTag
         countLabel.backgroundColor = .clear
-        countLabel.textColor = .red
+        countLabel.textColor = UIColor(hex: 0x2C3872)
         countLabel.font = startingFont
         countLabel.textAlignment = .center
         countLabel.translatesAutoresizingMaskIntoConstraints = false
@@ -1075,7 +1075,7 @@ class PuzzleViewController: UIViewController, UINavigationBarDelegate {
     private func setStatesToViewAppear() {
         if gameState != .finished {
             if timerState == .stopped {
-                timerStartCountdown()
+                startCountdownTimer()
             } else {
                 timerState = .start
                 gameState = .playing

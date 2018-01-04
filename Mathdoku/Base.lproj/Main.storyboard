@@ -14,14 +14,14 @@
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <customFonts key="customFonts">
-        <array key="CourierNew.ttf">
-            <string>CourierNewPSMT</string>
-        </array>
         <array key="HelveticaNeue.ttc">
             <string>HelveticaNeue</string>
         </array>
         <array key="MarkerFeltThin.ttf">
             <string>MarkerFelt-Thin</string>
+        </array>
+        <array key="Verdana.ttf">
+            <string>Verdana</string>
         </array>
     </customFonts>
     <scenes>
@@ -1990,11 +1990,11 @@
                                 </constraints>
                             </view>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="00:00:00" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" minimumScaleFactor="1" translatesAutoresizingMaskIntoConstraints="NO" id="6Tq-KK-Rt7">
-                                <rect key="frame" x="112" y="541.5" width="150" height="25"/>
+                                <rect key="frame" x="112" y="542.5" width="150" height="23.5"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="150" id="rLl-gk-aD5"/>
                                 </constraints>
-                                <fontDescription key="fontDescription" name="CourierNewPSMT" family="Courier New" pointSize="20"/>
+                                <fontDescription key="fontDescription" name="Verdana" family="Verdana" pointSize="19"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
@@ -2008,7 +2008,6 @@
                             <constraint firstItem="kkh-Iw-mYH" firstAttribute="bottom" secondItem="tzp-H7-olB" secondAttribute="bottom" constant="8" id="GRO-IY-dsd"/>
                             <constraint firstItem="Ibv-3n-jdk" firstAttribute="bottom" secondItem="tzp-H7-olB" secondAttribute="top" id="J8n-tP-3Jq"/>
                             <constraint firstItem="6Tq-KK-Rt7" firstAttribute="centerX" secondItem="egY-ue-O1C" secondAttribute="centerX" id="LKe-Gr-2To"/>
-                            <constraint firstItem="6Tq-KK-Rt7" firstAttribute="height" secondItem="egY-ue-O1C" secondAttribute="height" id="O3S-HG-ggn"/>
                             <constraint firstItem="tzp-H7-olB" firstAttribute="leading" secondItem="kkh-Iw-mYH" secondAttribute="leading" id="QqH-FA-hqd"/>
                             <constraint firstItem="kkh-Iw-mYH" firstAttribute="trailing" secondItem="Ibv-3n-jdk" secondAttribute="trailing" id="WM4-qW-RV1"/>
                             <constraint firstItem="kkh-Iw-mYH" firstAttribute="trailing" secondItem="qSi-51-JRo" secondAttribute="trailing" id="WiW-iq-ruM"/>

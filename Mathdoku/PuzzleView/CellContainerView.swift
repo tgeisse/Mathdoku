@@ -56,8 +56,8 @@ class CellContainerView: UIView {
         var color: UIColor {
             switch self {
             case .notValidating: return UIColor.clear
-            case .valid: return HighlightState.possibleNote.color
-            case .invalid: return HighlightState.impossibleNote.color
+            case .valid: return UIColor(hex: 0x83FD84)
+            case .invalid: return UIColor(hex: 0xFD7F80)
             }
         }
     }
@@ -96,7 +96,7 @@ class CellContainerView: UIView {
             validationAnimtationView.backgroundColor = color
         }, completion: { finished in
             UIView.animate(withDuration: duration, animations: {
-                validationAnimtationView.backgroundColor = UIColor.clear
+                validationAnimtationView.backgroundColor = ValidationState.notValidating.color
             }, completion: { fin in
                 validationAnimtationView.removeFromSuperview()
             })

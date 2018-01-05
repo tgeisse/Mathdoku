@@ -31,8 +31,8 @@ class CellContainerView: UIView {
             case .unselected: return UIColor.white
             case .selected: return UIColor(red: 1.00, green: 0.70, blue: 0.42, alpha: 1.0)
             case .friendly: return UIColor(red: 0.99, green: 0.90, blue: 0.80, alpha: 1.0)
-            case .possibleNote: return UIColor.green //UIColor(red: 50/255, green: 255/255, blue: 0/255, alpha: 1.0)
-            case .impossibleNote: return UIColor.red
+            case .possibleNote: return UIColor(hex: 0x83FD84)
+            case .impossibleNote: return UIColor(hex: 0xFD7F80)
             }
         }
     }

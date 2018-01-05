@@ -25,7 +25,7 @@ struct PuzzleProducts {
         ("com.geissefamily.taylor.puzzle100", "100 Puzzles", "Also disables ads!", #imageLiteral(resourceName: "GridImage"), .puzzle, 100, true),
         ("com.geissefamily.taylor.puzzle250", "250 Puzzles", "No ads, 50 puzzles free.", #imageLiteral(resourceName: "GridImage"), .puzzle, 250, true),
         ("com.geissefamily.taylor.puzzle500", "500 Puzzles", "No ads, 100 puzzles free.", #imageLiteral(resourceName: "GridImage"), .puzzle, 500, true),
-        ("com.geissefamily.taylor.puzzle1000", "1000 Puzzles", "No ads, 200 puzzles free.", #imageLiteral(resourceName: "GridImage"), .puzzle, 1000, true)
+        ("com.geissefamily.taylor.puzzle1000", "1000 Puzzles", "No ads, 300 puzzles free.", #imageLiteral(resourceName: "GridImage"), .puzzle, 1000, true)
     ]
     
     private static let loadedInfo = LoadedInformation()

@@ -13,11 +13,13 @@ typealias ButtonColor = (background: UIColor, text: UIColor)
 struct ColorTheme {
     struct green {
         static let light = UIColor(hex: 0x83FD84)
+        static let bright = UIColor.green
         static let dark = UIColor.init(red:0.0, green: 0.60, blue: 0.0, alpha: 1.0)
     }
     
     struct red {
         static let light = UIColor(hex: 0xFD7F80)
+        static let bright = UIColor.red
         static let dark = UIColor.red
     }
     

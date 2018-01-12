@@ -57,7 +57,7 @@ class CellContainerView: UIView {
             switch self {
             case .notValidating: return UIColor.clear
             case .valid: return ColorTheme.green.light
-            case .invalid: return ColorTheme.green.dark
+            case .invalid: return ColorTheme.red.light
             }
         }
     }

@@ -55,8 +55,8 @@ class CellView: UIView {
         
         var shadowColor: UIColor {
             switch self {
-            case .equal: return ColorTheme.green.dark
-            case .conflict: return ColorTheme.red.dark
+            case .equal: return ColorTheme.green.bright
+            case .conflict: return ColorTheme.red.bright
             }
         }
     }

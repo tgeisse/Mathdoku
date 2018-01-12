@@ -13,6 +13,11 @@
 * the other two are friends. Then that would require a drawing of a square
 */
 
+/** TODO:
+* Old code - make CellViews use more standard swift items. For example,
+* using labels instead of drawing text for guesses and notes.
+ */
+
 import UIKit
 
 //@IBDesignable

@@ -43,7 +43,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         
         // Initialize the Google Mobile Ads SDK.
         // AdMob app id
-        GADMobileAds.configure(withApplicationID: "ca-app-pub-6013095233601848~7942243511")
+        GADMobileAds.configure(withApplicationID: AppKeys.adMobAppId.key)
         
         return true
     }

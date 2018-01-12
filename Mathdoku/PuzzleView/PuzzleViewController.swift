@@ -545,8 +545,8 @@ class PuzzleViewController: UIViewController, UINavigationBarDelegate {
         }
     }
     
-    private let highlightSameQueue = DispatchQueue(label: "com.geissefamily.taylor.highlightSame", qos: .userInitiated)
-    private let highlightConflictQueue = DispatchQueue(label: "com.geissefamily.taylor.highlightConflict", qos: .userInitiated)
+    private let highlightSameQueue = DispatchQueue(label: "\(AppSecrets.domainRoot).highlightSame", qos: .userInitiated)
+    private let highlightConflictQueue = DispatchQueue(label: "\(AppSecrets.domainRoot).highlightConflict", qos: .userInitiated)
     private let highlightRequests = HighlightRequestQueue()
     private func highlightGuesses(for allegiance: CellView.GuessAllegiance) {
         let queue: DispatchQueue
@@ -882,7 +882,7 @@ class PuzzleViewController: UIViewController, UINavigationBarDelegate {
     }
     
     // MARK: - Realm helper functions
-    let realmQueue = DispatchQueue(label: "com.geissefamily.taylor.realmQueue", qos: .userInitiated)
+    let realmQueue = DispatchQueue(label: "\(AppSecrets.domainRoot).realmQueue", qos: .userInitiated)
     private func asyncWriteNotesForCells(atPositions: [CellPosition]) {
         let puzzleSize = puzzle.size
         // (1) get a dictionary mapping of the notes we need to save with their respective positions
@@ -1165,13 +1165,7 @@ class PuzzleViewController: UIViewController, UINavigationBarDelegate {
         } else {
             // if ads are supposed to be show, then load and display an add
             // configure banner view ads
-            #if DEBUG
-                // test ads when building for debug mode
-                bannerView.adUnitID = "ca-app-pub-3940256099942544/2934735716"
-            #else
-                // real ads for releases
-                bannerView.adUnitID = "ca-app-pub-6013095233601848/5094263489"
-            #endif
+            bannerView.adUnitID = AppKeys.adMobPuzzleBannerAdId.key
             bannerView.rootViewController = self
             bannerView.load(GADRequest())
         }

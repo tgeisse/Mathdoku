@@ -23,7 +23,7 @@ class PuzzleLoader {
     }
     
     // Dispatch Queue for any puzzle loading and fetching. Needs to be sequel
-    private let queue = DispatchQueue(label: "com.geissefamily.taylor.puzzleLoader", qos: .userInitiated)
+    private let queue = DispatchQueue(label: "\(AppSecrets.domainRoot).puzzleLoader", qos: .userInitiated)
     
     func preloadPuzzle(forSize size: Int, withPuzzleId pId: Int) {
         // create the puzzle Id used to identify the puzzle in the dictinoary

@@ -10,7 +10,7 @@ import Foundation
 
 struct DebugUtil {
     #if DEBUG
-    static let queue = DispatchQueue(label: "com.geissefamily.taylor.debugPrint")
+    static let queue = DispatchQueue(label: "\(AppSecrets.domainRoot).debugPrint")
     #endif
     
     static func print(_ items: Any..., separator: String = " ", terminator: String = "\n", function: String = #function) {

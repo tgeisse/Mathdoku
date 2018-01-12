@@ -22,16 +22,16 @@ enum PuzzleRefreshMode {
 
 struct PuzzleProducts {
     static let PuzzlePacks: [PuzzleProduct] = [
-        ("com.geissefamily.taylor.puzzle100", "100 Puzzles", "Also disables ads!", #imageLiteral(resourceName: "GridImage"), .puzzle, 100, true),
-        ("com.geissefamily.taylor.puzzle250", "250 Puzzles", "No ads!", #imageLiteral(resourceName: "GridImage"), .puzzle, 250, true),
-        ("com.geissefamily.taylor.puzzle500", "500 Puzzles", "No ads!", #imageLiteral(resourceName: "GridImage"), .puzzle, 500, true),
-        ("com.geissefamily.taylor.puzzle1000", "1000 Puzzles", "No ads!", #imageLiteral(resourceName: "GridImage"), .puzzle, 1000, true)
+        ("\(AppSecrets.domainRoot).puzzle100", "100 Puzzles", "Also disables ads!", #imageLiteral(resourceName: "GridImage"), .puzzle, 100, true),
+        ("\(AppSecrets.domainRoot).puzzle250", "250 Puzzles", "No ads!", #imageLiteral(resourceName: "GridImage"), .puzzle, 250, true),
+        ("\(AppSecrets.domainRoot).puzzle500", "500 Puzzles", "No ads!", #imageLiteral(resourceName: "GridImage"), .puzzle, 500, true),
+        ("\(AppSecrets.domainRoot).puzzle1000", "1000 Puzzles", "No ads!", #imageLiteral(resourceName: "GridImage"), .puzzle, 1000, true)
     ]
     
     private static let loadedInfo = LoadedInformation()
     
     private class LoadedInformation {
-        private let loadedProductsQueue = DispatchQueue(label: "com.geissefamily.taylor.loadedProductsQueue",
+        private let loadedProductsQueue = DispatchQueue(label: "\(AppSecrets.domainRoot).loadedProductsQueue",
                                                         qos: .default,
                                                         attributes: .concurrent)
         

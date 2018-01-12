@@ -47,6 +47,9 @@
 		95CBCC541FFC9659001409B1 /* Stack.swift in Sources */ = {isa = PBXBuildFile; fileRef = 95CBCC531FFC9659001409B1 /* Stack.swift */; };
 		95CBCC561FFC9890001409B1 /* MoveHistory.swift in Sources */ = {isa = PBXBuildFile; fileRef = 95CBCC551FFC9890001409B1 /* MoveHistory.swift */; };
 		95CBCC581FFDCE92001409B1 /* UIColorExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 95CBCC571FFDCE92001409B1 /* UIColorExtensions.swift */; };
+		95CBCC5B2008716A001409B1 /* AppKeys.swift in Sources */ = {isa = PBXBuildFile; fileRef = 95CBCC5A2008716A001409B1 /* AppKeys.swift */; };
+		95CBCC5D20087176001409B1 /* AppSecrets.swift in Sources */ = {isa = PBXBuildFile; fileRef = 95CBCC5C20087176001409B1 /* AppSecrets.swift */; };
+		95CBCC5F200874B5001409B1 /* ColorTheme.swift in Sources */ = {isa = PBXBuildFile; fileRef = 95CBCC5E200874B5001409B1 /* ColorTheme.swift */; };
 		95D7B0BB1EE64AB900764738 /* Allowances.swift in Sources */ = {isa = PBXBuildFile; fileRef = 95D7B0BA1EE64AB900764738 /* Allowances.swift */; };
 		95D7B0BF1EE64C9800764738 /* PuzzlesSolved.swift in Sources */ = {isa = PBXBuildFile; fileRef = 95D7B0BE1EE64C9800764738 /* PuzzlesSolved.swift */; };
 		95D7B0C61EEA5F6600764738 /* Utility.swift in Sources */ = {isa = PBXBuildFile; fileRef = 95D7B0C51EEA5F6600764738 /* Utility.swift */; };
@@ -116,6 +119,9 @@
 		95CBCC531FFC9659001409B1 /* Stack.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Stack.swift; sourceTree = "<group>"; };
 		95CBCC551FFC9890001409B1 /* MoveHistory.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MoveHistory.swift; sourceTree = "<group>"; };
 		95CBCC571FFDCE92001409B1 /* UIColorExtensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIColorExtensions.swift; sourceTree = "<group>"; };
+		95CBCC5A2008716A001409B1 /* AppKeys.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppKeys.swift; sourceTree = "<group>"; };
+		95CBCC5C20087176001409B1 /* AppSecrets.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppSecrets.swift; sourceTree = "<group>"; };
+		95CBCC5E200874B5001409B1 /* ColorTheme.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ColorTheme.swift; sourceTree = "<group>"; };
 		95D7B0BA1EE64AB900764738 /* Allowances.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Allowances.swift; sourceTree = "<group>"; };
 		95D7B0BE1EE64C9800764738 /* PuzzlesSolved.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PuzzlesSolved.swift; sourceTree = "<group>"; };
 		95D7B0C51EEA5F6600764738 /* Utility.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Utility.swift; sourceTree = "<group>"; };
@@ -227,6 +233,15 @@
 			path = PuzzleLoader;
 			sourceTree = "<group>";
 		};
+		95CBCC5920087122001409B1 /* Secrets */ = {
+			isa = PBXGroup;
+			children = (
+				95CBCC5A2008716A001409B1 /* AppKeys.swift */,
+				95CBCC5C20087176001409B1 /* AppSecrets.swift */,
+			);
+			path = Secrets;
+			sourceTree = "<group>";
+		};
 		95E9D1101EB81C0C00F51A4B /* Utility */ = {
 			isa = PBXGroup;
 			children = (
@@ -238,6 +253,7 @@
 				9544E33A1EF0EA5D00F37ED7 /* TimeIntervalExtension.swift */,
 				9570051B1FE104F300C85822 /* AnalyticsWrapper.swift */,
 				95CBCC571FFDCE92001409B1 /* UIColorExtensions.swift */,
+				95CBCC5E200874B5001409B1 /* ColorTheme.swift */,
 			);
 			path = Utility;
 			sourceTree = "<group>";
@@ -265,6 +281,7 @@
 		95FBB8D91E9AD13F00B0E662 /* Mathdoku */ = {
 			isa = PBXGroup;
 			children = (
+				95CBCC5920087122001409B1 /* Secrets */,
 				9598A3A31FBC1B4B00AE48E2 /* Libraries */,
 				9502E5E11EEE159C0048BE1B /* PuzzlePurchasing */,
 				95E9D1101EB81C0C00F51A4B /* Utility */,
@@ -476,16 +493,19 @@
 				9502E5DE1EEE080F0048BE1B /* ViewControllerExtensions.swift in Sources */,
 				95B41B8B1E9CAB94003D8C28 /* Cage.swift in Sources */,
 				95C2C43D1ECEBF2E0007D3F1 /* PlayerProgress.swift in Sources */,
+				95CBCC5F200874B5001409B1 /* ColorTheme.swift in Sources */,
 				95CBCC541FFC9659001409B1 /* Stack.swift in Sources */,
 				95A196221ED2A32A0038D40C /* PuzzleProgress.swift in Sources */,
 				95FBB90A1E9AD97300B0E662 /* Puzzle.swift in Sources */,
 				951273721EDE898200588467 /* DebugUtil.swift in Sources */,
+				95CBCC5B2008716A001409B1 /* AppKeys.swift in Sources */,
 				95A196281ED2A3460038D40C /* PuzzleCellNote.swift in Sources */,
 				95FBB90C1E9AD9E900B0E662 /* Cell.swift in Sources */,
 				95CBCC581FFDCE92001409B1 /* UIColorExtensions.swift in Sources */,
 				95E9D1181EB963A400F51A4B /* GridRowView.swift in Sources */,
 				9518F85E1FF36AF400AAAB35 /* StoreTableViewCell.swift in Sources */,
 				959632E41ED115A100CAFC5D /* CellPosition.swift in Sources */,
+				95CBCC5D20087176001409B1 /* AppSecrets.swift in Sources */,
 				95FBB8DB1E9AD13F00B0E662 /* AppDelegate.swift in Sources */,
 				9570051C1FE104F300C85822 /* AnalyticsWrapper.swift in Sources */,
 				9598A3A21FBC020800AE48E2 /* SettingsViewController.swift in Sources */,

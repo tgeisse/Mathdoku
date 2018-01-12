@@ -11,7 +11,7 @@ import Foundation
 class HighlightRequestQueue {
     private var requests: Dictionary<CellView.GuessAllegiance, Int> = [:]
     fileprivate let highlightRequestQueue = DispatchQueue(
-        label: "com.geissefamily.taylor.highlightRequestQueue",
+        label: "\(AppSecrets.domainRoot).highlightRequestQueue",
         qos: .default,
         attributes: .concurrent
     )

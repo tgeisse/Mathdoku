@@ -745,7 +745,7 @@ class PuzzleViewController: UIViewController, UINavigationBarDelegate {
         
         countLabel.tag = countdownTag
         countLabel.backgroundColor = .clear
-        countLabel.textColor = UIColor(hex: 0x2C3872)
+        countLabel.textColor = ColorTheme.blue.dark
         countLabel.font = startingFont
         countLabel.textAlignment = .center
         countLabel.translatesAutoresizingMaskIntoConstraints = false

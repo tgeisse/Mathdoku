@@ -55,8 +55,8 @@ class CellView: UIView {
         
         var shadowColor: UIColor {
             switch self {
-            case .equal: return .green
-            case .conflict: return .red
+            case .equal: return ColorTheme.green.dark
+            case .conflict: return ColorTheme.red.dark
             }
         }
     }
@@ -154,7 +154,7 @@ class CellView: UIView {
     private func addNotesText() {
         if guess == nil, note != nil {
             let noteTextAttributes: [NSAttributedStringKey : Any] = [
-                NSAttributedStringKey.foregroundColor: UIColor.init(red:0.0, green: 0.60, blue: 0.0, alpha: 1.0),
+                NSAttributedStringKey.foregroundColor: ColorTheme.green.dark,
                 //NSFontAttributeName: UIFont.boldSystemFont(ofSize: defaultTextSizeForNotes * (scaleFactor / 1.5))
                 //NSFontAttributeName: UIFont.preferredFont(forTextStyle: .body).withSize(textSizeForNotes)
                 NSAttributedStringKey.font: UIFont(name: "CourierNewPS-BoldMT", size: defaultTextSizeForNotes * (scaleFactor / 1.45)) ?? UIFont.boldSystemFont(ofSize: defaultTextSizeForNotes * (scaleFactor / 1.5))

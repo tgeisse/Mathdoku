@@ -29,10 +29,10 @@ class CellContainerView: UIView {
         var color: UIColor {
             switch self {
             case .unselected: return UIColor.white
-            case .selected: return UIColor(red: 1.00, green: 0.70, blue: 0.42, alpha: 1.0)
-            case .friendly: return UIColor(red: 0.99, green: 0.90, blue: 0.80, alpha: 1.0)
-            case .possibleNote: return UIColor(hex: 0x83FD84)
-            case .impossibleNote: return UIColor(hex: 0xFD7F80)
+            case .selected: return ColorTheme.orange.dark
+            case .friendly: return ColorTheme.orange.light
+            case .possibleNote: return ColorTheme.green.light
+            case .impossibleNote: return ColorTheme.red.light
             }
         }
     }
@@ -56,8 +56,8 @@ class CellContainerView: UIView {
         var color: UIColor {
             switch self {
             case .notValidating: return UIColor.clear
-            case .valid: return UIColor(hex: 0x83FD84)
-            case .invalid: return UIColor(hex: 0xFD7F80)
+            case .valid: return ColorTheme.green.light
+            case .invalid: return ColorTheme.green.dark
             }
         }
     }

@@ -11,6 +11,7 @@
 		9502E5DE1EEE080F0048BE1B /* ViewControllerExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9502E5DD1EEE080F0048BE1B /* ViewControllerExtensions.swift */; };
 		9502E5E01EEE158B0048BE1B /* PuzzlePurchase.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9502E5DF1EEE158B0048BE1B /* PuzzlePurchase.swift */; };
 		9502E5E31EEE16020048BE1B /* PuzzleProducts.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9502E5E21EEE16020048BE1B /* PuzzleProducts.swift */; };
+		950E6DA720087DD70066AA4F /* ColorTheme.swift in Sources */ = {isa = PBXBuildFile; fileRef = 950E6DA620087DD70066AA4F /* ColorTheme.swift */; };
 		951273721EDE898200588467 /* DebugUtil.swift in Sources */ = {isa = PBXBuildFile; fileRef = 951273711EDE898200588467 /* DebugUtil.swift */; };
 		9518F85C1FF363E000AAAB35 /* StoreTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9518F85B1FF363E000AAAB35 /* StoreTableViewController.swift */; };
 		9518F85E1FF36AF400AAAB35 /* StoreTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9518F85D1FF36AF400AAAB35 /* StoreTableViewCell.swift */; };
@@ -49,7 +50,6 @@
 		95CBCC581FFDCE92001409B1 /* UIColorExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 95CBCC571FFDCE92001409B1 /* UIColorExtensions.swift */; };
 		95CBCC5B2008716A001409B1 /* AppKeys.swift in Sources */ = {isa = PBXBuildFile; fileRef = 95CBCC5A2008716A001409B1 /* AppKeys.swift */; };
 		95CBCC5D20087176001409B1 /* AppSecrets.swift in Sources */ = {isa = PBXBuildFile; fileRef = 95CBCC5C20087176001409B1 /* AppSecrets.swift */; };
-		95CBCC5F200874B5001409B1 /* ColorTheme.swift in Sources */ = {isa = PBXBuildFile; fileRef = 95CBCC5E200874B5001409B1 /* ColorTheme.swift */; };
 		95D7B0BB1EE64AB900764738 /* Allowances.swift in Sources */ = {isa = PBXBuildFile; fileRef = 95D7B0BA1EE64AB900764738 /* Allowances.swift */; };
 		95D7B0BF1EE64C9800764738 /* PuzzlesSolved.swift in Sources */ = {isa = PBXBuildFile; fileRef = 95D7B0BE1EE64C9800764738 /* PuzzlesSolved.swift */; };
 		95D7B0C61EEA5F6600764738 /* Utility.swift in Sources */ = {isa = PBXBuildFile; fileRef = 95D7B0C51EEA5F6600764738 /* Utility.swift */; };
@@ -85,6 +85,7 @@
 		9502E5DD1EEE080F0048BE1B /* ViewControllerExtensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ViewControllerExtensions.swift; sourceTree = "<group>"; };
 		9502E5DF1EEE158B0048BE1B /* PuzzlePurchase.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PuzzlePurchase.swift; sourceTree = "<group>"; };
 		9502E5E21EEE16020048BE1B /* PuzzleProducts.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PuzzleProducts.swift; sourceTree = "<group>"; };
+		950E6DA620087DD70066AA4F /* ColorTheme.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ColorTheme.swift; sourceTree = "<group>"; };
 		951273711EDE898200588467 /* DebugUtil.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DebugUtil.swift; sourceTree = "<group>"; };
 		9518F85B1FF363E000AAAB35 /* StoreTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StoreTableViewController.swift; sourceTree = "<group>"; };
 		9518F85D1FF36AF400AAAB35 /* StoreTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StoreTableViewCell.swift; sourceTree = "<group>"; };
@@ -121,7 +122,6 @@
 		95CBCC571FFDCE92001409B1 /* UIColorExtensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIColorExtensions.swift; sourceTree = "<group>"; };
 		95CBCC5A2008716A001409B1 /* AppKeys.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppKeys.swift; sourceTree = "<group>"; };
 		95CBCC5C20087176001409B1 /* AppSecrets.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppSecrets.swift; sourceTree = "<group>"; };
-		95CBCC5E200874B5001409B1 /* ColorTheme.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ColorTheme.swift; sourceTree = "<group>"; };
 		95D7B0BA1EE64AB900764738 /* Allowances.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Allowances.swift; sourceTree = "<group>"; };
 		95D7B0BE1EE64C9800764738 /* PuzzlesSolved.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PuzzlesSolved.swift; sourceTree = "<group>"; };
 		95D7B0C51EEA5F6600764738 /* Utility.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Utility.swift; sourceTree = "<group>"; };
@@ -253,7 +253,7 @@
 				9544E33A1EF0EA5D00F37ED7 /* TimeIntervalExtension.swift */,
 				9570051B1FE104F300C85822 /* AnalyticsWrapper.swift */,
 				95CBCC571FFDCE92001409B1 /* UIColorExtensions.swift */,
-				95CBCC5E200874B5001409B1 /* ColorTheme.swift */,
+				950E6DA620087DD70066AA4F /* ColorTheme.swift */,
 			);
 			path = Utility;
 			sourceTree = "<group>";
@@ -493,7 +493,7 @@
 				9502E5DE1EEE080F0048BE1B /* ViewControllerExtensions.swift in Sources */,
 				95B41B8B1E9CAB94003D8C28 /* Cage.swift in Sources */,
 				95C2C43D1ECEBF2E0007D3F1 /* PlayerProgress.swift in Sources */,
-				95CBCC5F200874B5001409B1 /* ColorTheme.swift in Sources */,
+				950E6DA720087DD70066AA4F /* ColorTheme.swift in Sources */,
 				95CBCC541FFC9659001409B1 /* Stack.swift in Sources */,
 				95A196221ED2A32A0038D40C /* PuzzleProgress.swift in Sources */,
 				95FBB90A1E9AD97300B0E662 /* Puzzle.swift in Sources */,

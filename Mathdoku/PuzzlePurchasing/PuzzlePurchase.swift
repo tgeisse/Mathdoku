@@ -75,36 +75,4 @@ struct PuzzlePurchase {
             }
         }
     }
-//    
-//    static func loadProductInfoForPuzzleProducts(_ products: [PuzzleProduct]) {
-//        var productIdentifier = Set<String>()
-//        var productIdToBuysAllowance = Dictionary<String, Int>()
-//        products.forEach {
-//            productIdentifier.insert($0.productIdentifier)
-//            productIdToBuysAllowance[$0.productIdentifier] = $0.buysAllowance
-//        }
-//        
-//        SwiftyStoreKit.retrieveProductsInfo(productIdentifier) { results in
-//            for product in results.retrievedProducts {
-//                if let buysAllowance = productIdToBuysAllowance[product.productIdentifier] {
-//                    let newProductTuple: PuzzlePurchaseTuple
-//                    newProductTuple.product = product
-//                    newProductTuple.buysAllowance = buysAllowance
-//                    
-//                    loadedPuzzleProducts.append(newProductTuple)
-//                    
-//                    DebugUtil.print("Loaded product info for \(product.localizedTitle), message: \(product.localizedDescription) - \(product.localizedPrice!)")
-//                }
-//            }
-//            for invalidProductId in results.invalidProductIDs {
-//                
-//                DebugUtil.print("Could not retrieve product info. Invalid product identifier: \(invalidProductId)")
-//                
-//            }
-//            if let error = results.error {
-//                DebugUtil.print("Error: \(error)")
-//            }
-//        }
-//        
-//    }
 }

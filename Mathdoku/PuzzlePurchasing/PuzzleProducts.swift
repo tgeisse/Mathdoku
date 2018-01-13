@@ -11,9 +11,6 @@ import RealmSwift
 
 typealias PuzzleProduct = (productIdentifier: String, title: String, description: String, promotionalImage: UIImage, forAllowance: AllowanceTypes, buysAllowance: Int, disablesAds: Bool)
 
-@available(*, deprecated, message: "Removing this typalias. Using SKProduct instead.")
-typealias LoadedProduct = (product: SKProduct, title: String, description: String, price: String)
-
 enum PuzzleRefreshMode {
     case purchase
     case freeUser

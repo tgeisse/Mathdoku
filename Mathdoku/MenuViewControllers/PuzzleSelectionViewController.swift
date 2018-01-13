@@ -41,9 +41,11 @@ class PuzzleSelectionViewController: UIViewController {
    
     // MARK: - View Lifecycle
     override func viewWillAppear(_ animated: Bool) {
+        self.navigationController?.setNavigationBarHidden(true, animated: animated)
         super.viewWillAppear(animated)
         updateStartButtonTitle()
     }
+    
     override func viewDidLoad() {
         super.viewDidLoad()
 
@@ -72,6 +74,11 @@ class PuzzleSelectionViewController: UIViewController {
                 self.showAlert(alert)
             }
         }
+    }
+    
+    override func viewWillDisappear(_ animated: Bool) {
+        self.navigationController?.setNavigationBarHidden(false, animated: animated)
+        super.viewWillDisappear(animated)
     }
     
     // MARK: - UI Updates

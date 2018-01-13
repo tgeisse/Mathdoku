@@ -21,7 +21,7 @@ struct DebugUtil {
                 let calendar = Calendar.current
                 let dateString = String(format: "%0.2d:%0.2d:%0.2d", calendar.component(.hour, from: date), calendar.component(.minute, from: date), calendar.component(.second, from: date))
                 
-                itemsCopy.insert("\(dateString) Mathdoku.\(function): ", at: 0)
+                itemsCopy.insert("\(dateString) Mathdoku.\(function):", at: 0)
                 
                 var idx = itemsCopy.startIndex
                 let endIdx = itemsCopy.endIndex

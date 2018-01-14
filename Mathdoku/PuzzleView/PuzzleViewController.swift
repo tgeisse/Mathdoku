@@ -17,6 +17,15 @@ class PuzzleViewController: UIViewController, UINavigationBarDelegate {
     
     // MARK: - References to View Items
     @IBOutlet weak var successOverlayView: UIView!
+    @IBOutlet weak var bestTimeTitle: UILabel! {
+        didSet {
+            // update the best time title label for the puzzle size
+            bestTimeTitle.text = "Best Size \(puzzle.size) Time"
+        }
+    }
+    @IBOutlet weak var bestTimeLabel: UILabel!
+    @IBOutlet weak var finalTimeLabel: UILabel!
+    @IBOutlet weak var puzzleCompleteLabel: UILabel! { didSet { puzzleCompleteLabel.textColor = ColorTheme.blue.dark } }
     
     @IBOutlet weak var bannerView: GADBannerView!
     @IBOutlet weak var bannerViewHeight: NSLayoutConstraint!
@@ -29,6 +38,7 @@ class PuzzleViewController: UIViewController, UINavigationBarDelegate {
         return returnValue
     }
     @IBOutlet weak var gameTimerLabel: UILabel!
+    
     
     // MARK: - Game state properties
     private enum GameState {
@@ -48,13 +58,8 @@ class PuzzleViewController: UIViewController, UINavigationBarDelegate {
     private var gameTimerPrecision = 0.1
     private var gameTimer = 0.0 {
         didSet {
-            // whenever the ameTimer is set, update the label displaying the timer
-            let timerComponents = TimeInterval(gameTimer).components
-            
-            let timerLabel = String(format: "%02i:%02i:%02i", timerComponents.hours, timerComponents.minutes, timerComponents.seconds)
-            if timerLabel != gameTimerLabel.text {
-                gameTimerLabel.text = timerLabel
-            }
+            // whenever the gameTimer is set, update the label displaying the timer
+            gameTimerLabel.text = createTimeString(from: gameTimer)
         }
     }
     
@@ -467,15 +472,31 @@ class PuzzleViewController: UIViewController, UINavigationBarDelegate {
     }
     
     // MARK: - Puzzle progression functions
+    private func updateShowSuccessView() {
+        if let bestTime = playerProgress.puzzlesSolved.sorted(byKeyPath: "timeToSolve", ascending: true).first,
+            bestTime.puzzleId != playerProgress.activePuzzleId {
+            // previous best time
+            bestTimeLabel.text = createTimeString(from: bestTime.timeToSolve)
+            bestTimeLabel.textColor = .black
+        } else {
+            // new best time
+            bestTimeLabel.text = "New Best Time!"
+            bestTimeLabel.textColor = ColorTheme.green.dark
+        }
+        
+        finalTimeLabel.text = gameTimerLabel.text
+        successOverlayView.isHidden = false
+    }
+    
     private func checkPuzzleIsSolved() {
         if puzzle.isSolved {
             // TODO: if you ever implement replay, then the incrementPuzzleId function will need to support a "to:" parameter
             timerState = .final
             gameState = .finished
+            updateShowSuccessView()
             incrementPlayerPuzzleProgress()
             setPuzzleProgress(to: false)
             puzzleLoader.preloadPuzzle(forSize: puzzle.size, withPuzzleId: playerProgress.activePuzzleId)
-            successOverlayView.isHidden = false
             
             // analytics - puzzle was successfully completed
             AnalyticsWrapper.logEvent(.selectContent, contentType: .puzzlePlayed, id: "id-puzzleCompleted", name: "puzzleSuccessfullyFilled")
@@ -830,6 +851,11 @@ class PuzzleViewController: UIViewController, UINavigationBarDelegate {
                 })
             })
         })
+    }
+    
+    private func createTimeString(from time: Double) -> String {
+        let timerComponents = TimeInterval(time).components
+        return String(format: "%02i:%02i:%02i", timerComponents.hours, timerComponents.minutes, timerComponents.seconds)
     }
     
     private func removeCountdownTimer() {

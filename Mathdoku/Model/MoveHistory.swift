@@ -8,8 +8,13 @@
 
 import Foundation
 
-// define what a move is - It's a cell position marked by an old value and a new value
-typealias Move = (cell: CellPosition, from: Int?, to: Int?)
+// define what a move is - It's a cell position marked by a MoveType
+typealias Move = (cell: CellPosition, moveType: MoveType)
+
+enum MoveType {
+    case Note(number: Int, fromPossibility: Int?, toPossibility: Int?)
+    indirect case Guess(from: Int?, to: Int?, affectedNotes: [MoveType]?)
+}
 
 class MoveHistory {
     private var undoMoves = Stack<Move>()
@@ -24,7 +29,16 @@ class MoveHistory {
     }
     
     func makeMove(_ move: Move) {
-        if move.from != move.to {
+        let saveMove: Bool
+        
+        switch move.moveType {
+        case let .Guess(from, to, _) :
+            saveMove = from != to
+        default:
+            saveMove = true
+        }
+        
+        if saveMove {
             undoMoves.push(move)
             redoMoves.removeAll()
         }

@@ -327,7 +327,6 @@ class PuzzleViewController: UIViewController, UINavigationBarDelegate {
             switch entryMode {
             case .guessing:
                 if let cellPosition = selectedCellPosition {
-                    addMoveHistory(forCell: cellPosition, toValue: num)
                     setGuessForCells(atPositions: [cellPosition], withAnswer: num)
                     
                     // if auto rotate is enabled, then rotate to the next free cell
@@ -350,7 +349,6 @@ class PuzzleViewController: UIViewController, UINavigationBarDelegate {
             if let cellPosition = selectedCellPosition {
                 if puzzle.cellIsGuessedAtPosition(cellPosition) {
                     // if the puzzle has a guess, erase it
-                    addMoveHistory(forCell: cellPosition, toValue: nil)
                     setGuessForCells(atPositions: [cellPosition], withAnswer: nil)
                 } else {
                     // if the puzzle does not have a guess, then erase its notes
@@ -389,7 +387,6 @@ class PuzzleViewController: UIViewController, UINavigationBarDelegate {
                 let randomCell = unguessedCells[Int(arc4random_uniform(UInt32(unguessedCells.count)))]
                 
                 entryMode = .guessing
-                addMoveHistory(forCell: randomCell.cellPosition, toValue: randomCell.answer)
                 setGuessForCells(atPositions: [randomCell.cellPosition], withAnswer: randomCell.answer)
                 selectedCell = gridRowStacks[randomCell.cellPosition.row].rowCells[randomCell.cellPosition.col]
             }
@@ -414,16 +411,16 @@ class PuzzleViewController: UIViewController, UINavigationBarDelegate {
     }
     
     @IBAction func undoMove(_ sender: UIButton) {
-        if let move = moveHistory.undo() {
+        if let moves = moveHistory.undo() {
             AnalyticsWrapper.logEvent(.selectContent, contentType: .featureUsage, id: "id-undoMove")
-            processMoveHistory(forCell: move.cell, toValue: move.from)
+            processMoveHistory(forMoves: moves, moveDirection: .undo)
         }
     }
     
     @IBAction func redoMove(_ sender: UIButton) {
-        if let move = moveHistory.redo() {
+        if let moves = moveHistory.redo() {
             AnalyticsWrapper.logEvent(.selectContent, contentType: .featureUsage, id: "id-redoMove")
-            processMoveHistory(forCell: move.cell, toValue: move.to)
+            processMoveHistory(forMoves: moves, moveDirection: .redo)
         }
     }
     
@@ -535,12 +532,14 @@ class PuzzleViewController: UIViewController, UINavigationBarDelegate {
         if Defaults[.fillInGiveMes] && !puzzle.isSolved {
             DebugUtil.print("filling in give me / unit cells")
             puzzle.getUnitCellsWithAnswers().forEach {
-                setGuessForCells(atPositions: [$0.cell], withAnswer: $0.answer)
+                setGuessForCells(atPositions: [$0.cell], withAnswer: $0.answer, mutatesMoveHistory: false)
             }
         }
     }
     
-    private func removePossibleNotesAfterGuess(_ guess: Int, atCell cell: CellPosition) {
+    private func removePossibleNotesAfterGuess(_ guess: Int, atCell cell: CellPosition) -> [Move] {
+        var moves = [Move]()
+        
         if Defaults[.clearNotesAfterGuessEntry] {
             let guessIndex = guess - 1
             var cellsToRemoveNoteForGuess: Set<CellPosition> = []
@@ -548,16 +547,22 @@ class PuzzleViewController: UIViewController, UINavigationBarDelegate {
             // loop through the size of the puzzle
             for i in 0..<puzzle.size {
                 if userCellNotePossibilities[cell.row][i][guessIndex] == .possible {
-                    cellsToRemoveNoteForGuess.insert(CellPosition(row: cell.row, col: i, puzzleSize: puzzle.size))
+                    let cell = CellPosition(row: cell.row, col: i, puzzleSize: puzzle.size)
+                    cellsToRemoveNoteForGuess.insert(cell)
+                    moves.append((cell, .note(number: guess, fromPossibility: CellNotePossibility.possible.rawValue, toPossibility: CellNotePossibility.none.rawValue)))
                 }
                 
                 if userCellNotePossibilities[i][cell.col][guessIndex] == .possible {
-                    cellsToRemoveNoteForGuess.insert(CellPosition(row: i, col: cell.col, puzzleSize: puzzle.size))
+                    let cell = CellPosition(row: i, col: cell.col, puzzleSize: puzzle.size)
+                    cellsToRemoveNoteForGuess.insert(cell)
+                    moves.append((cell, .note(number: guess, fromPossibility: CellNotePossibility.possible.rawValue, toPossibility: CellNotePossibility.none.rawValue)))
                 }
             }
             
-            setNotesForCells(atPositions: Array(cellsToRemoveNoteForGuess), withNotes: [guess])
+            setNotesForCells(atPositions: Array(cellsToRemoveNoteForGuess), withNotes: [guess], mutatesMoveHistory: false)
         }
+        
+        return moves
     }
     
     private func highlightGuesses(for allegiances: [CellView.GuessAllegiance]) {
@@ -644,8 +649,12 @@ class PuzzleViewController: UIViewController, UINavigationBarDelegate {
     }
     
     // MARK: - Update cell values
-    private func setGuessForCells(atPositions: [CellPosition], withAnswer: Int?, withIdentifier: String = #function) {
+    private func setGuessForCells(atPositions: [CellPosition], withAnswer: Int?, mutatesMoveHistory: Bool = true, withIdentifier: String = #function) {
+        var moves = [Move]()
+        
         for atPosition in atPositions {
+            moves.append((atPosition, .guess(from: puzzle.getCurrentGuess(forCell: atPosition), to: withAnswer)))
+            
             gridRowStacks[atPosition.row].rowCells[atPosition.col].cell.guess = (withAnswer == nil ? nil : "\(withAnswer!)")
             puzzle.setGuessForCellPosition(atPosition, guess: withAnswer)
         }
@@ -662,8 +671,12 @@ class PuzzleViewController: UIViewController, UINavigationBarDelegate {
             
             if let guess = withAnswer {
                 atPositions.forEach {
-                    removePossibleNotesAfterGuess(guess, atCell: $0)
+                    moves += removePossibleNotesAfterGuess(guess, atCell: $0)
                 }
+            }
+            
+            if mutatesMoveHistory && moves.count > 0 {
+                moveHistory.makeMoves(moves)
             }
             
             // check to see if this entry solved the puzzle
@@ -671,8 +684,10 @@ class PuzzleViewController: UIViewController, UINavigationBarDelegate {
         }
     }
     
-    private func setNotesForCells(atPositions: [CellPosition], withNotes notes: [Int]?, overridePossibilty: [CellNotePossibility]? = nil, withIdentifier: String = #function) {
+    private func setNotesForCells(atPositions: [CellPosition], withNotes notes: [Int]?, overridePossibilty: [CellNotePossibility]? = nil, mutatesMoveHistory: Bool = true, withIdentifier: String = #function) {
         // (1) make the changes in memory
+        var moves = [Move]()
+        
         for cell in atPositions {
             if let notes = notes {
                 // if the note is not nil, then update the notes for the passed in cells
@@ -681,19 +696,29 @@ class PuzzleViewController: UIViewController, UINavigationBarDelegate {
                     
                     // we will allow an override if one was passed. But first, check to make sure the count lines up
                     // override is currently only used when loaded from viewDidLoad
+                    let currentNotePossibility = userCellNotePossibilities[cell.row][cell.col][noteIndex]
+                    let newNotePossibility: CellNotePossibility
                     if let possibleOverride = overridePossibilty, possibleOverride.count == notes.count {
-                        userCellNotePossibilities[cell.row][cell.col][noteIndex] = possibleOverride[arrayIndex]
+                        newNotePossibility = possibleOverride[arrayIndex]
                     } else {
-                        let currentNotePossibility = userCellNotePossibilities[cell.row][cell.col][noteIndex]
                         let notePossibilityMode = (entryMode == .noteImpossible ? CellNotePossibility.impossible : .possible)
-                        
-                        userCellNotePossibilities[cell.row][cell.col][noteIndex] = (currentNotePossibility == notePossibilityMode ? .none : notePossibilityMode)
+                        newNotePossibility = (currentNotePossibility == notePossibilityMode ? .none : notePossibilityMode)
                     }
+                    userCellNotePossibilities[cell.row][cell.col][noteIndex] = newNotePossibility
+                    
+                    moves.append((cell, .note(number: note, fromPossibility: currentNotePossibility.rawValue, toPossibility: newNotePossibility.rawValue)))
                 }
             } else {
                 // if the note is nil, then we are setting everything to nothing again
-                // quickest way to do this is to set a new array
-                userCellNotePossibilities[cell.row][cell.col] = Array(repeating: CellNotePossibility.none, count: puzzle.size)
+                for noteIndex in 0..<puzzle.size {
+                    let note = noteIndex + 1
+                    let currentNotePossibility = userCellNotePossibilities[cell.row][cell.col][noteIndex]
+                    userCellNotePossibilities[cell.row][cell.col][noteIndex] = .none
+                    
+                    if currentNotePossibility != .none {
+                        moves.append((cell, .note(number: note, fromPossibility: currentNotePossibility.rawValue, toPossibility: CellNotePossibility.none.rawValue)))
+                    }
+                }
             }
             
             // (2) while still looping, update the user interface with the new values
@@ -714,20 +739,34 @@ class PuzzleViewController: UIViewController, UINavigationBarDelegate {
             DebugUtil.print("Entering Cell Note Save. Check the identifier: \(withIdentifier)")
             asyncWriteNotesForCells(atPositions: atPositions)
         }
+        
+        if mutatesMoveHistory && moves.count > 0 {
+            moveHistory.makeMoves(moves)
+        }
     }
     
     // MARK: - Private Helper Functions
-    private func processMoveHistory(forCell cell: CellPosition, toValue: Int?) {
-        setGuessForCells(atPositions: [cell], withAnswer: toValue)
-        selectedCell = gridRowStacks[cell.row].rowCells[cell.col]
-    }
-    
-    private func addMoveHistory(forCell cell: CellPosition, toValue: Int?) {
-        let move: Move
-        move.cell = cell
-        move.from = puzzle.getCurrentGuess(forCell: cell)
-        move.to = toValue
-        moveHistory.makeMove(move)
+    private func processMoveHistory(forMoves moves: [Move], moveDirection direction: MoveDirection) {
+        // loop through the moves made
+        for move in moves {
+            switch move.moveType {
+            case let .guess(from, to):
+                let changeToValue = (direction == .undo ? from : to)
+                setGuessForCells(atPositions: [move.cell], withAnswer: changeToValue, mutatesMoveHistory: false)
+                selectedCell = gridRowStacks[move.cell.row].rowCells[move.cell.col]
+                
+            case let .note(number, fromPossibility, toPossibility):
+                let changeToPossibility: CellNotePossibility
+                
+                if direction == .undo {
+                    changeToPossibility = CellNotePossibility(rawValue: fromPossibility) ?? .none
+                } else {
+                    changeToPossibility = CellNotePossibility(rawValue: toPossibility) ?? .none
+                }
+                
+                setNotesForCells(atPositions: [move.cell], withNotes: [number], overridePossibilty: [changeToPossibility], mutatesMoveHistory: false)
+            }
+        }
     }
     
     private func segueToStore() {
@@ -1040,8 +1079,8 @@ class PuzzleViewController: UIViewController, UINavigationBarDelegate {
         }
         
         // (2) use said array to set all of the values for notes and guesses to nil
-        setGuessForCells(atPositions: cellPositions, withAnswer: nil)
-        setNotesForCells(atPositions: cellPositions, withNotes: nil)
+        setGuessForCells(atPositions: cellPositions, withAnswer: nil, mutatesMoveHistory: false)
+        setNotesForCells(atPositions: cellPositions, withNotes: nil, mutatesMoveHistory: false)
         
         // (3) reset the move history
         moveHistory.reset()
@@ -1143,11 +1182,7 @@ class PuzzleViewController: UIViewController, UINavigationBarDelegate {
             // will want to write the saved state to the grid here
             for savedGuess in puzzleProgress.puzzleGuesses.filter("guess != nil") {
                 let cellPos = CellPosition(cellId: savedGuess.cellId, puzzleSize: puzzle.size)
-                
-               // if puzzle.cellIsUnitCell(cellPos) == false ||
-                 //   (puzzle.cellIsUnitCell(cellPos) == true && Defaults[.fillInGiveMes] == false) {
-                    setGuessForCells(atPositions: [cellPos], withAnswer: savedGuess.guess.value)
-                //}
+                setGuessForCells(atPositions: [cellPos], withAnswer: savedGuess.guess.value, mutatesMoveHistory: false)
             }
             
             for savedNote in puzzleProgress.puzzleNotes {
@@ -1164,7 +1199,7 @@ class PuzzleViewController: UIViewController, UINavigationBarDelegate {
                         notePossibility.append( CellNotePossibility(rawValue: $0.possibility) ?? .none )
                     }
                     
-                    setNotesForCells(atPositions: [cellPos], withNotes: noteInts, overridePossibilty: notePossibility)
+                    setNotesForCells(atPositions: [cellPos], withNotes: noteInts, overridePossibilty: notePossibility, mutatesMoveHistory: false)
                 }
             }
             

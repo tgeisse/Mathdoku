@@ -12,13 +12,18 @@ import Foundation
 typealias Move = (cell: CellPosition, moveType: MoveType)
 
 enum MoveType {
-    case Note(number: Int, fromPossibility: Int?, toPossibility: Int?)
-    indirect case Guess(from: Int?, to: Int?, affectedNotes: [MoveType]?)
+    case note(number: Int, fromPossibility: Int, toPossibility: Int)
+    case guess(from: Int?, to: Int?)
+}
+
+enum MoveDirection {
+    case undo
+    case redo
 }
 
 class MoveHistory {
-    private var undoMoves = Stack<Move>()
-    private var redoMoves = Stack<Move>()
+    private var undoMoves = Stack<[Move]>()
+    private var redoMoves = Stack<[Move]>()
     
     var undoCount: Int {
         return undoMoves.count
@@ -28,23 +33,12 @@ class MoveHistory {
         return redoMoves.count
     }
     
-    func makeMove(_ move: Move) {
-        let saveMove: Bool
-        
-        switch move.moveType {
-        case let .Guess(from, to, _) :
-            saveMove = from != to
-        default:
-            saveMove = true
-        }
-        
-        if saveMove {
-            undoMoves.push(move)
-            redoMoves.removeAll()
-        }
+    func makeMoves(_ moves: [Move]) {
+        undoMoves.push(moves)
+        redoMoves.removeAll()
     }
     
-    func undo() -> Move? {
+    func undo() -> [Move]? {
         if let lastMove = undoMoves.pop() {
             redoMoves.push(lastMove)
             return lastMove
@@ -53,7 +47,7 @@ class MoveHistory {
         }
     }
     
-    func redo() -> Move? {
+    func redo() -> [Move]? {
         if let nextMove = redoMoves.pop() {
             undoMoves.push(nextMove)
             return nextMove

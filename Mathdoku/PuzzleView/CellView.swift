@@ -66,6 +66,9 @@ class CellView: UIView {
         }
     }
     
+    private var guessTextSize: CGSize?
+    private var noteTextSize: CGSize?
+    
     private var scaleFactor: CGFloat {
         return bounds.maxX / 100
     }
@@ -148,8 +151,12 @@ class CellView: UIView {
             let guessText = NSAttributedString(string: guess!, attributes: guessTextAttributes)
             
             // calculate the x and y position by looking at how much space we need to render
-            let guessPositionX: CGFloat = bounds.midX - (guessText.size().width / 2)
-            let guessPositionY: CGFloat = bounds.maxY - guessText.size().height
+            if guessTextSize == nil {
+                guessTextSize = guessText.size()
+            }
+        
+            let guessPositionX: CGFloat = bounds.midX - (guessTextSize!.width / 2)
+            let guessPositionY: CGFloat = bounds.maxY - guessTextSize!.height
             
             guessText.draw(at: CGPoint(x: guessPositionX, y: guessPositionY))
             
@@ -168,8 +175,12 @@ class CellView: UIView {
             let noteText = NSAttributedString(string: note!, attributes: noteTextAttributes)
             
             // calculate the x and y position by looking at how much space we need to render
-            let notePositionX: CGFloat = bounds.midX - (noteText.size().width / 2)
-            let notePositionY: CGFloat = bounds.maxY - noteText.size().height - 2
+            if noteTextSize == nil {
+                noteTextSize = noteText.size()
+            }
+            
+            let notePositionX: CGFloat = bounds.midX - (noteTextSize!.width / 2)
+            let notePositionY: CGFloat = bounds.maxY - noteTextSize!.height - 2
             
             noteText.draw(at: CGPoint(x: notePositionX, y: notePositionY))
             

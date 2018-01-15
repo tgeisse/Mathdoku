@@ -10,8 +10,19 @@ import Foundation
 
 struct Stack<T> {
     fileprivate var items = [T]()
+    private var maxSize: Int?
+    
+    init(maxSize: Int? = nil) {
+        self.maxSize = maxSize
+    }
     
     mutating func push(_ item: T) {
+        if let size = maxSize {
+            if items.count >= size {
+                items.removeFirst(items.count - size + 1)
+            }
+        }
+        
         items.append(item)
     }
     

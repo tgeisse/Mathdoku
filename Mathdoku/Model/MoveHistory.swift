@@ -22,8 +22,8 @@ enum MoveDirection {
 }
 
 class MoveHistory {
-    private var undoMoves = Stack<[Move]>()
-    private var redoMoves = Stack<[Move]>()
+    private var undoMoves = Stack<[Move]>(maxSize: 1000)
+    private var redoMoves = Stack<[Move]>(maxSize: 1000)
     
     var undoCount: Int {
         return undoMoves.count

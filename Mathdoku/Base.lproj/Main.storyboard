@@ -69,7 +69,7 @@
                                         <rect key="frame" x="0.0" y="0.0" width="375" height="25"/>
                                         <subviews>
                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Ofm-wk-AUo">
-                                                <rect key="frame" x="0.0" y="0.0" width="75" height="25"/>
+                                                <rect key="frame" x="0.0" y="0.0" width="70" height="25"/>
                                                 <constraints>
                                                     <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="70" id="pRj-AC-QKG"/>
                                                 </constraints>
@@ -82,11 +82,18 @@
                                                 </connections>
                                             </button>
                                             <view contentMode="redraw" translatesAutoresizingMaskIntoConstraints="NO" id="egY-ue-O1C" customClass="GameTimerBackgroundView" customModule="Mathdoku" customModuleProvider="target">
-                                                <rect key="frame" x="75" y="0.0" width="225" height="25"/>
+                                                <rect key="frame" x="70" y="0.0" width="225" height="25"/>
                                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                             </view>
+                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="jmv-P6-VHi">
+                                                <rect key="frame" x="295" y="0.0" width="10" height="25"/>
+                                                <state key="normal" title="+"/>
+                                                <connections>
+                                                    <action selector="addAllCellsToNotes:" destination="nDg-KA-uk0" eventType="touchUpInside" id="RBr-L9-0Cf"/>
+                                                </connections>
+                                            </button>
                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="t0k-m7-o4d">
-                                                <rect key="frame" x="300" y="0.0" width="75" height="25"/>
+                                                <rect key="frame" x="305" y="0.0" width="70" height="25"/>
                                                 <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="15"/>
                                                 <state key="normal" title="skip">
                                                     <color key="titleColor" red="0.18431372549019609" green="0.18431372549019609" blue="0.18431372549019609" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
@@ -321,7 +328,7 @@
                                 </constraints>
                             </stackView>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="00:00:00" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" minimumScaleFactor="1" translatesAutoresizingMaskIntoConstraints="NO" id="6Tq-KK-Rt7">
-                                <rect key="frame" x="112" y="542" width="150" height="23.5"/>
+                                <rect key="frame" x="107" y="542" width="150" height="23.5"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="150" id="rLl-gk-aD5"/>
                                 </constraints>

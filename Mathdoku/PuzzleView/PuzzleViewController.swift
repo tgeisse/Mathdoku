@@ -15,6 +15,19 @@ class PuzzleViewController: UIViewController, UINavigationBarDelegate {
     var puzzle: Puzzle!
     var puzzleLoader: PuzzleLoader!
     
+    
+    @IBAction func addAllCellsToNotes(_ sender: UIButton) {
+        entryMode = .notePossible
+        var cells: [CellContainerView] = []
+        for row in 0..<puzzle.size {
+            for col in 0..<puzzle.size {
+                cells.append(gridRowStacks[row].rowCells[col])
+            }
+        }
+        selectedNoteCells = cells
+    }
+    
+    
     // MARK: - References to View Items
     @IBOutlet weak var successOverlayView: UIView!
     @IBOutlet weak var bestTimeTitle: UILabel! {
@@ -59,7 +72,10 @@ class PuzzleViewController: UIViewController, UINavigationBarDelegate {
     private var gameTimer = 0.0 {
         didSet {
             // whenever the gameTimer is set, update the label displaying the timer
-            gameTimerLabel.text = createTimeString(from: gameTimer)
+            let timeLabel = createTimeString(from: gameTimer)
+            if timeLabel != gameTimerLabel.text {
+                gameTimerLabel.text = timeLabel
+            }
         }
     }
     

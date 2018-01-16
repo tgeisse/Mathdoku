@@ -407,6 +407,7 @@ class PuzzleViewController: UIViewController, UINavigationBarDelegate {
         alertUserYesNoMessage(title: "Reset Puzzle?", message: "Are you sure you want to erase all guesses and notes?", actionOnConfirm: { [weak self] in
             self?.timerState = .reset
             self?.gameState = .loading
+            self?.entryMode = .guessing
             self?.resetCellNotesAndGuesses()
             self?.fillInUnitCells()
             self?.startCountdownTimer()

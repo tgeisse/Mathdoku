@@ -15,18 +15,6 @@ class PuzzleViewController: UIViewController, UINavigationBarDelegate {
     var puzzle: Puzzle!
     var puzzleLoader: PuzzleLoader!
     
-    
-    @IBAction func addAllCellsToNotes(_ sender: UIButton) {
-        var cells: [CellContainerView] = []
-        for row in 0..<puzzle.size {
-            for col in 0..<puzzle.size {
-                cells.append(gridRowStacks[row].rowCells[col])
-            }
-        }
-        entryMode = .notePossible
-        selectedNoteCells = cells
-    }
-    
     // MARK: - References to View Items
     @IBOutlet weak var successOverlayView: UIView!
     @IBOutlet weak var bestTimeTitle: UILabel! {

@@ -17,16 +17,15 @@ class PuzzleViewController: UIViewController, UINavigationBarDelegate {
     
     
     @IBAction func addAllCellsToNotes(_ sender: UIButton) {
-        entryMode = .notePossible
         var cells: [CellContainerView] = []
         for row in 0..<puzzle.size {
             for col in 0..<puzzle.size {
                 cells.append(gridRowStacks[row].rowCells[col])
             }
         }
+        entryMode = .notePossible
         selectedNoteCells = cells
     }
-    
     
     // MARK: - References to View Items
     @IBOutlet weak var successOverlayView: UIView!
@@ -700,7 +699,7 @@ class PuzzleViewController: UIViewController, UINavigationBarDelegate {
         }
     }
     
-    private func setNotesForCells(atPositions: [CellPosition], withNotes notes: [Int]?, overridePossibilty: [CellNotePossibility]? = nil, mutatesMoveHistory: Bool = true, withIdentifier: String = #function) {
+    private func setNotesForCells(atPositions: [CellPosition], withNotes notes: [Int]?, overridePossibility: [CellNotePossibility]? = nil, mutatesMoveHistory: Bool = true, withIdentifier: String = #function) {
         // (1) make the changes in memory
         var moves = [Move]()
         
@@ -714,7 +713,7 @@ class PuzzleViewController: UIViewController, UINavigationBarDelegate {
                     // override is currently only used when loaded from viewDidLoad
                     let currentNotePossibility = userCellNotePossibilities[cell.row][cell.col][noteIndex]
                     let newNotePossibility: CellNotePossibility
-                    if let possibleOverride = overridePossibilty, possibleOverride.count == notes.count {
+                    if let possibleOverride = overridePossibility, possibleOverride.count == notes.count {
                         newNotePossibility = possibleOverride[arrayIndex]
                     } else {
                         let notePossibilityMode = (entryMode == .noteImpossible ? CellNotePossibility.impossible : .possible)
@@ -763,6 +762,8 @@ class PuzzleViewController: UIViewController, UINavigationBarDelegate {
     
     // MARK: - Private Helper Functions
     private func processMoveHistory(forMoves moves: [Move], moveDirection direction: MoveDirection) {
+        var notesToSet: Dictionary<CellPosition, Dictionary<Int, CellNotePossibility>> = [:]
+        
         // loop through the moves made
         for move in moves {
             switch move.moveType {
@@ -780,8 +781,14 @@ class PuzzleViewController: UIViewController, UINavigationBarDelegate {
                     changeToPossibility = CellNotePossibility(rawValue: toPossibility) ?? .none
                 }
                 
-                setNotesForCells(atPositions: [move.cell], withNotes: [number], overridePossibilty: [changeToPossibility], mutatesMoveHistory: false)
+                var cellChangeSet = notesToSet[move.cell] ?? [:]
+                cellChangeSet[number] = changeToPossibility
+                notesToSet[move.cell] = cellChangeSet
             }
+        }
+        
+        notesToSet.keys.forEach {
+            setNotesForCells(atPositions: [$0], withNotes: Array(notesToSet[$0]!.keys), overridePossibility: Array(notesToSet[$0]!.values), mutatesMoveHistory: false)
         }
     }
     
@@ -1215,7 +1222,7 @@ class PuzzleViewController: UIViewController, UINavigationBarDelegate {
                         notePossibility.append( CellNotePossibility(rawValue: $0.possibility) ?? .none )
                     }
                     
-                    setNotesForCells(atPositions: [cellPos], withNotes: noteInts, overridePossibilty: notePossibility, mutatesMoveHistory: false)
+                    setNotesForCells(atPositions: [cellPos], withNotes: noteInts, overridePossibility: notePossibility, mutatesMoveHistory: false)
                 }
             }
             

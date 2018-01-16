@@ -85,11 +85,11 @@
                                                 <rect key="frame" x="70" y="0.0" width="225" height="25"/>
                                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                             </view>
-                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="jmv-P6-VHi">
+                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="PDs-qf-DTG">
                                                 <rect key="frame" x="295" y="0.0" width="10" height="25"/>
                                                 <state key="normal" title="+"/>
                                                 <connections>
-                                                    <action selector="addAllCellsToNotes:" destination="nDg-KA-uk0" eventType="touchUpInside" id="RBr-L9-0Cf"/>
+                                                    <action selector="addAllCellsToNotes:" destination="nDg-KA-uk0" eventType="touchUpInside" id="TRQ-Ik-Awe"/>
                                                 </connections>
                                             </button>
                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="t0k-m7-o4d">

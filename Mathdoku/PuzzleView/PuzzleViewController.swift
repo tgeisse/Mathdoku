@@ -59,9 +59,8 @@ class PuzzleViewController: UIViewController, UINavigationBarDelegate {
     private var gameTimer = 0.0 {
         didSet {
             // whenever the gameTimer is set, update the label displaying the timer
-            let timeLabel = createTimeString(from: gameTimer)
-            if timeLabel != gameTimerLabel.text {
-                gameTimerLabel.text = timeLabel
+            if floor(oldValue) == floor(gameTimer) {
+                gameTimerLabel.text = createTimeString(from: gameTimer)
             }
         }
     }

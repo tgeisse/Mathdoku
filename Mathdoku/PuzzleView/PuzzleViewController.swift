@@ -59,7 +59,7 @@ class PuzzleViewController: UIViewController, UINavigationBarDelegate {
     private var gameTimer = 0.0 {
         didSet {
             // whenever the gameTimer is set, update the label displaying the timer
-            if floor(oldValue) == floor(gameTimer) {
+            if floor(oldValue) != floor(gameTimer) {
                 let timeLabelText = createTimeString(from: gameTimer)
                 DispatchQueue.main.async { [weak self] in
                     self?.gameTimerLabel.text = timeLabelText
@@ -409,7 +409,6 @@ class PuzzleViewController: UIViewController, UINavigationBarDelegate {
         alertUserYesNoMessage(title: "Reset Puzzle?", message: "Are you sure you want to erase all guesses and notes?", actionOnConfirm: { [weak self] in
             self?.timerState = .reset
             self?.gameState = .loading
-            self?.entryMode = .guessing
             self?.resetCellNotesAndGuesses()
             self?.fillInUnitCells()
             self?.startCountdownTimer()
@@ -928,13 +927,12 @@ class PuzzleViewController: UIViewController, UINavigationBarDelegate {
     }
     
     @objc private func updateTimer() {
-        DebugUtil.print("Updating timer")
         gameTimer += gameTimerPrecision
     }
     
     private func resetTimer() {
         timer?.cancel()
-        gameTimer = 0
+        gameTimer = 0.0
         timerState = .stopped
     }
     
@@ -1091,6 +1089,10 @@ class PuzzleViewController: UIViewController, UINavigationBarDelegate {
     
     // MARK: - Puzzle Setup Functions
     private func resetCellNotesAndGuesses() {
+        // (0) reset selections and set guessing mode back to guessing
+        selectedCell = nil
+        entryMode = .guessing
+        
         // (1) build an array of CellPositions that matches the size of the puzzle
         var cellPositions = [CellPosition]()
         
@@ -1225,7 +1227,6 @@ class PuzzleViewController: UIViewController, UINavigationBarDelegate {
             
             // set the saved paused game timer
             gameTimer = playerProgress.pausedGameTimer
-            gameTimerLabel.text = createTimeString(from: playerProgress.pausedGameTimer)
         } else {
             // the puzzle is not in progress, so reset the guess and notes
             // TODO: we will eventually want to add some logic to this else statement so that it does not always execute

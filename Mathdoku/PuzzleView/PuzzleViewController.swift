@@ -54,13 +54,16 @@ class PuzzleViewController: UIViewController, UINavigationBarDelegate {
     }
     
     // MARK: - Game timer properties
-    private var timer: Timer? = nil
+    private var timer: DispatchSourceTimer? = nil
     private var gameTimerPrecision = 0.1
     private var gameTimer = 0.0 {
         didSet {
             // whenever the gameTimer is set, update the label displaying the timer
             if floor(oldValue) == floor(gameTimer) {
-                gameTimerLabel.text = createTimeString(from: gameTimer)
+                let timeLabelText = createTimeString(from: gameTimer)
+                DispatchQueue.main.async { [weak self] in
+                    self?.gameTimerLabel.text = timeLabelText
+                }
             }
         }
     }
@@ -914,23 +917,29 @@ class PuzzleViewController: UIViewController, UINavigationBarDelegate {
     }
     
     private func startTimer() {
-        timer?.invalidate()
-        timer = Timer.scheduledTimer(timeInterval: gameTimerPrecision, target: self, selector: #selector(self.updateTimer), userInfo: nil, repeats: true)
+        timer?.cancel()
+        timer = DispatchSource.makeTimerSource(queue: DispatchQueue(label: "\(AppSecrets.domainRoot).dispatchSourceTimer"))
+        timer?.schedule(deadline: .now(), repeating: gameTimerPrecision)
+        timer?.setEventHandler() { [weak self] in
+            self?.updateTimer()
+        }
+        timer?.resume()
         timerState = .running
     }
     
     @objc private func updateTimer() {
+        DebugUtil.print("Updating timer")
         gameTimer += gameTimerPrecision
     }
     
     private func resetTimer() {
-        timer?.invalidate()
+        timer?.cancel()
         gameTimer = 0
         timerState = .stopped
     }
     
     private func pauseTimer() {
-        timer?.invalidate()
+        timer?.cancel()
         saveTimerProgress()
     }
     

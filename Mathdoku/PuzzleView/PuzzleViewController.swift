@@ -1216,6 +1216,7 @@ class PuzzleViewController: UIViewController, UINavigationBarDelegate {
             
             // set the saved paused game timer
             gameTimer = playerProgress.pausedGameTimer
+            gameTimerLabel.text = createTimeString(from: playerProgress.pausedGameTimer)
         } else {
             // the puzzle is not in progress, so reset the guess and notes
             // TODO: we will eventually want to add some logic to this else statement so that it does not always execute

@@ -60,6 +60,7 @@ class PuzzleViewController: UIViewController, UINavigationBarDelegate {
         didSet {
             // whenever the gameTimer is set, update the label displaying the timer
             if floor(oldValue) != floor(gameTimer) {
+                DebugUtil.print("Game Timer has changed from \(oldValue) to \(gameTimer)")
                 let timeLabelText = createTimeString(from: gameTimer)
                 DispatchQueue.main.async { [weak self] in
                     self?.gameTimerLabel.text = timeLabelText

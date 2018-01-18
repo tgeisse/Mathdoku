@@ -923,14 +923,6 @@ class PuzzleViewController: UIViewController, UINavigationBarDelegate {
             }
         }
         timer?.resume()
-        /*
-        timer?.cancel()
-        timer = DispatchSource.makeTimerSource(queue: DispatchQueue(label: "\(AppSecrets.domainRoot).dispatchSourceTimer"))
-        timer?.schedule(deadline: .now(), repeating: gameTimerPrecision)
-        timer?.setEventHandler() { [weak self] in
-            self?.updateTimer()
-        }
-        timer?.resume() */
         timerState = .running
     }
     

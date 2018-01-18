@@ -54,7 +54,7 @@ class PuzzleViewController: UIViewController, UINavigationBarDelegate {
     }
     
     // MARK: - Game timer properties
-    private var timer: DispatchSourceTimer? = nil
+    private var timer: DispatchTimer? = nil
     private var gameTimerPrecision = 0.1
     private var gameTimer = 0.0 {
         didSet {
@@ -916,13 +916,21 @@ class PuzzleViewController: UIViewController, UINavigationBarDelegate {
     }
     
     private func startTimer() {
+        if timer == nil {
+            timer = DispatchTimer(precision: gameTimerPrecision)
+            timer?.eventHandler = { [weak self] in
+                self?.updateTimer()
+            }
+        }
+        timer?.resume()
+        /*
         timer?.cancel()
         timer = DispatchSource.makeTimerSource(queue: DispatchQueue(label: "\(AppSecrets.domainRoot).dispatchSourceTimer"))
         timer?.schedule(deadline: .now(), repeating: gameTimerPrecision)
         timer?.setEventHandler() { [weak self] in
             self?.updateTimer()
         }
-        timer?.resume()
+        timer?.resume() */
         timerState = .running
     }
     
@@ -931,13 +939,13 @@ class PuzzleViewController: UIViewController, UINavigationBarDelegate {
     }
     
     private func resetTimer() {
-        timer?.cancel()
+        timer?.suspend()
         gameTimer = 0.0
         timerState = .stopped
     }
     
     private func pauseTimer() {
-        timer?.cancel()
+        timer?.suspend()
         saveTimerProgress()
     }
     

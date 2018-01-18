@@ -2,56 +2,64 @@
 //  DispatchTimer.swift
 //  Mathdoku
 //
-//  Created by Taylor Geisse on 1/16/18.
+//  Created by Taylor Geisse on 1/17/18.
 //  Copyright © 2018 Taylor Geisse. All rights reserved.
 //
 
 import Foundation
 
+/// DispatchTimer mimics the API of DispatchSourceTimer but in a way that prevents
+/// crashes that occur from calling resume multiple times on a timer that is
+/// already resumed as noted by https://github.com/SiftScience/sift-ios/issues/52
 class DispatchTimer {
-    private enum State {
-        case stopped
-        case running
-        case paused
-    }
-    private var state: State = .stopped
-    private var timer: DispatchSourceTimer? = nil
-    private var eventHandler: ((Double) -> ())? = nil
+    
+    private lazy var timer: DispatchSourceTimer = {
+        let t = DispatchSource.makeTimerSource(queue: DispatchQueue(label: "\(AppSecrets.domainRoot).dispatchTimer"))
+        t.schedule(deadline: .now(), repeating: precision)
+        t.setEventHandler(handler: { [weak self] in
+            self?.eventHandler?()
+        })
+        return t
+    }()
+    
+    var eventHandler: (() -> Void)?
     private var precision: Double
-    private let queue = DispatchQueue(label: "\(AppSecrets.domainRoot).dispatchTimerQueue", attributes: .concurrent)
+    
+    private enum State {
+        case suspended
+        case resumed
+    }
+    
+    private var state: State = .suspended
     
     init(precision: Double = 0.1) {
         self.precision = precision
     }
     
-    func registerEventHandler(_ closure: @escaping (Double) -> ()) {
-        eventHandler = closure
+    deinit {
+        timer.setEventHandler {}
+        timer.cancel()
+        /*
+         If the timer is suspended, calling cancel without resuming
+         triggers a crash. This is documented here https://forums.developer.apple.com/thread/15902
+         */
+        resume()
+        eventHandler = nil
     }
     
-    func start() {
-        if state != .paused {
-            timer?.cancel()
-            timer = DispatchSource.makeTimerSource(queue: queue)
-            timer?.schedule(deadline: .now(), repeating: precision)
-            timer?.setEventHandler() { [weak self] in
-                DebugUtil.print("DispatchTimer event triggered")
-                if let strongSelf = self {
-                    strongSelf.eventHandler?(strongSelf.precision)
-                }
-            }
+    func resume() {
+        if state == .resumed {
+            return
         }
-        
-        timer?.resume()
-        state = .running
+        state = .resumed
+        timer.resume()
     }
     
-    func pause() {
-        timer?.suspend()
-        state = .paused
-    }
-    
-    func stop() {
-        timer?.cancel()
-        state = .stopped
+    func suspend() {
+        if state == .suspended {
+            return
+        }
+        state = .suspended
+        timer.suspend()
     }
 }

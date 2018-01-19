@@ -672,11 +672,11 @@ class PuzzleViewController: UIViewController, UINavigationBarDelegate {
             
             if withIdentifier.contains("fillInUnitCells") == false {
                 highlightGuesses(for: [.equal, .conflict])
-            }
             
-            if let guess = withAnswer {
-                atPositions.forEach {
-                    moves += removePossibleNotesAfterGuess(guess, atCell: $0)
+                if let guess = withAnswer {
+                    atPositions.forEach {
+                        moves += removePossibleNotesAfterGuess(guess, atCell: $0)
+                    }
                 }
             }
             

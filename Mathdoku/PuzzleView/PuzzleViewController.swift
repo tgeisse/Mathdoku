@@ -337,7 +337,9 @@ class PuzzleViewController: UIViewController, UINavigationBarDelegate {
                     // if auto rotate is enabled, then rotate to the next free cell
                     if Defaults[.rotateAfterCellEntry] {
                         DebugUtil.print("auto rotation turned on -- rotating to next cell in friendly group")
-                        if let nextCell = puzzle.getUnfilledFriendliesForCell(cellPosition).first {
+                        let unfilledFriendlies = puzzle.getUnfilledFriendliesForCell(cellPosition)
+                        
+                        if let nextCell = unfilledFriendlies.filter( { $0.cellId > cellPosition.cellId } ).first ?? unfilledFriendlies.first {
                             selectedCell = gridRowStacks[nextCell.row].rowCells[nextCell.col]
                         }
                     }

@@ -60,6 +60,11 @@ struct PuzzlePurchase {
                 } catch (let error) {
                     DebugUtil.print("Unable to complete a purchase: \(error)")
                 }
+                
+                // mark the transactions as finished, if needed
+                if purchase.needsFinishTransaction {
+                    SwiftyStoreKit.finishTransaction(purchase.transaction)
+                }
             case .error(let error):
                 switch error.code {
                 case .unknown: DebugUtil.print("Unknown error. Please contact support")

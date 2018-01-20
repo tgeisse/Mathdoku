@@ -50,15 +50,15 @@
 		95CBCC541FFC9659001409B1 /* Stack.swift in Sources */ = {isa = PBXBuildFile; fileRef = 95CBCC531FFC9659001409B1 /* Stack.swift */; };
 		95CBCC561FFC9890001409B1 /* MoveHistory.swift in Sources */ = {isa = PBXBuildFile; fileRef = 95CBCC551FFC9890001409B1 /* MoveHistory.swift */; };
 		95CBCC581FFDCE92001409B1 /* UIColorExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 95CBCC571FFDCE92001409B1 /* UIColorExtensions.swift */; };
-		95CBCC5B2008716A001409B1 /* AppKeys.swift in Sources */ = {isa = PBXBuildFile; fileRef = 95CBCC5A2008716A001409B1 /* AppKeys.swift */; };
-		95CBCC5D20087176001409B1 /* AppSecrets.swift in Sources */ = {isa = PBXBuildFile; fileRef = 95CBCC5C20087176001409B1 /* AppSecrets.swift */; };
+		95CBCC5B2008716A001409B1 /* AppKeys2.swift in Sources */ = {isa = PBXBuildFile; fileRef = 95CBCC5A2008716A001409B1 /* AppKeys2.swift */; };
+		95CBCC5D20087176001409B1 /* AppSecrets2.swift in Sources */ = {isa = PBXBuildFile; fileRef = 95CBCC5C20087176001409B1 /* AppSecrets2.swift */; };
 		95D7B0BB1EE64AB900764738 /* Allowances.swift in Sources */ = {isa = PBXBuildFile; fileRef = 95D7B0BA1EE64AB900764738 /* Allowances.swift */; };
 		95D7B0BF1EE64C9800764738 /* PuzzlesSolved.swift in Sources */ = {isa = PBXBuildFile; fileRef = 95D7B0BE1EE64C9800764738 /* PuzzlesSolved.swift */; };
 		95D7B0C61EEA5F6600764738 /* Utility.swift in Sources */ = {isa = PBXBuildFile; fileRef = 95D7B0C51EEA5F6600764738 /* Utility.swift */; };
 		95E9D1121EB81C2B00F51A4B /* CALayerExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 95E9D1111EB81C2B00F51A4B /* CALayerExtensions.swift */; };
 		95E9D1181EB963A400F51A4B /* GridRowView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 95E9D1171EB963A400F51A4B /* GridRowView.swift */; };
 		95E9D11A1EB963BB00F51A4B /* CellContainerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 95E9D1191EB963BB00F51A4B /* CellContainerView.swift */; };
-		95F869071FC3E923006D3921 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 95F869061FC3E923006D3921 /* GoogleService-Info.plist */; };
+		95F869071FC3E923006D3921 /* GoogleService-Info2.plist in Resources */ = {isa = PBXBuildFile; fileRef = 95F869061FC3E923006D3921 /* GoogleService-Info2.plist */; };
 		95F869081FC51779006D3921 /* iAd.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 95FFC6D01F118C2200DF964A /* iAd.framework */; };
 		95FBB8DB1E9AD13F00B0E662 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 95FBB8DA1E9AD13F00B0E662 /* AppDelegate.swift */; };
 		95FBB8E01E9AD13F00B0E662 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 95FBB8DE1E9AD13F00B0E662 /* Main.storyboard */; };
@@ -124,15 +124,15 @@
 		95CBCC531FFC9659001409B1 /* Stack.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Stack.swift; sourceTree = "<group>"; };
 		95CBCC551FFC9890001409B1 /* MoveHistory.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MoveHistory.swift; sourceTree = "<group>"; };
 		95CBCC571FFDCE92001409B1 /* UIColorExtensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIColorExtensions.swift; sourceTree = "<group>"; };
-		95CBCC5A2008716A001409B1 /* AppKeys.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppKeys.swift; sourceTree = "<group>"; };
-		95CBCC5C20087176001409B1 /* AppSecrets.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppSecrets.swift; sourceTree = "<group>"; };
+		95CBCC5A2008716A001409B1 /* AppKeys2.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppKeys2.swift; sourceTree = "<group>"; };
+		95CBCC5C20087176001409B1 /* AppSecrets2.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppSecrets2.swift; sourceTree = "<group>"; };
 		95D7B0BA1EE64AB900764738 /* Allowances.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Allowances.swift; sourceTree = "<group>"; };
 		95D7B0BE1EE64C9800764738 /* PuzzlesSolved.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PuzzlesSolved.swift; sourceTree = "<group>"; };
 		95D7B0C51EEA5F6600764738 /* Utility.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Utility.swift; sourceTree = "<group>"; };
 		95E9D1111EB81C2B00F51A4B /* CALayerExtensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CALayerExtensions.swift; sourceTree = "<group>"; };
 		95E9D1171EB963A400F51A4B /* GridRowView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GridRowView.swift; sourceTree = "<group>"; };
 		95E9D1191EB963BB00F51A4B /* CellContainerView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CellContainerView.swift; sourceTree = "<group>"; };
-		95F869061FC3E923006D3921 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
+		95F869061FC3E923006D3921 /* GoogleService-Info2.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info2.plist"; sourceTree = "<group>"; };
 		95FBB8D71E9AD13F00B0E662 /* Mathdoku.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Mathdoku.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		95FBB8DA1E9AD13F00B0E662 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		95FBB8DF1E9AD13F00B0E662 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
@@ -242,8 +242,8 @@
 		95CBCC5920087122001409B1 /* Secrets */ = {
 			isa = PBXGroup;
 			children = (
-				95CBCC5A2008716A001409B1 /* AppKeys.swift */,
-				95CBCC5C20087176001409B1 /* AppSecrets.swift */,
+				95CBCC5A2008716A001409B1 /* AppKeys2.swift */,
+				95CBCC5C20087176001409B1 /* AppSecrets2.swift */,
 			);
 			path = Secrets;
 			sourceTree = "<group>";
@@ -300,7 +300,7 @@
 				95FBB8DE1E9AD13F00B0E662 /* Main.storyboard */,
 				956505EA1EDFD67300C97D73 /* LaunchScreen.storyboard */,
 				957005171FE0EFB200C85822 /* Assets.xcassets */,
-				95F869061FC3E923006D3921 /* GoogleService-Info.plist */,
+				95F869061FC3E923006D3921 /* GoogleService-Info2.plist */,
 				95FBB8E61E9AD13F00B0E662 /* Info.plist */,
 				956ED5E61EECA1490030B7FC /* Settings.bundle */,
 			);
@@ -406,7 +406,7 @@
 			files = (
 				956ED5E71EECA1490030B7FC /* Settings.bundle in Resources */,
 				956505EB1EDFD67300C97D73 /* LaunchScreen.storyboard in Resources */,
-				95F869071FC3E923006D3921 /* GoogleService-Info.plist in Resources */,
+				95F869071FC3E923006D3921 /* GoogleService-Info2.plist in Resources */,
 				95FBB8E01E9AD13F00B0E662 /* Main.storyboard in Resources */,
 				957005181FE0EFB300C85822 /* Assets.xcassets in Resources */,
 			);
@@ -506,7 +506,7 @@
 				95A196221ED2A32A0038D40C /* PuzzleProgress.swift in Sources */,
 				95FBB90A1E9AD97300B0E662 /* Puzzle.swift in Sources */,
 				951273721EDE898200588467 /* DebugUtil.swift in Sources */,
-				95CBCC5B2008716A001409B1 /* AppKeys.swift in Sources */,
+				95CBCC5B2008716A001409B1 /* AppKeys2.swift in Sources */,
 				955F3B56201026BF00BBCCCA /* DispatchTimer.swift in Sources */,
 				95A196281ED2A3460038D40C /* PuzzleCellNote.swift in Sources */,
 				95FBB90C1E9AD9E900B0E662 /* Cell.swift in Sources */,
@@ -514,7 +514,7 @@
 				95E9D1181EB963A400F51A4B /* GridRowView.swift in Sources */,
 				9518F85E1FF36AF400AAAB35 /* StoreTableViewCell.swift in Sources */,
 				959632E41ED115A100CAFC5D /* CellPosition.swift in Sources */,
-				95CBCC5D20087176001409B1 /* AppSecrets.swift in Sources */,
+				95CBCC5D20087176001409B1 /* AppSecrets2.swift in Sources */,
 				95FBB8DB1E9AD13F00B0E662 /* AppDelegate.swift in Sources */,
 				9570051C1FE104F300C85822 /* AnalyticsWrapper.swift in Sources */,
 				9598A3A21FBC020800AE48E2 /* SettingsViewController.swift in Sources */,

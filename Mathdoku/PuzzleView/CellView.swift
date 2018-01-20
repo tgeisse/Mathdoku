@@ -113,78 +113,127 @@ class CellView: UIView {
     }
     
     private func addHintText() {
-        if hint != nil {
-            let hintTextAttributes: [NSAttributedStringKey : Any] = [
-                NSAttributedStringKey.font: UIFont.boldSystemFont(ofSize: defaultTextSizeForHint * scaleFactor)
-            ]
-            
-            let hintText = NSAttributedString(string: hint!, attributes: hintTextAttributes)
-            
-            hintText.draw(at: CGPoint(x: CGFloat(4), y: CGFloat(2)))
+        if hint == nil {
+            // return if there is not hint text to render
+            return
         }
+        
+        if CellViewElementValues.sharedInstance.hintFont == nil {
+            CellViewElementValues.sharedInstance.hintFont = UIFont.boldSystemFont(ofSize: defaultTextSizeForHint * scaleFactor)
+        }
+            
+        let hintTextAttributes: [NSAttributedStringKey : Any] = [
+            NSAttributedStringKey.font: CellViewElementValues.sharedInstance.hintFont!
+        ]
+        
+        let hintText = NSAttributedString(string: hint!, attributes: hintTextAttributes)
+        
+        hintText.draw(at: CGPoint(x: CGFloat(4), y: CGFloat(2)))
     }
     
     private func addGuessText() {
-        if guess != nil {
-            
-            var guessTextAttributes: [NSAttributedStringKey : Any] = [
-                NSAttributedStringKey.font: UIFont.systemFont(ofSize: defaultTextSizeForGuess * scaleFactor)
-            ]
-            
-            if Defaults[.highlightConflictingEntries] == true && hasGuessAllegiance(.conflict) {
+        if guess == nil {
+            // return if there is no guess to render
+            return
+        }
+        
+        // if the sharedInstance doesn't have the base font calculated
+        if CellViewElementValues.sharedInstance.guessFont == nil {
+            CellViewElementValues.sharedInstance.guessFont = UIFont.systemFont(ofSize: defaultTextSizeForGuess * scaleFactor)
+        }
+        
+        // base font
+        var guessTextAttributes: [NSAttributedStringKey : Any] = [
+            NSAttributedStringKey.font: CellViewElementValues.sharedInstance.guessFont!
+        ]
+        
+        if Defaults[.highlightConflictingEntries] == true && hasGuessAllegiance(.conflict) {
+            if CellViewElementValues.sharedInstance.guessConflictShadow == nil {
+                // if the sharedInstance doesn't have the Conflict Shadow calculated
                 let shadow = NSShadow()
                 shadow.shadowColor = GuessAllegiance.conflict.shadowColor
                 shadow.shadowBlurRadius = 9.0
                 shadow.shadowOffset = CGSize(width: 0, height: 0)
                 
-                guessTextAttributes[NSAttributedStringKey.shadow] = shadow
-            } else if Defaults[.highlightSameGuessEntry] == true && hasGuessAllegiance(.equal) {
+                CellViewElementValues.sharedInstance.guessConflictShadow = shadow
+            }
+            
+            // apply the Conflict Shadow
+            guessTextAttributes[NSAttributedStringKey.shadow] = CellViewElementValues.sharedInstance.guessConflictShadow!
+        } else if Defaults[.highlightSameGuessEntry] == true && hasGuessAllegiance(.equal) {
+            if CellViewElementValues.sharedInstance.guessEqualShadow == nil {
+                // if the sharedInstance doesn't have the Equal Shadow calculated
                 let shadow = NSShadow()
                 shadow.shadowColor = GuessAllegiance.equal.shadowColor
                 shadow.shadowBlurRadius = 9.0
                 shadow.shadowOffset = CGSize(width: 0, height: 0)
                 
-                guessTextAttributes[NSAttributedStringKey.shadow] = shadow
+                CellViewElementValues.sharedInstance.guessEqualShadow = shadow
             }
             
-            
-            let guessText = NSAttributedString(string: guess!, attributes: guessTextAttributes)
-            
-            // calculate the x and y position by looking at how much space we need to render
-            if guessTextSize == nil {
-                guessTextSize = guessText.size()
-            }
-        
-            let guessPositionX: CGFloat = bounds.midX - (guessTextSize!.width / 2)
-            let guessPositionY: CGFloat = bounds.maxY - guessTextSize!.height
-            
-            guessText.draw(at: CGPoint(x: guessPositionX, y: guessPositionY))
-            
+            // apply the Equal Shadow
+            guessTextAttributes[NSAttributedStringKey.shadow] = CellViewElementValues.sharedInstance.guessEqualShadow!
         }
+        
+        
+        let guessText = NSAttributedString(string: guess!, attributes: guessTextAttributes)
+        
+        // calculate position elements and store them if not currently set on the sharedInstance
+        if CellViewElementValues.sharedInstance.guessTextSize == nil {
+            CellViewElementValues.sharedInstance.guessTextSize = guessText.size()
+        }
+        
+        if CellViewElementValues.sharedInstance.guessPositionX == nil {
+            CellViewElementValues.sharedInstance.guessPositionX = bounds.midX - (CellViewElementValues.sharedInstance.guessTextSize!.width / 2)
+        }
+        
+        if CellViewElementValues.sharedInstance.guessPositionY == nil {
+            CellViewElementValues.sharedInstance.guessPositionY = bounds.maxY - CellViewElementValues.sharedInstance.guessTextSize!.height
+        }
+        
+        // draw the guess
+        guessText.draw(at: CGPoint(x: CellViewElementValues.sharedInstance.guessPositionX!,
+                                   y: CellViewElementValues.sharedInstance.guessPositionY!))
+        
     }
     
     private func addNotesText() {
-        if guess == nil, note != nil {
-            let noteTextAttributes: [NSAttributedStringKey : Any] = [
-                NSAttributedStringKey.foregroundColor: ColorTheme.green.dark,
-                //NSFontAttributeName: UIFont.boldSystemFont(ofSize: defaultTextSizeForNotes * (scaleFactor / 1.5))
-                //NSFontAttributeName: UIFont.preferredFont(forTextStyle: .body).withSize(textSizeForNotes)
-                NSAttributedStringKey.font: UIFont(name: "CourierNewPS-BoldMT", size: defaultTextSizeForNotes * (scaleFactor / 1.45)) ?? UIFont.boldSystemFont(ofSize: defaultTextSizeForNotes * (scaleFactor / 1.5))
-            ]
-            
-            let noteText = NSAttributedString(string: note!, attributes: noteTextAttributes)
-            
-            // calculate the x and y position by looking at how much space we need to render
-            if noteTextSize == nil {
-                noteTextSize = noteText.size()
-            }
-            
-            let notePositionX: CGFloat = bounds.midX - (noteTextSize!.width / 2)
-            let notePositionY: CGFloat = bounds.maxY - noteTextSize!.height - 2
-            
-            noteText.draw(at: CGPoint(x: notePositionX, y: notePositionY))
-            
+        if guess != nil || note == nil {
+            // return if there is a guess or there is no note to render
+            return
         }
+        
+        // if the font hasn't been pre-created yet, then do so and store onto the sharedInstance
+        if CellViewElementValues.sharedInstance.noteFont == nil {
+           CellViewElementValues.sharedInstance.noteFont = UIFont(name: "CourierNewPS-BoldMT", size: defaultTextSizeForNotes * (scaleFactor / 1.45)) ?? UIFont.boldSystemFont(ofSize: defaultTextSizeForNotes * (scaleFactor / 1.5))
+        }
+        
+        let noteTextAttributes: [NSAttributedStringKey : Any] = [
+            NSAttributedStringKey.foregroundColor: ColorTheme.green.dark,
+            //NSFontAttributeName: UIFont.boldSystemFont(ofSize: defaultTextSizeForNotes * (scaleFactor / 1.5))
+            //NSFontAttributeName: UIFont.preferredFont(forTextStyle: .body).withSize(textSizeForNotes)
+            NSAttributedStringKey.font: CellViewElementValues.sharedInstance.noteFont!
+        ]
+        
+        let noteText = NSAttributedString(string: note!, attributes: noteTextAttributes)
+        
+        // calculate the x and y position by looking at how much space we need to render
+        // store these values into the sharedInstance
+        if CellViewElementValues.sharedInstance.noteTextSize == nil {
+            CellViewElementValues.sharedInstance.noteTextSize = noteText.size()
+        }
+        
+        if CellViewElementValues.sharedInstance.notePositionX == nil {
+            CellViewElementValues.sharedInstance.notePositionX = bounds.midX - (CellViewElementValues.sharedInstance.noteTextSize!.width / 2)
+        }
+        
+        if CellViewElementValues.sharedInstance.notePositionY == nil {
+            CellViewElementValues.sharedInstance.notePositionY = bounds.maxY - CellViewElementValues.sharedInstance.noteTextSize!.height - 2
+        }
+        
+        // draw the note
+        noteText.draw(at: CGPoint(x: CellViewElementValues.sharedInstance.notePositionX!,
+                                  y: CellViewElementValues.sharedInstance.notePositionY!))
     }
  
     private func addBorders() {

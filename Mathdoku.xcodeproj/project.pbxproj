@@ -17,6 +17,7 @@
 		9518F85E1FF36AF400AAAB35 /* StoreTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9518F85D1FF36AF400AAAB35 /* StoreTableViewCell.swift */; };
 		9544E33B1EF0EA5D00F37ED7 /* TimeIntervalExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9544E33A1EF0EA5D00F37ED7 /* TimeIntervalExtension.swift */; };
 		9544E33D1F001E8000F37ED7 /* HowToPlayPageViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9544E33C1F001E8000F37ED7 /* HowToPlayPageViewController.swift */; };
+		95470335201245F4007B3C49 /* CellViewElementValues.swift in Sources */ = {isa = PBXBuildFile; fileRef = 95470334201245F4007B3C49 /* CellViewElementValues.swift */; };
 		9555606A1ECD2989006C9F2D /* SwiftyJSON.swift in Sources */ = {isa = PBXBuildFile; fileRef = 955560691ECD2989006C9F2D /* SwiftyJSON.swift */; };
 		955560821ECD3690006C9F2D /* Realm.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 955560801ECD3690006C9F2D /* Realm.framework */; };
 		955560831ECD3690006C9F2D /* Realm.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 955560801ECD3690006C9F2D /* Realm.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
@@ -92,6 +93,7 @@
 		9518F85D1FF36AF400AAAB35 /* StoreTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StoreTableViewCell.swift; sourceTree = "<group>"; };
 		9544E33A1EF0EA5D00F37ED7 /* TimeIntervalExtension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TimeIntervalExtension.swift; sourceTree = "<group>"; };
 		9544E33C1F001E8000F37ED7 /* HowToPlayPageViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HowToPlayPageViewController.swift; sourceTree = "<group>"; };
+		95470334201245F4007B3C49 /* CellViewElementValues.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CellViewElementValues.swift; sourceTree = "<group>"; };
 		955560691ECD2989006C9F2D /* SwiftyJSON.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SwiftyJSON.swift; sourceTree = "<group>"; };
 		955560801ECD3690006C9F2D /* Realm.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = Realm.framework; sourceTree = "<group>"; };
 		955560811ECD3690006C9F2D /* RealmSwift.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = RealmSwift.framework; sourceTree = "<group>"; };
@@ -189,6 +191,7 @@
 				95FBB90B1E9AD9E900B0E662 /* Cell.swift */,
 				9572FDC31FBD500300963CFD /* Settings.swift */,
 				955F3B55201026BF00BBCCCA /* DispatchTimer.swift */,
+				95470334201245F4007B3C49 /* CellViewElementValues.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -516,6 +519,7 @@
 				9570051C1FE104F300C85822 /* AnalyticsWrapper.swift in Sources */,
 				9598A3A21FBC020800AE48E2 /* SettingsViewController.swift in Sources */,
 				956CB04A1FD1ADE400FDB589 /* HighlightRequestQueue.swift in Sources */,
+				95470335201245F4007B3C49 /* CellViewElementValues.swift in Sources */,
 				9598A3A51FBC1B9400AE48E2 /* SwiftyUserDefaults.swift in Sources */,
 				95E9D1121EB81C2B00F51A4B /* CALayerExtensions.swift in Sources */,
 				95C082591EABC8B8008B7C2E /* CellView.swift in Sources */,

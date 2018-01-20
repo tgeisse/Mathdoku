@@ -1195,6 +1195,10 @@ class PuzzleViewController: UIViewController, UINavigationBarDelegate {
         // highlight conflicting and equal guesses
         highlightGuesses(for: [.equal, .conflict])
     }
+    override func loadView() {
+        super.loadView()
+        CellViewElementValues.sharedInstance.clear()
+    }
     override func viewDidLoad() {
         super.viewDidLoad()
         DebugUtil.print("")

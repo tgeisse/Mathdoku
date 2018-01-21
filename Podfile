@@ -10,4 +10,5 @@ target 'Mathdoku' do
   pod 'Firebase/AdMob'
   pod 'SwiftyStoreKit'
   pod 'Instructions', '~> 1.0.0'
+  pod 'RealmSwift'
 end

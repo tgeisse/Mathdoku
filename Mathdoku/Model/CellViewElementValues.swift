@@ -22,7 +22,7 @@ class CellViewElementValues {
     var notePositionY: CGFloat? = nil
     
     // guess elements
-    let guessDefaultTextSize: CGFloat = 54.0
+    let guessDefaultTextSize: CGFloat = 55.0
     var guessFont: UIFont? = nil
     var guessTextSize: CGSize? = nil
     var guessConflictShadow: NSShadow? = nil

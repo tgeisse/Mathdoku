@@ -125,7 +125,7 @@ class CellView: UIView {
         
         let hintText = NSAttributedString(string: hint!, attributes: hintTextAttributes)
         
-        hintText.draw(at: CGPoint(x: CGFloat(5), y: CGFloat(2)))
+        hintText.draw(at: CGPoint(x: CGFloat(4), y: CGFloat(2)))
     }
     
     private func addGuessText() {
@@ -229,7 +229,7 @@ class CellView: UIView {
         }
         
         if CellViewElementValues.sharedInstance.notePositionY == nil {
-            CellViewElementValues.sharedInstance.notePositionY = bounds.maxY - CellViewElementValues.sharedInstance.noteTextSize!.height - 4
+            CellViewElementValues.sharedInstance.notePositionY = bounds.maxY - CellViewElementValues.sharedInstance.noteTextSize!.height - 3
         }
         
         // draw the note

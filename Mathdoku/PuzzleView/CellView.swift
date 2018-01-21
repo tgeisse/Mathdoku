@@ -66,13 +66,6 @@ class CellView: UIView {
         }
     }
     
-    private var scaleFactor: CGFloat {
-        return bounds.maxX / 100
-    }
-    private let defaultTextSizeForHint: CGFloat = 20.0
-    private let defaultTextSizeForGuess: CGFloat = 54.0
-    private let defaultTextSizeForNotes: CGFloat = 36.0
-    
     func hasGuessAllegiance(_ allegiance: GuessAllegiance) -> Bool {
         return guessAllegiance & allegiance.rawValue > 0
     }
@@ -96,6 +89,10 @@ class CellView: UIView {
         self.backgroundColor = UIColor.clear
         self.layer.sublayers?.removeAll()
         
+        if CellViewElementValues.sharedInstance.scaleFactor == nil {
+            CellViewElementValues.sharedInstance.scaleFactor = bounds.maxX / 100
+        }
+        
         // Add the borders around the cell
         addBorders()
         
@@ -116,7 +113,10 @@ class CellView: UIView {
         }
         
         if CellViewElementValues.sharedInstance.hintFont == nil {
-            CellViewElementValues.sharedInstance.hintFont = UIFont(name: "Verdana", size: defaultTextSizeForHint * scaleFactor) ?? UIFont.boldSystemFont(ofSize: defaultTextSizeForHint * 1.15 * scaleFactor)
+            CellViewElementValues.sharedInstance.hintFont =
+                UIFont(name: "Verdana", size: CellViewElementValues.sharedInstance.hintDefaultTextSize * CellViewElementValues.sharedInstance.scaleFactor!)
+                ??
+                UIFont.boldSystemFont(ofSize: CellViewElementValues.sharedInstance.hintDefaultTextSize * 1.15 * CellViewElementValues.sharedInstance.scaleFactor!)
         }
             
         let hintTextAttributes: [NSAttributedStringKey : Any] = [
@@ -136,7 +136,10 @@ class CellView: UIView {
         
         // if the sharedInstance doesn't have the base font calculated
         if CellViewElementValues.sharedInstance.guessFont == nil {
-            CellViewElementValues.sharedInstance.guessFont = UIFont(name: "Verdana", size: defaultTextSizeForGuess * scaleFactor) ?? UIFont.systemFont(ofSize: defaultTextSizeForGuess * scaleFactor)
+            CellViewElementValues.sharedInstance.guessFont =
+                UIFont(name: "Verdana", size: CellViewElementValues.sharedInstance.guessDefaultTextSize * CellViewElementValues.sharedInstance.scaleFactor!)
+                ??
+                UIFont.systemFont(ofSize: CellViewElementValues.sharedInstance.guessDefaultTextSize * CellViewElementValues.sharedInstance.scaleFactor!)
         }
         
         // base font
@@ -202,13 +205,14 @@ class CellView: UIView {
         
         // if the font hasn't been pre-created yet, then do so and store onto the sharedInstance
         if CellViewElementValues.sharedInstance.noteFont == nil {
-           CellViewElementValues.sharedInstance.noteFont = UIFont(name: "CourierNewPS-BoldMT", size: defaultTextSizeForNotes * (scaleFactor / 1.45)) ?? UIFont.boldSystemFont(ofSize: defaultTextSizeForNotes * (scaleFactor / 1.5))
+           CellViewElementValues.sharedInstance.noteFont =
+            UIFont(name: "CourierNewPS-BoldMT", size: CellViewElementValues.sharedInstance.noteDefaultTextSize * (CellViewElementValues.sharedInstance.scaleFactor! / 1.45))
+            ??
+            UIFont.boldSystemFont(ofSize: CellViewElementValues.sharedInstance.noteDefaultTextSize * (CellViewElementValues.sharedInstance.scaleFactor! / 1.5))
         }
         
         let noteTextAttributes: [NSAttributedStringKey : Any] = [
             NSAttributedStringKey.foregroundColor: ColorTheme.green.dark,
-            //NSFontAttributeName: UIFont.boldSystemFont(ofSize: defaultTextSizeForNotes * (scaleFactor / 1.5))
-            //NSFontAttributeName: UIFont.preferredFont(forTextStyle: .body).withSize(textSizeForNotes)
             NSAttributedStringKey.font: CellViewElementValues.sharedInstance.noteFont!
         ]
         
@@ -217,6 +221,7 @@ class CellView: UIView {
         // calculate the x and y position by looking at how much space we need to render
         // store these values into the sharedInstance
         if CellViewElementValues.sharedInstance.noteTextSize == nil {
+            DebugUtil.print("Recalculating the noteTextSize")
             CellViewElementValues.sharedInstance.noteTextSize = noteText.size()
         }
         
@@ -225,7 +230,7 @@ class CellView: UIView {
         }
         
         if CellViewElementValues.sharedInstance.notePositionY == nil {
-            CellViewElementValues.sharedInstance.notePositionY = bounds.maxY - CellViewElementValues.sharedInstance.noteTextSize!.height - 2
+            CellViewElementValues.sharedInstance.notePositionY = bounds.maxY - CellViewElementValues.sharedInstance.noteTextSize!.height - 4
         }
         
         // draw the note

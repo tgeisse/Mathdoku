@@ -11,13 +11,18 @@ import UIKit
 class CellViewElementValues {
     static let sharedInstance = CellViewElementValues()
     
+    // shared general
+    var scaleFactor: CGFloat? = nil
+    
     // note elements
+    let noteDefaultTextSize: CGFloat = 36.0
     var noteFont: UIFont? = nil
     var noteTextSize: CGSize? = nil
     var notePositionX: CGFloat? = nil
     var notePositionY: CGFloat? = nil
     
     // guess elements
+    let guessDefaultTextSize: CGFloat = 54.0
     var guessFont: UIFont? = nil
     var guessTextSize: CGSize? = nil
     var guessConflictShadow: NSShadow? = nil
@@ -26,9 +31,13 @@ class CellViewElementValues {
     var guessPositionY: CGFloat? = nil
     
     // hint elements
+    let hintDefaultTextSize: CGFloat = 20.0
     var hintFont: UIFont? = nil
     
     func clear() {
+        // general shared
+        scaleFactor = nil
+        
         // reset note elements
         noteFont = nil
         noteTextSize = nil

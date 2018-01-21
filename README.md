@@ -6,9 +6,9 @@ Steps to get up and running:
 3) run 'pod install' from the root directory
 4) open the Xcode workspace
 5) You will need to add the following files:
-  - Secrets/AppKeys.swift
-  - Secrets/AppSecrets.swift
-  - GoogleServices-Info.plist
+   - Secrets/AppKeys.swift
+   - Secrets/AppSecrets.swift
+   - GoogleServices-Info.plist
   
 5a is an Enum of the following information: 
 ```swift

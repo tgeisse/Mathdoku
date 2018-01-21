@@ -51,6 +51,8 @@
 		95D7B0BB1EE64AB900764738 /* Allowances.swift in Sources */ = {isa = PBXBuildFile; fileRef = 95D7B0BA1EE64AB900764738 /* Allowances.swift */; };
 		95D7B0BF1EE64C9800764738 /* PuzzlesSolved.swift in Sources */ = {isa = PBXBuildFile; fileRef = 95D7B0BE1EE64C9800764738 /* PuzzlesSolved.swift */; };
 		95D7B0C61EEA5F6600764738 /* Utility.swift in Sources */ = {isa = PBXBuildFile; fileRef = 95D7B0C51EEA5F6600764738 /* Utility.swift */; };
+		95E9BAFA201413B0001179DC /* RealmSwift.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 95E9BAF8201413B0001179DC /* RealmSwift.framework */; };
+		95E9BAFB201413B1001179DC /* Realm.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 95E9BAF9201413B0001179DC /* Realm.framework */; };
 		95E9D1121EB81C2B00F51A4B /* CALayerExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 95E9D1111EB81C2B00F51A4B /* CALayerExtensions.swift */; };
 		95E9D1181EB963A400F51A4B /* GridRowView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 95E9D1171EB963A400F51A4B /* GridRowView.swift */; };
 		95E9D11A1EB963BB00F51A4B /* CellContainerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 95E9D1191EB963BB00F51A4B /* CellContainerView.swift */; };
@@ -121,6 +123,8 @@
 		95D7B0BA1EE64AB900764738 /* Allowances.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Allowances.swift; sourceTree = "<group>"; };
 		95D7B0BE1EE64C9800764738 /* PuzzlesSolved.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PuzzlesSolved.swift; sourceTree = "<group>"; };
 		95D7B0C51EEA5F6600764738 /* Utility.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Utility.swift; sourceTree = "<group>"; };
+		95E9BAF8201413B0001179DC /* RealmSwift.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = RealmSwift.framework; sourceTree = "<group>"; };
+		95E9BAF9201413B0001179DC /* Realm.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = Realm.framework; sourceTree = "<group>"; };
 		95E9D1111EB81C2B00F51A4B /* CALayerExtensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CALayerExtensions.swift; sourceTree = "<group>"; };
 		95E9D1171EB963A400F51A4B /* GridRowView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GridRowView.swift; sourceTree = "<group>"; };
 		95E9D1191EB963BB00F51A4B /* CellContainerView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CellContainerView.swift; sourceTree = "<group>"; };
@@ -140,7 +144,9 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				95E9BAFB201413B1001179DC /* Realm.framework in Frameworks */,
 				95F869081FC51779006D3921 /* iAd.framework in Frameworks */,
+				95E9BAFA201413B0001179DC /* RealmSwift.framework in Frameworks */,
 				9568B3151FC1FF2B000502A4 /* AdSupport.framework in Frameworks */,
 				9568B3131FC1FE46000502A4 /* StoreKit.framework in Frameworks */,
 				8336D4FC8161CC44C65F908F /* Pods_Mathdoku.framework in Frameworks */,
@@ -257,6 +263,8 @@
 		95FBB8CE1E9AD13F00B0E662 = {
 			isa = PBXGroup;
 			children = (
+				95E9BAF9201413B0001179DC /* Realm.framework */,
+				95E9BAF8201413B0001179DC /* RealmSwift.framework */,
 				95FBB8D91E9AD13F00B0E662 /* Mathdoku */,
 				95FBB8D81E9AD13F00B0E662 /* Products */,
 				95FFC6CF1F118C2200DF964A /* Frameworks */,

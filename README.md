@@ -11,6 +11,7 @@ Steps to get up and running:
   c) GoogleServices-Info.plist
   
 5a is an Enum of the following information: 
+```
 enum AppKeys {
     case Key1
     case Key2
@@ -21,11 +22,14 @@ enum AppKeys {
         case .Key2: return ""
     }
 }
+```
 
 5b is a struct with the following information:
+```
 struct AppSecrets {
     static let domainRoot = ""
 }
+```
 
 5c has to be obtained from Google for their services. Services I use are:
 - Google Firebase

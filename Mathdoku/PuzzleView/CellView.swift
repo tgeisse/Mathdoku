@@ -221,7 +221,6 @@ class CellView: UIView {
         // calculate the x and y position by looking at how much space we need to render
         // store these values into the sharedInstance
         if CellViewElementValues.sharedInstance.noteTextSize == nil {
-            DebugUtil.print("Recalculating the noteTextSize")
             CellViewElementValues.sharedInstance.noteTextSize = noteText.size()
         }
         

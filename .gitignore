@@ -118,8 +118,4 @@ fastlane/test_output
 # Manual ignores
 GoogleService-Info.plist
 Secrets/
-Realm.framework
-RealmSwift.framework
-Realm2.framework
-RealmSwift2.framework
 

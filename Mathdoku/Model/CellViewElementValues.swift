@@ -31,7 +31,7 @@ class CellViewElementValues {
     var guessPositionY: CGFloat? = nil
     
     // hint elements
-    let hintDefaultTextSize: CGFloat = 20.0
+    let hintDefaultTextSize: CGFloat = 22.0
     var hintFont: UIFont? = nil
     
     func clear() {

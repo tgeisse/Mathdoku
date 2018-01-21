@@ -55,8 +55,8 @@ class CellView: UIView {
     }
     
     enum GuessAllegiance: UInt8 {
-        case equal = 0b000000001
-        case conflict = 0b000000010
+        case equal      = 0b000000001
+        case conflict   = 0b000000010
         
         var shadowColor: UIColor {
             switch self {
@@ -66,13 +66,10 @@ class CellView: UIView {
         }
     }
     
-    private var guessTextSize: CGSize?
-    private var noteTextSize: CGSize?
-    
     private var scaleFactor: CGFloat {
         return bounds.maxX / 100
     }
-    private let defaultTextSizeForHint: CGFloat = 23.0
+    private let defaultTextSizeForHint: CGFloat = 20.0
     private let defaultTextSizeForGuess: CGFloat = 54.0
     private let defaultTextSizeForNotes: CGFloat = 36.0
     
@@ -119,7 +116,7 @@ class CellView: UIView {
         }
         
         if CellViewElementValues.sharedInstance.hintFont == nil {
-            CellViewElementValues.sharedInstance.hintFont = UIFont.boldSystemFont(ofSize: defaultTextSizeForHint * scaleFactor)
+            CellViewElementValues.sharedInstance.hintFont = UIFont(name: "Verdana", size: defaultTextSizeForHint * scaleFactor) ?? UIFont.boldSystemFont(ofSize: defaultTextSizeForHint * 1.15 * scaleFactor)
         }
             
         let hintTextAttributes: [NSAttributedStringKey : Any] = [
@@ -128,7 +125,7 @@ class CellView: UIView {
         
         let hintText = NSAttributedString(string: hint!, attributes: hintTextAttributes)
         
-        hintText.draw(at: CGPoint(x: CGFloat(4), y: CGFloat(2)))
+        hintText.draw(at: CGPoint(x: CGFloat(5), y: CGFloat(2)))
     }
     
     private func addGuessText() {
@@ -139,7 +136,7 @@ class CellView: UIView {
         
         // if the sharedInstance doesn't have the base font calculated
         if CellViewElementValues.sharedInstance.guessFont == nil {
-            CellViewElementValues.sharedInstance.guessFont = UIFont.systemFont(ofSize: defaultTextSizeForGuess * scaleFactor)
+            CellViewElementValues.sharedInstance.guessFont = UIFont(name: "Verdana", size: defaultTextSizeForGuess * scaleFactor) ?? UIFont.systemFont(ofSize: defaultTextSizeForGuess * scaleFactor)
         }
         
         // base font
@@ -188,7 +185,7 @@ class CellView: UIView {
         }
         
         if CellViewElementValues.sharedInstance.guessPositionY == nil {
-            CellViewElementValues.sharedInstance.guessPositionY = bounds.maxY - CellViewElementValues.sharedInstance.guessTextSize!.height
+            CellViewElementValues.sharedInstance.guessPositionY = bounds.maxY - CellViewElementValues.sharedInstance.guessTextSize!.height - 1
         }
         
         // draw the guess

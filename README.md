@@ -13,13 +13,15 @@ Steps to get up and running:
 5a is an Enum of the following information: 
 ```swift
 enum AppKeys {
-    case Key1
-    case Key2
+    case adMobAppId
+    case adMobPuzzleBannerAdId
+    case moreKeysYouMayWant
     
     var key: String {
         switch self {
-        case .Key1: return ""
-        case .Key2: return ""
+        case .adMobAppId: return ""
+        case .adMobPuzzleBannerAdId: return ""
+        case .moreKeysYouMayWant: return ""
     }
 }
 ```

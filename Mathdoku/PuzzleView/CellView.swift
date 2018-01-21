@@ -40,8 +40,8 @@ class CellView: UIView {
         var borderWeight: CGFloat {
             switch self {
             case .friend: return 0.25
-            case .foe: return 1.2
-            case .other: return 2.6
+            case .foe: return 1.1
+            case .other: return 2.2
             }
         }
         
@@ -229,7 +229,7 @@ class CellView: UIView {
         }
         
         if CellViewElementValues.sharedInstance.notePositionY == nil {
-            CellViewElementValues.sharedInstance.notePositionY = bounds.maxY - CellViewElementValues.sharedInstance.noteTextSize!.height - 3
+            CellViewElementValues.sharedInstance.notePositionY = bounds.maxY - CellViewElementValues.sharedInstance.noteTextSize!.height - 1.5
         }
         
         // draw the note

@@ -97,26 +97,32 @@ class SharingController {
         }
 
         let key = url.lastPathComponent
+        let child = database.child("challenges").child(key)
 
-        return database.child("challenges").child(key).transaction { data -> TransactionResult in
-            guard var value = data.value as? [String: Any] else {
-                throw Error.invalidValue(data.value)
-            }
-
-            if consume && value["consumed"] as? Bool != true {
-                guard let deviceID = UIDevice().identifierForVendor?.uuidString else {
-                    throw Error.deviceIDNotAvailable
+        return child.observeValue().then { cancelObserver in
+            return child.transaction { data -> TransactionResult in
+                guard var value = data.value as? [String: Any] else {
+                    throw Error.invalidValue(data.value)
                 }
 
-                // mark as consumed
-                value["consumed"] = true
-                value["consumedAt"] = Date().timeIntervalSince1970
-                value["recipientDevice"] = deviceID
+                if consume && value["consumed"] as? Bool != true {
+                    guard let deviceID = UIDevice().identifierForVendor?.uuidString else {
+                        throw Error.deviceIDNotAvailable
+                    }
 
-                data.value = value
+                    // mark as consumed
+                    value["consumed"] = true
+                    value["consumedAt"] = Date().timeIntervalSince1970
+                    value["recipientDevice"] = deviceID
+
+                    data.value = value
+                }
+
+                return TransactionResult.success(withValue: data)
+
+            }.always {
+                cancelObserver()
             }
-
-            return TransactionResult.success(withValue: data)
 
         }.then { _, snapshot -> Challenge in
             // extract challenge parameters from value
@@ -138,12 +144,27 @@ class SharingController {
         // count consumed challenges where senderDevice is this device
         return database.child("challenges").queryOrdered(byChild: "senderDevice").queryEqual(toValue: deviceID).getValue().then { snapshot -> Int in
             var count = 0
-            for challenge in snapshot.children {
-                if (challenge as? [String: Any])?["consumed"] as? Bool == true {
+            for child in snapshot.children {
+                if ((child as! DataSnapshot).value as? [String: Any])?["consumed"] as? Bool == true {
                     count += 1
                 }
             }
             return count
+        }
+    }
+}
+
+extension SharingController.Error: LocalizedError {
+    public var errorDescription: String? {
+        switch self {
+        case .deviceIDNotAvailable:
+            return "UIDevice.identifierForVendor is not available"
+        case .sendingMessagesUnsupported:
+            return "device doesn't support sending text messages"
+        case .invalidURL(let url):
+            return "invalid URL: \(url)"
+        case .invalidValue(let value):
+            return "invalid value: \(value.debugDescription)"
         }
     }
 }

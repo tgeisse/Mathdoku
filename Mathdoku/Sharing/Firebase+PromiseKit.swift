@@ -13,6 +13,15 @@ extension DatabaseQuery {
     func getValue() -> Promise<DataSnapshot> {
         return wrap { observeSingleEvent(of: .value, with: $0) }
     }
+
+    func observeValue() -> Promise<() -> ()> {
+        var handle: UInt = 0
+        return Promise { fulfill, reject in
+            handle = observe(.value) { fulfill($0) }
+        }.then { snapshot -> () -> () in
+            return { self.removeObserver(withHandle: handle) }
+        }
+    }
 }
 
 extension DatabaseReference {
@@ -20,7 +29,7 @@ extension DatabaseReference {
         return wrap { setValue(value, withCompletionBlock: $0) }
     }
 
-    func transaction(_ block: @escaping (MutableData) throws -> TransactionResult) -> Promise<(Bool, DataSnapshot?)> {
+    func transaction(withLocalEvents: Bool = false, _ block: @escaping (MutableData) throws -> TransactionResult) -> Promise<(Bool, DataSnapshot?)> {
         return Promise { fulfill, reject in
             var blockError: Error?
             runTransactionBlock({
@@ -38,7 +47,7 @@ extension DatabaseReference {
                 } else {
                     fulfill((committed, snapshot))
                 }
-            })
+            }, withLocalEvents: withLocalEvents)
         }
     }
 }

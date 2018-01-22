@@ -8,6 +8,11 @@
 
 /* Begin PBXBuildFile section */
 		2AC52DBD4C051F7C0D7C5F3A /* Pods_MathdokuTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 107ED940AEAB5A0AF4DD58A7 /* Pods_MathdokuTests.framework */; };
+		7ABBAD6F20154A2B0001FEAB /* SharingController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7ABBAD6E20154A2B0001FEAB /* SharingController.swift */; };
+		7ABBAD71201572490001FEAB /* Firebase+PromiseKit.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7ABBAD70201572490001FEAB /* Firebase+PromiseKit.swift */; };
+		7ABBAD81201575C80001FEAB /* SharingTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7ABBAD80201575C80001FEAB /* SharingTests.swift */; };
+		7ABBAD82201577770001FEAB /* SharingController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7ABBAD6E20154A2B0001FEAB /* SharingController.swift */; };
+		7ABBAD832015777A0001FEAB /* Firebase+PromiseKit.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7ABBAD70201572490001FEAB /* Firebase+PromiseKit.swift */; };
 		8336D4FC8161CC44C65F908F /* Pods_Mathdoku.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 27B6C3B9D7393F6EFC9176CA /* Pods_Mathdoku.framework */; };
 		9502E5DE1EEE080F0048BE1B /* ViewControllerExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9502E5DD1EEE080F0048BE1B /* ViewControllerExtensions.swift */; };
 		9502E5E01EEE158B0048BE1B /* PuzzlePurchase.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9502E5DF1EEE158B0048BE1B /* PuzzlePurchase.swift */; };
@@ -92,8 +97,11 @@
 		34DDB8D5E1E7D0B227FF2923 /* Pods-MathdokuTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-MathdokuTests.release.xcconfig"; path = "Pods/Target Support Files/Pods-MathdokuTests/Pods-MathdokuTests.release.xcconfig"; sourceTree = "<group>"; };
 		37B072198F001420251BC2AD /* Pods-MathdokuTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-MathdokuTests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-MathdokuTests/Pods-MathdokuTests.debug.xcconfig"; sourceTree = "<group>"; };
 		3BC01DF3DD546476D89F7543 /* Pods-Mathdoku.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Mathdoku.debug.xcconfig"; path = "Pods/Target Support Files/Pods-Mathdoku/Pods-Mathdoku.debug.xcconfig"; sourceTree = "<group>"; };
+		7ABBAD6E20154A2B0001FEAB /* SharingController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SharingController.swift; sourceTree = "<group>"; };
+		7ABBAD70201572490001FEAB /* Firebase+PromiseKit.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Firebase+PromiseKit.swift"; sourceTree = "<group>"; };
 		7ABBAD76201575B50001FEAB /* MathdokuTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = MathdokuTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		7ABBAD7A201575B50001FEAB /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		7ABBAD80201575C80001FEAB /* SharingTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SharingTests.swift; sourceTree = "<group>"; };
 		9502E5DD1EEE080F0048BE1B /* ViewControllerExtensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ViewControllerExtensions.swift; sourceTree = "<group>"; };
 		9502E5DF1EEE158B0048BE1B /* PuzzlePurchase.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PuzzlePurchase.swift; sourceTree = "<group>"; };
 		9502E5E21EEE16020048BE1B /* PuzzleProducts.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PuzzleProducts.swift; sourceTree = "<group>"; };
@@ -183,6 +191,16 @@
 				34DDB8D5E1E7D0B227FF2923 /* Pods-MathdokuTests.release.xcconfig */,
 			);
 			name = Pods;
+			sourceTree = "<group>";
+		};
+		7ABBAD6D20154A030001FEAB /* Sharing */ = {
+			isa = PBXGroup;
+			children = (
+				7ABBAD6E20154A2B0001FEAB /* SharingController.swift */,
+				7ABBAD70201572490001FEAB /* Firebase+PromiseKit.swift */,
+				7ABBAD80201575C80001FEAB /* SharingTests.swift */,
+			);
+			path = Sharing;
 			sourceTree = "<group>";
 		};
 		7ABBAD77201575B50001FEAB /* MathdokuTests */ = {
@@ -311,6 +329,7 @@
 		95FBB8D91E9AD13F00B0E662 /* Mathdoku */ = {
 			isa = PBXGroup;
 			children = (
+				7ABBAD6D20154A030001FEAB /* Sharing */,
 				95CBCC5920087122001409B1 /* Secrets */,
 				9598A3A31FBC1B4B00AE48E2 /* Libraries */,
 				9502E5E11EEE159C0048BE1B /* PuzzlePurchasing */,
@@ -612,6 +631,9 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				7ABBAD81201575C80001FEAB /* SharingTests.swift in Sources */,
+				7ABBAD82201577770001FEAB /* SharingController.swift in Sources */,
+				7ABBAD832015777A0001FEAB /* Firebase+PromiseKit.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -627,6 +649,7 @@
 				9518F85C1FF363E000AAAB35 /* StoreTableViewController.swift in Sources */,
 				9502E5DE1EEE080F0048BE1B /* ViewControllerExtensions.swift in Sources */,
 				95B41B8B1E9CAB94003D8C28 /* Cage.swift in Sources */,
+				7ABBAD6F20154A2B0001FEAB /* SharingController.swift in Sources */,
 				95C2C43D1ECEBF2E0007D3F1 /* PlayerProgress.swift in Sources */,
 				950E6DA720087DD70066AA4F /* ColorTheme.swift in Sources */,
 				95CBCC541FFC9659001409B1 /* Stack.swift in Sources */,
@@ -655,6 +678,7 @@
 				95CBCC561FFC9890001409B1 /* MoveHistory.swift in Sources */,
 				95A196241ED2A3310038D40C /* PuzzleGuess.swift in Sources */,
 				9544E33D1F001E8000F37ED7 /* HowToPlayPageViewController.swift in Sources */,
+				7ABBAD71201572490001FEAB /* Firebase+PromiseKit.swift in Sources */,
 				95D7B0C61EEA5F6600764738 /* Utility.swift in Sources */,
 				9555606A1ECD2989006C9F2D /* SwiftyJSON.swift in Sources */,
 				95CBCC521FF9F735001409B1 /* GameTimerBackgroundView.swift in Sources */,

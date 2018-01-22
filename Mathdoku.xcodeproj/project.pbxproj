@@ -7,6 +7,12 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		2AC52DBD4C051F7C0D7C5F3A /* Pods_MathdokuTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 107ED940AEAB5A0AF4DD58A7 /* Pods_MathdokuTests.framework */; };
+		7ABBAD6F20154A2B0001FEAB /* SharingController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7ABBAD6E20154A2B0001FEAB /* SharingController.swift */; };
+		7ABBAD71201572490001FEAB /* Firebase+PromiseKit.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7ABBAD70201572490001FEAB /* Firebase+PromiseKit.swift */; };
+		7ABBAD81201575C80001FEAB /* SharingTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7ABBAD80201575C80001FEAB /* SharingTests.swift */; };
+		7ABBAD82201577770001FEAB /* SharingController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7ABBAD6E20154A2B0001FEAB /* SharingController.swift */; };
+		7ABBAD832015777A0001FEAB /* Firebase+PromiseKit.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7ABBAD70201572490001FEAB /* Firebase+PromiseKit.swift */; };
 		8336D4FC8161CC44C65F908F /* Pods_Mathdoku.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 27B6C3B9D7393F6EFC9176CA /* Pods_Mathdoku.framework */; };
 		9502E5DE1EEE080F0048BE1B /* ViewControllerExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9502E5DD1EEE080F0048BE1B /* ViewControllerExtensions.swift */; };
 		9502E5E01EEE158B0048BE1B /* PuzzlePurchase.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9502E5DF1EEE158B0048BE1B /* PuzzlePurchase.swift */; };
@@ -62,6 +68,16 @@
 		95FBB90C1E9AD9E900B0E662 /* Cell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 95FBB90B1E9AD9E900B0E662 /* Cell.swift */; };
 /* End PBXBuildFile section */
 
+/* Begin PBXContainerItemProxy section */
+		7ABBAD7B201575B50001FEAB /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 95FBB8CF1E9AD13F00B0E662 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 95FBB8D61E9AD13F00B0E662;
+			remoteInfo = Mathdoku;
+		};
+/* End PBXContainerItemProxy section */
+
 /* Begin PBXCopyFilesBuildPhase section */
 		9555607E1ECD3500006C9F2D /* Embed Frameworks */ = {
 			isa = PBXCopyFilesBuildPhase;
@@ -76,8 +92,16 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
+		107ED940AEAB5A0AF4DD58A7 /* Pods_MathdokuTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_MathdokuTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		27B6C3B9D7393F6EFC9176CA /* Pods_Mathdoku.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Mathdoku.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		34DDB8D5E1E7D0B227FF2923 /* Pods-MathdokuTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-MathdokuTests.release.xcconfig"; path = "Pods/Target Support Files/Pods-MathdokuTests/Pods-MathdokuTests.release.xcconfig"; sourceTree = "<group>"; };
+		37B072198F001420251BC2AD /* Pods-MathdokuTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-MathdokuTests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-MathdokuTests/Pods-MathdokuTests.debug.xcconfig"; sourceTree = "<group>"; };
 		3BC01DF3DD546476D89F7543 /* Pods-Mathdoku.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Mathdoku.debug.xcconfig"; path = "Pods/Target Support Files/Pods-Mathdoku/Pods-Mathdoku.debug.xcconfig"; sourceTree = "<group>"; };
+		7ABBAD6E20154A2B0001FEAB /* SharingController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SharingController.swift; sourceTree = "<group>"; };
+		7ABBAD70201572490001FEAB /* Firebase+PromiseKit.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Firebase+PromiseKit.swift"; sourceTree = "<group>"; };
+		7ABBAD76201575B50001FEAB /* MathdokuTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = MathdokuTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		7ABBAD7A201575B50001FEAB /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		7ABBAD80201575C80001FEAB /* SharingTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SharingTests.swift; sourceTree = "<group>"; };
 		9502E5DD1EEE080F0048BE1B /* ViewControllerExtensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ViewControllerExtensions.swift; sourceTree = "<group>"; };
 		9502E5DF1EEE158B0048BE1B /* PuzzlePurchase.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PuzzlePurchase.swift; sourceTree = "<group>"; };
 		9502E5E21EEE16020048BE1B /* PuzzleProducts.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PuzzleProducts.swift; sourceTree = "<group>"; };
@@ -136,6 +160,14 @@
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
+		7ABBAD73201575B50001FEAB /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				2AC52DBD4C051F7C0D7C5F3A /* Pods_MathdokuTests.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		95FBB8D41E9AD13F00B0E662 /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
@@ -155,8 +187,28 @@
 			children = (
 				3BC01DF3DD546476D89F7543 /* Pods-Mathdoku.debug.xcconfig */,
 				F41B6E2D82BEB28B8FADADD3 /* Pods-Mathdoku.release.xcconfig */,
+				37B072198F001420251BC2AD /* Pods-MathdokuTests.debug.xcconfig */,
+				34DDB8D5E1E7D0B227FF2923 /* Pods-MathdokuTests.release.xcconfig */,
 			);
 			name = Pods;
+			sourceTree = "<group>";
+		};
+		7ABBAD6D20154A030001FEAB /* Sharing */ = {
+			isa = PBXGroup;
+			children = (
+				7ABBAD6E20154A2B0001FEAB /* SharingController.swift */,
+				7ABBAD70201572490001FEAB /* Firebase+PromiseKit.swift */,
+				7ABBAD80201575C80001FEAB /* SharingTests.swift */,
+			);
+			path = Sharing;
+			sourceTree = "<group>";
+		};
+		7ABBAD77201575B50001FEAB /* MathdokuTests */ = {
+			isa = PBXGroup;
+			children = (
+				7ABBAD7A201575B50001FEAB /* Info.plist */,
+			);
+			path = MathdokuTests;
 			sourceTree = "<group>";
 		};
 		9502E5E11EEE159C0048BE1B /* PuzzlePurchasing */ = {
@@ -258,6 +310,7 @@
 			isa = PBXGroup;
 			children = (
 				95FBB8D91E9AD13F00B0E662 /* Mathdoku */,
+				7ABBAD77201575B50001FEAB /* MathdokuTests */,
 				95FBB8D81E9AD13F00B0E662 /* Products */,
 				95FFC6CF1F118C2200DF964A /* Frameworks */,
 				599782A8731822E7F32F4D48 /* Pods */,
@@ -268,6 +321,7 @@
 			isa = PBXGroup;
 			children = (
 				95FBB8D71E9AD13F00B0E662 /* Mathdoku.app */,
+				7ABBAD76201575B50001FEAB /* MathdokuTests.xctest */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -275,6 +329,7 @@
 		95FBB8D91E9AD13F00B0E662 /* Mathdoku */ = {
 			isa = PBXGroup;
 			children = (
+				7ABBAD6D20154A030001FEAB /* Sharing */,
 				95CBCC5920087122001409B1 /* Secrets */,
 				9598A3A31FBC1B4B00AE48E2 /* Libraries */,
 				9502E5E11EEE159C0048BE1B /* PuzzlePurchasing */,
@@ -314,6 +369,7 @@
 				9568B3121FC1FE46000502A4 /* StoreKit.framework */,
 				95FFC6D01F118C2200DF964A /* iAd.framework */,
 				27B6C3B9D7393F6EFC9176CA /* Pods_Mathdoku.framework */,
+				107ED940AEAB5A0AF4DD58A7 /* Pods_MathdokuTests.framework */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";
@@ -321,6 +377,27 @@
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
+		7ABBAD75201575B50001FEAB /* MathdokuTests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 7ABBAD7D201575B50001FEAB /* Build configuration list for PBXNativeTarget "MathdokuTests" */;
+			buildPhases = (
+				FA55F45AF71074DA79141519 /* [CP] Check Pods Manifest.lock */,
+				7ABBAD72201575B50001FEAB /* Sources */,
+				7ABBAD73201575B50001FEAB /* Frameworks */,
+				7ABBAD74201575B50001FEAB /* Resources */,
+				5D89C32B0D472FA0B335ED29 /* [CP] Embed Pods Frameworks */,
+				474BC5FDA21E6962B8C38278 /* [CP] Copy Pods Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				7ABBAD7C201575B50001FEAB /* PBXTargetDependency */,
+			);
+			name = MathdokuTests;
+			productName = MathdokuTests;
+			productReference = 7ABBAD76201575B50001FEAB /* MathdokuTests.xctest */;
+			productType = "com.apple.product-type.bundle.unit-test";
+		};
 		95FBB8D61E9AD13F00B0E662 /* Mathdoku */ = {
 			isa = PBXNativeTarget;
 			buildConfigurationList = 95FBB8FF1E9AD13F00B0E662 /* Build configuration list for PBXNativeTarget "Mathdoku" */;
@@ -352,10 +429,15 @@
 				KnownAssetTags = (
 					com.apple.gamecenter.Leaderboard,
 				);
-				LastSwiftUpdateCheck = 0830;
+				LastSwiftUpdateCheck = 0920;
 				LastUpgradeCheck = 0900;
 				ORGANIZATIONNAME = "Taylor Geisse";
 				TargetAttributes = {
+					7ABBAD75201575B50001FEAB = {
+						CreatedOnToolsVersion = 9.2;
+						ProvisioningStyle = Automatic;
+						TestTargetID = 95FBB8D61E9AD13F00B0E662;
+					};
 					95FBB8D61E9AD13F00B0E662 = {
 						CreatedOnToolsVersion = 8.3.1;
 						DevelopmentTeam = 57TCLD34EQ;
@@ -383,11 +465,19 @@
 			projectRoot = "";
 			targets = (
 				95FBB8D61E9AD13F00B0E662 /* Mathdoku */,
+				7ABBAD75201575B50001FEAB /* MathdokuTests */,
 			);
 		};
 /* End PBXProject section */
 
 /* Begin PBXResourcesBuildPhase section */
+		7ABBAD74201575B50001FEAB /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		95FBB8D51E9AD13F00B0E662 /* Resources */ = {
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
@@ -403,6 +493,41 @@
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXShellScriptBuildPhase section */
+		474BC5FDA21E6962B8C38278 /* [CP] Copy Pods Resources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Copy Pods Resources";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-MathdokuTests/Pods-MathdokuTests-resources.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		5D89C32B0D472FA0B335ED29 /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+				"${SRCROOT}/Pods/Target Support Files/Pods-MathdokuTests/Pods-MathdokuTests-frameworks.sh",
+				"${BUILT_PRODUCTS_DIR}/GoogleToolboxForMac/GoogleToolboxForMac.framework",
+				"${BUILT_PRODUCTS_DIR}/nanopb/nanopb.framework",
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputPaths = (
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/GoogleToolboxForMac.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/nanopb.framework",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-MathdokuTests/Pods-MathdokuTests-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
 		72EC30814EF0ED3499C19700 /* [CP] Check Pods Manifest.lock */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
@@ -443,18 +568,22 @@
 				"${SRCROOT}/Pods/Target Support Files/Pods-Mathdoku/Pods-Mathdoku-frameworks.sh",
 				"${BUILT_PRODUCTS_DIR}/GoogleToolboxForMac/GoogleToolboxForMac.framework",
 				"${BUILT_PRODUCTS_DIR}/Instructions/Instructions.framework",
+				"${BUILT_PRODUCTS_DIR}/PromiseKit/PromiseKit.framework",
 				"${BUILT_PRODUCTS_DIR}/Realm/Realm.framework",
 				"${BUILT_PRODUCTS_DIR}/RealmSwift/RealmSwift.framework",
 				"${BUILT_PRODUCTS_DIR}/SwiftyStoreKit/SwiftyStoreKit.framework",
+				"${BUILT_PRODUCTS_DIR}/leveldb-library/leveldb.framework",
 				"${BUILT_PRODUCTS_DIR}/nanopb/nanopb.framework",
 			);
 			name = "[CP] Embed Pods Frameworks";
 			outputPaths = (
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/GoogleToolboxForMac.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Instructions.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/PromiseKit.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Realm.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/RealmSwift.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/SwiftyStoreKit.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/leveldb.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/nanopb.framework",
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -477,9 +606,37 @@
 			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-Mathdoku/Pods-Mathdoku-resources.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
+		FA55F45AF71074DA79141519 /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-MathdokuTests-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
 /* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
+		7ABBAD72201575B50001FEAB /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				7ABBAD81201575C80001FEAB /* SharingTests.swift in Sources */,
+				7ABBAD82201577770001FEAB /* SharingController.swift in Sources */,
+				7ABBAD832015777A0001FEAB /* Firebase+PromiseKit.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		95FBB8D31E9AD13F00B0E662 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
@@ -492,6 +649,7 @@
 				9518F85C1FF363E000AAAB35 /* StoreTableViewController.swift in Sources */,
 				9502E5DE1EEE080F0048BE1B /* ViewControllerExtensions.swift in Sources */,
 				95B41B8B1E9CAB94003D8C28 /* Cage.swift in Sources */,
+				7ABBAD6F20154A2B0001FEAB /* SharingController.swift in Sources */,
 				95C2C43D1ECEBF2E0007D3F1 /* PlayerProgress.swift in Sources */,
 				950E6DA720087DD70066AA4F /* ColorTheme.swift in Sources */,
 				95CBCC541FFC9659001409B1 /* Stack.swift in Sources */,
@@ -520,6 +678,7 @@
 				95CBCC561FFC9890001409B1 /* MoveHistory.swift in Sources */,
 				95A196241ED2A3310038D40C /* PuzzleGuess.swift in Sources */,
 				9544E33D1F001E8000F37ED7 /* HowToPlayPageViewController.swift in Sources */,
+				7ABBAD71201572490001FEAB /* Firebase+PromiseKit.swift in Sources */,
 				95D7B0C61EEA5F6600764738 /* Utility.swift in Sources */,
 				9555606A1ECD2989006C9F2D /* SwiftyJSON.swift in Sources */,
 				95CBCC521FF9F735001409B1 /* GameTimerBackgroundView.swift in Sources */,
@@ -533,6 +692,14 @@
 		};
 /* End PBXSourcesBuildPhase section */
 
+/* Begin PBXTargetDependency section */
+		7ABBAD7C201575B50001FEAB /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 95FBB8D61E9AD13F00B0E662 /* Mathdoku */;
+			targetProxy = 7ABBAD7B201575B50001FEAB /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
+
 /* Begin PBXVariantGroup section */
 		95FBB8DE1E9AD13F00B0E662 /* Main.storyboard */ = {
 			isa = PBXVariantGroup;
@@ -545,6 +712,49 @@
 /* End PBXVariantGroup section */
 
 /* Begin XCBuildConfiguration section */
+		7ABBAD7E201575B50001FEAB /* Debug */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 37B072198F001420251BC2AD /* Pods-MathdokuTests.debug.xcconfig */;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				CODE_SIGN_STYLE = Automatic;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				INFOPLIST_FILE = MathdokuTests/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 11.2;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = com.geissefamily.taylor.MathdokuTests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 4.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/Mathdoku.app/Mathdoku";
+			};
+			name = Debug;
+		};
+		7ABBAD7F201575B50001FEAB /* Release */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 34DDB8D5E1E7D0B227FF2923 /* Pods-MathdokuTests.release.xcconfig */;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				CODE_SIGN_STYLE = Automatic;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				INFOPLIST_FILE = MathdokuTests/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 11.2;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = com.geissefamily.taylor.MathdokuTests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 4.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/Mathdoku.app/Mathdoku";
+			};
+			name = Release;
+		};
 		95FBB8FD1E9AD13F00B0E662 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
@@ -707,6 +917,15 @@
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
+		7ABBAD7D201575B50001FEAB /* Build configuration list for PBXNativeTarget "MathdokuTests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				7ABBAD7E201575B50001FEAB /* Debug */,
+				7ABBAD7F201575B50001FEAB /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
 		95FBB8D21E9AD13F00B0E662 /* Build configuration list for PBXProject "Mathdoku" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (

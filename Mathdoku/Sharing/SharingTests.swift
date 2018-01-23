@@ -31,7 +31,7 @@ class SharingTests: XCTestCase {
             count = c
 
             // 2. create a challenge and store it in firebase, resulting in a challenge url
-            let challenge = Challenge(puzzleID: 123, victoryTime: 456)
+            let challenge = Challenge(puzzleSize: 3, puzzleID: 123, victoryTime: 456)
             return self.controller.url(for: challenge)
 
         }.then { url -> Promise<Challenge> in
@@ -42,6 +42,7 @@ class SharingTests: XCTestCase {
 
         }.then { challenge -> Promise<Int> in
             print("Challenge: \(challenge)")
+            XCTAssertEqual(challenge.puzzleSize, 3)
             XCTAssertEqual(challenge.puzzleID, 123)
             XCTAssertEqual(challenge.victoryTime, 456)
 

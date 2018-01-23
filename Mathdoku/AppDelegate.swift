@@ -16,7 +16,7 @@ import SwiftyStoreKit
 class AppDelegate: UIResponder, UIApplicationDelegate {
 
     var window: UIWindow?
-
+    var sharingController: SharingController?
 
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplicationLaunchOptionsKey: Any]?) -> Bool {
         // Override point for customization after application launch.
@@ -45,6 +45,9 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         // AdMob app id
         GADMobileAds.configure(withApplicationID: AppKeys.adMobAppId.key)
         
+        // initialize sharingController
+        sharingController = SharingController(databaseReference: Database.database().reference())
+
         return true
     }
     
@@ -153,6 +156,43 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         // Called when the application is about to terminate. Save data if appropriate. See also applicationDidEnterBackground:.
     }
 
+    func application(_ application: UIApplication, continue userActivity: NSUserActivity, restorationHandler: @escaping ([Any]?) -> Void) -> Bool {
+        switch userActivity.activityType {
+        case NSUserActivityTypeBrowsingWeb:
+            if let controller = sharingController, let url = userActivity.webpageURL {
+                //TODO: show progress indicator
+
+                controller.challenge(from: url).then { challenge -> () in
+                    DebugUtil.print("Opening puzzle for \(challenge)")
+
+                    if let navigationController = self.window?.rootViewController as? UINavigationController {
+                        //TODO: show dialog with challenge.victoryTime before proceeding
+
+                        let puzzleLoader = PuzzleLoader()
+                        let puzzleViewController = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "PuzzleViewController") as! PuzzleViewController
+                        puzzleViewController.puzzle = puzzleLoader.fetchPuzzle(forSize: challenge.puzzleSize, withPuzzleId: challenge.puzzleID)
+                        puzzleViewController.puzzleLoader = puzzleLoader
+                        navigationController.pushViewController(puzzleViewController, animated: true)
+                    }
+
+                }.catch { error in
+                    DebugUtil.print("Failed to open challenge: \(error)")
+
+                    if let navigationController = self.window?.rootViewController as? UINavigationController {
+                        let alert = navigationController.alertWithTitle("Unable to Open Challenge", message: "Please check your network connection and try again.")
+                        navigationController.visibleViewController?.showAlert(alert)
+                    }
+
+                }.always {
+                    //TODO: hide progress indicator
+                }
+            }
+            return true
+
+        default:
+            return false
+        }
+    }
 
 }
 

@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		2AC52DBD4C051F7C0D7C5F3A /* Pods_MathdokuTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 107ED940AEAB5A0AF4DD58A7 /* Pods_MathdokuTests.framework */; };
+		7A502D362016FC3B005C217F /* AppSecrets.swift in Sources */ = {isa = PBXBuildFile; fileRef = 95CBCC5C20087176001409B1 /* AppSecrets.swift */; };
 		7ABBAD6F20154A2B0001FEAB /* SharingController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7ABBAD6E20154A2B0001FEAB /* SharingController.swift */; };
 		7ABBAD71201572490001FEAB /* Firebase+PromiseKit.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7ABBAD70201572490001FEAB /* Firebase+PromiseKit.swift */; };
 		7ABBAD81201575C80001FEAB /* SharingTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7ABBAD80201575C80001FEAB /* SharingTests.swift */; };
@@ -102,6 +103,7 @@
 		7ABBAD76201575B50001FEAB /* MathdokuTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = MathdokuTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		7ABBAD7A201575B50001FEAB /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		7ABBAD80201575C80001FEAB /* SharingTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SharingTests.swift; sourceTree = "<group>"; };
+		7ABBAD842016EC6F0001FEAB /* Mathdoku.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = Mathdoku.entitlements; sourceTree = "<group>"; };
 		9502E5DD1EEE080F0048BE1B /* ViewControllerExtensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ViewControllerExtensions.swift; sourceTree = "<group>"; };
 		9502E5DF1EEE158B0048BE1B /* PuzzlePurchase.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PuzzlePurchase.swift; sourceTree = "<group>"; };
 		9502E5E21EEE16020048BE1B /* PuzzleProducts.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PuzzleProducts.swift; sourceTree = "<group>"; };
@@ -329,6 +331,7 @@
 		95FBB8D91E9AD13F00B0E662 /* Mathdoku */ = {
 			isa = PBXGroup;
 			children = (
+				7ABBAD842016EC6F0001FEAB /* Mathdoku.entitlements */,
 				7ABBAD6D20154A030001FEAB /* Sharing */,
 				95CBCC5920087122001409B1 /* Secrets */,
 				9598A3A31FBC1B4B00AE48E2 /* Libraries */,
@@ -445,6 +448,9 @@
 						ProvisioningStyle = Automatic;
 						SystemCapabilities = {
 							com.apple.InAppPurchase = {
+								enabled = 1;
+							};
+							com.apple.SafariKeychain = {
 								enabled = 1;
 							};
 						};
@@ -632,6 +638,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				7ABBAD81201575C80001FEAB /* SharingTests.swift in Sources */,
+				7A502D362016FC3B005C217F /* AppSecrets.swift in Sources */,
 				7ABBAD82201577770001FEAB /* SharingController.swift in Sources */,
 				7ABBAD832015777A0001FEAB /* Firebase+PromiseKit.swift in Sources */,
 			);
@@ -868,6 +875,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CLANG_ENABLE_MODULES = YES;
+				CODE_SIGN_ENTITLEMENTS = Mathdoku/Mathdoku.entitlements;
 				CONFIGURATION_BUILD_DIR = "$(BUILD_DIR)/$(CONFIGURATION)$(EFFECTIVE_PLATFORM_NAME)";
 				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
 				DEVELOPMENT_TEAM = 57TCLD34EQ;
@@ -895,6 +903,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CLANG_ENABLE_MODULES = YES;
+				CODE_SIGN_ENTITLEMENTS = Mathdoku/Mathdoku.entitlements;
 				CONFIGURATION_BUILD_DIR = "$(BUILD_DIR)/$(CONFIGURATION)$(EFFECTIVE_PLATFORM_NAME)";
 				DEVELOPMENT_TEAM = 57TCLD34EQ;
 				FRAMEWORK_SEARCH_PATHS = (

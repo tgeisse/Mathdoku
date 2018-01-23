@@ -32,6 +32,7 @@ private extension String {
 }
 
 struct Challenge {
+    let puzzleSize: Int
     let puzzleID: Int
     let victoryTime: TimeInterval
 }
@@ -44,7 +45,7 @@ class SharingController {
         case invalidValue(Any?)
     }
 
-    static let baseURL = URL(string: "https://mathdoku.ch/play/")!
+    static let baseURL = URL(string: AppSecrets.challengeBaseURL)!
     static let keyLength = 12
 
     let database: DatabaseReference
@@ -61,6 +62,7 @@ class SharingController {
         let key = String.random(length: SharingController.keyLength)
 
         let value: [String: Any] = [
+            "puzzleSize": challenge.puzzleSize,
             "puzzleID": challenge.puzzleID,
             "victoryTime": challenge.victoryTime,
             "createdAt": Date().timeIntervalSince1970,
@@ -127,12 +129,15 @@ class SharingController {
         }.then { _, snapshot -> Challenge in
             // extract challenge parameters from value
             guard let value = snapshot!.value as? [String: Any],
+                let puzzleSize = value["puzzleSize"] as? Int,
                 let puzzleID = value["puzzleID"] as? Int,
                 let victoryTime = value["victoryTime"] as? TimeInterval else {
                     throw Error.invalidValue(snapshot!.value)
             }
 
-            return Challenge(puzzleID: puzzleID, victoryTime: victoryTime)
+            return Challenge(puzzleSize: puzzleSize,
+                             puzzleID: puzzleID,
+                             victoryTime: victoryTime)
         }
     }
 

@@ -9,15 +9,41 @@ import Firebase
 import Foundation
 import PromiseKit
 
+private let timeout: TimeInterval = 10.0
+
 extension DatabaseQuery {
+    enum AsyncError: Error {
+        case timedOut
+    }
+
     func getValue() -> Promise<DataSnapshot> {
-        return wrap { observeSingleEvent(of: .value, with: $0) }
+        return Promise { fulfill, reject in
+            var fulfilled = false
+            observeSingleEvent(of: .value) {
+                fulfill($0)
+                fulfilled = true
+            }
+            after(seconds: timeout).then { () -> () in
+                if !fulfilled {
+                    reject(AsyncError.timedOut)
+                }
+            }
+        }
     }
 
     func observeValue() -> Promise<() -> ()> {
         var handle: UInt = 0
-        return Promise { fulfill, reject in
-            handle = observe(.value) { fulfill($0) }
+        return Promise<UInt> { fulfill, reject in
+            var fulfilled = false
+            handle = observe(.value) { _ in
+                fulfill(handle)
+                fulfilled = true
+            }
+            after(seconds: timeout).then { () -> () in
+                if !fulfilled {
+                    reject(AsyncError.timedOut)
+                }
+            }
         }.then { snapshot -> () -> () in
             return { self.removeObserver(withHandle: handle) }
         }

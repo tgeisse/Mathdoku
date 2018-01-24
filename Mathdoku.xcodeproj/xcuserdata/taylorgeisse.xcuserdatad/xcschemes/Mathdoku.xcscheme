@@ -33,7 +33,7 @@
             skipped = "NO">
             <BuildableReference
                BuildableIdentifier = "primary"
-               BlueprintIdentifier = "95FBB8EA1E9AD13F00B0E662"
+               BlueprintIdentifier = "7ABBAD75201575B50001FEAB"
                BuildableName = "MathdokuTests.xctest"
                BlueprintName = "MathdokuTests"
                ReferencedContainer = "container:Mathdoku.xcodeproj">

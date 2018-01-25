@@ -763,6 +763,7 @@ class PuzzleViewController: UIViewController, UINavigationBarDelegate {
                 let changeToValue = (direction == .undo ? from : to)
                 setGuessForCells(atPositions: [move.cell], withAnswer: changeToValue, mutatesMoveHistory: false)
                 selectedCell = gridRowStacks[move.cell.row].rowCells[move.cell.col]
+                entryMode = .guessing
                 
             case let .note(number, fromPossibility, toPossibility):
                 let changeToPossibility: CellNotePossibility

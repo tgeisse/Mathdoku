@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import RealmSwift
 
 class PuzzleLoader {
     // hard coded number of puzzles available per JSON.
@@ -25,6 +26,7 @@ class PuzzleLoader {
     // Dispatch Queue for any puzzle loading and fetching. Needs to be sequel
     private let queue = DispatchQueue(label: "\(AppSecrets.domainRoot).puzzleLoader", qos: .userInitiated)
     
+    // MARK: - Public API
     func preloadPuzzle(forSize size: Int, withPuzzleId pId: Int) {
         // create the puzzle Id used to identify the puzzle in the dictinoary
         let puzzleId = createPuzzleId(size, pId)
@@ -54,6 +56,49 @@ class PuzzleLoader {
         }
         
         return returnPuzzle
+    }
+    
+    func loadPuzzleSolvedDefaultHistory() {
+        let realm = try! Realm()
+        
+        for size in 3...9 {
+            // for first timers, this should be all we need
+            let assetCount = availableJsonAssets(forSize: size)
+            let availablePuzzleIds = Set(0..<puzzlesPerFile * assetCount)
+            
+            // identify already played puzzles, since their records are already in Realm
+            let puzzlesSolvedForSize: Set<Int> = realm.objects(PuzzlesSolved.self).filter("forPuzzleSize == \(size)").value(forKey: "puzzleId") as! Set<Int>
+            
+            // subtract the puzzles already solved from the available puzzles to get the set that needs to be added to realm
+            let puzzlesToAdd = availablePuzzleIds.subtracting(puzzlesSolvedForSize)
+            
+            if puzzlesToAdd.count > 0 {
+                do {
+                    try realm.write {
+                       // realm.objects(PlayerProgress.self).filter("puzzleSize == \(size)").first?.puzzlesSolved.append(puzzlesToAdd)
+                    }
+                } catch (let error) {
+                    fatalError("Unable to write the new puzzles to realm:\n\(error)")
+                }
+            }
+        }
+    }
+    
+    // MARK: - Private API
+    private func availableJsonAssets(forSize size: Int) -> Int {
+        var count = 0
+        var searching = true
+        
+        while searching {
+            let assetName = "\(size)all-\(count + 1)"
+            if NSDataAsset(name: assetName, bundle: Bundle.main) != nil {
+                count += 1
+            } else {
+                searching = false
+            }
+        }
+        
+        return count
     }
     
     private func loadPuzzleFromJson(forSize size: Int, withPuzzleId pId: Int) -> Puzzle {

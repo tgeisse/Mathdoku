@@ -480,7 +480,7 @@ class PuzzleViewController: UIViewController, UINavigationBarDelegate {
         if let bestTime = playerProgress.puzzlesSolved.sorted(byKeyPath: "timeToSolve", ascending: true).first,
             bestTime.puzzleId != playerProgress.activePuzzleId {
             // previous best time
-            bestTimeLabel.text = createTimeString(from: bestTime.timeToSolve)
+            bestTimeLabel.text = createTimeString(from: bestTime.timeToSolve.value ?? 0.0)
             bestTimeLabel.textColor = .black
         } else {
             // new best time
@@ -953,18 +953,20 @@ class PuzzleViewController: UIViewController, UINavigationBarDelegate {
     /// Save the timer to the 'leaderboard' as a final count
     private func saveFinalTimer() {
         // save final timer to realm
+        playerProgress.puzzlesSolved.filter("puzzleId == \(playerProgress.activePuzzleId)").first?.markPuzzlePlayed(finalTime: gameTimer, withRealm: realm)
+        /*
         do {
             try realm.write {
                 let solvedPuzzle = PuzzlesSolved()
                 solvedPuzzle.puzzleId = playerProgress.activePuzzleId
                 solvedPuzzle.solvedOn = NSDate()
-                solvedPuzzle.timeToSolve = gameTimer
+                solvedPuzzle.timeToSolve.value = gameTimer
                 
                 playerProgress.puzzlesSolved.append(solvedPuzzle)
             }
         } catch (let error) {
             fatalError("Error trying to save the final timer:\n\(error)")
-        }
+        } */
     }
     
     // MARK: - Realm helper functions

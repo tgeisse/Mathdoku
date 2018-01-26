@@ -54,14 +54,17 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         let config = Realm.Configuration(
             // Set the new schema version. This must be greater than the previously used
             // version (if you've never set a schema version before, the version is 0).
-            schemaVersion: 5,
+            schemaVersion: 7,
             
             // Set the block which will be called automatically when opening a Realm with
             // a schema version lower than the one set above
             migrationBlock: { migration, oldSchemaVersion in
                 // We haven’t migrated anything yet, so oldSchemaVersion == 0
-                if (oldSchemaVersion < 5) {
-                    // do nothing, just let Realm pick up the new configuration
+                if (oldSchemaVersion < 6) {
+                    // introduced a play count to the PuzzlesSolved object - will set existing records to "1"
+                    migration.enumerateObjects(ofType: PuzzlesSolved.className()) { oldOjbect, newObject in
+                        newObject!["playCount"] = 1
+                    }
                 }
                 
         })

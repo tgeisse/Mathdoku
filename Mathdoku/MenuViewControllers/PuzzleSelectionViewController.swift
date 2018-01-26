@@ -54,6 +54,7 @@ class PuzzleSelectionViewController: UIViewController {
         updateStartButtonTitle()
         updatePuzzlesRemainingLabel()
         addAllowanceNotification()
+        puzzleLoader.loadPuzzleSolvedDefaultHistory()
     }
     
     override func viewDidAppear(_ animated: Bool) {

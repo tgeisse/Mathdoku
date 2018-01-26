@@ -67,19 +67,28 @@ class PuzzleLoader {
             let availablePuzzleIds = Set(0..<puzzlesPerFile * assetCount)
             
             // identify already played puzzles, since their records are already in Realm
-            let puzzlesSolvedForSize: Set<Int> = realm.objects(PuzzlesSolved.self).filter("forPuzzleSize == \(size)").value(forKey: "puzzleId") as! Set<Int>
+            let puzzleListForSize = realm.objects(PlayerProgress.self).filter("puzzleSize == \(size)").first!.puzzlesSolved
+            let playedIds = puzzleListForSize.map {
+                $0.puzzleId
+            }
             
             // subtract the puzzles already solved from the available puzzles to get the set that needs to be added to realm
-            let puzzlesToAdd = availablePuzzleIds.subtracting(puzzlesSolvedForSize)
+            let puzzlesToAdd = availablePuzzleIds.subtracting(playedIds)
             
             if puzzlesToAdd.count > 0 {
+                DebugUtil.print("Starting to add new puzzle history for size \(size)")
                 do {
                     try realm.write {
-                       // realm.objects(PlayerProgress.self).filter("puzzleSize == \(size)").first?.puzzlesSolved.append(puzzlesToAdd)
+                        puzzlesToAdd.forEach {
+                            let newElement = PuzzlesSolved()
+                            newElement.puzzleId = $0
+                            puzzleListForSize.append(newElement)
+                        }
                     }
                 } catch (let error) {
                     fatalError("Unable to write the new puzzles to realm:\n\(error)")
                 }
+                DebugUtil.print("Done adding puzzle history for size \(size)")
             }
         }
     }

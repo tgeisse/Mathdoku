@@ -10,6 +10,8 @@ import UIKit
 import RealmSwift
 
 class PuzzleLoader {
+    static let sharedInstance = PuzzleLoader()
+    
     // hard coded number of puzzles available per JSON.
     // May want to calculate this later, but I set the file size for now.
     private let puzzlesPerFile = 4000
@@ -65,15 +67,18 @@ class PuzzleLoader {
             // for first timers, this should be all we need
             let assetCount = availableJsonAssets(forSize: size)
             let availablePuzzleIds = Set(0..<puzzlesPerFile * assetCount)
+            DebugUtil.print("Identified \(assetCount) JSONs for size \(size), resulting in \(availablePuzzleIds.count) puzzles")
             
             // identify already played puzzles, since their records are already in Realm
             let puzzleListForSize = realm.objects(PlayerProgress.self).filter("puzzleSize == \(size)").first!.puzzlesSolved
             let playedIds = puzzleListForSize.map {
                 $0.puzzleId
             }
+            DebugUtil.print("Found \(playedIds.count) previously added puzzleIds")
             
             // subtract the puzzles already solved from the available puzzles to get the set that needs to be added to realm
             let puzzlesToAdd = availablePuzzleIds.subtracting(playedIds)
+            DebugUtil.print("Need to add \(puzzlesToAdd.count) puzzle IDs")
             
             if puzzlesToAdd.count > 0 {
                 DebugUtil.print("Starting to add new puzzle history for size \(size)")

@@ -20,6 +20,7 @@ class PlayerProgress: Object {
         return "puzzleSize"
     }
     
+    @available(*, deprecated, message: "This is no longer being used. Please write the active puzzle directly")
     func incrementPuzzleId(withRealm: Realm? = nil) {
         do {
             let realm = try withRealm ?? Realm()

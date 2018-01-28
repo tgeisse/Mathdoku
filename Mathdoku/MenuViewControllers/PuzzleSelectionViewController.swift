@@ -10,7 +10,7 @@ import UIKit
 import RealmSwift
 
 class PuzzleSelectionViewController: UIViewController {
-    let puzzleLoader = PuzzleLoader()
+    // let puzzleLoader = PuzzleLoader()
     lazy var realm: Realm = {try! Realm()}()
     lazy var playerProgress: Results<PlayerProgress> = {
         try! Realm().objects(PlayerProgress.self).sorted(byKeyPath: "puzzleSize", ascending: true)
@@ -18,7 +18,7 @@ class PuzzleSelectionViewController: UIViewController {
     
     var selectedPuzzleSize: Int = -1 {
         didSet{
-            puzzleLoader.preloadPuzzle(forSize: selectedPuzzleSize, withPuzzleId: activePuzzleId)
+            PuzzleLoader.sharedInstance.preloadPuzzle(forSize: selectedPuzzleSize, withPuzzleId: activePuzzleId)
         }
     }
     var selectedButton: UIButton? {
@@ -54,7 +54,7 @@ class PuzzleSelectionViewController: UIViewController {
         updateStartButtonTitle()
         updatePuzzlesRemainingLabel()
         addAllowanceNotification()
-        puzzleLoader.loadPuzzleSolvedDefaultHistory()
+        PuzzleLoader.sharedInstance.loadPuzzleSolvedDefaultHistory()
     }
     
     override func viewDidAppear(_ animated: Bool) {
@@ -158,8 +158,7 @@ class PuzzleSelectionViewController: UIViewController {
                 fatalError("Unexpected destination: \(segue.destination)")
             }
             
-            puzzleViewController.puzzle = puzzleLoader.fetchPuzzle(forSize: selectedPuzzleSize, withPuzzleId: activePuzzleId)
-            puzzleViewController.puzzleLoader = puzzleLoader
+            puzzleViewController.puzzle = PuzzleLoader.sharedInstance.fetchPuzzle(forSize: selectedPuzzleSize, withPuzzleId: activePuzzleId)
         }
     }
     

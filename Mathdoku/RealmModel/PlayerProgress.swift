@@ -25,7 +25,7 @@ class PlayerProgress: Object {
             let realm = try withRealm ?? Realm()
             
             try realm.write {
-                self.activePuzzleId = self.activePuzzleId + 1
+                self.activePuzzleId = PuzzleLoader.sharedInstance.getRandomPuzzleId(forSize: self.puzzleSize) ?? self.activePuzzleId + 1
             }
         } catch (let error) {
             fatalError("Error incrementing puzzle id:\n\(error)")

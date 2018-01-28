@@ -60,6 +60,31 @@ class PuzzleLoader {
         return returnPuzzle
     }
     
+    func getRandomPuzzleId(forSize size: Int) -> Int? {
+        let realm = try! Realm()
+        
+        // get the PuzzlesSolved list from the PlayerProgress
+        guard let puzzlesSolved = realm.objects(PlayerProgress.self).filter("puzzleSize == \(size)").first?.puzzlesSolved else {
+            return nil
+        }
+        
+        // get the lowest play count
+        guard let lowestPlayCount = puzzlesSolved.min(ofProperty: "playCount") as Int? else {
+            return nil
+        }
+        DebugUtil.print("For puzzle size \(size), the lowest number of played games is \(lowestPlayCount)")
+        
+        // get the play history objects with the same play count
+        let availablePuzzles = puzzlesSolved.filter("playCount == \(lowestPlayCount)")
+        DebugUtil.print("Found \(availablePuzzles.count) puzzles with the play count of \(lowestPlayCount)")
+        
+        // get a random puzzle from the list
+        let randomPuzzleId = Int(arc4random_uniform(UInt32(availablePuzzles.count)))
+        
+        // return the puzzle ID for that random puzzle
+        return availablePuzzles[randomPuzzleId].puzzleId
+    }
+    
     func loadPuzzleSolvedDefaultHistory() {
         let realm = try! Realm()
         

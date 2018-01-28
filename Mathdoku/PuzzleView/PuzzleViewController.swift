@@ -477,7 +477,7 @@ class PuzzleViewController: UIViewController, UINavigationBarDelegate {
     
     // MARK: - Puzzle progression functions
     private func updateShowSuccessView() {
-        if let bestTime = playerProgress.puzzlesSolved.sorted(byKeyPath: "timeToSolve", ascending: true).first,
+        if let bestTime = playerProgress.puzzlesSolved.filter("timeToSolve != nil").sorted(byKeyPath: "timeToSolve", ascending: true).first,
             bestTime.puzzleId != playerProgress.activePuzzleId {
             // previous best time
             bestTimeLabel.text = createTimeString(from: bestTime.timeToSolve.value ?? 0.0)

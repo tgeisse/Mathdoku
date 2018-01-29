@@ -13,13 +13,7 @@ import GoogleMobileAds
 @IBDesignable
 class PuzzleViewController: UIViewController, UINavigationBarDelegate {
     var puzzle: Puzzle!
-    private var nextPuzzleId: Int? = nil {
-        didSet {
-            if let nextPID = nextPuzzleId {
-                PuzzleLoader.sharedInstance.preloadPuzzle(forSize: puzzle.size, withPuzzleId: nextPID)
-            }
-        }
-    }
+    private var nextPuzzleId: Int? = nil
     
     // MARK: - References to View Items
     @IBOutlet weak var successOverlayView: UIView!

@@ -10,7 +10,6 @@ import UIKit
 import RealmSwift
 
 class PuzzleSelectionViewController: UIViewController {
-    // let puzzleLoader = PuzzleLoader()
     lazy var realm: Realm = {try! Realm()}()
     lazy var playerProgress: Results<PlayerProgress> = {
         try! Realm().objects(PlayerProgress.self).sorted(byKeyPath: "puzzleSize", ascending: true)

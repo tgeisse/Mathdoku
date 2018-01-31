@@ -85,7 +85,7 @@ class PuzzleLoader {
         return availablePuzzles[randomPuzzleId].puzzleId
     }
     
-    func loadPuzzleSolvedDefaultHistory() {
+    func loadPuzzleSolvedDefaultHistory(notify: (() -> Void)? = nil) {
         let realm = try! Realm()
         
         for size in 3...9 {
@@ -120,6 +120,9 @@ class PuzzleLoader {
                 }
                 DebugUtil.print("Done adding puzzle history for size \(size)")
             }
+            
+            // notify the listener if there is one
+            notify?()
         }
     }
     

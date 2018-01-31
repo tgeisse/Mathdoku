@@ -53,7 +53,6 @@ class PuzzleSelectionViewController: UIViewController {
         updateStartButtonTitle()
         updatePuzzlesRemainingLabel()
         addAllowanceNotification()
-        PuzzleLoader.sharedInstance.loadPuzzleSolvedDefaultHistory()
     }
     
     override func viewDidAppear(_ animated: Bool) {

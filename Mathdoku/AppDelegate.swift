@@ -72,7 +72,37 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         Realm.Configuration.defaultConfiguration = config
         
         // load the configuration
-        let _ = try! Realm()
+        let realm = try! Realm()
+        
+        // set the default player progress / validate that none were lost
+        let playerProgress = realm.objects(PlayerProgress.self)
+        for puzzleSize in 3...9 {
+            if playerProgress.filter("puzzleSize == \(puzzleSize)").count == 0 {
+                try! realm.write() {
+                    let newPlayerProgress = PlayerProgress()
+                    newPlayerProgress.puzzleSize = puzzleSize
+                    newPlayerProgress.activePuzzleId = Int(arc4random_uniform(200)) + 200
+                    newPlayerProgress.puzzleProgress = nil
+                    realm.add(newPlayerProgress)
+                }
+            }
+        }
+        
+        // set the default allowance values if they don't exist
+        for allowanceType in Utility.iterateEnum(AllowanceTypes.self) {
+            // test to see if we have an allowance for this type
+            if realm.objects(Allowances.self).filter("allowanceId == '\(allowanceType)'").count == 0 {
+                DebugUtil.print("Granting the initial allowance for \(allowanceType)")
+                // if an allowance for this type does not exist, then let's add the default value
+                try! realm.write {
+                    let newAllowanceRecord = Allowances()
+                    newAllowanceRecord.allowanceId = "\(allowanceType)"
+                    newAllowanceRecord.allowance = allowanceType.initialAllowance
+                    newAllowanceRecord.lastRefreshDate = NSDate()
+                    realm.add(newAllowanceRecord)
+                }
+            }
+        }
         
         // initiatile user defaults
         Settings.initialize()

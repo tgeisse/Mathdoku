@@ -495,7 +495,7 @@ class PuzzleViewController: UIViewController, UINavigationBarDelegate {
     
     private func setNextPuzzleId(force: Bool = false) {
         if nextPuzzleId == nil || force {
-            nextPuzzleId = PuzzleLoader.sharedInstance.getRandomPuzzleId(forSize: puzzle.size) ?? playerProgress.activePuzzleId + 1
+            nextPuzzleId = PuzzleLoader.sharedInstance.getNextPuzzleId(forSize: puzzle.size)
             PuzzleLoader.sharedInstance.preloadPuzzle(forSize: puzzle.size, withPuzzleId: nextPuzzleId!)
         }
     }

@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="13771" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="KyU-Ch-bZu">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="13771" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="5IB-Io-PmN">
     <device id="retina4_7" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
@@ -3702,74 +3702,10 @@
             </objects>
             <point key="canvasLocation" x="5002" y="1232"/>
         </scene>
-        <!--Game Loading View Controller-->
-        <scene sceneID="jTk-Gs-m7v">
-            <objects>
-                <viewController id="KyU-Ch-bZu" customClass="GameLoadingViewController" customModule="Mathdoku" customModuleProvider="target" sceneMemberID="viewController">
-                    <layoutGuides>
-                        <viewControllerLayoutGuide type="top" id="oMH-dQ-Hs2"/>
-                        <viewControllerLayoutGuide type="bottom" id="22a-Ke-JI9"/>
-                    </layoutGuides>
-                    <view key="view" contentMode="scaleToFill" id="tQf-aA-X6J">
-                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
-                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <subviews>
-                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="LaunchImageUniversal" translatesAutoresizingMaskIntoConstraints="NO" id="jIZ-J7-lh7">
-                                <rect key="frame" x="5" y="9.5" width="365" height="648"/>
-                                <constraints>
-                                    <constraint firstAttribute="width" secondItem="jIZ-J7-lh7" secondAttribute="height" multiplier="377:669" id="Upq-Xc-Vyl"/>
-                                </constraints>
-                            </imageView>
-                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="OKT-u8-rl7" userLabel="AnchorView">
-                                <rect key="frame" x="187" y="333" width="1" height="1"/>
-                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                <color key="tintColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                <constraints>
-                                    <constraint firstAttribute="width" secondItem="OKT-u8-rl7" secondAttribute="height" multiplier="1:1" id="bFk-mb-ptx"/>
-                                    <constraint firstAttribute="width" constant="1" id="xXM-bO-OVo"/>
-                                </constraints>
-                            </view>
-                            <view userInteractionEnabled="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="fvY-TD-BEF" customClass="GameLoadingBar" customModule="Mathdoku" customModuleProvider="target">
-                                <rect key="frame" x="71" y="394" width="233" height="20"/>
-                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                <color key="tintColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                <constraints>
-                                    <constraint firstAttribute="width" constant="233" id="UuU-k0-eew"/>
-                                    <constraint firstAttribute="height" constant="20" id="x4A-dd-3Hb"/>
-                                </constraints>
-                            </view>
-                        </subviews>
-                        <color key="backgroundColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                        <constraints>
-                            <constraint firstItem="OKT-u8-rl7" firstAttribute="centerX" secondItem="jIZ-J7-lh7" secondAttribute="centerX" id="4fq-1Q-4xF"/>
-                            <constraint firstItem="jIZ-J7-lh7" firstAttribute="leading" secondItem="tQf-aA-X6J" secondAttribute="leading" constant="5" id="6py-jD-fSr"/>
-                            <constraint firstItem="fvY-TD-BEF" firstAttribute="top" secondItem="OKT-u8-rl7" secondAttribute="bottom" constant="60" id="Ngf-Z6-Fql">
-                                <variation key="heightClass=regular-widthClass=regular" constant="125"/>
-                            </constraint>
-                            <constraint firstAttribute="trailing" secondItem="jIZ-J7-lh7" secondAttribute="trailing" constant="5" id="eHQ-kI-8G9"/>
-                            <constraint firstItem="jIZ-J7-lh7" firstAttribute="centerY" secondItem="tQf-aA-X6J" secondAttribute="centerY" id="kGd-kw-mJ3"/>
-                            <constraint firstItem="fvY-TD-BEF" firstAttribute="centerX" secondItem="OKT-u8-rl7" secondAttribute="centerX" id="oWP-Qf-uLl"/>
-                            <constraint firstItem="OKT-u8-rl7" firstAttribute="centerY" secondItem="jIZ-J7-lh7" secondAttribute="centerY" id="vcT-xQ-E5D"/>
-                        </constraints>
-                        <viewLayoutGuide key="safeArea" id="Ena-Ih-9p1"/>
-                    </view>
-                    <nil key="simulatedStatusBarMetrics"/>
-                    <nil key="simulatedTopBarMetrics"/>
-                    <nil key="simulatedBottomBarMetrics"/>
-                    <connections>
-                        <outlet property="gameLoadingBar" destination="fvY-TD-BEF" id="xKx-It-gVI"/>
-                        <segue destination="5IB-Io-PmN" kind="presentation" identifier="fadeToMainMenu" modalTransitionStyle="crossDissolve" id="p5o-YG-d1a"/>
-                    </connections>
-                </viewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="oTn-Mg-Fxc" userLabel="First Responder" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="-1100" y="-379.16041979010498"/>
-        </scene>
     </scenes>
     <resources>
         <image name="Erase" width="24" height="24"/>
         <image name="GridImage" width="248" height="248"/>
-        <image name="LaunchImageUniversal" width="375" height="667"/>
         <image name="MainMenuTitle" width="387" height="76"/>
         <image name="Note" width="24" height="24"/>
         <image name="Reveal" width="24" height="24"/>

@@ -20,12 +20,13 @@ class PlayerProgress: Object {
         return "puzzleSize"
     }
     
+    @available(*, deprecated, message: "This is no longer being used. Please write the active puzzle directly")
     func incrementPuzzleId(withRealm: Realm? = nil) {
         do {
             let realm = try withRealm ?? Realm()
             
             try realm.write {
-                self.activePuzzleId = self.activePuzzleId + 1
+                self.activePuzzleId = PuzzleLoader.sharedInstance.getRandomPuzzleId(forSize: self.puzzleSize) ?? self.activePuzzleId + 1
             }
         } catch (let error) {
             fatalError("Error incrementing puzzle id:\n\(error)")

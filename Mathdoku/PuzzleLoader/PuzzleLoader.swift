@@ -7,8 +7,11 @@
 //
 
 import UIKit
+import RealmSwift
 
 class PuzzleLoader {
+    static let sharedInstance = PuzzleLoader()
+    
     // hard coded number of puzzles available per JSON.
     // May want to calculate this later, but I set the file size for now.
     private let puzzlesPerFile = 4000
@@ -25,6 +28,7 @@ class PuzzleLoader {
     // Dispatch Queue for any puzzle loading and fetching. Needs to be sequel
     private let queue = DispatchQueue(label: "\(AppSecrets.domainRoot).puzzleLoader", qos: .userInitiated)
     
+    // MARK: - Public API
     func preloadPuzzle(forSize size: Int, withPuzzleId pId: Int) {
         // create the puzzle Id used to identify the puzzle in the dictinoary
         let puzzleId = createPuzzleId(size, pId)
@@ -54,6 +58,133 @@ class PuzzleLoader {
         }
         
         return returnPuzzle
+    }
+    
+    func getNextPuzzleId(forSize size: Int) -> Int {
+        let realm: Realm
+        do {
+            try realm = Realm()
+        } catch (let error) {
+            fatalError("Could not open a Realm connection:\n\(error)")
+        }
+        
+        // get set of available puzzle IDs
+        let assetCount = availableJsonAssets(forSize: size)
+        let allPuzzleIds = Set(0..<puzzlesPerFile * assetCount)
+        DebugUtil.print("Identified \(assetCount) JSONs for size \(size), resulting in \(allPuzzleIds.count) puzzles")
+        
+        // get the List of PuzzlesSolved - create an empty list on the VERY unlikely chance this is nil
+        let puzzlesSolved = realm.objects(PlayerProgress.self).filter("puzzleSize == \(size)").first?.puzzlesSolved ?? List<PuzzlesSolved>()
+        DebugUtil.print("Found \(puzzlesSolved.count) previously played puzzles")
+        
+        // get the lowest play count - set it to 0 if nil
+        let lowestPlayCount: Int
+        if puzzlesSolved.count != allPuzzleIds.count {
+            // if the user hasn't played through all of the puzzles, then the lowestPlayCount is 0
+            lowestPlayCount = 0
+        } else {
+            // if the user has played through all puzzles, then look up the lowest play count
+            lowestPlayCount = puzzlesSolved.min(ofProperty: "playCount") as Int? ?? Int.max
+        }
+        DebugUtil.print("Lowest play count: \(lowestPlayCount)")
+        
+        // look up all of the puzzles played that are at or above the current low play count - one of these is the exclusion list
+        let playsAboveLowPlayCount = Array(puzzlesSolved.filter("playCount > \(lowestPlayCount)"))
+        
+        // exclude any puzzle with a play count greater than the lowest play count
+        let excludePuzzleIds = Set(playsAboveLowPlayCount.map { $0.puzzleId })
+        DebugUtil.print("Excluding \(excludePuzzleIds.count) puzzleIds from the available puzzles")
+        
+        // subtract the excuded puzzle iDs
+        let availablePuzzleIds = Array(allPuzzleIds.subtracting(excludePuzzleIds))
+        
+        // get a random puzzle ID from the available puzzle IDs and return it
+        return availablePuzzleIds[Int(arc4random_uniform(UInt32(availablePuzzleIds.count)))]
+    }
+    
+    @available(*, deprecated, message: "Moving towards getNextPuzzleId function", renamed: "getNextPuzzleId")
+    func getRandomPuzzleId(forSize size: Int) -> Int? {
+        let realm = try! Realm()
+        
+        // get the PuzzlesSolved list from the PlayerProgress
+        guard let puzzlesSolved = realm.objects(PlayerProgress.self).filter("puzzleSize == \(size)").first?.puzzlesSolved else {
+            return nil
+        }
+        
+        // get the lowest play count
+        guard let lowestPlayCount = puzzlesSolved.min(ofProperty: "playCount") as Int? else {
+            return nil
+        }
+        DebugUtil.print("For puzzle size \(size), the lowest number of played games is \(lowestPlayCount)")
+        
+        // get the play history objects with the same play count
+        let availablePuzzles = puzzlesSolved.filter("playCount == \(lowestPlayCount)")
+        DebugUtil.print("Found \(availablePuzzles.count) puzzles with the play count of \(lowestPlayCount)")
+        
+        // get a random puzzle from the list
+        let randomPuzzleId = Int(arc4random_uniform(UInt32(availablePuzzles.count)))
+        
+        // return the puzzle ID for that random puzzle
+        return availablePuzzles[randomPuzzleId].puzzleId
+    }
+    
+    @available(*, deprecated, message: "Moving away from pre-loading and the loading screen")
+    func loadPuzzleSolvedDefaultHistory(notify: (() -> Void)? = nil) {
+        let realm = try! Realm()
+        
+        for size in 3...9 {
+            // for first timers, this should be all we need
+            let assetCount = availableJsonAssets(forSize: size)
+            let availablePuzzleIds = Set(0..<puzzlesPerFile * assetCount)
+            DebugUtil.print("Identified \(assetCount) JSONs for size \(size), resulting in \(availablePuzzleIds.count) puzzles")
+            
+            // identify already played puzzles, since their records are already in Realm
+            let puzzleListForSize = realm.objects(PlayerProgress.self).filter("puzzleSize == \(size)").first!.puzzlesSolved
+            let playedIds = puzzleListForSize.map {
+                $0.puzzleId
+            }
+            DebugUtil.print("Found \(playedIds.count) previously added puzzleIds")
+            
+            // subtract the puzzles already solved from the available puzzles to get the set that needs to be added to realm
+            let puzzlesToAdd = availablePuzzleIds.subtracting(playedIds)
+            DebugUtil.print("Need to add \(puzzlesToAdd.count) puzzle IDs")
+            
+            if puzzlesToAdd.count > 0 {
+                DebugUtil.print("Starting to add new puzzle history for size \(size)")
+                do {
+                    try realm.write {
+                        puzzlesToAdd.forEach {
+                            let newElement = PuzzlesSolved()
+                            newElement.puzzleId = $0
+                            puzzleListForSize.append(newElement)
+                        }
+                    }
+                } catch (let error) {
+                    fatalError("Unable to write the new puzzles to realm:\n\(error)")
+                }
+                DebugUtil.print("Done adding puzzle history for size \(size)")
+            }
+            
+            // notify the listener if there is one
+            notify?()
+        }
+    }
+    
+    // MARK: - Private API
+    private func availableJsonAssets(forSize size: Int) -> Int {
+        var count = 0
+        var searching = true
+        
+        while searching {
+            let assetName = "\(size)all-\(count + 1)"
+            if NSDataAsset(name: assetName, bundle: Bundle.main) != nil {
+                count += 1
+            } else {
+                searching = false
+            }
+        }
+        
+        return count
     }
     
     private func loadPuzzleFromJson(forSize size: Int, withPuzzleId pId: Int) -> Puzzle {

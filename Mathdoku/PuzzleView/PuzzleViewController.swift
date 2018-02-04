@@ -13,7 +13,7 @@ import GoogleMobileAds
 @IBDesignable
 class PuzzleViewController: UIViewController, UINavigationBarDelegate {
     var puzzle: Puzzle!
-    var puzzleLoader: PuzzleLoader!
+    private var nextPuzzleId: Int? = nil
     
     // MARK: - References to View Items
     @IBOutlet weak var successOverlayView: UIView!
@@ -50,6 +50,10 @@ class PuzzleViewController: UIViewController, UINavigationBarDelegate {
     private var gameState = GameState.loading {
         didSet {
             DebugUtil.print("Game State: \(oldValue) -> \(gameState)")
+            
+            if [GameState.finished, .playing].contains(gameState) {
+                setNextPuzzleId()
+            }
         }
     }
     
@@ -452,8 +456,6 @@ class PuzzleViewController: UIViewController, UINavigationBarDelegate {
             AnalyticsWrapper.logEvent(.selectContent, contentType: .featureUsage, id: "id-skipPuzzle", name: "puzzleSkipRequest")
             
             // skip puzzle clicked us.
-            // preload a puzzle if they can skip
-            puzzleLoader.preloadPuzzle(forSize: puzzle.size, withPuzzleId: playerProgress.activePuzzleId + 1)
             if PuzzleProducts.puzzleAllowance.allowance == 0 {
                 // If the user is out of puzzles, tell them they have to buy (or wait for daily)
                 DebugUtil.print("Out of puzzles for skip - prompting the user")
@@ -463,6 +465,7 @@ class PuzzleViewController: UIViewController, UINavigationBarDelegate {
                 DebugUtil.print("Successfully displayed alert for skip, out of puzzles")
             } else {
                 // if the user has puzzles, then tell them that skipping will consume a puzzle and confirm first
+                setNextPuzzleId() // also set the next puzzle ID (preloads it, too)
                 DebugUtil.print("Puzzles available for skip - prompting the user")
                 alertUserYesNoMessage(title: "Skip Puzzle?", message: "Are you sure you want to skip this puzzle? Skipping will use a puzzle allowance.", actionOnConfirm: skipPuzzle)
             }
@@ -476,11 +479,32 @@ class PuzzleViewController: UIViewController, UINavigationBarDelegate {
     }
     
     // MARK: - Puzzle progression functions
+    private func checkPuzzleIsSolved() {
+        if puzzle.isSolved {
+            // TODO: if you ever implement replay, then the incrementPuzzleId function will need to support a "to:" parameter
+            timerState = .final
+            gameState = .finished
+            updateShowSuccessView()
+            incrementPlayerPuzzleProgress()
+            setPuzzleProgress(to: false)
+            
+            // analytics - puzzle was successfully completed
+            AnalyticsWrapper.logEvent(.selectContent, contentType: .puzzlePlayed, id: "id-puzzleCompleted", name: "puzzleSuccessfullyFilled")
+        }
+    }
+    
+    private func setNextPuzzleId(force: Bool = false) {
+        if nextPuzzleId == nil || force {
+            nextPuzzleId = PuzzleLoader.sharedInstance.getNextPuzzleId(forSize: puzzle.size)
+            PuzzleLoader.sharedInstance.preloadPuzzle(forSize: puzzle.size, withPuzzleId: nextPuzzleId!)
+        }
+    }
+    
     private func updateShowSuccessView() {
-        if let bestTime = playerProgress.puzzlesSolved.sorted(byKeyPath: "timeToSolve", ascending: true).first,
+        if let bestTime = playerProgress.puzzlesSolved.filter("timeToSolve != nil").sorted(byKeyPath: "timeToSolve", ascending: true).first,
             bestTime.puzzleId != playerProgress.activePuzzleId {
             // previous best time
-            bestTimeLabel.text = createTimeString(from: bestTime.timeToSolve)
+            bestTimeLabel.text = createTimeString(from: bestTime.timeToSolve.value ?? 0.0)
             bestTimeLabel.textColor = .black
         } else {
             // new best time
@@ -490,21 +514,6 @@ class PuzzleViewController: UIViewController, UINavigationBarDelegate {
         
         finalTimeLabel.text = gameTimerLabel.text
         successOverlayView.isHidden = false
-    }
-    
-    private func checkPuzzleIsSolved() {
-        if puzzle.isSolved {
-            // TODO: if you ever implement replay, then the incrementPuzzleId function will need to support a "to:" parameter
-            timerState = .final
-            gameState = .finished
-            updateShowSuccessView()
-            incrementPlayerPuzzleProgress()
-            setPuzzleProgress(to: false)
-            puzzleLoader.preloadPuzzle(forSize: puzzle.size, withPuzzleId: playerProgress.activePuzzleId)
-            
-            // analytics - puzzle was successfully completed
-            AnalyticsWrapper.logEvent(.selectContent, contentType: .puzzlePlayed, id: "id-puzzleCompleted", name: "puzzleSuccessfullyFilled")
-        }
     }
     
     private func skipPuzzle() {
@@ -523,7 +532,7 @@ class PuzzleViewController: UIViewController, UINavigationBarDelegate {
         timerState = .reset
         resetCellNotesAndGuesses()
         consumePuzzleAllowance()
-        puzzle = puzzleLoader.fetchPuzzle(forSize: puzzle.size, withPuzzleId: playerProgress.activePuzzleId)
+        puzzle = PuzzleLoader.sharedInstance.fetchPuzzle(forSize: puzzle.size, withPuzzleId: playerProgress.activePuzzleId)
         writePuzzleToGrid()
         fillInUnitCells()
         setPuzzleProgress(to: true)
@@ -953,18 +962,20 @@ class PuzzleViewController: UIViewController, UINavigationBarDelegate {
     /// Save the timer to the 'leaderboard' as a final count
     private func saveFinalTimer() {
         // save final timer to realm
+        playerProgress.puzzlesSolved.filter("puzzleId == \(playerProgress.activePuzzleId)").first?.markPuzzlePlayed(finalTime: gameTimer, withRealm: realm)
+        /*
         do {
             try realm.write {
                 let solvedPuzzle = PuzzlesSolved()
                 solvedPuzzle.puzzleId = playerProgress.activePuzzleId
                 solvedPuzzle.solvedOn = NSDate()
-                solvedPuzzle.timeToSolve = gameTimer
+                solvedPuzzle.timeToSolve.value = gameTimer
                 
                 playerProgress.puzzlesSolved.append(solvedPuzzle)
             }
         } catch (let error) {
             fatalError("Error trying to save the final timer:\n\(error)")
-        }
+        } */
     }
     
     // MARK: - Realm helper functions
@@ -1076,7 +1087,20 @@ class PuzzleViewController: UIViewController, UINavigationBarDelegate {
     }
     
     private func incrementPlayerPuzzleProgress() {
-        playerProgress.incrementPuzzleId(withRealm: realm)
+        // make sure we have a new puzzle id
+        setNextPuzzleId()
+        
+        // write this as the active puzzle to realm
+        do {
+            try realm.write {
+                playerProgress.activePuzzleId = nextPuzzleId ?? 0
+            }
+        } catch (let error) {
+            fatalError("Error moving the user to the new puzzle ID:\n\(error)")
+        }
+        
+        // the next puzzle has been set. We can mark it as nil
+        nextPuzzleId = nil
     }
     
     private func setPuzzleProgress(to: Bool) {

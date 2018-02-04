@@ -54,14 +54,17 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         let config = Realm.Configuration(
             // Set the new schema version. This must be greater than the previously used
             // version (if you've never set a schema version before, the version is 0).
-            schemaVersion: 5,
+            schemaVersion: 7,
             
             // Set the block which will be called automatically when opening a Realm with
             // a schema version lower than the one set above
             migrationBlock: { migration, oldSchemaVersion in
                 // We haven’t migrated anything yet, so oldSchemaVersion == 0
-                if (oldSchemaVersion < 5) {
-                    // do nothing, just let Realm pick up the new configuration
+                if (oldSchemaVersion < 6) {
+                    // introduced a play count to the PuzzlesSolved object - will set existing records to "1"
+                    migration.enumerateObjects(ofType: PuzzlesSolved.className()) { oldOjbect, newObject in
+                        newObject!["playCount"] = 1
+                    }
                 }
                 
         })
@@ -71,11 +74,25 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         // load the configuration
         let realm = try! Realm()
         
+        // set the default player progress / validate that none were lost
+        let playerProgress = realm.objects(PlayerProgress.self)
+        for puzzleSize in 3...9 {
+            if playerProgress.filter("puzzleSize == \(puzzleSize)").count == 0 {
+                try! realm.write() {
+                    let newPlayerProgress = PlayerProgress()
+                    newPlayerProgress.puzzleSize = puzzleSize
+                    newPlayerProgress.activePuzzleId = Int(arc4random_uniform(200)) + 200
+                    newPlayerProgress.puzzleProgress = nil
+                    realm.add(newPlayerProgress)
+                }
+            }
+        }
+        
         // set the default allowance values if they don't exist
         for allowanceType in Utility.iterateEnum(AllowanceTypes.self) {
             // test to see if we have an allowance for this type
-            DebugUtil.print("Granting the initial allowance for \(allowanceType)")
             if realm.objects(Allowances.self).filter("allowanceId == '\(allowanceType)'").count == 0 {
+                DebugUtil.print("Granting the initial allowance for \(allowanceType)")
                 // if an allowance for this type does not exist, then let's add the default value
                 try! realm.write {
                     let newAllowanceRecord = Allowances()
@@ -84,21 +101,6 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
                     newAllowanceRecord.lastRefreshDate = NSDate()
                     realm.add(newAllowanceRecord)
                 }
-            }
-        }
-        
-        // set the default player progress / validate that none were lost
-        let playerProgress = realm.objects(PlayerProgress.self)
-        try! realm.write() {
-            for puzzleSize in 3...9 {
-                if playerProgress.filter("puzzleSize == \(puzzleSize)").count == 0{
-                    let newPlayerProgress = PlayerProgress()
-                    newPlayerProgress.puzzleSize = puzzleSize
-                    newPlayerProgress.activePuzzleId = 0
-                    newPlayerProgress.puzzleProgress = nil
-                    realm.add(newPlayerProgress)
-                }
-                
             }
         }
         

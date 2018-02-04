@@ -40,7 +40,7 @@
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="h7m-0Z-bdV" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-46" y="-379"/>
+            <point key="canvasLocation" x="-129" y="-379"/>
         </scene>
         <!--Puzzle Play!-->
         <scene sceneID="Cjb-T4-LqD">
@@ -445,7 +445,7 @@
                                 <rect key="frame" x="0.0" y="114" width="375" height="428"/>
                                 <subviews>
                                     <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="fillEqually" translatesAutoresizingMaskIntoConstraints="NO" id="VV0-a5-BBu">
-                                        <rect key="frame" x="-21" y="6" width="417" height="417"/>
+                                        <rect key="frame" x="-21" y="6.5" width="417" height="416.5"/>
                                         <subviews>
                                             <stackView opaque="NO" contentMode="scaleToFill" distribution="fillEqually" translatesAutoresizingMaskIntoConstraints="NO" id="c9j-3T-NaL" customClass="GridRowView" customModule="Mathdoku" customModuleProvider="target">
                                                 <rect key="frame" x="0.0" y="0.0" width="417" height="46.5"/>
@@ -454,7 +454,7 @@
                                                         <rect key="frame" x="0.0" y="0.0" width="46.5" height="46.5"/>
                                                         <subviews>
                                                             <view contentMode="redraw" translatesAutoresizingMaskIntoConstraints="NO" id="mbN-Wa-ALH" customClass="CellView" customModule="Mathdoku" customModuleProvider="target">
-                                                                <rect key="frame" x="0.0" y="0.0" width="46" height="46"/>
+                                                                <rect key="frame" x="0.0" y="0.0" width="46.5" height="46.5"/>
                                                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                                                 <accessibility key="accessibilityConfiguration">
                                                                     <accessibilityTraits key="traits" notEnabled="YES"/>
@@ -473,7 +473,7 @@
                                                         <rect key="frame" x="46.5" y="0.0" width="46" height="46.5"/>
                                                         <subviews>
                                                             <view contentMode="redraw" translatesAutoresizingMaskIntoConstraints="NO" id="9Mh-Zs-F5f" customClass="CellView" customModule="Mathdoku" customModuleProvider="target">
-                                                                <rect key="frame" x="0.0" y="0.0" width="45.5" height="46"/>
+                                                                <rect key="frame" x="0.0" y="0.0" width="46" height="46.5"/>
                                                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                                                 <accessibility key="accessibilityConfiguration">
                                                                     <accessibilityTraits key="traits" notEnabled="YES"/>
@@ -492,7 +492,7 @@
                                                         <rect key="frame" x="92.5" y="0.0" width="46.5" height="46.5"/>
                                                         <subviews>
                                                             <view contentMode="redraw" translatesAutoresizingMaskIntoConstraints="NO" id="oeR-9Z-R6k" customClass="CellView" customModule="Mathdoku" customModuleProvider="target">
-                                                                <rect key="frame" x="0.0" y="0.0" width="46.5" height="46"/>
+                                                                <rect key="frame" x="0.0" y="0.0" width="46.5" height="46.5"/>
                                                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                                                 <accessibility key="accessibilityConfiguration">
                                                                     <accessibilityTraits key="traits" notEnabled="YES"/>
@@ -511,7 +511,7 @@
                                                         <rect key="frame" x="139" y="0.0" width="46.5" height="46.5"/>
                                                         <subviews>
                                                             <view contentMode="redraw" translatesAutoresizingMaskIntoConstraints="NO" id="bWV-iE-a86" customClass="CellView" customModule="Mathdoku" customModuleProvider="target">
-                                                                <rect key="frame" x="0.0" y="0.0" width="46" height="46"/>
+                                                                <rect key="frame" x="0.0" y="0.0" width="46" height="46.5"/>
                                                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                                                 <accessibility key="accessibilityConfiguration">
                                                                     <accessibilityTraits key="traits" notEnabled="YES"/>
@@ -530,7 +530,7 @@
                                                         <rect key="frame" x="185.5" y="0.0" width="46" height="46.5"/>
                                                         <subviews>
                                                             <view contentMode="redraw" translatesAutoresizingMaskIntoConstraints="NO" id="VeS-ZQ-efM" customClass="CellView" customModule="Mathdoku" customModuleProvider="target">
-                                                                <rect key="frame" x="0.0" y="0.0" width="45.5" height="46"/>
+                                                                <rect key="frame" x="0.0" y="0.0" width="45.5" height="46.5"/>
                                                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                                                 <accessibility key="accessibilityConfiguration">
                                                                     <accessibilityTraits key="traits" notEnabled="YES"/>
@@ -549,7 +549,7 @@
                                                         <rect key="frame" x="231.5" y="0.0" width="46.5" height="46.5"/>
                                                         <subviews>
                                                             <view contentMode="redraw" translatesAutoresizingMaskIntoConstraints="NO" id="bge-KS-DdM" customClass="CellView" customModule="Mathdoku" customModuleProvider="target">
-                                                                <rect key="frame" x="0.0" y="0.0" width="46" height="46"/>
+                                                                <rect key="frame" x="0.0" y="0.0" width="46.5" height="46.5"/>
                                                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                                                 <accessibility key="accessibilityConfiguration">
                                                                     <accessibilityTraits key="traits" notEnabled="YES"/>
@@ -568,7 +568,7 @@
                                                         <rect key="frame" x="278" y="0.0" width="46.5" height="46.5"/>
                                                         <subviews>
                                                             <view contentMode="redraw" translatesAutoresizingMaskIntoConstraints="NO" id="PUJ-J7-qzU" customClass="CellView" customModule="Mathdoku" customModuleProvider="target">
-                                                                <rect key="frame" x="0.0" y="0.0" width="46.5" height="46"/>
+                                                                <rect key="frame" x="0.0" y="0.0" width="46.5" height="46.5"/>
                                                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                                                 <accessibility key="accessibilityConfiguration">
                                                                     <accessibilityTraits key="traits" notEnabled="YES"/>
@@ -587,7 +587,7 @@
                                                         <rect key="frame" x="324.5" y="0.0" width="46" height="46.5"/>
                                                         <subviews>
                                                             <view contentMode="redraw" translatesAutoresizingMaskIntoConstraints="NO" id="3wZ-3b-Mgb" customClass="CellView" customModule="Mathdoku" customModuleProvider="target">
-                                                                <rect key="frame" x="0.0" y="0.0" width="45.5" height="46"/>
+                                                                <rect key="frame" x="0.0" y="0.0" width="45.5" height="46.5"/>
                                                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                                                 <accessibility key="accessibilityConfiguration">
                                                                     <accessibilityTraits key="traits" notEnabled="YES"/>
@@ -606,7 +606,7 @@
                                                         <rect key="frame" x="370.5" y="0.0" width="46.5" height="46.5"/>
                                                         <subviews>
                                                             <view contentMode="redraw" translatesAutoresizingMaskIntoConstraints="NO" id="l27-3V-MAy" customClass="CellView" customModule="Mathdoku" customModuleProvider="target">
-                                                                <rect key="frame" x="0.0" y="0.0" width="46" height="46"/>
+                                                                <rect key="frame" x="0.0" y="0.0" width="46" height="46.5"/>
                                                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                                                 <accessibility key="accessibilityConfiguration">
                                                                     <accessibilityTraits key="traits" notEnabled="YES"/>
@@ -630,7 +630,7 @@
                                                         <rect key="frame" x="0.0" y="0.0" width="46.5" height="46"/>
                                                         <subviews>
                                                             <view contentMode="redraw" translatesAutoresizingMaskIntoConstraints="NO" id="K7w-ul-hNc" customClass="CellView" customModule="Mathdoku" customModuleProvider="target">
-                                                                <rect key="frame" x="0.0" y="0.0" width="46" height="45.5"/>
+                                                                <rect key="frame" x="0.0" y="0.0" width="46.5" height="45.5"/>
                                                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                                                 <accessibility key="accessibilityConfiguration">
                                                                     <accessibilityTraits key="traits" notEnabled="YES"/>
@@ -649,7 +649,7 @@
                                                         <rect key="frame" x="46.5" y="0.0" width="46" height="46"/>
                                                         <subviews>
                                                             <view contentMode="redraw" translatesAutoresizingMaskIntoConstraints="NO" id="BV8-Tp-sgx" customClass="CellView" customModule="Mathdoku" customModuleProvider="target">
-                                                                <rect key="frame" x="0.0" y="0.0" width="45.5" height="45.5"/>
+                                                                <rect key="frame" x="0.0" y="0.0" width="46" height="45.5"/>
                                                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                                                 <accessibility key="accessibilityConfiguration">
                                                                     <accessibilityTraits key="traits" notEnabled="YES"/>
@@ -725,7 +725,7 @@
                                                         <rect key="frame" x="231.5" y="0.0" width="46.5" height="46"/>
                                                         <subviews>
                                                             <view contentMode="redraw" translatesAutoresizingMaskIntoConstraints="NO" id="sq8-28-nga" customClass="CellView" customModule="Mathdoku" customModuleProvider="target">
-                                                                <rect key="frame" x="0.0" y="0.0" width="46" height="45.5"/>
+                                                                <rect key="frame" x="0.0" y="0.0" width="46.5" height="45.5"/>
                                                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                                                 <accessibility key="accessibilityConfiguration">
                                                                     <accessibilityTraits key="traits" notEnabled="YES"/>
@@ -806,7 +806,7 @@
                                                         <rect key="frame" x="0.0" y="0.0" width="46.5" height="46.5"/>
                                                         <subviews>
                                                             <view contentMode="redraw" translatesAutoresizingMaskIntoConstraints="NO" id="Jhy-Ka-wxz" customClass="CellView" customModule="Mathdoku" customModuleProvider="target">
-                                                                <rect key="frame" x="0.0" y="0.0" width="46" height="46"/>
+                                                                <rect key="frame" x="0.0" y="0.0" width="46.5" height="46"/>
                                                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                                                 <accessibility key="accessibilityConfiguration">
                                                                     <accessibilityTraits key="traits" notEnabled="YES"/>
@@ -825,7 +825,7 @@
                                                         <rect key="frame" x="46.5" y="0.0" width="46" height="46.5"/>
                                                         <subviews>
                                                             <view contentMode="redraw" translatesAutoresizingMaskIntoConstraints="NO" id="quV-mI-3FB" customClass="CellView" customModule="Mathdoku" customModuleProvider="target">
-                                                                <rect key="frame" x="0.0" y="0.0" width="45.5" height="46"/>
+                                                                <rect key="frame" x="0.0" y="0.0" width="46" height="46"/>
                                                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                                                 <accessibility key="accessibilityConfiguration">
                                                                     <accessibilityTraits key="traits" notEnabled="YES"/>
@@ -901,7 +901,7 @@
                                                         <rect key="frame" x="231.5" y="0.0" width="46.5" height="46.5"/>
                                                         <subviews>
                                                             <view contentMode="redraw" translatesAutoresizingMaskIntoConstraints="NO" id="FvS-pb-8Vv" customClass="CellView" customModule="Mathdoku" customModuleProvider="target">
-                                                                <rect key="frame" x="0.0" y="0.0" width="46" height="46"/>
+                                                                <rect key="frame" x="0.0" y="0.0" width="46.5" height="46"/>
                                                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                                                 <accessibility key="accessibilityConfiguration">
                                                                     <accessibilityTraits key="traits" notEnabled="YES"/>
@@ -976,13 +976,13 @@
                                                 </subviews>
                                             </stackView>
                                             <stackView opaque="NO" contentMode="scaleToFill" distribution="fillEqually" translatesAutoresizingMaskIntoConstraints="NO" id="IrO-gF-fLp" customClass="GridRowView" customModule="Mathdoku" customModuleProvider="target">
-                                                <rect key="frame" x="0.0" y="139" width="417" height="46.5"/>
+                                                <rect key="frame" x="0.0" y="139" width="417" height="46"/>
                                                 <subviews>
                                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="aQf-2U-gnn" customClass="CellContainerView" customModule="Mathdoku" customModuleProvider="target">
-                                                        <rect key="frame" x="0.0" y="0.0" width="46.5" height="46.5"/>
+                                                        <rect key="frame" x="0.0" y="0.0" width="46.5" height="46"/>
                                                         <subviews>
                                                             <view contentMode="redraw" translatesAutoresizingMaskIntoConstraints="NO" id="MRC-5H-Aki" customClass="CellView" customModule="Mathdoku" customModuleProvider="target">
-                                                                <rect key="frame" x="0.0" y="0.0" width="46" height="46"/>
+                                                                <rect key="frame" x="0.0" y="0.0" width="46.5" height="46"/>
                                                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                                                 <accessibility key="accessibilityConfiguration">
                                                                     <accessibilityTraits key="traits" notEnabled="YES"/>
@@ -998,10 +998,10 @@
                                                         </constraints>
                                                     </view>
                                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="dcM-oy-y0w" customClass="CellContainerView" customModule="Mathdoku" customModuleProvider="target">
-                                                        <rect key="frame" x="46.5" y="0.0" width="46" height="46.5"/>
+                                                        <rect key="frame" x="46.5" y="0.0" width="46" height="46"/>
                                                         <subviews>
                                                             <view contentMode="redraw" translatesAutoresizingMaskIntoConstraints="NO" id="aXu-QW-yDd" customClass="CellView" customModule="Mathdoku" customModuleProvider="target">
-                                                                <rect key="frame" x="0.0" y="0.0" width="45.5" height="46"/>
+                                                                <rect key="frame" x="0.0" y="0.0" width="46" height="46"/>
                                                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                                                 <accessibility key="accessibilityConfiguration">
                                                                     <accessibilityTraits key="traits" notEnabled="YES"/>
@@ -1017,7 +1017,7 @@
                                                         </constraints>
                                                     </view>
                                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="ELi-Qe-f09" customClass="CellContainerView" customModule="Mathdoku" customModuleProvider="target">
-                                                        <rect key="frame" x="92.5" y="0.0" width="46.5" height="46.5"/>
+                                                        <rect key="frame" x="92.5" y="0.0" width="46.5" height="46"/>
                                                         <subviews>
                                                             <view contentMode="redraw" translatesAutoresizingMaskIntoConstraints="NO" id="XUz-Oo-Lib" customClass="CellView" customModule="Mathdoku" customModuleProvider="target">
                                                                 <rect key="frame" x="0.0" y="0.0" width="46.5" height="46"/>
@@ -1036,7 +1036,7 @@
                                                         </constraints>
                                                     </view>
                                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="QRT-in-B3K" customClass="CellContainerView" customModule="Mathdoku" customModuleProvider="target">
-                                                        <rect key="frame" x="139" y="0.0" width="46.5" height="46.5"/>
+                                                        <rect key="frame" x="139" y="0.0" width="46.5" height="46"/>
                                                         <subviews>
                                                             <view contentMode="redraw" translatesAutoresizingMaskIntoConstraints="NO" id="Svm-Ak-fCH" customClass="CellView" customModule="Mathdoku" customModuleProvider="target">
                                                                 <rect key="frame" x="0.0" y="0.0" width="46" height="46"/>
@@ -1055,7 +1055,7 @@
                                                         </constraints>
                                                     </view>
                                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="B40-rW-Qiv" customClass="CellContainerView" customModule="Mathdoku" customModuleProvider="target">
-                                                        <rect key="frame" x="185.5" y="0.0" width="46" height="46.5"/>
+                                                        <rect key="frame" x="185.5" y="0.0" width="46" height="46"/>
                                                         <subviews>
                                                             <view contentMode="redraw" translatesAutoresizingMaskIntoConstraints="NO" id="vec-kA-wsI" customClass="CellView" customModule="Mathdoku" customModuleProvider="target">
                                                                 <rect key="frame" x="0.0" y="0.0" width="45.5" height="46"/>
@@ -1074,10 +1074,10 @@
                                                         </constraints>
                                                     </view>
                                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="dEO-12-Bod" customClass="CellContainerView" customModule="Mathdoku" customModuleProvider="target">
-                                                        <rect key="frame" x="231.5" y="0.0" width="46.5" height="46.5"/>
+                                                        <rect key="frame" x="231.5" y="0.0" width="46.5" height="46"/>
                                                         <subviews>
                                                             <view contentMode="redraw" translatesAutoresizingMaskIntoConstraints="NO" id="Mg2-dH-O1C" customClass="CellView" customModule="Mathdoku" customModuleProvider="target">
-                                                                <rect key="frame" x="0.0" y="0.0" width="46" height="46"/>
+                                                                <rect key="frame" x="0.0" y="0.0" width="46.5" height="46"/>
                                                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                                                 <accessibility key="accessibilityConfiguration">
                                                                     <accessibilityTraits key="traits" notEnabled="YES"/>
@@ -1093,7 +1093,7 @@
                                                         </constraints>
                                                     </view>
                                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="7LX-UA-Rba" customClass="CellContainerView" customModule="Mathdoku" customModuleProvider="target">
-                                                        <rect key="frame" x="278" y="0.0" width="46.5" height="46.5"/>
+                                                        <rect key="frame" x="278" y="0.0" width="46.5" height="46"/>
                                                         <subviews>
                                                             <view contentMode="redraw" translatesAutoresizingMaskIntoConstraints="NO" id="jbg-xU-u4J" customClass="CellView" customModule="Mathdoku" customModuleProvider="target">
                                                                 <rect key="frame" x="0.0" y="0.0" width="46.5" height="46"/>
@@ -1112,7 +1112,7 @@
                                                         </constraints>
                                                     </view>
                                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="lQh-Ce-u2G" customClass="CellContainerView" customModule="Mathdoku" customModuleProvider="target">
-                                                        <rect key="frame" x="324.5" y="0.0" width="46" height="46.5"/>
+                                                        <rect key="frame" x="324.5" y="0.0" width="46" height="46"/>
                                                         <subviews>
                                                             <view contentMode="redraw" translatesAutoresizingMaskIntoConstraints="NO" id="l5V-wn-WVS" customClass="CellView" customModule="Mathdoku" customModuleProvider="target">
                                                                 <rect key="frame" x="0.0" y="0.0" width="45.5" height="46"/>
@@ -1131,7 +1131,7 @@
                                                         </constraints>
                                                     </view>
                                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Buv-Xi-VhK" customClass="CellContainerView" customModule="Mathdoku" customModuleProvider="target">
-                                                        <rect key="frame" x="370.5" y="0.0" width="46.5" height="46.5"/>
+                                                        <rect key="frame" x="370.5" y="0.0" width="46.5" height="46"/>
                                                         <subviews>
                                                             <view contentMode="redraw" translatesAutoresizingMaskIntoConstraints="NO" id="dH2-zH-7wE" customClass="CellView" customModule="Mathdoku" customModuleProvider="target">
                                                                 <rect key="frame" x="0.0" y="0.0" width="46" height="46"/>
@@ -1152,13 +1152,13 @@
                                                 </subviews>
                                             </stackView>
                                             <stackView opaque="NO" contentMode="scaleToFill" distribution="fillEqually" translatesAutoresizingMaskIntoConstraints="NO" id="ZYi-EE-1e7" customClass="GridRowView" customModule="Mathdoku" customModuleProvider="target">
-                                                <rect key="frame" x="0.0" y="185.5" width="417" height="46"/>
+                                                <rect key="frame" x="0.0" y="185" width="417" height="46.5"/>
                                                 <subviews>
                                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="VyA-gp-VDv" customClass="CellContainerView" customModule="Mathdoku" customModuleProvider="target">
-                                                        <rect key="frame" x="0.0" y="0.0" width="46.5" height="46"/>
+                                                        <rect key="frame" x="0.0" y="0.0" width="46.5" height="46.5"/>
                                                         <subviews>
                                                             <view contentMode="redraw" translatesAutoresizingMaskIntoConstraints="NO" id="WrU-FA-2xZ" customClass="CellView" customModule="Mathdoku" customModuleProvider="target">
-                                                                <rect key="frame" x="0.0" y="0.0" width="46" height="45.5"/>
+                                                                <rect key="frame" x="0.0" y="0.0" width="46.5" height="46.5"/>
                                                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                                                 <accessibility key="accessibilityConfiguration">
                                                                     <accessibilityTraits key="traits" notEnabled="YES"/>
@@ -1174,10 +1174,10 @@
                                                         </constraints>
                                                     </view>
                                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="dBh-1k-Ynp" customClass="CellContainerView" customModule="Mathdoku" customModuleProvider="target">
-                                                        <rect key="frame" x="46.5" y="0.0" width="46" height="46"/>
+                                                        <rect key="frame" x="46.5" y="0.0" width="46" height="46.5"/>
                                                         <subviews>
                                                             <view contentMode="redraw" translatesAutoresizingMaskIntoConstraints="NO" id="KBW-cC-xwp" customClass="CellView" customModule="Mathdoku" customModuleProvider="target">
-                                                                <rect key="frame" x="0.0" y="0.0" width="45.5" height="45.5"/>
+                                                                <rect key="frame" x="0.0" y="0.0" width="46" height="46.5"/>
                                                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                                                 <accessibility key="accessibilityConfiguration">
                                                                     <accessibilityTraits key="traits" notEnabled="YES"/>
@@ -1193,10 +1193,10 @@
                                                         </constraints>
                                                     </view>
                                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="gnx-9Y-Ms2" customClass="CellContainerView" customModule="Mathdoku" customModuleProvider="target">
-                                                        <rect key="frame" x="92.5" y="0.0" width="46.5" height="46"/>
+                                                        <rect key="frame" x="92.5" y="0.0" width="46.5" height="46.5"/>
                                                         <subviews>
                                                             <view contentMode="redraw" translatesAutoresizingMaskIntoConstraints="NO" id="aDW-J5-7zB" customClass="CellView" customModule="Mathdoku" customModuleProvider="target">
-                                                                <rect key="frame" x="0.0" y="0.0" width="46.5" height="45.5"/>
+                                                                <rect key="frame" x="0.0" y="0.0" width="46.5" height="46.5"/>
                                                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                                                 <accessibility key="accessibilityConfiguration">
                                                                     <accessibilityTraits key="traits" notEnabled="YES"/>
@@ -1212,10 +1212,10 @@
                                                         </constraints>
                                                     </view>
                                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="var-WE-lsj" customClass="CellContainerView" customModule="Mathdoku" customModuleProvider="target">
-                                                        <rect key="frame" x="139" y="0.0" width="46.5" height="46"/>
+                                                        <rect key="frame" x="139" y="0.0" width="46.5" height="46.5"/>
                                                         <subviews>
                                                             <view contentMode="redraw" translatesAutoresizingMaskIntoConstraints="NO" id="xBP-f2-S72" customClass="CellView" customModule="Mathdoku" customModuleProvider="target">
-                                                                <rect key="frame" x="0.0" y="0.0" width="46" height="45.5"/>
+                                                                <rect key="frame" x="0.0" y="0.0" width="46" height="46.5"/>
                                                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                                                 <accessibility key="accessibilityConfiguration">
                                                                     <accessibilityTraits key="traits" notEnabled="YES"/>
@@ -1231,10 +1231,10 @@
                                                         </constraints>
                                                     </view>
                                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Mgj-Ae-tlQ" customClass="CellContainerView" customModule="Mathdoku" customModuleProvider="target">
-                                                        <rect key="frame" x="185.5" y="0.0" width="46" height="46"/>
+                                                        <rect key="frame" x="185.5" y="0.0" width="46" height="46.5"/>
                                                         <subviews>
                                                             <view contentMode="redraw" translatesAutoresizingMaskIntoConstraints="NO" id="a2U-QK-yTY" customClass="CellView" customModule="Mathdoku" customModuleProvider="target">
-                                                                <rect key="frame" x="0.0" y="0.0" width="45.5" height="45.5"/>
+                                                                <rect key="frame" x="0.0" y="0.0" width="45.5" height="46.5"/>
                                                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                                                 <accessibility key="accessibilityConfiguration">
                                                                     <accessibilityTraits key="traits" notEnabled="YES"/>
@@ -1250,10 +1250,10 @@
                                                         </constraints>
                                                     </view>
                                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="af6-RP-u36" customClass="CellContainerView" customModule="Mathdoku" customModuleProvider="target">
-                                                        <rect key="frame" x="231.5" y="0.0" width="46.5" height="46"/>
+                                                        <rect key="frame" x="231.5" y="0.0" width="46.5" height="46.5"/>
                                                         <subviews>
                                                             <view contentMode="redraw" translatesAutoresizingMaskIntoConstraints="NO" id="TRe-RB-IBs" customClass="CellView" customModule="Mathdoku" customModuleProvider="target">
-                                                                <rect key="frame" x="0.0" y="0.0" width="46" height="45.5"/>
+                                                                <rect key="frame" x="0.0" y="0.0" width="46.5" height="46.5"/>
                                                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                                                 <accessibility key="accessibilityConfiguration">
                                                                     <accessibilityTraits key="traits" notEnabled="YES"/>
@@ -1269,10 +1269,10 @@
                                                         </constraints>
                                                     </view>
                                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="9AM-db-8uo" customClass="CellContainerView" customModule="Mathdoku" customModuleProvider="target">
-                                                        <rect key="frame" x="278" y="0.0" width="46.5" height="46"/>
+                                                        <rect key="frame" x="278" y="0.0" width="46.5" height="46.5"/>
                                                         <subviews>
                                                             <view contentMode="redraw" translatesAutoresizingMaskIntoConstraints="NO" id="EBC-FE-g5g" customClass="CellView" customModule="Mathdoku" customModuleProvider="target">
-                                                                <rect key="frame" x="0.0" y="0.0" width="46.5" height="45.5"/>
+                                                                <rect key="frame" x="0.0" y="0.0" width="46.5" height="46.5"/>
                                                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                                                 <accessibility key="accessibilityConfiguration">
                                                                     <accessibilityTraits key="traits" notEnabled="YES"/>
@@ -1288,10 +1288,10 @@
                                                         </constraints>
                                                     </view>
                                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Ogv-94-sdj" customClass="CellContainerView" customModule="Mathdoku" customModuleProvider="target">
-                                                        <rect key="frame" x="324.5" y="0.0" width="46" height="46"/>
+                                                        <rect key="frame" x="324.5" y="0.0" width="46" height="46.5"/>
                                                         <subviews>
                                                             <view contentMode="redraw" translatesAutoresizingMaskIntoConstraints="NO" id="jYv-OL-Via" customClass="CellView" customModule="Mathdoku" customModuleProvider="target">
-                                                                <rect key="frame" x="0.0" y="0.0" width="45.5" height="45.5"/>
+                                                                <rect key="frame" x="0.0" y="0.0" width="45.5" height="46.5"/>
                                                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                                                 <accessibility key="accessibilityConfiguration">
                                                                     <accessibilityTraits key="traits" notEnabled="YES"/>
@@ -1307,10 +1307,10 @@
                                                         </constraints>
                                                     </view>
                                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="LXb-wK-PcK" customClass="CellContainerView" customModule="Mathdoku" customModuleProvider="target">
-                                                        <rect key="frame" x="370.5" y="0.0" width="46.5" height="46"/>
+                                                        <rect key="frame" x="370.5" y="0.0" width="46.5" height="46.5"/>
                                                         <subviews>
                                                             <view contentMode="redraw" translatesAutoresizingMaskIntoConstraints="NO" id="4hW-ta-k7S" customClass="CellView" customModule="Mathdoku" customModuleProvider="target">
-                                                                <rect key="frame" x="0.0" y="0.0" width="46" height="45.5"/>
+                                                                <rect key="frame" x="0.0" y="0.0" width="46" height="46.5"/>
                                                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                                                 <accessibility key="accessibilityConfiguration">
                                                                     <accessibilityTraits key="traits" notEnabled="YES"/>
@@ -1328,13 +1328,13 @@
                                                 </subviews>
                                             </stackView>
                                             <stackView opaque="NO" contentMode="scaleToFill" distribution="fillEqually" translatesAutoresizingMaskIntoConstraints="NO" id="tRK-1I-CCh" customClass="GridRowView" customModule="Mathdoku" customModuleProvider="target">
-                                                <rect key="frame" x="0.0" y="231.5" width="417" height="46.5"/>
+                                                <rect key="frame" x="0.0" y="231.5" width="417" height="46"/>
                                                 <subviews>
                                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="ceE-YR-OlE" customClass="CellContainerView" customModule="Mathdoku" customModuleProvider="target">
-                                                        <rect key="frame" x="0.0" y="0.0" width="46.5" height="46.5"/>
+                                                        <rect key="frame" x="0.0" y="0.0" width="46.5" height="46"/>
                                                         <subviews>
                                                             <view contentMode="redraw" translatesAutoresizingMaskIntoConstraints="NO" id="xb7-4F-gpA" customClass="CellView" customModule="Mathdoku" customModuleProvider="target">
-                                                                <rect key="frame" x="0.0" y="0.0" width="46" height="46"/>
+                                                                <rect key="frame" x="0.0" y="0.0" width="46.5" height="45.5"/>
                                                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                                                 <accessibility key="accessibilityConfiguration">
                                                                     <accessibilityTraits key="traits" notEnabled="YES"/>
@@ -1350,10 +1350,10 @@
                                                         </constraints>
                                                     </view>
                                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="cXf-0W-TJY" customClass="CellContainerView" customModule="Mathdoku" customModuleProvider="target">
-                                                        <rect key="frame" x="46.5" y="0.0" width="46" height="46.5"/>
+                                                        <rect key="frame" x="46.5" y="0.0" width="46" height="46"/>
                                                         <subviews>
                                                             <view contentMode="redraw" translatesAutoresizingMaskIntoConstraints="NO" id="GUu-1i-IYb" customClass="CellView" customModule="Mathdoku" customModuleProvider="target">
-                                                                <rect key="frame" x="0.0" y="0.0" width="45.5" height="46"/>
+                                                                <rect key="frame" x="0.0" y="0.0" width="46" height="45.5"/>
                                                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                                                 <accessibility key="accessibilityConfiguration">
                                                                     <accessibilityTraits key="traits" notEnabled="YES"/>
@@ -1369,10 +1369,10 @@
                                                         </constraints>
                                                     </view>
                                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="nFx-t5-5dx" customClass="CellContainerView" customModule="Mathdoku" customModuleProvider="target">
-                                                        <rect key="frame" x="92.5" y="0.0" width="46.5" height="46.5"/>
+                                                        <rect key="frame" x="92.5" y="0.0" width="46.5" height="46"/>
                                                         <subviews>
                                                             <view contentMode="redraw" translatesAutoresizingMaskIntoConstraints="NO" id="6cw-YA-6pt" customClass="CellView" customModule="Mathdoku" customModuleProvider="target">
-                                                                <rect key="frame" x="0.0" y="0.0" width="46.5" height="46"/>
+                                                                <rect key="frame" x="0.0" y="0.0" width="46.5" height="45.5"/>
                                                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                                                 <accessibility key="accessibilityConfiguration">
                                                                     <accessibilityTraits key="traits" notEnabled="YES"/>
@@ -1388,10 +1388,10 @@
                                                         </constraints>
                                                     </view>
                                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="dPz-yh-1gZ" customClass="CellContainerView" customModule="Mathdoku" customModuleProvider="target">
-                                                        <rect key="frame" x="139" y="0.0" width="46.5" height="46.5"/>
+                                                        <rect key="frame" x="139" y="0.0" width="46.5" height="46"/>
                                                         <subviews>
                                                             <view contentMode="redraw" translatesAutoresizingMaskIntoConstraints="NO" id="D9f-jp-zj2" customClass="CellView" customModule="Mathdoku" customModuleProvider="target">
-                                                                <rect key="frame" x="0.0" y="0.0" width="46" height="46"/>
+                                                                <rect key="frame" x="0.0" y="0.0" width="46" height="45.5"/>
                                                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                                                 <accessibility key="accessibilityConfiguration">
                                                                     <accessibilityTraits key="traits" notEnabled="YES"/>
@@ -1407,10 +1407,10 @@
                                                         </constraints>
                                                     </view>
                                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Dz9-B6-v38" customClass="CellContainerView" customModule="Mathdoku" customModuleProvider="target">
-                                                        <rect key="frame" x="185.5" y="0.0" width="46" height="46.5"/>
+                                                        <rect key="frame" x="185.5" y="0.0" width="46" height="46"/>
                                                         <subviews>
                                                             <view contentMode="redraw" translatesAutoresizingMaskIntoConstraints="NO" id="9yf-sJ-AOu" customClass="CellView" customModule="Mathdoku" customModuleProvider="target">
-                                                                <rect key="frame" x="0.0" y="0.0" width="45.5" height="46"/>
+                                                                <rect key="frame" x="0.0" y="0.0" width="45.5" height="45.5"/>
                                                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                                                 <accessibility key="accessibilityConfiguration">
                                                                     <accessibilityTraits key="traits" notEnabled="YES"/>
@@ -1426,10 +1426,10 @@
                                                         </constraints>
                                                     </view>
                                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Dn6-fc-RfK" customClass="CellContainerView" customModule="Mathdoku" customModuleProvider="target">
-                                                        <rect key="frame" x="231.5" y="0.0" width="46.5" height="46.5"/>
+                                                        <rect key="frame" x="231.5" y="0.0" width="46.5" height="46"/>
                                                         <subviews>
                                                             <view contentMode="redraw" translatesAutoresizingMaskIntoConstraints="NO" id="BlR-Rg-JZt" customClass="CellView" customModule="Mathdoku" customModuleProvider="target">
-                                                                <rect key="frame" x="0.0" y="0.0" width="46" height="46"/>
+                                                                <rect key="frame" x="0.0" y="0.0" width="46.5" height="45.5"/>
                                                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                                                 <accessibility key="accessibilityConfiguration">
                                                                     <accessibilityTraits key="traits" notEnabled="YES"/>
@@ -1445,10 +1445,10 @@
                                                         </constraints>
                                                     </view>
                                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="ngA-On-5Uf" customClass="CellContainerView" customModule="Mathdoku" customModuleProvider="target">
-                                                        <rect key="frame" x="278" y="0.0" width="46.5" height="46.5"/>
+                                                        <rect key="frame" x="278" y="0.0" width="46.5" height="46"/>
                                                         <subviews>
                                                             <view contentMode="redraw" translatesAutoresizingMaskIntoConstraints="NO" id="Ssg-Qa-Yuy" customClass="CellView" customModule="Mathdoku" customModuleProvider="target">
-                                                                <rect key="frame" x="0.0" y="0.0" width="46.5" height="46"/>
+                                                                <rect key="frame" x="0.0" y="0.0" width="46.5" height="45.5"/>
                                                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                                                 <accessibility key="accessibilityConfiguration">
                                                                     <accessibilityTraits key="traits" notEnabled="YES"/>
@@ -1464,10 +1464,10 @@
                                                         </constraints>
                                                     </view>
                                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="hZv-2c-RfQ" customClass="CellContainerView" customModule="Mathdoku" customModuleProvider="target">
-                                                        <rect key="frame" x="324.5" y="0.0" width="46" height="46.5"/>
+                                                        <rect key="frame" x="324.5" y="0.0" width="46" height="46"/>
                                                         <subviews>
                                                             <view contentMode="redraw" translatesAutoresizingMaskIntoConstraints="NO" id="87H-AP-wbM" customClass="CellView" customModule="Mathdoku" customModuleProvider="target">
-                                                                <rect key="frame" x="0.0" y="0.0" width="45.5" height="46"/>
+                                                                <rect key="frame" x="0.0" y="0.0" width="45.5" height="45.5"/>
                                                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                                                 <accessibility key="accessibilityConfiguration">
                                                                     <accessibilityTraits key="traits" notEnabled="YES"/>
@@ -1483,10 +1483,10 @@
                                                         </constraints>
                                                     </view>
                                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="rgx-n3-USi" customClass="CellContainerView" customModule="Mathdoku" customModuleProvider="target">
-                                                        <rect key="frame" x="370.5" y="0.0" width="46.5" height="46.5"/>
+                                                        <rect key="frame" x="370.5" y="0.0" width="46.5" height="46"/>
                                                         <subviews>
                                                             <view contentMode="redraw" translatesAutoresizingMaskIntoConstraints="NO" id="9Ra-Az-Pjp" customClass="CellView" customModule="Mathdoku" customModuleProvider="target">
-                                                                <rect key="frame" x="0.0" y="0.0" width="46" height="46"/>
+                                                                <rect key="frame" x="0.0" y="0.0" width="46" height="45.5"/>
                                                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                                                 <accessibility key="accessibilityConfiguration">
                                                                     <accessibilityTraits key="traits" notEnabled="YES"/>
@@ -1504,13 +1504,13 @@
                                                 </subviews>
                                             </stackView>
                                             <stackView opaque="NO" contentMode="scaleToFill" distribution="fillEqually" translatesAutoresizingMaskIntoConstraints="NO" id="ei0-y9-aE6" customClass="GridRowView" customModule="Mathdoku" customModuleProvider="target">
-                                                <rect key="frame" x="0.0" y="278" width="417" height="46.5"/>
+                                                <rect key="frame" x="0.0" y="277.5" width="417" height="46.5"/>
                                                 <subviews>
                                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="2cM-MH-jFV" customClass="CellContainerView" customModule="Mathdoku" customModuleProvider="target">
                                                         <rect key="frame" x="0.0" y="0.0" width="46.5" height="46.5"/>
                                                         <subviews>
                                                             <view contentMode="redraw" translatesAutoresizingMaskIntoConstraints="NO" id="Tkv-6S-mLB" customClass="CellView" customModule="Mathdoku" customModuleProvider="target">
-                                                                <rect key="frame" x="0.0" y="0.0" width="46" height="46"/>
+                                                                <rect key="frame" x="0.0" y="0.0" width="46.5" height="46"/>
                                                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                                                 <accessibility key="accessibilityConfiguration">
                                                                     <accessibilityTraits key="traits" notEnabled="YES"/>
@@ -1529,7 +1529,7 @@
                                                         <rect key="frame" x="46.5" y="0.0" width="46" height="46.5"/>
                                                         <subviews>
                                                             <view contentMode="redraw" translatesAutoresizingMaskIntoConstraints="NO" id="Xn4-Ua-9CB" customClass="CellView" customModule="Mathdoku" customModuleProvider="target">
-                                                                <rect key="frame" x="0.0" y="0.0" width="45.5" height="46"/>
+                                                                <rect key="frame" x="0.0" y="0.0" width="46" height="46"/>
                                                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                                                 <accessibility key="accessibilityConfiguration">
                                                                     <accessibilityTraits key="traits" notEnabled="YES"/>
@@ -1605,7 +1605,7 @@
                                                         <rect key="frame" x="231.5" y="0.0" width="46.5" height="46.5"/>
                                                         <subviews>
                                                             <view contentMode="redraw" translatesAutoresizingMaskIntoConstraints="NO" id="nVm-2m-avc" customClass="CellView" customModule="Mathdoku" customModuleProvider="target">
-                                                                <rect key="frame" x="0.0" y="0.0" width="46" height="46"/>
+                                                                <rect key="frame" x="0.0" y="0.0" width="46.5" height="46"/>
                                                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                                                 <accessibility key="accessibilityConfiguration">
                                                                     <accessibilityTraits key="traits" notEnabled="YES"/>
@@ -1680,13 +1680,13 @@
                                                 </subviews>
                                             </stackView>
                                             <stackView opaque="NO" contentMode="scaleToFill" distribution="fillEqually" translatesAutoresizingMaskIntoConstraints="NO" id="Rjc-zI-8oE" customClass="GridRowView" customModule="Mathdoku" customModuleProvider="target">
-                                                <rect key="frame" x="0.0" y="324.5" width="417" height="46"/>
+                                                <rect key="frame" x="0.0" y="324" width="417" height="46"/>
                                                 <subviews>
                                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="vbY-hY-uAY" customClass="CellContainerView" customModule="Mathdoku" customModuleProvider="target">
                                                         <rect key="frame" x="0.0" y="0.0" width="46.5" height="46"/>
                                                         <subviews>
                                                             <view contentMode="redraw" translatesAutoresizingMaskIntoConstraints="NO" id="Puk-Ba-Zdb" customClass="CellView" customModule="Mathdoku" customModuleProvider="target">
-                                                                <rect key="frame" x="0.0" y="0.0" width="46" height="45.5"/>
+                                                                <rect key="frame" x="0.0" y="0.0" width="46.5" height="46"/>
                                                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                                                 <accessibility key="accessibilityConfiguration">
                                                                     <accessibilityTraits key="traits" notEnabled="YES"/>
@@ -1705,7 +1705,7 @@
                                                         <rect key="frame" x="46.5" y="0.0" width="46" height="46"/>
                                                         <subviews>
                                                             <view contentMode="redraw" translatesAutoresizingMaskIntoConstraints="NO" id="ol9-RT-1pu" customClass="CellView" customModule="Mathdoku" customModuleProvider="target">
-                                                                <rect key="frame" x="0.0" y="0.0" width="45.5" height="45.5"/>
+                                                                <rect key="frame" x="0.0" y="0.0" width="46" height="46"/>
                                                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                                                 <accessibility key="accessibilityConfiguration">
                                                                     <accessibilityTraits key="traits" notEnabled="YES"/>
@@ -1724,7 +1724,7 @@
                                                         <rect key="frame" x="92.5" y="0.0" width="46.5" height="46"/>
                                                         <subviews>
                                                             <view contentMode="redraw" translatesAutoresizingMaskIntoConstraints="NO" id="nBl-SB-Gcw" customClass="CellView" customModule="Mathdoku" customModuleProvider="target">
-                                                                <rect key="frame" x="0.0" y="0.0" width="46.5" height="45.5"/>
+                                                                <rect key="frame" x="0.0" y="0.0" width="46.5" height="46"/>
                                                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                                                 <accessibility key="accessibilityConfiguration">
                                                                     <accessibilityTraits key="traits" notEnabled="YES"/>
@@ -1743,7 +1743,7 @@
                                                         <rect key="frame" x="139" y="0.0" width="46.5" height="46"/>
                                                         <subviews>
                                                             <view contentMode="redraw" translatesAutoresizingMaskIntoConstraints="NO" id="228-wC-UOy" customClass="CellView" customModule="Mathdoku" customModuleProvider="target">
-                                                                <rect key="frame" x="0.0" y="0.0" width="46" height="45.5"/>
+                                                                <rect key="frame" x="0.0" y="0.0" width="46" height="46"/>
                                                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                                                 <accessibility key="accessibilityConfiguration">
                                                                     <accessibilityTraits key="traits" notEnabled="YES"/>
@@ -1762,7 +1762,7 @@
                                                         <rect key="frame" x="185.5" y="0.0" width="46" height="46"/>
                                                         <subviews>
                                                             <view contentMode="redraw" translatesAutoresizingMaskIntoConstraints="NO" id="FwK-vP-uZn" customClass="CellView" customModule="Mathdoku" customModuleProvider="target">
-                                                                <rect key="frame" x="0.0" y="0.0" width="45.5" height="45.5"/>
+                                                                <rect key="frame" x="0.0" y="0.0" width="45.5" height="46"/>
                                                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                                                 <accessibility key="accessibilityConfiguration">
                                                                     <accessibilityTraits key="traits" notEnabled="YES"/>
@@ -1781,7 +1781,7 @@
                                                         <rect key="frame" x="231.5" y="0.0" width="46.5" height="46"/>
                                                         <subviews>
                                                             <view contentMode="redraw" translatesAutoresizingMaskIntoConstraints="NO" id="f0j-NR-bRN" customClass="CellView" customModule="Mathdoku" customModuleProvider="target">
-                                                                <rect key="frame" x="0.0" y="0.0" width="46" height="45.5"/>
+                                                                <rect key="frame" x="0.0" y="0.0" width="46.5" height="46"/>
                                                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                                                 <accessibility key="accessibilityConfiguration">
                                                                     <accessibilityTraits key="traits" notEnabled="YES"/>
@@ -1800,7 +1800,7 @@
                                                         <rect key="frame" x="278" y="0.0" width="46.5" height="46"/>
                                                         <subviews>
                                                             <view contentMode="redraw" translatesAutoresizingMaskIntoConstraints="NO" id="oXP-6T-wZC" customClass="CellView" customModule="Mathdoku" customModuleProvider="target">
-                                                                <rect key="frame" x="0.0" y="0.0" width="46.5" height="45.5"/>
+                                                                <rect key="frame" x="0.0" y="0.0" width="46.5" height="46"/>
                                                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                                                 <accessibility key="accessibilityConfiguration">
                                                                     <accessibilityTraits key="traits" notEnabled="YES"/>
@@ -1819,7 +1819,7 @@
                                                         <rect key="frame" x="324.5" y="0.0" width="46" height="46"/>
                                                         <subviews>
                                                             <view contentMode="redraw" translatesAutoresizingMaskIntoConstraints="NO" id="28f-yO-dAl" customClass="CellView" customModule="Mathdoku" customModuleProvider="target">
-                                                                <rect key="frame" x="0.0" y="0.0" width="45.5" height="45.5"/>
+                                                                <rect key="frame" x="0.0" y="0.0" width="45.5" height="46"/>
                                                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                                                 <accessibility key="accessibilityConfiguration">
                                                                     <accessibilityTraits key="traits" notEnabled="YES"/>
@@ -1838,7 +1838,7 @@
                                                         <rect key="frame" x="370.5" y="0.0" width="46.5" height="46"/>
                                                         <subviews>
                                                             <view contentMode="redraw" translatesAutoresizingMaskIntoConstraints="NO" id="tEd-qP-fNg" customClass="CellView" customModule="Mathdoku" customModuleProvider="target">
-                                                                <rect key="frame" x="0.0" y="0.0" width="46" height="45.5"/>
+                                                                <rect key="frame" x="0.0" y="0.0" width="46" height="46"/>
                                                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                                                 <accessibility key="accessibilityConfiguration">
                                                                     <accessibilityTraits key="traits" notEnabled="YES"/>
@@ -1856,13 +1856,13 @@
                                                 </subviews>
                                             </stackView>
                                             <stackView opaque="NO" contentMode="scaleToFill" distribution="fillEqually" translatesAutoresizingMaskIntoConstraints="NO" id="WyG-lm-Qad" customClass="GridRowView" customModule="Mathdoku" customModuleProvider="target">
-                                                <rect key="frame" x="0.0" y="370.5" width="417" height="46.5"/>
+                                                <rect key="frame" x="0.0" y="370" width="417" height="46.5"/>
                                                 <subviews>
                                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="lq7-fv-bKl" customClass="CellContainerView" customModule="Mathdoku" customModuleProvider="target">
                                                         <rect key="frame" x="0.0" y="0.0" width="46.5" height="46.5"/>
                                                         <subviews>
                                                             <view contentMode="redraw" translatesAutoresizingMaskIntoConstraints="NO" id="FMi-LS-UpT" customClass="CellView" customModule="Mathdoku" customModuleProvider="target">
-                                                                <rect key="frame" x="0.0" y="0.0" width="46" height="46"/>
+                                                                <rect key="frame" x="0.0" y="0.0" width="46.5" height="46"/>
                                                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                                                 <accessibility key="accessibilityConfiguration">
                                                                     <accessibilityTraits key="traits" notEnabled="YES"/>
@@ -1881,7 +1881,7 @@
                                                         <rect key="frame" x="46.5" y="0.0" width="46" height="46.5"/>
                                                         <subviews>
                                                             <view contentMode="redraw" translatesAutoresizingMaskIntoConstraints="NO" id="jjv-eT-vlO" customClass="CellView" customModule="Mathdoku" customModuleProvider="target">
-                                                                <rect key="frame" x="0.0" y="0.0" width="45.5" height="46"/>
+                                                                <rect key="frame" x="0.0" y="0.0" width="46" height="46"/>
                                                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                                                 <accessibility key="accessibilityConfiguration">
                                                                     <accessibilityTraits key="traits" notEnabled="YES"/>
@@ -1957,7 +1957,7 @@
                                                         <rect key="frame" x="231.5" y="0.0" width="46.5" height="46.5"/>
                                                         <subviews>
                                                             <view contentMode="redraw" translatesAutoresizingMaskIntoConstraints="NO" id="Ntu-0U-TZc" customClass="CellView" customModule="Mathdoku" customModuleProvider="target">
-                                                                <rect key="frame" x="0.0" y="0.0" width="46" height="46"/>
+                                                                <rect key="frame" x="0.0" y="0.0" width="46.5" height="46"/>
                                                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                                                 <accessibility key="accessibilityConfiguration">
                                                                     <accessibilityTraits key="traits" notEnabled="YES"/>
@@ -2189,13 +2189,13 @@
                                         <rect key="frame" x="8" y="86.5" width="359" height="160"/>
                                         <subviews>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Pick your puzzle size:" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="77b-Sp-8Q2">
-                                                <rect key="frame" x="87" y="7" width="185" height="24"/>
+                                                <rect key="frame" x="87.5" y="7" width="185" height="24"/>
                                                 <fontDescription key="fontDescription" style="UICTFontTextStyleTitle3"/>
                                                 <nil key="textColor"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
                                             <stackView opaque="NO" contentMode="scaleToFill" distribution="fillEqually" spacing="10" translatesAutoresizingMaskIntoConstraints="NO" id="1bY-Je-SKY">
-                                                <rect key="frame" x="44.5" y="36" width="270" height="39"/>
+                                                <rect key="frame" x="45" y="36" width="270" height="39"/>
                                                 <subviews>
                                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Sqd-DY-I35">
                                                         <rect key="frame" x="0.0" y="0.0" width="30" height="39"/>
@@ -2256,7 +2256,7 @@
                                                 </subviews>
                                             </stackView>
                                             <button opaque="NO" contentMode="scaleToFill" enabled="NO" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="eWV-Pc-I3t">
-                                                <rect key="frame" x="44.5" y="83" width="270" height="48"/>
+                                                <rect key="frame" x="45" y="83" width="270" height="48"/>
                                                 <color key="backgroundColor" red="0.9098553439" green="0.94333356180000005" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                 <fontDescription key="fontDescription" type="system" pointSize="30"/>
                                                 <state key="normal" title="Start Puzzle"/>
@@ -2265,7 +2265,7 @@
                                                 </connections>
                                             </button>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="You have 40 puzzles remaining." textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="r3V-fF-OKm">
-                                                <rect key="frame" x="44.5" y="136" width="270" height="16"/>
+                                                <rect key="frame" x="45" y="136" width="270" height="16"/>
                                                 <fontDescription key="fontDescription" style="UICTFontTextStyleFootnote"/>
                                                 <nil key="textColor"/>
                                                 <nil key="highlightedColor"/>
@@ -2458,7 +2458,7 @@
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <switch opaque="NO" tag="3" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" contentHorizontalAlignment="center" contentVerticalAlignment="center" translatesAutoresizingMaskIntoConstraints="NO" id="XYu-eH-s6q">
-                                                    <rect key="frame" x="311" y="6" width="51" height="31"/>
+                                                    <rect key="frame" x="311" y="6.5" width="51" height="31"/>
                                                     <connections>
                                                         <action selector="switchValueChanged:" destination="YgF-xD-UUZ" eventType="valueChanged" id="18E-Xf-7hf"/>
                                                     </connections>
@@ -2488,7 +2488,7 @@
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <switch opaque="NO" tag="4" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" contentHorizontalAlignment="center" contentVerticalAlignment="center" translatesAutoresizingMaskIntoConstraints="NO" id="LZx-qb-W5H">
-                                                    <rect key="frame" x="311" y="6" width="51" height="31"/>
+                                                    <rect key="frame" x="311" y="6.5" width="51" height="31"/>
                                                     <connections>
                                                         <action selector="switchValueChanged:" destination="YgF-xD-UUZ" eventType="valueChanged" id="W5o-W7-zj1"/>
                                                     </connections>
@@ -2518,7 +2518,7 @@
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <switch opaque="NO" tag="5" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" contentHorizontalAlignment="center" contentVerticalAlignment="center" translatesAutoresizingMaskIntoConstraints="NO" id="pda-gz-L5g">
-                                                    <rect key="frame" x="311" y="6" width="51" height="31"/>
+                                                    <rect key="frame" x="311" y="6.5" width="51" height="31"/>
                                                     <connections>
                                                         <action selector="switchValueChanged:" destination="YgF-xD-UUZ" eventType="valueChanged" id="uCD-RI-cIZ"/>
                                                     </connections>
@@ -2548,7 +2548,7 @@
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <switch opaque="NO" tag="6" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" contentHorizontalAlignment="center" contentVerticalAlignment="center" translatesAutoresizingMaskIntoConstraints="NO" id="4cv-Nh-riz">
-                                                    <rect key="frame" x="311" y="6" width="51" height="31"/>
+                                                    <rect key="frame" x="311" y="6.5" width="51" height="31"/>
                                                     <connections>
                                                         <action selector="switchValueChanged:" destination="YgF-xD-UUZ" eventType="valueChanged" id="7oE-eb-pcI"/>
                                                     </connections>

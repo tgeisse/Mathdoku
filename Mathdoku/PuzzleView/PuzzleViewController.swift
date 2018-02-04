@@ -51,7 +51,7 @@ class PuzzleViewController: UIViewController, UINavigationBarDelegate {
         didSet {
             DebugUtil.print("Game State: \(oldValue) -> \(gameState)")
             
-            if gameState == .finished {
+            if [GameState.finished, .playing].contains(gameState) {
                 setNextPuzzleId()
             }
         }

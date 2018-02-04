@@ -962,20 +962,18 @@ class PuzzleViewController: UIViewController, UINavigationBarDelegate {
     /// Save the timer to the 'leaderboard' as a final count
     private func saveFinalTimer() {
         // save final timer to realm
-        playerProgress.puzzlesSolved.filter("puzzleId == \(playerProgress.activePuzzleId)").first?.markPuzzlePlayed(finalTime: gameTimer, withRealm: realm)
-        /*
-        do {
-            try realm.write {
-                let solvedPuzzle = PuzzlesSolved()
-                solvedPuzzle.puzzleId = playerProgress.activePuzzleId
-                solvedPuzzle.solvedOn = NSDate()
-                solvedPuzzle.timeToSolve.value = gameTimer
-                
-                playerProgress.puzzlesSolved.append(solvedPuzzle)
+        let puzzleSolved = playerProgress.puzzlesSolved.filter("puzzleId == \(playerProgress.activePuzzleId)") // ?? createnewPuzzleSolved()).markPuzzlePlayed(finalTime: gameTimer)
+        
+        if puzzleSolved.count == 0 {
+            // if the puzzleSolved is 0 count, then we need to create a new one
+            try! realm.write {
+                let newPuzzleSolved = PuzzlesSolved()
+                newPuzzleSolved.puzzleId = playerProgress.activePuzzleId
+                playerProgress.puzzlesSolved.append(newPuzzleSolved)
             }
-        } catch (let error) {
-            fatalError("Error trying to save the final timer:\n\(error)")
-        } */
+        }
+        
+        puzzleSolved.first?.markPuzzlePlayed(finalTime: gameTimer, withRealm: realm)
     }
     
     // MARK: - Realm helper functions

@@ -21,6 +21,8 @@ extension DefaultsKeys {
     static let fillInGiveMes = DefaultsKey<Bool>("fillInGiveMes")
 
     static let doubleTapToggleNoteMode = DefaultsKey<Bool>("doubleTapToggleNoteMode")
+    
+    static let hapticFeedback = DefaultsKey<Bool>("hapticFeedback")
 }
 
 struct Settings {
@@ -51,6 +53,10 @@ struct Settings {
         
         if !Defaults.hasKey(.doubleTapToggleNoteMode) {
             Defaults[.doubleTapToggleNoteMode] = true
+        }
+        
+        if !Defaults.hasKey(.hapticFeedback) {
+            Defaults[.hapticFeedback] = true
         }
     }
 }

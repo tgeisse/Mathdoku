@@ -333,6 +333,8 @@ class PuzzleViewController: UIViewController, UINavigationBarDelegate {
     // MARK: - UI Button Actions
     @IBAction func numberButtonPress(_ sender: UIButton) {
         if let buttonTitle = sender.currentTitle, let num = Int(buttonTitle) {
+            makeHapticFeedback()
+            
             switch entryMode {
             case .guessing:
                 if let cellPosition = selectedCellPosition {
@@ -432,6 +434,13 @@ class PuzzleViewController: UIViewController, UINavigationBarDelegate {
         if let moves = moveHistory.redo() {
             AnalyticsWrapper.logEvent(.selectContent, contentType: .featureUsage, id: "id-redoMove")
             processMoveHistory(forMoves: moves, moveDirection: .redo)
+        }
+    }
+    
+    private let hapticFeedback = UIImpactFeedbackGenerator(style: .light)
+    private func makeHapticFeedback() {
+        if Defaults[.hapticFeedback] {
+            hapticFeedback.impactOccurred()
         }
     }
     

@@ -51,6 +51,11 @@ class SettingsViewController: UITableViewController {
         }
     }
     
+    @IBOutlet weak var enableHapticFeedback: UISwitch! {
+        didSet {
+            enableHapticFeedback.setOn(Defaults[.hapticFeedback], animated: false)
+        }
+    }
     
     @IBAction func switchValueChanged(_ sender: UISwitch) {
         DebugUtil.print("Switching on tag \(sender.tag)")
@@ -87,6 +92,10 @@ class SettingsViewController: UITableViewController {
             Defaults[.doubleTapToggleNoteMode] = doubleTapNoteModeSwitch.isOn
             settingName = "doubleTapMode"
             settingVariant = "\(Defaults[.doubleTapToggleNoteMode])"
+        case 8:
+            Defaults[.hapticFeedback] = enableHapticFeedback.isOn
+            settingName = "hapticFeedback"
+            settingVariant = "\(Defaults[.hapticFeedback])"
         default:
             settingName = "default"
             settingVariant = "none"

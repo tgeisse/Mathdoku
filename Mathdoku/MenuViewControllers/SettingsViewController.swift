@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import RealmSwift
 
 class SettingsViewController: UITableViewController {
     @IBOutlet weak var singleCellNoteTakingSwitch: UISwitch! {
@@ -93,5 +94,38 @@ class SettingsViewController: UITableViewController {
         }
         
         AnalyticsWrapper.logEvent(.selectContent, contentType: .userSetting, id: "id-toggleSetting", name: settingName, variant: settingVariant)
+    }
+    
+    @IBAction func resetScoresButtonPress(_ sender: UIButton) {
+        AnalyticsWrapper.logEvent(.selectContent, contentType: .userSetting, id: "id-resetGameTimesPrompted")
+        
+        let alert = self.alertWithTwoButtons(title: "Reset Game Times?", message: "Are you sure you want to reset your game times? This action cannot be undone.", cancelButtonTitle: "No", successButtonTitle: "Yes") { [weak self] in
+            
+            self?.resetGameTimeScores()
+        }
+        
+        self.showAlert(alert)
+    }
+    
+    private func resetGameTimeScores() {
+        AnalyticsWrapper.logEvent(.selectContent, contentType: .userSetting, id: "id-resettingGameTimes")
+        
+        do {
+            let realm = try Realm()
+            
+            // get the puzzles that need to be reset (times are not nil)
+            let puzzlesPlayed = realm.objects(PuzzlesSolved.self).filter("timeToSolve != nil")
+            DebugUtil.print("Identified \(puzzlesPlayed.count) puzzles that need to have their game times reset")
+            
+            try realm.write {
+                // reset the puzzle times
+                puzzlesPlayed.forEach {
+                    $0.timeToSolve.value = nil
+                }
+            }
+            
+        } catch (let error) {
+            fatalError("Error trying to reset game times:\n\(error)")
+        }
     }
 }

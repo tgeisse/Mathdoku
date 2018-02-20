@@ -26,6 +26,7 @@ class PuzzleViewController: UIViewController, UINavigationBarDelegate {
     @IBOutlet weak var bestTimeLabel: UILabel!
     @IBOutlet weak var finalTimeLabel: UILabel!
     @IBOutlet weak var puzzleCompleteLabel: UILabel! { didSet { puzzleCompleteLabel.textColor = ColorTheme.blue.dark } }
+    @IBOutlet weak var nextPuzzleButton: UIButton!
     
     @IBOutlet weak var bannerView: GADBannerView!
     @IBOutlet weak var bannerViewHeight: NSLayoutConstraint!
@@ -38,7 +39,6 @@ class PuzzleViewController: UIViewController, UINavigationBarDelegate {
         return returnValue
     }
     @IBOutlet weak var gameTimerLabel: UILabel!
-    
     
     // MARK: - Game state properties
     private enum GameState {
@@ -64,9 +64,19 @@ class PuzzleViewController: UIViewController, UINavigationBarDelegate {
         didSet {
             // whenever the gameTimer is set, update the label displaying the timer
             if floor(oldValue) != floor(gameTimer) {
-                let timeLabelText = createTimeString(from: gameTimer)
+                let time: TimeInterval
+                let color: UIColor
+                if let challengeTime = challengeTime {
+                    time = challengeTime - gameTimer
+                    color = .red
+                } else {
+                    time = gameTimer
+                    color = .black
+                }
+                let text = createTimeString(from: time)
                 DispatchQueue.main.async { [weak self] in
-                    self?.gameTimerLabel.text = timeLabelText
+                    self?.gameTimerLabel.text = text
+                    self?.gameTimerLabel.textColor = color
                 }
             }
         }
@@ -105,13 +115,20 @@ class PuzzleViewController: UIViewController, UINavigationBarDelegate {
     // MARK: - Game move history
     private let moveHistory = MoveHistory()
     
+    // MARK: - Challenges
+    var challengeTime: TimeInterval?
+    var isChallenge: Bool {
+        return challengeTime != nil
+    }
+
     // MARK: - Realm properties
     private lazy var realm: Realm = { return try! Realm() }()
     private lazy var playerProgress: PlayerProgress = self.loadPlayerProgress()
     private lazy var puzzleProgress: PuzzleProgress = self.loadPuzzleProgress()
-    
+
     private func loadPlayerProgress() -> PlayerProgress {
-        return realm.objects(PlayerProgress.self).filter("puzzleSize == \(puzzle.size)")[0]
+        let size = isChallenge ? 2 : puzzle.size
+        return realm.objects(PlayerProgress.self).filter("puzzleSize == \(size)")[0]
     }
     
     private func loadPuzzleProgress() -> PuzzleProgress {
@@ -512,8 +529,9 @@ class PuzzleViewController: UIViewController, UINavigationBarDelegate {
             bestTimeLabel.textColor = ColorTheme.green.dark
         }
         
-        finalTimeLabel.text = gameTimerLabel.text
+        finalTimeLabel.text = createTimeString(from: gameTimer)
         successOverlayView.isHidden = false
+        nextPuzzleButton.isHidden = isChallenge
     }
     
     private func skipPuzzle() {
@@ -825,6 +843,11 @@ class PuzzleViewController: UIViewController, UINavigationBarDelegate {
     // MARK: - Timer functions
     private let countdownTag = 554455
     private func startCountdownTimer() {
+        // prevent multiple countdowns
+        if view.viewWithTag(countdownTag) != nil {
+            return
+        }
+
         let countLabel = UILabel()
         let startingFont = UIFont(name: "Noteworthy-Bold", size: 200.0)
         
@@ -918,8 +941,9 @@ class PuzzleViewController: UIViewController, UINavigationBarDelegate {
     }
     
     private func createTimeString(from time: Double) -> String {
-        let timerComponents = TimeInterval(time).components
-        return String(format: "%02i:%02i:%02i", timerComponents.hours, timerComponents.minutes, timerComponents.seconds)
+        let prefix = time < 0 ? "-" : ""
+        let timerComponents = TimeInterval(abs(time)).components
+        return String(format: "%@%02i:%02i:%02i", prefix, timerComponents.hours, timerComponents.minutes, timerComponents.seconds)
     }
     
     private func removeCountdownTimer() {
@@ -1217,6 +1241,10 @@ class PuzzleViewController: UIViewController, UINavigationBarDelegate {
         
         // highlight conflicting and equal guesses
         highlightGuesses(for: [.equal, .conflict])
+
+        if isChallenge {
+            navigationItem.title = "Challenge"
+        }
     }
     override func loadView() {
         super.loadView()

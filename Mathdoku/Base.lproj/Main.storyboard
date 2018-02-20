@@ -2103,6 +2103,7 @@
                         <outlet property="bestTimeTitle" destination="eN7-42-AeD" id="Nqq-E0-eVW"/>
                         <outlet property="finalTimeLabel" destination="vjr-vG-0hl" id="mxu-OP-QH1"/>
                         <outlet property="gameTimerLabel" destination="6Tq-KK-Rt7" id="1Ek-jg-Dp3"/>
+                        <outlet property="nextPuzzleButton" destination="CXf-DC-e1y" id="ca9-HJ-vaA"/>
                         <outlet property="puzzleCompleteLabel" destination="2CL-LJ-2WQ" id="GiS-wU-dtc"/>
                         <outlet property="puzzleGridSuperview" destination="VV0-a5-BBu" id="Igg-1r-fiI"/>
                         <outlet property="successOverlayView" destination="qSi-51-JRo" id="tVG-oh-jte"/>

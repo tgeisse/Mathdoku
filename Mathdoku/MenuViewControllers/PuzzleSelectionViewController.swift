@@ -28,7 +28,7 @@ class PuzzleSelectionViewController: UIViewController {
         }
     }
     var activePuzzleId: Int {
-        return playerProgress[selectedPuzzleSize - 3].activePuzzleId
+        return playerProgress[selectedPuzzleSize - 2].activePuzzleId
     }
     
     private let selectColor = UIColor(red: 1.0, green: 0.9648, blue: 0.60, alpha: 1.0)
@@ -88,7 +88,7 @@ class PuzzleSelectionViewController: UIViewController {
     
     func updateStartButtonTitle() {
         if (selectedPuzzleSize < 3 || selectedPuzzleSize > 9) == false {
-            startPuzzle.setTitle(playerProgress[selectedPuzzleSize - 3].puzzleProgress?.inProgress == true ? "Continue Puzzle" : "Start Puzzle", for: .normal)
+            startPuzzle.setTitle(playerProgress[selectedPuzzleSize - 2].puzzleProgress?.inProgress == true ? "Continue Puzzle" : "Start Puzzle", for: .normal)
         }
     }
     
@@ -124,7 +124,7 @@ class PuzzleSelectionViewController: UIViewController {
     override func shouldPerformSegue(withIdentifier identifier: String, sender: Any?) -> Bool {
         if identifier == "PuzzleSelection" {
             let allowance = PuzzleProducts.puzzleAllowance
-            if (playerProgress[selectedPuzzleSize - 3].puzzleProgress?.inProgress ?? false) || allowance.allowance == AllowanceTypes.puzzle.infiniteAllowance() || allowance.allowance > 0 {
+            if (playerProgress[selectedPuzzleSize - 2].puzzleProgress?.inProgress ?? false) || allowance.allowance == AllowanceTypes.puzzle.infiniteAllowance() || allowance.allowance > 0 {
                 
                 // if the player was already playing the puzzle or they have infinite plays
                 // or they have puzzles left, then perform the segue

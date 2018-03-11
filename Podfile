@@ -13,6 +13,7 @@ target 'Mathdoku' do
   pod 'Instructions', '~> 1.0.0'
   pod 'RealmSwift'
   pod 'PromiseKit'
+  pod 'Bugsnag'
 
   target 'MathdokuTests' do
     inherit! :search_paths

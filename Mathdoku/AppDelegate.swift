@@ -50,7 +50,6 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         // Bugsnag test notification
         // Bugsnag.notifyError(NSError(domain: AppSecrets.domainRoot, code: 408, userInfo: nil))
         
-        
         return true
     }
     

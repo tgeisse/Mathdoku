@@ -9,7 +9,31 @@
 import Foundation
 import Bugsnag
 
+typealias Breadcrumb = (name: String, type: CrashWrapper.BreadcrumbType?, metadata: [String:Any]?)
+
 struct CrashWrapper {
+    enum BreadcrumbType {
+        case log
+        case manual
+        case navigation
+        case process
+        case request
+        case state
+        case user
+        
+        var mapped: BSGBreadcrumbType {
+            switch self {
+            case .log: return .log
+            case .manual: return .manual
+            case .navigation: return .navigation
+            case .process: return .process
+            case .request: return .request
+            case .state: return .state
+            case .user: return .user
+            }
+        }
+    }
+    
     enum Severity {
         case error
         case info
@@ -46,5 +70,33 @@ struct CrashWrapper {
                 report.severity = severity!.mapped
             }
         }
+    }
+    
+    static func setUser(id: String, withName name: String = "", andEmail email: String = "") {
+        Bugsnag.configuration()?.setUser(id, withName: name, andEmail: email)
+    }
+    
+    static func leaveBreadcrumb(_ breadcrumb: Breadcrumb) {
+        Bugsnag.leaveBreadcrumb() { (crumb) in
+            crumb.name = breadcrumb.name
+            crumb.type = breadcrumb.type?.mapped ?? .manual
+            crumb.metadata = breadcrumb.metadata ?? [:]
+        }
+    }
+    
+    static func leaveBreadcrumb(withMessage message: String) {
+        Bugsnag.leaveBreadcrumb(withMessage: message)
+    }
+    
+    static func leaveBreadcrumb(forNotificationName notificationName: String) {
+        Bugsnag.leaveBreadcrumb(forNotificationName: notificationName)
+    }
+    
+    static func addAttribute(_ attribute: String, withValue value: String? = "", toTabWithName tabName: String) {
+        Bugsnag.addAttribute(attribute, withValue: value, toTabWithName: tabName)
+    }
+    
+    static func clearTab(withName tabName: String) {
+        Bugsnag.clearTab(withName: tabName)
     }
 }

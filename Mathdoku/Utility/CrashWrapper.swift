@@ -9,8 +9,6 @@
 import Foundation
 import Bugsnag
 
-typealias Breadcrumb = (name: String, type: CrashWrapper.BreadcrumbType?, metadata: [String:Any]?)
-
 struct CrashWrapper {
     enum BreadcrumbType {
         case log
@@ -76,11 +74,11 @@ struct CrashWrapper {
         Bugsnag.configuration()?.setUser(id, withName: name, andEmail: email)
     }
     
-    static func leaveBreadcrumb(_ breadcrumb: Breadcrumb) {
-        Bugsnag.leaveBreadcrumb() { (crumb) in
-            crumb.name = breadcrumb.name
-            crumb.type = breadcrumb.type?.mapped ?? .manual
-            crumb.metadata = breadcrumb.metadata ?? [:]
+    static func leaveBreadcrumb(withName name: String, withType type: BreadcrumbType = .manual, withMetadata metadata: [AnyHashable:Any] = [:]) {
+        Bugsnag.leaveBreadcrumb { (crumb) in
+            crumb.name = name
+            crumb.type = type.mapped
+            crumb.metadata = metadata
         }
     }
     

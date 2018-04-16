@@ -9,6 +9,22 @@
 import Foundation
 import Bugsnag
 
+// NSLocalizedFailureReasonErrorKey
+// NSLocalizedDescriptionKey
+// NSLocalizedRecoverySuggestionErrorKey
+
+extension Error {
+    func report() {
+        CrashWrapper.notifyError(self)
+    }
+}
+
+extension NSError {
+    func report() {
+        CrashWrapper.notifyError(self)
+    }
+}
+
 struct CrashWrapper {
     enum BreadcrumbType {
         case log

@@ -19,6 +19,7 @@
 		9544E33B1EF0EA5D00F37ED7 /* TimeIntervalExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9544E33A1EF0EA5D00F37ED7 /* TimeIntervalExtension.swift */; };
 		9544E33D1F001E8000F37ED7 /* HowToPlayPageViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9544E33C1F001E8000F37ED7 /* HowToPlayPageViewController.swift */; };
 		95470335201245F4007B3C49 /* CellViewElementValues.swift in Sources */ = {isa = PBXBuildFile; fileRef = 95470334201245F4007B3C49 /* CellViewElementValues.swift */; };
+		95480ED620846CB200F783F9 /* GameTimer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 95480ED520846CB200F783F9 /* GameTimer.swift */; };
 		9555606A1ECD2989006C9F2D /* SwiftyJSON.swift in Sources */ = {isa = PBXBuildFile; fileRef = 955560691ECD2989006C9F2D /* SwiftyJSON.swift */; };
 		955F3B56201026BF00BBCCCA /* DispatchTimer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 955F3B55201026BF00BBCCCA /* DispatchTimer.swift */; };
 		956505EB1EDFD67300C97D73 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 956505EA1EDFD67300C97D73 /* LaunchScreen.storyboard */; };
@@ -104,6 +105,7 @@
 		9544E33A1EF0EA5D00F37ED7 /* TimeIntervalExtension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TimeIntervalExtension.swift; sourceTree = "<group>"; };
 		9544E33C1F001E8000F37ED7 /* HowToPlayPageViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HowToPlayPageViewController.swift; sourceTree = "<group>"; };
 		95470334201245F4007B3C49 /* CellViewElementValues.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CellViewElementValues.swift; sourceTree = "<group>"; };
+		95480ED520846CB200F783F9 /* GameTimer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameTimer.swift; sourceTree = "<group>"; };
 		955560691ECD2989006C9F2D /* SwiftyJSON.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SwiftyJSON.swift; sourceTree = "<group>"; };
 		955F3B55201026BF00BBCCCA /* DispatchTimer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DispatchTimer.swift; sourceTree = "<group>"; };
 		956505EA1EDFD67300C97D73 /* LaunchScreen.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = LaunchScreen.storyboard; sourceTree = "<group>"; };
@@ -216,6 +218,7 @@
 				9572FDC31FBD500300963CFD /* Settings.swift */,
 				955F3B55201026BF00BBCCCA /* DispatchTimer.swift */,
 				95470334201245F4007B3C49 /* CellViewElementValues.swift */,
+				95480ED520846CB200F783F9 /* GameTimer.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -411,7 +414,7 @@
 					com.apple.gamecenter.Leaderboard,
 				);
 				LastSwiftUpdateCheck = 0920;
-				LastUpgradeCheck = 0900;
+				LastUpgradeCheck = 0930;
 				ORGANIZATIONNAME = "Taylor Geisse";
 				TargetAttributes = {
 					7ABBAD75201575B50001FEAB = {
@@ -652,6 +655,7 @@
 				95C082591EABC8B8008B7C2E /* CellView.swift in Sources */,
 				95D7B0BF1EE64C9800764738 /* PuzzlesSolved.swift in Sources */,
 				95C2BD2E1EBECC01008A62D0 /* PuzzleViewController.swift in Sources */,
+				95480ED620846CB200F783F9 /* GameTimer.swift in Sources */,
 				95CBCC561FFC9890001409B1 /* MoveHistory.swift in Sources */,
 				95A196241ED2A3310038D40C /* PuzzleGuess.swift in Sources */,
 				9544E33D1F001E8000F37ED7 /* HowToPlayPageViewController.swift in Sources */,
@@ -745,6 +749,7 @@
 				CLANG_WARN_BOOL_CONVERSION = YES;
 				CLANG_WARN_COMMA = YES;
 				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
 				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
 				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
 				CLANG_WARN_EMPTY_BODY = YES;
@@ -752,6 +757,7 @@
 				CLANG_WARN_INFINITE_RECURSION = YES;
 				CLANG_WARN_INT_CONVERSION = YES;
 				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
 				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
 				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
 				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
@@ -802,6 +808,7 @@
 				CLANG_WARN_BOOL_CONVERSION = YES;
 				CLANG_WARN_COMMA = YES;
 				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
 				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
 				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
 				CLANG_WARN_EMPTY_BODY = YES;
@@ -809,6 +816,7 @@
 				CLANG_WARN_INFINITE_RECURSION = YES;
 				CLANG_WARN_INT_CONVERSION = YES;
 				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
 				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
 				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
 				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;

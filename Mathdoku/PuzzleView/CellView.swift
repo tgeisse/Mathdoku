@@ -40,16 +40,16 @@ class CellView: UIView {
         var borderWeight: CGFloat {
             switch self {
             case .friend: return 0.25
-            case .foe: return 1.1
-            case .other: return 2.2
+            case .foe: return 0.8
+            case .other: return 0.8
             }
         }
         
         var borderColor: UIColor {
             switch self {
-            case .friend: return .black
-            case .foe: return .black
-            case .other: return .black
+            case .friend: return .darkGray
+            case .foe: return .darkGray
+            case .other: return .darkGray
             }
         }
     }

@@ -64,4 +64,8 @@ class GameTimer {
         runningTime += Date().timeIntervalSince(currentStartingTime)
         state = .stopped
     }
+    
+    func setUpdateCallback(to: @escaping () -> ()) {
+        updateClosure = to
+    }
 }

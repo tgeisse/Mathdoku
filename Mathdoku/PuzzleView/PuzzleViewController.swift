@@ -58,17 +58,10 @@ class PuzzleViewController: UIViewController, UINavigationBarDelegate {
     }
     
     // MARK: - Game timer properties
-    private var timer: DispatchTimer? = nil
-    private var gameTimerPrecision = 0.1
+    private var timer = GameTimer()
     private var gameTimer = 0.0 {
         didSet {
-            // whenever the gameTimer is set, update the label displaying the timer
-            if floor(oldValue) != floor(gameTimer) {
-                let timeLabelText = createTimeString(from: gameTimer)
-                DispatchQueue.main.async { [weak self] in
-                    self?.gameTimerLabel.text = timeLabelText
-                }
-            }
+            gameTimerLabel.text = createTimeString(from: gameTimer)
         }
     }
     
@@ -928,35 +921,30 @@ class PuzzleViewController: UIViewController, UINavigationBarDelegate {
     }
     
     private func startTimer() {
-        if timer == nil {
-            timer = DispatchTimer(precision: gameTimerPrecision)
-            timer?.eventHandler = { [weak self] in
-                self?.updateTimer()
-            }
-        }
-        timer?.resume()
+        timer.start()
         timerState = .running
     }
     
     @objc private func updateTimer() {
-        gameTimer += gameTimerPrecision
+        gameTimer += 1
     }
     
     private func resetTimer() {
-        timer?.suspend()
+        timer.stop()
         gameTimer = 0.0
+        timer.runningTime = 0.0
         timerState = .stopped
     }
     
     private func pauseTimer() {
-        timer?.suspend()
+        timer.pause()
         saveTimerProgress()
     }
     
     /// Save the timer to Realm to track progress when application loses focus.
     private func saveTimerProgress() {
         // save the timer progress to realm
-        playerProgress.setPausedGameTimer(to: gameTimer)
+        playerProgress.setPausedGameTimer(to: timer.runningTime)
     }
     
     /// Save the timer to the 'leaderboard' as a final count
@@ -973,7 +961,7 @@ class PuzzleViewController: UIViewController, UINavigationBarDelegate {
             }
         }
         
-        puzzleSolved.first?.markPuzzlePlayed(finalTime: gameTimer, withRealm: realm)
+        puzzleSolved.first?.markPuzzlePlayed(finalTime: timer.runningTime, withRealm: realm)
     }
     
     // MARK: - Realm helper functions
@@ -1255,6 +1243,7 @@ class PuzzleViewController: UIViewController, UINavigationBarDelegate {
             }
             
             // set the saved paused game timer
+            timer.runningTime = playerProgress.pausedGameTimer
             gameTimer = playerProgress.pausedGameTimer
         } else {
             // the puzzle is not in progress, so reset the guess and notes
@@ -1266,6 +1255,11 @@ class PuzzleViewController: UIViewController, UINavigationBarDelegate {
             
             // since this is a new puzzle, then we will need to consume a puzzle allowance
             consumePuzzleAllowance()
+        }
+        
+        // configure the timer callback
+        timer.setUpdateCallback { [weak self] in
+            self?.updateTimer()
         }
         
         // check if ads are supposed to be enabled

@@ -21,7 +21,6 @@
 		95470335201245F4007B3C49 /* CellViewElementValues.swift in Sources */ = {isa = PBXBuildFile; fileRef = 95470334201245F4007B3C49 /* CellViewElementValues.swift */; };
 		95480ED620846CB200F783F9 /* GameTimer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 95480ED520846CB200F783F9 /* GameTimer.swift */; };
 		9555606A1ECD2989006C9F2D /* SwiftyJSON.swift in Sources */ = {isa = PBXBuildFile; fileRef = 955560691ECD2989006C9F2D /* SwiftyJSON.swift */; };
-		955F3B56201026BF00BBCCCA /* DispatchTimer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 955F3B55201026BF00BBCCCA /* DispatchTimer.swift */; };
 		956505EB1EDFD67300C97D73 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 956505EA1EDFD67300C97D73 /* LaunchScreen.storyboard */; };
 		9568B3131FC1FE46000502A4 /* StoreKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9568B3121FC1FE46000502A4 /* StoreKit.framework */; };
 		9568B3151FC1FF2B000502A4 /* AdSupport.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9568B3141FC1FF1A000502A4 /* AdSupport.framework */; };
@@ -107,7 +106,6 @@
 		95470334201245F4007B3C49 /* CellViewElementValues.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CellViewElementValues.swift; sourceTree = "<group>"; };
 		95480ED520846CB200F783F9 /* GameTimer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameTimer.swift; sourceTree = "<group>"; };
 		955560691ECD2989006C9F2D /* SwiftyJSON.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SwiftyJSON.swift; sourceTree = "<group>"; };
-		955F3B55201026BF00BBCCCA /* DispatchTimer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DispatchTimer.swift; sourceTree = "<group>"; };
 		956505EA1EDFD67300C97D73 /* LaunchScreen.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = LaunchScreen.storyboard; sourceTree = "<group>"; };
 		9568B3121FC1FE46000502A4 /* StoreKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = StoreKit.framework; path = System/Library/Frameworks/StoreKit.framework; sourceTree = SDKROOT; };
 		9568B3141FC1FF1A000502A4 /* AdSupport.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AdSupport.framework; path = System/Library/Frameworks/AdSupport.framework; sourceTree = SDKROOT; };
@@ -216,7 +214,6 @@
 				95B41B8A1E9CAB94003D8C28 /* Cage.swift */,
 				95FBB90B1E9AD9E900B0E662 /* Cell.swift */,
 				9572FDC31FBD500300963CFD /* Settings.swift */,
-				955F3B55201026BF00BBCCCA /* DispatchTimer.swift */,
 				95470334201245F4007B3C49 /* CellViewElementValues.swift */,
 				95480ED520846CB200F783F9 /* GameTimer.swift */,
 			);
@@ -637,7 +634,6 @@
 				95FBB90A1E9AD97300B0E662 /* Puzzle.swift in Sources */,
 				951273721EDE898200588467 /* DebugUtil.swift in Sources */,
 				95CBCC5B2008716A001409B1 /* AppKeys.swift in Sources */,
-				955F3B56201026BF00BBCCCA /* DispatchTimer.swift in Sources */,
 				95A196281ED2A3460038D40C /* PuzzleCellNote.swift in Sources */,
 				95FBB90C1E9AD9E900B0E662 /* Cell.swift in Sources */,
 				95CBCC581FFDCE92001409B1 /* UIColorExtensions.swift in Sources */,

@@ -932,7 +932,7 @@ class PuzzleViewController: UIViewController, UINavigationBarDelegate {
     private func resetTimer() {
         timer.stop()
         gameTimer = 0.0
-        timer.runningTime = 0.0
+        timer.adjustAccumulatedTime(to: 0.0)
         timerState = .stopped
     }
     
@@ -1243,8 +1243,8 @@ class PuzzleViewController: UIViewController, UINavigationBarDelegate {
             }
             
             // set the saved paused game timer
-            timer.runningTime = playerProgress.pausedGameTimer
             gameTimer = playerProgress.pausedGameTimer
+            timer.adjustAccumulatedTime(to: playerProgress.pausedGameTimer)
         } else {
             // the puzzle is not in progress, so reset the guess and notes
             // TODO: we will eventually want to add some logic to this else statement so that it does not always execute

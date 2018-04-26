@@ -9,7 +9,20 @@
 import Foundation
 
 class GameTimer {
-    var runningTime = 0.0
+    var runningTime: Double {
+        if state == .running {
+            return timeSinceStarting + accumulatedTime
+        } else {
+            return accumulatedTime
+        }
+    }
+    
+    private var timeSinceStarting: Double {
+        let now = Date()
+        return now.timeIntervalSince(currentStartingTime ?? now)
+    }
+    
+    private var accumulatedTime = 0.0
     private var currentStartingTime: Date? = nil
     private var updateClosure: () -> () = {}
     private var timer: Timer? = nil
@@ -49,23 +62,25 @@ class GameTimer {
     
     func pause() {
         if state != .running { return }
-        guard let currentStartingTime = currentStartingTime else { return }
-        
+    
         timer?.invalidate()
-        runningTime += Date().timeIntervalSince(currentStartingTime)
+        accumulatedTime += timeSinceStarting
         state = .paused
     }
     
     func stop() {
         if state == .stopped { return }
-        guard let currentStartingTime = currentStartingTime else { return }
         
         timer?.invalidate()
-        runningTime += Date().timeIntervalSince(currentStartingTime)
+        accumulatedTime += timeSinceStarting
         state = .stopped
     }
     
     func setUpdateCallback(to: @escaping () -> ()) {
         updateClosure = to
+    }
+    
+    func adjustAccumulatedTime(to: Double) {
+        accumulatedTime = to
     }
 }

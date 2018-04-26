@@ -32,6 +32,7 @@ class DispatchTimer {
     
     private var state: State = .suspended
     
+    @available(*, deprecated, message: "Switch to GameTimer")
     init(precision: Double = 0.1) {
         self.precision = precision
     }

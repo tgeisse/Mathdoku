@@ -41,7 +41,7 @@ class CellView: UIView {
             switch self {
             case .friend: return 0.25
             case .foe: return 0.8
-            case .other: return 0.8
+            case .other: return 1.0
             }
         }
         

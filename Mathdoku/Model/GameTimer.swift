@@ -83,4 +83,9 @@ class GameTimer {
     func adjustAccumulatedTime(to: Double) {
         accumulatedTime = to
     }
+    
+    func reset() {
+        stop()
+        adjustAccumulatedTime(to: 0.0)
+    }
 }

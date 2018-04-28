@@ -930,9 +930,8 @@ class PuzzleViewController: UIViewController, UINavigationBarDelegate {
     }
     
     private func resetTimer() {
-        timer.stop()
+        timer.reset()
         gameTimer = 0.0
-        timer.adjustAccumulatedTime(to: 0.0)
         timerState = .stopped
     }
     

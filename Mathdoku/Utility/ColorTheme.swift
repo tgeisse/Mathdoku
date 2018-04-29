@@ -37,4 +37,34 @@ struct ColorTheme {
         static let light: ButtonColor = (ColorTheme.blue.light, ColorTheme.orange.dark)
         static let dark: ButtonColor = (ColorTheme.blue.dark, ColorTheme.orange.dark)
     }*/
+    
+    enum ThemeMode: Int {
+        case regular = 1
+        case night
+    }
+    
+    static var themeMode: ThemeMode {
+        return Defaults[.nightMode] ? .night : .regular
+    }
+    
+    static var backgroundColor: UIColor {
+        switch themeMode {
+        case .regular: return UIColor.white
+        case .night: return UIColor.black
+        }
+    }
+    
+    static var lineColor: UIColor {
+        switch themeMode {
+        case .regular: return UIColor.black
+        case .night: return UIColor.white
+        }
+    }
+    
+    static var textColor: UIColor {
+        switch themeMode {
+        case .regular: return UIColor.black
+        case .night: return UIColor.white
+        }
+    }
 }

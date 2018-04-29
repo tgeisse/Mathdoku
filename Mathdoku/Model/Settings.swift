@@ -12,6 +12,7 @@ import Foundation
 extension DefaultsKeys {
     static let singleNoteCellSelection = DefaultsKey<Bool>("singleNoteCellSelection")
     static let clearNotesAfterGuessEntry = DefaultsKey<Bool>("clearNotesAfterGuessEntry")
+    static let doubleTapToggleNoteMode = DefaultsKey<Bool>("doubleTapToggleNoteMode")
     
     static let rotateAfterCellEntry = DefaultsKey<Bool>("rotateAfterCellEntry")
     
@@ -19,8 +20,8 @@ extension DefaultsKeys {
     static let highlightConflictingEntries = DefaultsKey<Bool>("highlightConflictingEntries")
     
     static let fillInGiveMes = DefaultsKey<Bool>("fillInGiveMes")
-
-    static let doubleTapToggleNoteMode = DefaultsKey<Bool>("doubleTapToggleNoteMode")
+    
+    static let nightMode = DefaultsKey<Bool>("nightMode")
 }
 
 struct Settings {
@@ -51,6 +52,10 @@ struct Settings {
         
         if !Defaults.hasKey(.doubleTapToggleNoteMode) {
             Defaults[.doubleTapToggleNoteMode] = true
+        }
+        
+        if !Defaults.hasKey(.nightMode) {
+            Defaults[.nightMode] = false
         }
     }
 }

@@ -9,7 +9,16 @@
 import UIKit
 import RealmSwift
 
+struct SettingNotification {
+    static let nightMode = "\(AppSecrets.domainRoot).nightMode"
+}
+
 class SettingsViewController: UITableViewController {
+    @IBOutlet weak var settingsTableView: UITableView!
+    @IBOutlet var settingsRows: [UITableViewCell]!
+    @IBOutlet var settingsTitles: [UILabel]!
+    
+    
     @IBOutlet weak var singleCellNoteTakingSwitch: UISwitch! {
         didSet {
             singleCellNoteTakingSwitch.setOn(Defaults[.singleNoteCellSelection], animated: false)
@@ -35,10 +44,10 @@ class SettingsViewController: UITableViewController {
     }
     
     @IBOutlet weak var highlightConflictingGuessSwitch: UISwitch! {
-    didSet {
-    highlightConflictingGuessSwitch.setOn(Defaults[.highlightConflictingEntries], animated: false)
+        didSet {
+            highlightConflictingGuessSwitch.setOn(Defaults[.highlightConflictingEntries], animated: false)
+        }
     }
-}
     
     @IBOutlet weak var fillInGiveMeSwitch: UISwitch! {
         didSet {
@@ -49,6 +58,12 @@ class SettingsViewController: UITableViewController {
     @IBOutlet weak var doubleTapNoteModeSwitch: UISwitch! {
         didSet {
             doubleTapNoteModeSwitch.setOn(Defaults[.doubleTapToggleNoteMode], animated: false)
+        }
+    }
+    
+    @IBOutlet weak var nightModeSwitch: UISwitch! {
+        didSet {
+            nightModeSwitch.setOn(Defaults[.nightMode], animated: false)
         }
     }
     
@@ -88,6 +103,12 @@ class SettingsViewController: UITableViewController {
             Defaults[.doubleTapToggleNoteMode] = doubleTapNoteModeSwitch.isOn
             settingName = "doubleTapMode"
             settingVariant = "\(Defaults[.doubleTapToggleNoteMode])"
+        case 8:
+            Defaults[.nightMode] = nightModeSwitch.isOn
+            settingName = "nightMode"
+            settingVariant = "\(Defaults[.nightMode])"
+            NotificationCenter.default.post(name: Notification.Name(rawValue: SettingNotification.nightMode), object: nil)
+            updateColorThemeElements()
         default:
             settingName = "default"
             settingVariant = "none"
@@ -127,5 +148,15 @@ class SettingsViewController: UITableViewController {
         } catch (let error) {
             fatalError("Error trying to reset game times:\n\(error)")
         }
+    }
+    
+    private func updateColorThemeElements() {
+        settingsTableView.backgroundColor = ColorTheme.backgroundColor
+        settingsRows.forEach { $0.backgroundColor = ColorTheme.backgroundColor }
+        settingsTitles.forEach { $0.textColor = ColorTheme.textColor }
+    }
+    
+    override func viewDidLoad() {
+        updateColorThemeElements()
     }
 }

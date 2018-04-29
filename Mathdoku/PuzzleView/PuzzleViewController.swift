@@ -936,7 +936,7 @@ class PuzzleViewController: UIViewController, UINavigationBarDelegate {
     }
     
     private func pauseTimer() {
-        timer.pause()
+        timer.stop()
         saveTimerProgress()
     }
     

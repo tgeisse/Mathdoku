@@ -10,7 +10,7 @@ import Foundation
 
 class GameTimer {
     var runningTime: Double {
-        if state == .running {
+        if !isStopped {
             return timeSinceStarting + accumulatedTime
         } else {
             return accumulatedTime
@@ -18,24 +18,17 @@ class GameTimer {
     }
     
     private var timeSinceStarting: Double {
-        let now = Date()
-        return now.timeIntervalSince(currentStartingTime ?? now)
+        return Date().timeIntervalSince(currentStartingTime)
     }
     
     private var accumulatedTime = 0.0
-    private var currentStartingTime: Date? = nil
+    private var currentStartingTime = Date()
     private var updateClosure: () -> () = {}
     private var timer: Timer? = nil
-    private var state = State.stopped
-    
-    enum State {
-        case stopped
-        case running
-        case paused
-    }
+    private var isStopped = true
     
     func start() {
-        if state == .running { return }
+        if !isStopped { return }
         
         currentStartingTime = Date()
         
@@ -49,7 +42,7 @@ class GameTimer {
             }
         }
         
-        state = .running
+        isStopped = false
     }
     
     private func startRepeatingTimer() {
@@ -57,23 +50,19 @@ class GameTimer {
         timer = Timer.scheduledTimer(withTimeInterval: 1.0, repeats: true) { [weak self] _ in
             self?.updateClosure()
         }
-        state = .running
-    }
-    
-    func pause() {
-        if state != .running { return }
-    
-        timer?.invalidate()
-        accumulatedTime += timeSinceStarting
-        state = .paused
     }
     
     func stop() {
-        if state == .stopped { return }
+        if isStopped { return }
         
         timer?.invalidate()
         accumulatedTime += timeSinceStarting
-        state = .stopped
+        isStopped = true
+    }
+    
+    func reset() {
+        stop()
+        adjustAccumulatedTime(to: 0.0)
     }
     
     func setUpdateCallback(to: @escaping () -> ()) {
@@ -82,10 +71,5 @@ class GameTimer {
     
     func adjustAccumulatedTime(to: Double) {
         accumulatedTime = to
-    }
-    
-    func reset() {
-        stop()
-        adjustAccumulatedTime(to: 0.0)
     }
 }

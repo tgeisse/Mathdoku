@@ -72,4 +72,8 @@ class GameTimer {
     func adjustAccumulatedTime(to: Double) {
         accumulatedTime = to
     }
+    
+    deinit {
+        timer?.invalidate()
+    }
 }

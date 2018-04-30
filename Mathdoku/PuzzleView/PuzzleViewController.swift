@@ -1158,6 +1158,10 @@ class PuzzleViewController: UIViewController, UINavigationBarDelegate {
         gridRowStacks[puzzle.size..<9].forEach{ $0.isHidden = true }
     }
     
+    private func updateColorThemeElements() {
+        self.view.backgroundColor = ColorTheme.backgroundColor
+    }
+    
     // MARK: - View Lifecycle State Changes
     private func setStatesToViewDisappear() {
         removeCountdownTimer()
@@ -1214,6 +1218,7 @@ class PuzzleViewController: UIViewController, UINavigationBarDelegate {
         DebugUtil.print("")
         hideUnneededRowsAndCells()
         writePuzzleToGrid()
+        updateColorThemeElements()
         
         // check to see if the puzzle is in progress - it is the only way we'd have something to load
         if puzzleProgress.inProgress == true {
@@ -1292,6 +1297,9 @@ class PuzzleViewController: UIViewController, UINavigationBarDelegate {
         NotificationCenter.default.addObserver(forName: Notification.Name.UIApplicationWillChangeStatusBarOrientation,
                                                object: nil, queue: nil) { notification in
             CellViewElementValues.sharedInstance.clear()
+        }
+        NotificationCenter.default.addObserver(forName: Notification.Name(rawValue: SettingNotification.nightMode), object: nil, queue: nil) { [weak self] notification in
+            self?.updateColorThemeElements()
         }
     }
     

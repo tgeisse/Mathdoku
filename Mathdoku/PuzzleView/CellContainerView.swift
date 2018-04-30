@@ -10,6 +10,32 @@ import UIKit
 
 class CellContainerView: UIView {
 
+    override init(frame: CGRect) {
+        super.init(frame: frame)
+        initialize()
+    }
+    
+    required init?(coder aDecoder: NSCoder) {
+        super.init(coder: aDecoder)
+        initialize()
+    }
+    
+    deinit {
+        NotificationCenter.default.removeObserver(self)
+    }
+    
+    private func initialize() {
+        updateColorThemeElements()
+        NotificationCenter.default.addObserver(forName: Notification.Name(rawValue: SettingNotification.nightMode), object: nil, queue: nil) { [weak self] notification in
+            self?.updateColorThemeElements()
+            self?.cell.setNeedsDisplay()
+        }
+    }
+    
+    private func updateColorThemeElements() {
+        backgroundColor = currentHighlightState.color
+    }
+    
     var cell: CellView {
         guard let returnValue = self.subviews.last as? CellView else {
             fatalError("A view other than a CellView made it into my subviews at the last position")
@@ -28,7 +54,7 @@ class CellContainerView: UIView {
         
         var color: UIColor {
             switch self {
-            case .unselected: return UIColor.white
+            case .unselected: return ColorTheme.backgroundColor
             case .selected: return ColorTheme.orange.dark
             case .friendly: return ColorTheme.orange.light
             case .possibleNote: return ColorTheme.green.light

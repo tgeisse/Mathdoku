@@ -47,9 +47,9 @@ class CellView: UIView {
         
         var borderColor: UIColor {
             switch self {
-            case .friend: return .darkGray
-            case .foe: return .darkGray
-            case .other: return .darkGray
+            case .friend: return ColorTheme.borderColor
+            case .foe: return ColorTheme.borderColor
+            case .other: return ColorTheme.borderColor
             }
         }
     }
@@ -120,7 +120,8 @@ class CellView: UIView {
         }
             
         let hintTextAttributes: [NSAttributedStringKey : Any] = [
-            NSAttributedStringKey.font: CellViewElementValues.sharedInstance.hintFont!
+            NSAttributedStringKey.font: CellViewElementValues.sharedInstance.hintFont!,
+            NSAttributedStringKey.foregroundColor: ColorTheme.textColor
         ]
         
         let hintText = NSAttributedString(string: hint!, attributes: hintTextAttributes)
@@ -144,7 +145,8 @@ class CellView: UIView {
         
         // base font
         var guessTextAttributes: [NSAttributedStringKey : Any] = [
-            NSAttributedStringKey.font: CellViewElementValues.sharedInstance.guessFont!
+            NSAttributedStringKey.font: CellViewElementValues.sharedInstance.guessFont!,
+            NSAttributedStringKey.foregroundColor: ColorTheme.textColor
         ]
         
         if Defaults[.highlightConflictingEntries] == true && hasGuessAllegiance(.conflict) {

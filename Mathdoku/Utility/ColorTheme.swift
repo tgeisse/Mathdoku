@@ -56,22 +56,22 @@ struct ColorTheme {
     
     static var backgroundColor: UIColor {
         switch themeMode {
-        case .regular: return UIColor.white
-        case .night: return UIColor.black
+        case .regular: return .white
+        case .night: return .black
         }
     }
     
-    static var lineColor: UIColor {
+    static var borderColor: UIColor {
         switch themeMode {
-        case .regular: return UIColor.black
-        case .night: return UIColor.white
+        case .regular: return .darkGray
+        case .night: return .lightGray
         }
     }
     
     static var textColor: UIColor {
         switch themeMode {
-        case .regular: return UIColor.darkText
-        case .night: return UIColor.lightText
+        case .regular: return .darkText
+        case .night: return .lightText
         }
     }
 }

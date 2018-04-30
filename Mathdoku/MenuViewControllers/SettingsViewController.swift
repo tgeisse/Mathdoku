@@ -151,7 +151,7 @@ class SettingsViewController: UITableViewController {
     }
     
     private func updateColorThemeElements() {
-        settingsTableView.backgroundColor = ColorTheme.backgroundColor
+        settingsTableView.backgroundColor = ColorTheme.tableBackgroundColor
         settingsRows.forEach { $0.backgroundColor = ColorTheme.backgroundColor }
         settingsTitles.forEach { $0.textColor = ColorTheme.textColor }
     }

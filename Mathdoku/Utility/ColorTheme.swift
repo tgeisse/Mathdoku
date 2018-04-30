@@ -47,6 +47,13 @@ struct ColorTheme {
         return Defaults[.nightMode] ? .night : .regular
     }
     
+    static var tableBackgroundColor: UIColor {
+        switch themeMode {
+        case .regular: return UIColor(red:0.94, green:0.94, blue:0.96, alpha:1.00)
+        case .night: return UIColor(red:0.12, green:0.12, blue:0.12, alpha:1.00)
+        }
+    }
+    
     static var backgroundColor: UIColor {
         switch themeMode {
         case .regular: return UIColor.white
@@ -63,8 +70,8 @@ struct ColorTheme {
     
     static var textColor: UIColor {
         switch themeMode {
-        case .regular: return UIColor.black
-        case .night: return UIColor.white
+        case .regular: return UIColor.darkText
+        case .night: return UIColor.lightText
         }
     }
 }

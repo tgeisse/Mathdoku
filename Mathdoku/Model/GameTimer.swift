@@ -50,6 +50,7 @@ class GameTimer {
         timer = Timer.scheduledTimer(withTimeInterval: 1.0, repeats: true) { [weak self] _ in
             self?.updateClosure()
         }
+        isStopped = false // redundant in most cases, but is good for safe measures
     }
     
     func stop() {

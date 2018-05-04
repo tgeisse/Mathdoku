@@ -167,6 +167,9 @@ class PuzzleViewController: UIViewController, UINavigationBarDelegate {
                     cell.currentHighlightState = .friendly
                 }
                 selectedCell?.currentHighlightState = .selected
+                
+                // highlight cells
+                highlightGuesses(for: .equal)
             case .notePossible, .noteImpossible:
                 // unhighlight the selected cell and its friendly cells
                 for cell in friendsToSelectedCell {
@@ -179,6 +182,9 @@ class PuzzleViewController: UIViewController, UINavigationBarDelegate {
                 if let defaultCell = selectedCell, selectedNoteCells.count == 0 {
                     selectedNoteCells = [defaultCell]
                 }
+                
+                // unhighlight equal mode
+                highlightGuesses(for: .equal, unhighlight: true)
             }
         }
     }
@@ -574,16 +580,16 @@ class PuzzleViewController: UIViewController, UINavigationBarDelegate {
         return moves
     }
     
-    private func highlightGuesses(for allegiances: [CellView.GuessAllegiance]) {
+    private func highlightGuesses(for allegiances: [CellView.GuessAllegiance], unhighlight: Bool = false) {
         allegiances.forEach {
-            highlightGuesses(for: $0)
+            highlightGuesses(for: $0, unhighlight: unhighlight)
         }
     }
     
     private let highlightSameQueue = DispatchQueue(label: "\(AppSecrets.domainRoot).highlightSame", qos: .userInitiated)
     private let highlightConflictQueue = DispatchQueue(label: "\(AppSecrets.domainRoot).highlightConflict", qos: .userInitiated)
     private let highlightRequests = HighlightRequestQueue()
-    private func highlightGuesses(for allegiance: CellView.GuessAllegiance) {
+    private func highlightGuesses(for allegiance: CellView.GuessAllegiance, unhighlight: Bool = false) {
         let queue: DispatchQueue
         let queueName: String
         let identifyCellsNeedingAllegiance: () -> [CellPosition]
@@ -641,7 +647,7 @@ class PuzzleViewController: UIViewController, UINavigationBarDelegate {
                     
                     // next, add the flag to cells needing it if there are any that need the highlighting
                     DebugUtil.print("d. identified \(cellsNeedingAllegiance.count) cell\(cellsNeedingAllegiance.count == 1 ? "" : "s") needing allegiance flag set")
-                    if cellsNeedingAllegiance.count > 0 {
+                    if cellsNeedingAllegiance.count > 0 && !unhighlight {
                             DebugUtil.print("e. on main queue to add cell allegiance flag \(queueName)")
                             cellsNeedingAllegiance.forEach {
                                 self?.gridRowStacks[$0.row].rowCells[$0.col].cell.addGuessAllegiance(allegiance)

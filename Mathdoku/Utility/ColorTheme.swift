@@ -30,7 +30,8 @@ struct ColorTheme {
     
     struct orange {
         static let light = UIColor(red: 0.99, green: 0.90, blue: 0.80, alpha: 1.0)
-        static let dark = UIColor(red: 1.00, green: 0.70, blue: 0.42, alpha: 1.0)
+        static let dark = UIColor(hex: 0xFBC176)
+        //static let dark = UIColor(red: 1.00, green: 0.70, blue: 0.42, alpha: 1.0)
     }
     /*
     struct button {

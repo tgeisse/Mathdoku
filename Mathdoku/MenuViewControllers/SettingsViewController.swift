@@ -10,6 +10,13 @@ import UIKit
 import RealmSwift
 
 class SettingsViewController: UITableViewController {
+    @IBOutlet weak var versionNumber: UILabel! {
+        didSet {
+            versionNumber.text = "Version 0.9.3 (build 3)"
+        }
+    }
+    
+    
     @IBOutlet weak var singleCellNoteTakingSwitch: UISwitch! {
         didSet {
             singleCellNoteTakingSwitch.setOn(Defaults[.singleNoteCellSelection], animated: false)
@@ -126,6 +133,21 @@ class SettingsViewController: UITableViewController {
             
         } catch (let error) {
             fatalError("Error trying to reset game times:\n\(error)")
+        }
+    }
+    
+    override func tableView(_ tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
+        if section == 3 {
+            let appVersion: String = Bundle.main.object(forInfoDictionaryKey: "CFBundleShortVersionString") as! String
+            let buildNumber: String = Bundle.main.object(forInfoDictionaryKey: "CFBundleVersion") as! String
+
+            #if DEBUG
+                return "Version \(appVersion) build \(buildNumber)"
+            #else
+                return "Version \(appVersion)"
+            #endif
+        } else {
+            return super.tableView(tableView, titleForHeaderInSection: section)
         }
     }
 }

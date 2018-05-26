@@ -367,7 +367,6 @@
 				7ABBAD73201575B50001FEAB /* Frameworks */,
 				7ABBAD74201575B50001FEAB /* Resources */,
 				5D89C32B0D472FA0B335ED29 /* [CP] Embed Pods Frameworks */,
-				474BC5FDA21E6962B8C38278 /* [CP] Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -390,7 +389,6 @@
 				9555607E1ECD3500006C9F2D /* Embed Frameworks */,
 				9555607F1ECD362C006C9F2D /* ShellScript */,
 				A82D7CDF6981615008186848 /* [CP] Embed Pods Frameworks */,
-				B1E8A33EE82481DEF04D6E0E /* [CP] Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -474,21 +472,6 @@
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXShellScriptBuildPhase section */
-		474BC5FDA21E6962B8C38278 /* [CP] Copy Pods Resources */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputPaths = (
-			);
-			name = "[CP] Copy Pods Resources";
-			outputPaths = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-MathdokuTests/Pods-MathdokuTests-resources.sh\"\n";
-			showEnvVarsInLog = 0;
-		};
 		5D89C32B0D472FA0B335ED29 /* [CP] Embed Pods Frameworks */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
@@ -570,21 +553,6 @@
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
 			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-Mathdoku/Pods-Mathdoku-frameworks.sh\"\n";
-			showEnvVarsInLog = 0;
-		};
-		B1E8A33EE82481DEF04D6E0E /* [CP] Copy Pods Resources */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputPaths = (
-			);
-			name = "[CP] Copy Pods Resources";
-			outputPaths = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-Mathdoku/Pods-Mathdoku-resources.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
 		FA55F45AF71074DA79141519 /* [CP] Check Pods Manifest.lock */ = {

@@ -12,6 +12,7 @@ import GoogleMobileAds
 
 @IBDesignable
 class PuzzleViewController: UIViewController, UINavigationBarDelegate {
+    // MARK: - View Controller properties
     var puzzle: Puzzle!
     private var nextPuzzleId: Int? = nil
     
@@ -59,6 +60,7 @@ class PuzzleViewController: UIViewController, UINavigationBarDelegate {
     
     // MARK: - Game timer properties
     private var timer = GameTimer()
+    private let countdownTag = 554455
     private var gameTimer = 0.0 {
         didSet {
             gameTimerLabel.text = createTimeString(from: gameTimer)
@@ -821,154 +823,6 @@ class PuzzleViewController: UIViewController, UINavigationBarDelegate {
         self.showAlert(alert)
     }
     
-    // MARK: - Timer functions
-    private let countdownTag = 554455
-    private func startCountdownTimer() {
-        let countLabel = UILabel()
-        let startingFont = UIFont(name: "Noteworthy-Bold", size: 200.0)
-        
-        countLabel.tag = countdownTag
-        countLabel.backgroundColor = .clear
-        countLabel.textColor = ColorTheme.blue.dark
-        countLabel.font = startingFont
-        countLabel.textAlignment = .center
-        countLabel.translatesAutoresizingMaskIntoConstraints = false
-        view.addSubview(countLabel)
-        
-        let widthConstraint = NSLayoutConstraint(item: countLabel,
-                                                 attribute: NSLayoutAttribute.width,
-                                                 relatedBy: NSLayoutRelation.equal,
-                                                 toItem: nil,
-                                                 attribute: NSLayoutAttribute.notAnAttribute,
-                                                 multiplier: 1,
-                                                 constant: 250)
-        let heightConstraint = NSLayoutConstraint(item: countLabel,
-                                                  attribute: NSLayoutAttribute.height,
-                                                  relatedBy: NSLayoutRelation.equal,
-                                                  toItem: nil,
-                                                  attribute: NSLayoutAttribute.notAnAttribute,
-                                                  multiplier: 1,
-                                                  constant: 250)
-        
-        // Center Horizontally
-        var constraints = NSLayoutConstraint.constraints(
-            withVisualFormat: "V:[superview]-(<=1)-[label]",
-            options: NSLayoutFormatOptions.alignAllCenterX,
-            metrics: nil,
-            views: ["superview":puzzleGridSuperview, "label":countLabel])
-        
-        view.addConstraints(constraints)
-        
-        // Center Vertically
-        constraints = NSLayoutConstraint.constraints(
-            withVisualFormat: "H:[superview]-(<=1)-[label]",
-            options: NSLayoutFormatOptions.alignAllCenterY,
-            metrics: nil,
-            views: ["superview":puzzleGridSuperview, "label":countLabel])
-        
-        view.addConstraints(constraints)
-        
-        view.addConstraints([ widthConstraint, heightConstraint])
-        
-        let animation = {
-            countLabel.transform = CGAffineTransform(scaleX: 0.65, y: 0.65)
-            countLabel.alpha = 0.0
-        }
-        
-        let animationReset = {
-            countLabel.transform = .identity
-            countLabel.alpha = 1.0
-        }
-        
-        // temporarily disable the gesture recognizers
-        puzzleGridSuperview.gestureRecognizers?.forEach {
-            $0.isEnabled = false
-        }
-        
-        countLabel.text = "3"
-        UIView.animate(withDuration: 1.0, delay: 0.0, options: .curveEaseOut, animations: {
-            animation()
-        }, completion: { finished in
-            animationReset()
-            countLabel.text = "2"
-            
-            UIView.animate(withDuration: 1.0, delay: 0.0, options: .curveEaseOut, animations: {
-                animation()
-            }, completion: { finished in
-                animationReset()
-                countLabel.text = "1"
-                
-                UIView.animate(withDuration: 1.0, delay: 0.0, options: .curveEaseOut, animations: {
-                    animation()
-                }, completion: { [weak self] finished in
-                    // down counting down. remove the label and start the timer
-                    countLabel.removeFromSuperview()
-                    if finished {
-                        self?.timerState = .start
-                        self?.gameState = .playing
-                    }
-                    // enable the gesture recognizers
-                    self?.puzzleGridSuperview.gestureRecognizers?.forEach {
-                        $0.isEnabled = true
-                    }
-                })
-            })
-        })
-    }
-    
-    private func createTimeString(from time: Double) -> String {
-        let timerComponents = TimeInterval(time).components
-        return String(format: "%02i:%02i:%02i", timerComponents.hours, timerComponents.minutes, timerComponents.seconds)
-    }
-    
-    private func removeCountdownTimer() {
-        view.viewWithTag(countdownTag)?.removeFromSuperview()
-        view.layoutIfNeeded()
-    }
-    
-    private func startTimer() {
-        timer.start()
-        timerState = .running
-    }
-    
-    @objc private func updateTimer() {
-        gameTimer += 1
-    }
-    
-    private func resetTimer() {
-        timer.reset()
-        gameTimer = 0.0
-        timerState = .stopped
-    }
-    
-    private func pauseTimer() {
-        timer.stop()
-        saveTimerProgress()
-    }
-    
-    /// Save the timer to Realm to track progress when application loses focus.
-    private func saveTimerProgress() {
-        // save the timer progress to realm
-        playerProgress.setPausedGameTimer(to: timer.runningTime)
-    }
-    
-    /// Save the timer to the 'leaderboard' as a final count
-    private func saveFinalTimer() {
-        // save final timer to realm
-        let puzzleSolved = playerProgress.puzzlesSolved.filter("puzzleId == \(playerProgress.activePuzzleId)") // ?? createnewPuzzleSolved()).markPuzzlePlayed(finalTime: gameTimer)
-        
-        if puzzleSolved.count == 0 {
-            // if the puzzleSolved is 0 count, then we need to create a new one
-            try! realm.write {
-                let newPuzzleSolved = PuzzlesSolved()
-                newPuzzleSolved.puzzleId = playerProgress.activePuzzleId
-                playerProgress.puzzlesSolved.append(newPuzzleSolved)
-            }
-        }
-        
-        puzzleSolved.first?.markPuzzlePlayed(finalTime: timer.runningTime, withRealm: realm)
-    }
-    
     // MARK: - Realm helper functions
     let realmQueue = DispatchQueue(label: "\(AppSecrets.domainRoot).realmQueue", qos: .userInitiated)
     private func asyncWriteNotesForCells(atPositions: [CellPosition]) {
@@ -1304,5 +1158,154 @@ class PuzzleViewController: UIViewController, UINavigationBarDelegate {
     deinit {
         // unregister the notification observers
         NotificationCenter.default.removeObserver(self)
+    }
+}
+
+// MARK: - Extension for timer related methods
+extension PuzzleViewController {
+    private func startCountdownTimer() {
+        let countLabel = UILabel()
+        let startingFont = UIFont(name: "Noteworthy-Bold", size: 200.0)
+        
+        countLabel.tag = countdownTag
+        countLabel.backgroundColor = .clear
+        countLabel.textColor = ColorTheme.blue.dark
+        countLabel.font = startingFont
+        countLabel.textAlignment = .center
+        countLabel.translatesAutoresizingMaskIntoConstraints = false
+        view.addSubview(countLabel)
+        
+        let widthConstraint = NSLayoutConstraint(item: countLabel,
+                                                 attribute: NSLayoutAttribute.width,
+                                                 relatedBy: NSLayoutRelation.equal,
+                                                 toItem: nil,
+                                                 attribute: NSLayoutAttribute.notAnAttribute,
+                                                 multiplier: 1,
+                                                 constant: 250)
+        let heightConstraint = NSLayoutConstraint(item: countLabel,
+                                                  attribute: NSLayoutAttribute.height,
+                                                  relatedBy: NSLayoutRelation.equal,
+                                                  toItem: nil,
+                                                  attribute: NSLayoutAttribute.notAnAttribute,
+                                                  multiplier: 1,
+                                                  constant: 250)
+        
+        // Center Horizontally
+        var constraints = NSLayoutConstraint.constraints(
+            withVisualFormat: "V:[superview]-(<=1)-[label]",
+            options: NSLayoutFormatOptions.alignAllCenterX,
+            metrics: nil,
+            views: ["superview":puzzleGridSuperview, "label":countLabel])
+        
+        view.addConstraints(constraints)
+        
+        // Center Vertically
+        constraints = NSLayoutConstraint.constraints(
+            withVisualFormat: "H:[superview]-(<=1)-[label]",
+            options: NSLayoutFormatOptions.alignAllCenterY,
+            metrics: nil,
+            views: ["superview":puzzleGridSuperview, "label":countLabel])
+        
+        view.addConstraints(constraints)
+        
+        view.addConstraints([ widthConstraint, heightConstraint])
+        
+        let animation = {
+            countLabel.transform = CGAffineTransform(scaleX: 0.65, y: 0.65)
+            countLabel.alpha = 0.0
+        }
+        
+        let animationReset = {
+            countLabel.transform = .identity
+            countLabel.alpha = 1.0
+        }
+        
+        // temporarily disable the gesture recognizers
+        puzzleGridSuperview.gestureRecognizers?.forEach {
+            $0.isEnabled = false
+        }
+        
+        countLabel.text = "3"
+        UIView.animate(withDuration: 1.0, delay: 0.0, options: .curveEaseOut, animations: {
+            animation()
+        }, completion: { finished in
+            animationReset()
+            countLabel.text = "2"
+            
+            UIView.animate(withDuration: 1.0, delay: 0.0, options: .curveEaseOut, animations: {
+                animation()
+            }, completion: { finished in
+                animationReset()
+                countLabel.text = "1"
+                
+                UIView.animate(withDuration: 1.0, delay: 0.0, options: .curveEaseOut, animations: {
+                    animation()
+                }, completion: { [weak self] finished in
+                    // down counting down. remove the label and start the timer
+                    countLabel.removeFromSuperview()
+                    if finished {
+                        self?.timerState = .start
+                        self?.gameState = .playing
+                    }
+                    // enable the gesture recognizers
+                    self?.puzzleGridSuperview.gestureRecognizers?.forEach {
+                        $0.isEnabled = true
+                    }
+                })
+            })
+        })
+    }
+    
+    private func createTimeString(from time: Double) -> String {
+        let timerComponents = TimeInterval(time).components
+        return String(format: "%02i:%02i:%02i", timerComponents.hours, timerComponents.minutes, timerComponents.seconds)
+    }
+    
+    private func removeCountdownTimer() {
+        view.viewWithTag(countdownTag)?.removeFromSuperview()
+        view.layoutIfNeeded()
+    }
+    
+    private func startTimer() {
+        timer.start()
+        timerState = .running
+    }
+    
+    @objc private func updateTimer() {
+        gameTimer += 1
+    }
+    
+    private func resetTimer() {
+        timer.reset()
+        gameTimer = 0.0
+        timerState = .stopped
+    }
+    
+    private func pauseTimer() {
+        timer.stop()
+        saveTimerProgress()
+    }
+    
+    /// Save the timer to Realm to track progress when application loses focus.
+    private func saveTimerProgress() {
+        // save the timer progress to realm
+        playerProgress.setPausedGameTimer(to: timer.runningTime)
+    }
+    
+    /// Save the timer to the 'leaderboard' as a final count
+    private func saveFinalTimer() {
+        // save final timer to realm
+        let puzzleSolved = playerProgress.puzzlesSolved.filter("puzzleId == \(playerProgress.activePuzzleId)")
+        
+        if puzzleSolved.count == 0 {
+            // if the puzzleSolved is 0 count, then we need to create a new one
+            try! realm.write {
+                let newPuzzleSolved = PuzzlesSolved()
+                newPuzzleSolved.puzzleId = playerProgress.activePuzzleId
+                playerProgress.puzzlesSolved.append(newPuzzleSolved)
+            }
+        }
+        
+        puzzleSolved.first?.markPuzzlePlayed(finalTime: timer.runningTime, withRealm: realm)
     }
 }

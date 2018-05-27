@@ -19,10 +19,10 @@ enum PuzzleRefreshMode {
 
 struct PuzzleProducts {
     static let PuzzlePacks: [PuzzleProduct] = [
-        ("\(AppSecrets.domainRoot).puzzle100", "100 Puzzles", "Also disables ads!", #imageLiteral(resourceName: "GridImage"), .puzzle, 100, true),
-        ("\(AppSecrets.domainRoot).puzzle250", "250 Puzzles", "No ads!", #imageLiteral(resourceName: "GridImage"), .puzzle, 250, true),
-        ("\(AppSecrets.domainRoot).puzzle500", "500 Puzzles", "No ads!", #imageLiteral(resourceName: "GridImage"), .puzzle, 500, true),
-        ("\(AppSecrets.domainRoot).puzzle1000", "1000 Puzzles", "No ads!", #imageLiteral(resourceName: "GridImage"), .puzzle, 1000, true)
+        ("\(AppSecrets.domainRoot).puzzle100", "100 Puzzles", "And no more ads!", #imageLiteral(resourceName: "GridImage"), .puzzle, 100, true),
+        ("\(AppSecrets.domainRoot).puzzle250", "250 Puzzles", "And no more ads!", #imageLiteral(resourceName: "GridImage"), .puzzle, 250, true),
+        ("\(AppSecrets.domainRoot).puzzle500", "500 Puzzles", "And no more ads!", #imageLiteral(resourceName: "GridImage"), .puzzle, 500, true),
+        ("\(AppSecrets.domainRoot).puzzle1000", "1000 Puzzles", "And no more ads!", #imageLiteral(resourceName: "GridImage"), .puzzle, 1000, true)
     ]
     
     private static let loadedInfo = LoadedInformation()

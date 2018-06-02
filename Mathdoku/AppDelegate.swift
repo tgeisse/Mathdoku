@@ -169,7 +169,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
             //TODO: show progress indicator
 
-            sharingController.challenge(from: url).then { challenge -> () in
+            sharingController.challenge(from: url).done { challenge -> () in
                 DebugUtil.print("Opening puzzle for \(challenge)")
 
                 //TODO: show dialog with challenge.victoryTime before proceeding, and warn if another challenge is already in progress
@@ -186,7 +186,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
                 let alert = navigationController.alertWithTitle("Unable to Open Challenge", message: "Please check your network connection and try again.")
                 navigationController.visibleViewController?.showAlert(alert)
 
-            }.always {
+            }.finally {
                 //TODO: hide progress indicator
             }
 

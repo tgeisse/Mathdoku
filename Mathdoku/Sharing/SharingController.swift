@@ -68,14 +68,14 @@ class SharingController {
             "createdAt": Date().timeIntervalSince1970,
             "senderDevice": deviceID,
         ]
-
-        return database.child("challenges").child(key).setValue(value).then { _ in
+        
+        return database.child("challenges").child(key).setValue(value).map { _ in
             return SharingController.baseURL.appendingPathComponent(key)
         }
     }
 
     func message(for challenge: Challenge) -> Promise<String> {
-        return url(for: challenge).then { url -> String in
+        return url(for: challenge).map { url -> String in
             let timeString = String.fromTimeInterval(challenge.victoryTime)
             return "I completed this Mathdoku puzzle in \(timeString)! Try this puzzle and get 30 more free: \(url)"
         }
@@ -86,7 +86,7 @@ class SharingController {
             return Promise(error: Error.sendingMessagesUnsupported)
         }
 
-        return message(for: challenge).then { message -> Void in
+        return message(for: challenge).done { message -> Void in
             let composer = MFMessageComposeViewController()
             composer.body = message
             parentViewController.present(composer, animated: true, completion: nil)
@@ -122,11 +122,11 @@ class SharingController {
 
                 return TransactionResult.success(withValue: data)
 
-            }.always {
+            }.ensure {
                 cancelObserver()
             }
 
-        }.then { _, snapshot -> Challenge in
+        }.map { _, snapshot -> Challenge in
             // extract challenge parameters from value
             guard let value = snapshot!.value as? [String: Any],
                 let puzzleSize = value["puzzleSize"] as? Int,
@@ -147,7 +147,7 @@ class SharingController {
         }
 
         // count consumed challenges where senderDevice is this device
-        return database.child("challenges").queryOrdered(byChild: "senderDevice").queryEqual(toValue: deviceID).getValue().then { snapshot -> Int in
+        return database.child("challenges").queryOrdered(byChild: "senderDevice").queryEqual(toValue: deviceID).getValue().map { snapshot -> Int in
             var count = 0
             for child in snapshot.children {
                 if ((child as! DataSnapshot).value as? [String: Any])?["consumed"] as? Bool == true {

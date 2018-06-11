@@ -30,6 +30,10 @@ class CellView: UIView {
     var bottomBorder: CellAllegiance = .other { didSet { if oldValue != bottomBorder { setNeedsDisplay() } } }
     var rightBorder: CellAllegiance = .other { didSet { if oldValue != rightBorder { setNeedsDisplay() } } }
     var leftBorder: CellAllegiance = .other { didSet { if oldValue != leftBorder { setNeedsDisplay() } } }
+    var topLeftCornerPatch = false { didSet { if oldValue != topLeftCornerPatch { setNeedsDisplay() } } }
+    var topRightCornerPatch = false { didSet { if oldValue != topRightCornerPatch { setNeedsDisplay() } } }
+    var bottomRightCornerPatch = false { didSet { if oldValue != bottomRightCornerPatch { setNeedsDisplay() } } }
+    var bottomLeftCornerPatch = false { didSet { if oldValue != bottomLeftCornerPatch { setNeedsDisplay() } } }
     private var guessAllegiance: UInt8 = 0 { didSet { if oldValue != guessAllegiance { setNeedsDisplay() } } }
     
     enum CellAllegiance {
@@ -95,6 +99,9 @@ class CellView: UIView {
         
         // Add the borders around the cell
         addBorders()
+        
+        // patch corners
+        patchCorners()
         
         // Add the hint text, if there is one
         addHintText()
@@ -242,5 +249,23 @@ class CellView: UIView {
         self.layer.addBorder(edge: .right, color: rightBorder.borderColor, thickness: rightBorder.borderWeight)
         self.layer.addBorder(edge: .bottom, color: bottomBorder.borderColor, thickness: bottomBorder.borderWeight)
         self.layer.addBorder(edge: .left, color: leftBorder.borderColor, thickness: leftBorder.borderWeight)
+    }
+    
+    private func patchCorners() {
+        let color = CellAllegiance.foe.borderColor
+        let edgeLength = CellAllegiance.foe.borderWeight
+        
+        if topLeftCornerPatch {
+            self.layer.addCorner(corner: .topLeft, color: color, edgeLenth: edgeLength)
+        }
+        if topRightCornerPatch {
+            self.layer.addCorner(corner: .topRight, color: color, edgeLenth: edgeLength)
+        }
+        if bottomRightCornerPatch {
+            self.layer.addCorner(corner: .bottomRight, color: color, edgeLenth: edgeLength)
+        }
+        if bottomLeftCornerPatch {
+            self.layer.addCorner(corner: .bottomLeft, color: color, edgeLenth: edgeLength)
+        }
     }
 }

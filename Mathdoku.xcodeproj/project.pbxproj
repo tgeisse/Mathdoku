@@ -32,7 +32,6 @@
 		9572FDC41FBD500300963CFD /* Settings.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9572FDC31FBD500300963CFD /* Settings.swift */; };
 		959632E41ED115A100CAFC5D /* CellPosition.swift in Sources */ = {isa = PBXBuildFile; fileRef = 959632E31ED115A100CAFC5D /* CellPosition.swift */; };
 		9598A3A21FBC020800AE48E2 /* SettingsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9598A3A11FBC020800AE48E2 /* SettingsViewController.swift */; };
-		9598A3A51FBC1B9400AE48E2 /* SwiftyUserDefaults.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9598A3A41FBC1B9400AE48E2 /* SwiftyUserDefaults.swift */; };
 		95A196221ED2A32A0038D40C /* PuzzleProgress.swift in Sources */ = {isa = PBXBuildFile; fileRef = 95A196211ED2A32A0038D40C /* PuzzleProgress.swift */; };
 		95A196241ED2A3310038D40C /* PuzzleGuess.swift in Sources */ = {isa = PBXBuildFile; fileRef = 95A196231ED2A3310038D40C /* PuzzleGuess.swift */; };
 		95A196261ED2A33E0038D40C /* PuzzleNote.swift in Sources */ = {isa = PBXBuildFile; fileRef = 95A196251ED2A33E0038D40C /* PuzzleNote.swift */; };
@@ -117,7 +116,6 @@
 		9572FDC31FBD500300963CFD /* Settings.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Settings.swift; sourceTree = "<group>"; };
 		959632E31ED115A100CAFC5D /* CellPosition.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CellPosition.swift; sourceTree = "<group>"; };
 		9598A3A11FBC020800AE48E2 /* SettingsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsViewController.swift; sourceTree = "<group>"; };
-		9598A3A41FBC1B9400AE48E2 /* SwiftyUserDefaults.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SwiftyUserDefaults.swift; sourceTree = "<group>"; };
 		95A196211ED2A32A0038D40C /* PuzzleProgress.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PuzzleProgress.swift; sourceTree = "<group>"; };
 		95A196231ED2A3310038D40C /* PuzzleGuess.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PuzzleGuess.swift; sourceTree = "<group>"; };
 		95A196251ED2A33E0038D40C /* PuzzleNote.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PuzzleNote.swift; sourceTree = "<group>"; };
@@ -224,7 +222,6 @@
 			isa = PBXGroup;
 			children = (
 				955560691ECD2989006C9F2D /* SwiftyJSON.swift */,
-				9598A3A41FBC1B9400AE48E2 /* SwiftyUserDefaults.swift */,
 			);
 			path = Libraries;
 			sourceTree = "<group>";
@@ -536,6 +533,7 @@
 				"${BUILT_PRODUCTS_DIR}/Realm/Realm.framework",
 				"${BUILT_PRODUCTS_DIR}/RealmSwift/RealmSwift.framework",
 				"${BUILT_PRODUCTS_DIR}/SwiftyStoreKit/SwiftyStoreKit.framework",
+				"${BUILT_PRODUCTS_DIR}/SwiftyUserDefaults/SwiftyUserDefaults.framework",
 				"${BUILT_PRODUCTS_DIR}/leveldb-library/leveldb.framework",
 				"${BUILT_PRODUCTS_DIR}/nanopb/nanopb.framework",
 			);
@@ -547,6 +545,7 @@
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Realm.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/RealmSwift.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/SwiftyStoreKit.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/SwiftyUserDefaults.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/leveldb.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/nanopb.framework",
 			);
@@ -614,7 +613,6 @@
 				9598A3A21FBC020800AE48E2 /* SettingsViewController.swift in Sources */,
 				956CB04A1FD1ADE400FDB589 /* HighlightRequestQueue.swift in Sources */,
 				95470335201245F4007B3C49 /* CellViewElementValues.swift in Sources */,
-				9598A3A51FBC1B9400AE48E2 /* SwiftyUserDefaults.swift in Sources */,
 				95E9D1121EB81C2B00F51A4B /* CALayerExtensions.swift in Sources */,
 				95C082591EABC8B8008B7C2E /* CellView.swift in Sources */,
 				95D7B0BF1EE64C9800764738 /* PuzzlesSolved.swift in Sources */,

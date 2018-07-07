@@ -7,6 +7,7 @@
 //
 
 import Foundation
+import SwiftyUserDefaults
 
 // Defaults extension for settings variables
 extension DefaultsKeys {

@@ -9,6 +9,7 @@
 import UIKit
 import RealmSwift
 import GoogleMobileAds
+import SwiftyUserDefaults
 
 @IBDesignable
 class PuzzleViewController: UIViewController, UINavigationBarDelegate {

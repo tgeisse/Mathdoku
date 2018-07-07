@@ -19,6 +19,7 @@
  */
 
 import UIKit
+import SwiftyUserDefaults
 
 //@IBDesignable
 class CellView: UIView {

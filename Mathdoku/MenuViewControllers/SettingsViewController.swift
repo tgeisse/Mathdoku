@@ -8,6 +8,7 @@
 
 import UIKit
 import RealmSwift
+import SwiftyUserDefaults
 
 class SettingsViewController: UITableViewController {    
     @IBOutlet weak var singleCellNoteTakingSwitch: UISwitch! {

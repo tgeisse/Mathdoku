@@ -1151,7 +1151,7 @@ class PuzzleViewController: UIViewController, UINavigationBarDelegate {
             self?.setStatesToViewAppear()
         }
         NotificationCenter.default.addObserver(forName: Notification.Name.UIApplicationWillChangeStatusBarOrientation,
-                                               object: nil, queue: nil) { notification in
+                                               object: nil, queue: nil) { _ in
             CellViewElementValues.sharedInstance.clear()
         }
     }

@@ -36,6 +36,28 @@ class PuzzleSelectionViewController: UIViewController {
     @IBOutlet weak var startPuzzle: UIButton!
     @IBOutlet weak var puzzlesRemainingLabel: UILabel!
     
+    @IBOutlet weak var inProgress3: UILabel!
+    @IBOutlet weak var inProgress4: UILabel!
+    @IBOutlet weak var inProgress5: UILabel!
+    @IBOutlet weak var inProgress6: UILabel!
+    @IBOutlet weak var inProgress7: UILabel!
+    @IBOutlet weak var inProgress8: UILabel!
+    @IBOutlet weak var inProgress9: UILabel!
+    
+    private func updateInProgressMarker(forLabel label: UILabel, show: Bool) {
+        label.isHidden = !show
+    }
+    
+    private func updateProgressMarkers() {
+        updateInProgressMarker(forLabel: inProgress3, show: playerProgress[0].puzzleProgress?.inProgress ?? false)
+        updateInProgressMarker(forLabel: inProgress4, show: playerProgress[1].puzzleProgress?.inProgress ?? false)
+        updateInProgressMarker(forLabel: inProgress5, show: playerProgress[2].puzzleProgress?.inProgress ?? false)
+        updateInProgressMarker(forLabel: inProgress6, show: playerProgress[3].puzzleProgress?.inProgress ?? false)
+        updateInProgressMarker(forLabel: inProgress7, show: playerProgress[4].puzzleProgress?.inProgress ?? false)
+        updateInProgressMarker(forLabel: inProgress8, show: playerProgress[5].puzzleProgress?.inProgress ?? false)
+        updateInProgressMarker(forLabel: inProgress9, show: playerProgress[6].puzzleProgress?.inProgress ?? false)
+    }
+    
     private var puzzleAllowanceNotification: NotificationToken?
    
     // MARK: - View Lifecycle
@@ -43,6 +65,7 @@ class PuzzleSelectionViewController: UIViewController {
         self.navigationController?.setNavigationBarHidden(true, animated: animated)
         super.viewWillAppear(animated)
         updateStartButtonTitle()
+        updateProgressMarkers()
     }
     
     override func viewDidLoad() {

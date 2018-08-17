@@ -982,6 +982,9 @@ class PuzzleViewController: UIViewController, UINavigationBarDelegate {
     }
     
     private func writePuzzleToGrid() {
+        // looped through cells
+        var cellAllegiances = [CellPosition: (north: Bool, east: Bool, south: Bool, west: Bool)]()
+        
         // set cage boundaries - loop until the puzzle size squared
         for cell in 0..<(puzzle.size * puzzle.size) {
             // set the x,y coordinates for when we need to set the view
@@ -989,6 +992,8 @@ class PuzzleViewController: UIViewController, UINavigationBarDelegate {
             let cellPosition = CellPosition(cellId: cell, puzzleSize: puzzle.size)
             
             if let cellNeighborAllegience = puzzle.neighborsInSameCageForCell(cellPosition) {
+                cellAllegiances[cellPosition] = cellNeighborAllegience
+                
                 let cellView = gridRowStacks[cellPosition.row].rowCells[cellPosition.col].cell
                 
                 // empty out the hintText
@@ -1002,6 +1007,41 @@ class PuzzleViewController: UIViewController, UINavigationBarDelegate {
                 cellView.bottomBorder = (cellPosition.row == puzzle.size - 1 ? .other : (cellNeighborAllegience.south ? .friend : .foe))
                 
                 cellView.leftBorder = (cellPosition.col == 0 ? .other : (cellNeighborAllegience.west ? .friend : .foe))
+                
+                // reset my corner patches
+                cellView.topLeftCornerPatch = false
+                cellView.topRightCornerPatch = false
+                cellView.bottomRightCornerPatch = false
+                cellView.bottomLeftCornerPatch = false
+                
+                // look back to see if we need to patch any corners
+                if let topLeftCellPosition = cellPosition.relativeCell(byRow: -1, byCol: -1),
+                    let topLeftAllegiance = cellAllegiances[topLeftCellPosition] {
+                    
+                    if topLeftAllegiance.east == false && topLeftAllegiance.south == false && cellNeighborAllegience.north == true && cellNeighborAllegience.west == true {
+                        DebugUtil.print("Adding a top left corner patch to cell: \(cellPosition.cellId)")
+                        cellView.topLeftCornerPatch = true
+                    }
+                    
+                    if topLeftAllegiance.east == true && topLeftAllegiance.south == true && cellNeighborAllegience.north == false && cellNeighborAllegience.west == false {
+                        DebugUtil.print("Adding a bottom right corner patch to cell: \(topLeftCellPosition.cellId)")
+                        gridRowStacks[topLeftCellPosition.row].rowCells[topLeftCellPosition.col].cell.bottomRightCornerPatch = true
+                    }
+                }
+                
+                if let topRightCellPosition = cellPosition.relativeCell(byRow: -1, byCol: 1),
+                    let topRightAllegiance = cellAllegiances[topRightCellPosition] {
+                    
+                    if topRightAllegiance.west == false && topRightAllegiance.south == false && cellNeighborAllegience.north == true && cellNeighborAllegience.east == true {
+                        DebugUtil.print("Adding a top right corner patch to cell: \(cellPosition.cellId)")
+                        cellView.topRightCornerPatch = true
+                    }
+                    
+                    if topRightAllegiance.west == true && topRightAllegiance.south == true && cellNeighborAllegience.north == false && cellNeighborAllegience.east == false {
+                        DebugUtil.print("Adding a bottom left corner patch to cell: \(topRightCellPosition.cellId)")
+                        gridRowStacks[topRightCellPosition.row].rowCells[topRightCellPosition.col].cell.bottomLeftCornerPatch = true
+                    }
+                }
             }
         }
         

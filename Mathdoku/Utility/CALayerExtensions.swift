@@ -35,4 +35,25 @@ extension CALayer {
         
         self.addSublayer(border)
     }
+    
+    func addCorner(corner: UIRectCorner, color: UIColor, edgeLenth: CGFloat) {
+        let cornerBox = CALayer()
+        
+        switch corner {
+        case .topLeft:
+            cornerBox.frame = CGRect.init(x: 0, y: 0, width: edgeLenth, height: edgeLenth)
+        case .topRight:
+            cornerBox.frame = CGRect.init(x: frame.width - edgeLenth, y: 0, width: edgeLenth, height: edgeLenth)
+        case .bottomRight:
+            cornerBox.frame = CGRect.init(x: frame.width - edgeLenth, y: frame.height - edgeLenth, width: edgeLenth, height: edgeLenth)
+        case .bottomLeft:
+            cornerBox.frame = CGRect.init(x: 0, y: frame.height - edgeLenth, width: edgeLenth, height: edgeLenth)
+        default:
+            break
+        }
+        
+        cornerBox.backgroundColor = color.cgColor
+        
+        self.addSublayer(cornerBox)
+    }
 }

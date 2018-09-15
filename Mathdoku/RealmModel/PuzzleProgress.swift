@@ -21,7 +21,8 @@ class PuzzleProgress: Object {
             try realm.write {
                 self.inProgress = to
             }
-        } catch (let error) {
+        } catch let error {
+            CrashWrapper.notifyError(error)
             fatalError("Error setting puzzle inProgress:\n\(error)")
         }
 

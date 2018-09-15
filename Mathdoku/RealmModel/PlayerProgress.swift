@@ -28,7 +28,8 @@ class PlayerProgress: Object {
             try realm.write {
                 self.activePuzzleId = PuzzleLoader.sharedInstance.getRandomPuzzleId(forSize: self.puzzleSize) ?? self.activePuzzleId + 1
             }
-        } catch (let error) {
+        } catch let error {
+            CrashWrapper.notifyError(error)
             fatalError("Error incrementing puzzle id:\n\(error)")
         }
     }
@@ -40,7 +41,8 @@ class PlayerProgress: Object {
             try realm.write {
                 self.pausedGameTimer = to
             }
-        } catch (let error) {
+        } catch let error {
+            CrashWrapper.notifyError(error)
             fatalError("Error setting the paused game timer:\n\(error)")
         }
     }

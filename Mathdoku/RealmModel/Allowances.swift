@@ -61,7 +61,8 @@ class Allowances: Object {
                 allowance = allowance + incrementBy
                 lastRefreshDate = NSDate()
             }
-        } catch (let error) {
+        } catch let error {
+            CrashWrapper.notifyError(error)
             fatalError("Error incrementing allowance '\(allowanceId)':\n\(error)")
         }
     }
@@ -73,7 +74,8 @@ class Allowances: Object {
             try realm.write {
                 allowance = allowance - decrementBy
             }
-        } catch (let error) {
+        } catch let error {
+            CrashWrapper.notifyError(error)
             fatalError("Error decrementing allowance '\(allowanceId)':\n\(error)")
         }
     }

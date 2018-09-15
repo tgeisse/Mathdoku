@@ -57,7 +57,8 @@ struct PuzzlePurchase {
                     try realm.write {
                         currentAllowance?.lastPurchaseDate = NSDate()
                     }
-                } catch (let error) {
+                } catch let error {
+                    CrashWrapper.notifyError(error)
                     DebugUtil.print("Unable to complete a purchase: \(error)")
                 }
                 

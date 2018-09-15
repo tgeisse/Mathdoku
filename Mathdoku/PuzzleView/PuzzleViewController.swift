@@ -120,7 +120,8 @@ class PuzzleViewController: UIViewController, UINavigationBarDelegate {
                     playerProgress.puzzleProgress = newPuzzleProgress
                 }
                 return newPuzzleProgress
-            } catch (let error) {
+            } catch let error {
+                CrashWrapper.notifyError(error)
                 fatalError("Error creating a new puzzle progress:\n\(error)")
             }
         } else {
@@ -892,7 +893,8 @@ class PuzzleViewController: UIViewController, UINavigationBarDelegate {
                     }
                 }
                 
-            } catch (let error) {
+            } catch let error {
+                CrashWrapper.notifyError(error)
                 fatalError("Error trying to async save the cell notes: \(error)")
             }
         }
@@ -926,7 +928,8 @@ class PuzzleViewController: UIViewController, UINavigationBarDelegate {
                         }
                     }
                 }
-            } catch (let error) {
+            } catch let error {
+                CrashWrapper.notifyError(error)
                 fatalError("Error trying to save guess for cell:\n\(error)")
             }
         }
@@ -941,7 +944,8 @@ class PuzzleViewController: UIViewController, UINavigationBarDelegate {
             try realm.write {
                 playerProgress.activePuzzleId = nextPuzzleId ?? 0
             }
-        } catch (let error) {
+        } catch let error {
+            CrashWrapper.notifyError(error)
             fatalError("Error moving the user to the new puzzle ID:\n\(error)")
         }
         

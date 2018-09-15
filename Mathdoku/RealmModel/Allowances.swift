@@ -62,7 +62,7 @@ class Allowances: Object {
                 lastRefreshDate = NSDate()
             }
         } catch let error {
-            CrashWrapper.notifyError(error)
+            error.report()
             fatalError("Error incrementing allowance '\(allowanceId)':\n\(error)")
         }
     }
@@ -75,7 +75,7 @@ class Allowances: Object {
                 allowance = allowance - decrementBy
             }
         } catch let error {
-            CrashWrapper.notifyError(error)
+            error.report()
             fatalError("Error decrementing allowance '\(allowanceId)':\n\(error)")
         }
     }

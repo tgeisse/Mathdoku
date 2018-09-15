@@ -176,6 +176,7 @@ class PuzzleSelectionViewController: UIViewController {
         
         if segue.identifier == "PuzzleSelection" {
             guard let puzzleViewController = segue.destination as? PuzzleViewController else {
+                CrashWrapper.notifyException(name: .cast, reason: "Destination did not load as PuzzleViewController")
                 fatalError("Unexpected destination: \(segue.destination)")
             }
             

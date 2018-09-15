@@ -22,7 +22,7 @@ class PuzzleProgress: Object {
                 self.inProgress = to
             }
         } catch let error {
-            CrashWrapper.notifyError(error)
+            error.report()
             fatalError("Error setting puzzle inProgress:\n\(error)")
         }
 

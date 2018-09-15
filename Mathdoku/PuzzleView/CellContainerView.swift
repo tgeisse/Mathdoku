@@ -12,6 +12,7 @@ class CellContainerView: UIView {
 
     var cell: CellView {
         guard let returnValue = self.subviews.last as? CellView else {
+            CrashWrapper.notifyException(name: .cast, reason: "A view other than a CellView made it into my subviews at the last position")
             fatalError("A view other than a CellView made it into my subviews at the last position")
         }
         

@@ -34,6 +34,7 @@ class PuzzleViewController: UIViewController, UINavigationBarDelegate {
     
     private var gridRowStacks: [GridRowView] {
         guard let returnValue = puzzleGridSuperview.subviews as? [GridRowView] else {
+            CrashWrapper.notifyException(name: .cast, reason: "A view that is not a Grid Row View made it into the puzzle grid.")
             fatalError("A view that is not a Grid Row View made it into the puzzle grid.")
         }
         
@@ -121,7 +122,7 @@ class PuzzleViewController: UIViewController, UINavigationBarDelegate {
                 }
                 return newPuzzleProgress
             } catch let error {
-                CrashWrapper.notifyError(error)
+                error.report()
                 fatalError("Error creating a new puzzle progress:\n\(error)")
             }
         } else {
@@ -894,7 +895,7 @@ class PuzzleViewController: UIViewController, UINavigationBarDelegate {
                 }
                 
             } catch let error {
-                CrashWrapper.notifyError(error)
+                error.report()
                 fatalError("Error trying to async save the cell notes: \(error)")
             }
         }
@@ -929,7 +930,7 @@ class PuzzleViewController: UIViewController, UINavigationBarDelegate {
                     }
                 }
             } catch let error {
-                CrashWrapper.notifyError(error)
+                error.report()
                 fatalError("Error trying to save guess for cell:\n\(error)")
             }
         }
@@ -945,7 +946,7 @@ class PuzzleViewController: UIViewController, UINavigationBarDelegate {
                 playerProgress.activePuzzleId = nextPuzzleId ?? 0
             }
         } catch let error {
-            CrashWrapper.notifyError(error)
+            error.report()
             fatalError("Error moving the user to the new puzzle ID:\n\(error)")
         }
         

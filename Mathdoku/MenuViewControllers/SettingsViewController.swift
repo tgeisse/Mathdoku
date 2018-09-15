@@ -126,7 +126,7 @@ class SettingsViewController: UITableViewController {
             }
             
         } catch let error {
-            CrashWrapper.notifyError(error)
+            error.report()
             fatalError("Error trying to reset game times:\n\(error)")
         }
     }

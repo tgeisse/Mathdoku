@@ -69,6 +69,7 @@ class StoreTableViewController: UITableViewController {
 
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         guard let cell = tableView.dequeueReusableCell(withIdentifier: "storePuzzlePack", for: indexPath) as? StoreTableViewCell else {
+            CrashWrapper.notifyException(name: .cast, reason: "Dequeued incorrect type (StoreTableViewCell)")
             fatalError("A cell that is not a store puzzle pack made it into the queue")
         }
 

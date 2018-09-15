@@ -34,7 +34,7 @@ class PuzzlesSolved: Object {
                 self.playCount = self.playCount + 1
             }
         } catch let error {
-            CrashWrapper.notifyError(error)
+            error.report()
             fatalError("Error saving a new puzzle that has been completed:\n\(error)")
         }
     }

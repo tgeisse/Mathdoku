@@ -29,7 +29,7 @@ class PlayerProgress: Object {
                 self.activePuzzleId = PuzzleLoader.sharedInstance.getRandomPuzzleId(forSize: self.puzzleSize) ?? self.activePuzzleId + 1
             }
         } catch let error {
-            CrashWrapper.notifyError(error)
+            error.report()
             fatalError("Error incrementing puzzle id:\n\(error)")
         }
     }
@@ -42,7 +42,7 @@ class PlayerProgress: Object {
                 self.pausedGameTimer = to
             }
         } catch let error {
-            CrashWrapper.notifyError(error)
+            error.report()
             fatalError("Error setting the paused game timer:\n\(error)")
         }
     }

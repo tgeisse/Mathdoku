@@ -65,7 +65,7 @@ class PuzzleLoader {
         do {
             try realm = Realm()
         } catch let error {
-            CrashWrapper.notifyError(error)
+            error.report()
             fatalError("Could not open a Realm connection:\n\(error)")
         }
         
@@ -161,7 +161,7 @@ class PuzzleLoader {
                         }
                     }
                 } catch let error {            
-                    CrashWrapper.notifyError(error)
+                    error.report()
                     fatalError("Unable to write the new puzzles to realm:\n\(error)")
                 }
                 DebugUtil.print("Done adding puzzle history for size \(size)")
@@ -214,7 +214,7 @@ class PuzzleLoader {
             let jsonObj = try JSON(data: dataAsset!.data)
             return jsonObj
         } catch let error {
-            CrashWrapper.notifyError(error)
+            error.report()
             fatalError("Unable to locate the asset with name \(resource) - \(error)")
         }
     }

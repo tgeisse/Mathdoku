@@ -39,7 +39,7 @@ struct PuzzleProducts {
                 let localRealm = try Realm()
                 return localRealm
             } catch let error {
-                CrashWrapper.notifyError(error)
+                error.report()
                 fatalError("Error creating a realm in PuzzleProducts.LoadedInformation:\n\(error)")
             }
         }()

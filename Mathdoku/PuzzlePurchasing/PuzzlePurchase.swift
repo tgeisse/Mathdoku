@@ -58,7 +58,7 @@ struct PuzzlePurchase {
                         currentAllowance?.lastPurchaseDate = NSDate()
                     }
                 } catch let error {
-                    CrashWrapper.notifyError(error)
+                    error.report()
                     DebugUtil.print("Unable to complete a purchase: \(error)")
                 }
                 

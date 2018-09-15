@@ -13,7 +13,7 @@ struct AnalyticsWrapper {
         case selectContent
         case appOpen
         
-        var mappedType: String {
+        var mapped: String {
             switch self {
             case .selectContent: return AnalyticsEventSelectContent
             case .appOpen: return AnalyticsEventAppOpen
@@ -58,7 +58,7 @@ struct AnalyticsWrapper {
             
             DebugUtil.print("Logging event \(debugPrint)")
             
-            Analytics.logEvent(type.mappedType, parameters: parameters)
+            Analytics.logEvent(type.mapped, parameters: parameters)
         }
     }
 }

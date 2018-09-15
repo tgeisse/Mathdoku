@@ -11,12 +11,12 @@ import RealmSwift
 import Firebase
 import GoogleMobileAds
 import SwiftyStoreKit
+import Bugsnag
 
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate {
 
     var window: UIWindow?
-
 
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplicationLaunchOptionsKey: Any]?) -> Bool {
         // Override point for customization after application launch.
@@ -44,6 +44,11 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         // Initialize the Google Mobile Ads SDK.
         // AdMob app id
         GADMobileAds.configure(withApplicationID: AppKeys.adMobAppId.key)
+        
+        // Initialize Bugsnag SDK
+        Bugsnag.start(withApiKey: AppKeys.bugsnagApiKey.key)
+        // Bugsnag test notification
+        // Bugsnag.notifyError(NSError(domain: AppSecrets.domainRoot, code: 408, userInfo: nil))
         
         return true
     }

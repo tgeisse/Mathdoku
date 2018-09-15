@@ -18,6 +18,7 @@
 		9518F85E1FF36AF400AAAB35 /* StoreTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9518F85D1FF36AF400AAAB35 /* StoreTableViewCell.swift */; };
 		9544E33B1EF0EA5D00F37ED7 /* TimeIntervalExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9544E33A1EF0EA5D00F37ED7 /* TimeIntervalExtension.swift */; };
 		9544E33D1F001E8000F37ED7 /* HowToPlayPageViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9544E33C1F001E8000F37ED7 /* HowToPlayPageViewController.swift */; };
+		954695F1205C8A4300BB431A /* CrashWrapper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 954695F0205C8A4300BB431A /* CrashWrapper.swift */; };
 		95470335201245F4007B3C49 /* CellViewElementValues.swift in Sources */ = {isa = PBXBuildFile; fileRef = 95470334201245F4007B3C49 /* CellViewElementValues.swift */; };
 		95480ED620846CB200F783F9 /* GameTimer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 95480ED520846CB200F783F9 /* GameTimer.swift */; };
 		9555606A1ECD2989006C9F2D /* SwiftyJSON.swift in Sources */ = {isa = PBXBuildFile; fileRef = 955560691ECD2989006C9F2D /* SwiftyJSON.swift */; };
@@ -102,6 +103,7 @@
 		9518F85D1FF36AF400AAAB35 /* StoreTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StoreTableViewCell.swift; sourceTree = "<group>"; };
 		9544E33A1EF0EA5D00F37ED7 /* TimeIntervalExtension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TimeIntervalExtension.swift; sourceTree = "<group>"; };
 		9544E33C1F001E8000F37ED7 /* HowToPlayPageViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HowToPlayPageViewController.swift; sourceTree = "<group>"; };
+		954695F0205C8A4300BB431A /* CrashWrapper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CrashWrapper.swift; sourceTree = "<group>"; };
 		95470334201245F4007B3C49 /* CellViewElementValues.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CellViewElementValues.swift; sourceTree = "<group>"; };
 		95480ED520846CB200F783F9 /* GameTimer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameTimer.swift; sourceTree = "<group>"; };
 		955560691ECD2989006C9F2D /* SwiftyJSON.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SwiftyJSON.swift; sourceTree = "<group>"; };
@@ -278,9 +280,10 @@
 				95CBCC531FFC9659001409B1 /* Stack.swift */,
 				9502E5DD1EEE080F0048BE1B /* ViewControllerExtensions.swift */,
 				9544E33A1EF0EA5D00F37ED7 /* TimeIntervalExtension.swift */,
-				9570051B1FE104F300C85822 /* AnalyticsWrapper.swift */,
 				95CBCC571FFDCE92001409B1 /* UIColorExtensions.swift */,
 				950E6DA620087DD70066AA4F /* ColorTheme.swift */,
+				9570051B1FE104F300C85822 /* AnalyticsWrapper.swift */,
+				954695F0205C8A4300BB431A /* CrashWrapper.swift */,
 			);
 			path = Utility;
 			sourceTree = "<group>";
@@ -527,6 +530,7 @@
 			);
 			inputPaths = (
 				"${SRCROOT}/Pods/Target Support Files/Pods-Mathdoku/Pods-Mathdoku-frameworks.sh",
+				"${BUILT_PRODUCTS_DIR}/Bugsnag/Bugsnag.framework",
 				"${BUILT_PRODUCTS_DIR}/GoogleToolboxForMac/GoogleToolboxForMac.framework",
 				"${BUILT_PRODUCTS_DIR}/Instructions/Instructions.framework",
 				"${BUILT_PRODUCTS_DIR}/PromiseKit/PromiseKit.framework",
@@ -539,6 +543,7 @@
 			);
 			name = "[CP] Embed Pods Frameworks";
 			outputPaths = (
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Bugsnag.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/GoogleToolboxForMac.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Instructions.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/PromiseKit.framework",
@@ -611,6 +616,7 @@
 				95FBB8DB1E9AD13F00B0E662 /* AppDelegate.swift in Sources */,
 				9570051C1FE104F300C85822 /* AnalyticsWrapper.swift in Sources */,
 				9598A3A21FBC020800AE48E2 /* SettingsViewController.swift in Sources */,
+				954695F1205C8A4300BB431A /* CrashWrapper.swift in Sources */,
 				956CB04A1FD1ADE400FDB589 /* HighlightRequestQueue.swift in Sources */,
 				95470335201245F4007B3C49 /* CellViewElementValues.swift in Sources */,
 				95E9D1121EB81C2B00F51A4B /* CALayerExtensions.swift in Sources */,

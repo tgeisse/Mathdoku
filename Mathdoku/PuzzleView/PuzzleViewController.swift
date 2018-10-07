@@ -673,7 +673,10 @@ class PuzzleViewController: UIViewController, UINavigationBarDelegate {
         var moves = [Move]()
         
         for atPosition in atPositions {
-            moves.append((atPosition, .guess(from: puzzle.getCurrentGuess(forCell: atPosition), to: withAnswer)))
+            let curGuess = puzzle.getCurrentGuess(forCell: atPosition)
+            if curGuess != withAnswer {
+                moves.append((atPosition, .guess(from: curGuess, to: withAnswer)))
+            }
             
             gridRowStacks[atPosition.row].rowCells[atPosition.col].cell.guess = (withAnswer == nil ? nil : "\(withAnswer!)")
             puzzle.setGuessForCellPosition(atPosition, guess: withAnswer)

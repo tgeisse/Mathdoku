@@ -420,7 +420,7 @@
 					95FBB8D61E9AD13F00B0E662 = {
 						CreatedOnToolsVersion = 8.3.1;
 						DevelopmentTeam = 57TCLD34EQ;
-						LastSwiftMigration = 0920;
+						LastSwiftMigration = "";
 						ProvisioningStyle = Automatic;
 						SystemCapabilities = {
 							com.apple.InAppPurchase = {

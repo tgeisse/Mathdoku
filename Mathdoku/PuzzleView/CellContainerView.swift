@@ -76,7 +76,7 @@ class CellContainerView: UIView {
     // MARK: - Background Animations
     private func animateBackgroundColor(_ color: UIColor?,
                                 duration: TimeInterval,
-                                options: UIViewAnimationOptions = [.allowUserInteraction, .beginFromCurrentState],
+                                options: UIView.AnimationOptions = [.allowUserInteraction, .beginFromCurrentState],
                                 completion: ((Bool) -> Void)? = nil) {
         
         UIView.animate(withDuration: duration, delay: 0.0, options: options, animations: {

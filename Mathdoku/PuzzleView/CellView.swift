@@ -127,8 +127,8 @@ class CellView: UIView {
                 UIFont.boldSystemFont(ofSize: CellViewElementValues.sharedInstance.hintDefaultTextSize * 1.15 * CellViewElementValues.sharedInstance.scaleFactor!)
         }
             
-        let hintTextAttributes: [NSAttributedStringKey : Any] = [
-            NSAttributedStringKey.font: CellViewElementValues.sharedInstance.hintFont!
+        let hintTextAttributes: [NSAttributedString.Key : Any] = [
+            NSAttributedString.Key.font: CellViewElementValues.sharedInstance.hintFont!
         ]
         
         let hintText = NSAttributedString(string: hint!, attributes: hintTextAttributes)
@@ -151,8 +151,8 @@ class CellView: UIView {
         }
         
         // base font
-        var guessTextAttributes: [NSAttributedStringKey : Any] = [
-            NSAttributedStringKey.font: CellViewElementValues.sharedInstance.guessFont!
+        var guessTextAttributes: [NSAttributedString.Key : Any] = [
+            NSAttributedString.Key.font: CellViewElementValues.sharedInstance.guessFont!
         ]
         
         if Defaults[.highlightConflictingEntries] == true && hasGuessAllegiance(.conflict) {
@@ -167,7 +167,7 @@ class CellView: UIView {
             }
             
             // apply the Conflict Shadow
-            guessTextAttributes[NSAttributedStringKey.shadow] = CellViewElementValues.sharedInstance.guessConflictShadow!
+            guessTextAttributes[NSAttributedString.Key.shadow] = CellViewElementValues.sharedInstance.guessConflictShadow!
         } else if Defaults[.highlightSameGuessEntry] == true && hasGuessAllegiance(.equal) {
             if CellViewElementValues.sharedInstance.guessEqualShadow == nil {
                 // if the sharedInstance doesn't have the Equal Shadow calculated
@@ -180,7 +180,7 @@ class CellView: UIView {
             }
             
             // apply the Equal Shadow
-            guessTextAttributes[NSAttributedStringKey.shadow] = CellViewElementValues.sharedInstance.guessEqualShadow!
+            guessTextAttributes[NSAttributedString.Key.shadow] = CellViewElementValues.sharedInstance.guessEqualShadow!
         }
         
         
@@ -219,9 +219,9 @@ class CellView: UIView {
             UIFont.boldSystemFont(ofSize: CellViewElementValues.sharedInstance.noteDefaultTextSize * (CellViewElementValues.sharedInstance.scaleFactor! / 1.5))
         }
         
-        let noteTextAttributes: [NSAttributedStringKey : Any] = [
-            NSAttributedStringKey.foregroundColor: ColorTheme.green.dark,
-            NSAttributedStringKey.font: CellViewElementValues.sharedInstance.noteFont!
+        let noteTextAttributes: [NSAttributedString.Key : Any] = [
+            NSAttributedString.Key.foregroundColor: ColorTheme.green.dark,
+            NSAttributedString.Key.font: CellViewElementValues.sharedInstance.noteFont!
         ]
         
         let noteText = NSAttributedString(string: note!, attributes: noteTextAttributes)

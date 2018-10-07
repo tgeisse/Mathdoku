@@ -1185,7 +1185,7 @@ class PuzzleViewController: UIViewController, UINavigationBarDelegate {
         }
         
         // register notification observers
-        NotificationCenter.default.addObserver(forName: Notification.Name.UIApplicationWillResignActive,
+        NotificationCenter.default.addObserver(forName: UIApplication.willResignActiveNotification,
                                                object: nil, queue: nil) { [weak self] notification in
             
             self?.view.subviews.forEach({$0.layer.removeAllAnimations()})
@@ -1193,12 +1193,12 @@ class PuzzleViewController: UIViewController, UINavigationBarDelegate {
             self?.view.layoutIfNeeded()
             self?.setStatesToViewDisappear()
         }
-        NotificationCenter.default.addObserver(forName: Notification.Name.UIApplicationDidBecomeActive,
+        NotificationCenter.default.addObserver(forName: UIApplication.didBecomeActiveNotification,
                                                object: nil, queue: nil) { [weak self] notification in
                                                 
             self?.setStatesToViewAppear()
         }
-        NotificationCenter.default.addObserver(forName: Notification.Name.UIApplicationWillChangeStatusBarOrientation,
+        NotificationCenter.default.addObserver(forName: UIApplication.willChangeStatusBarOrientationNotification,
                                                object: nil, queue: nil) { _ in
             CellViewElementValues.sharedInstance.clear()
         }
@@ -1225,24 +1225,24 @@ extension PuzzleViewController {
         view.addSubview(countLabel)
         
         let widthConstraint = NSLayoutConstraint(item: countLabel,
-                                                 attribute: NSLayoutAttribute.width,
-                                                 relatedBy: NSLayoutRelation.equal,
+                                                 attribute: NSLayoutConstraint.Attribute.width,
+                                                 relatedBy: NSLayoutConstraint.Relation.equal,
                                                  toItem: nil,
-                                                 attribute: NSLayoutAttribute.notAnAttribute,
+                                                 attribute: NSLayoutConstraint.Attribute.notAnAttribute,
                                                  multiplier: 1,
                                                  constant: 250)
         let heightConstraint = NSLayoutConstraint(item: countLabel,
-                                                  attribute: NSLayoutAttribute.height,
-                                                  relatedBy: NSLayoutRelation.equal,
+                                                  attribute: NSLayoutConstraint.Attribute.height,
+                                                  relatedBy: NSLayoutConstraint.Relation.equal,
                                                   toItem: nil,
-                                                  attribute: NSLayoutAttribute.notAnAttribute,
+                                                  attribute: NSLayoutConstraint.Attribute.notAnAttribute,
                                                   multiplier: 1,
                                                   constant: 250)
         
         // Center Horizontally
         var constraints = NSLayoutConstraint.constraints(
             withVisualFormat: "V:[superview]-(<=1)-[label]",
-            options: NSLayoutFormatOptions.alignAllCenterX,
+            options: NSLayoutConstraint.FormatOptions.alignAllCenterX,
             metrics: nil,
             views: ["superview":puzzleGridSuperview, "label":countLabel])
         
@@ -1251,7 +1251,7 @@ extension PuzzleViewController {
         // Center Vertically
         constraints = NSLayoutConstraint.constraints(
             withVisualFormat: "H:[superview]-(<=1)-[label]",
-            options: NSLayoutFormatOptions.alignAllCenterY,
+            options: NSLayoutConstraint.FormatOptions.alignAllCenterY,
             metrics: nil,
             views: ["superview":puzzleGridSuperview, "label":countLabel])
         

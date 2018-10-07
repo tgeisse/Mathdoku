@@ -18,7 +18,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
     var window: UIWindow?
 
-    func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplicationLaunchOptionsKey: Any]?) -> Bool {
+    func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
         // Override point for customization after application launch.
         
         // set up a purchase listener
@@ -53,7 +53,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         return true
     }
     
-    func application(_ application: UIApplication, willFinishLaunchingWithOptions launchOptions: [UIApplicationLaunchOptionsKey : Any]? = nil) -> Bool {
+    func application(_ application: UIApplication, willFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey : Any]? = nil) -> Bool {
 
         // Realm Migrations
         let config = Realm.Configuration(
@@ -80,6 +80,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         let realm = try! Realm()
         
         // set the default player progress / validate that none were lost
+        DebugUtil.print("Creating blank player progresses")
         let playerProgress = realm.objects(PlayerProgress.self)
         for puzzleSize in 3...9 {
             if playerProgress.filter("puzzleSize == \(puzzleSize)").count == 0 {
@@ -93,8 +94,9 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
             }
         }
         
+        DebugUtil.print("Creating Allowances")
         // set the default allowance values if they don't exist
-        for allowanceType in Utility.iterateEnum(AllowanceTypes.self) {
+        for allowanceType in AllowanceTypes.getAllowanceTypes() {
             // test to see if we have an allowance for this type
             if realm.objects(Allowances.self).filter("allowanceId == '\(allowanceType)'").count == 0 {
                 DebugUtil.print("Granting the initial allowance for \(allowanceType)")
@@ -110,6 +112,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         }
         
         // initiatile user defaults
+        DebugUtil.print("Initializing settings")
         Settings.initialize()
         
         return true

@@ -274,7 +274,7 @@ class PuzzleLoader {
     
     // MARK: - Initiatlizers
     init() {
-        NotificationCenter.default.addObserver(forName: Notification.Name.UIApplicationDidReceiveMemoryWarning, object: nil, queue: .main) { [weak self] notification in
+        NotificationCenter.default.addObserver(forName: UIApplication.didReceiveMemoryWarningNotification, object: nil, queue: .main) { [weak self] notification in
             self?.loadedJSONS.removeAll(keepingCapacity: false)
             self?.loadedPuzzles.removeAll(keepingCapacity: false)
         }

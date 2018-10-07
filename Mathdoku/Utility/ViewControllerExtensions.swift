@@ -18,8 +18,8 @@ extension UIViewController {
     }
     
     func alertWithTwoButtons(title: String, message: String,
-                             cancelButtonTitle: String, cancelStyle: UIAlertActionStyle = .cancel,
-                             successButtonTitle: String, successStyle: UIAlertActionStyle = .default,
+                             cancelButtonTitle: String, cancelStyle: UIAlertAction.Style = .cancel,
+                             successButtonTitle: String, successStyle: UIAlertAction.Style = .default,
                              actionOnConfirm: @escaping () -> ()) ->UIAlertController {
         
         let alert = UIAlertController(title: title, message: message, preferredStyle: .alert)

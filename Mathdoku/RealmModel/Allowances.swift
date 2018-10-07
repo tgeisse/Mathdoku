@@ -37,6 +37,10 @@ public enum AllowanceTypes: CustomStringConvertible {
     }
     
     func infiniteAllowance() -> Int { return -1 }
+    
+    static func getAllowanceTypes() -> [AllowanceTypes] {
+        return [.puzzle]
+    }
 }
 
 class Allowances: Object {

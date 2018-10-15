@@ -590,7 +590,7 @@ class PuzzleViewController: UIViewController, UINavigationBarDelegate {
             highlightGuesses(for: $0, unhighlight: unhighlight)
         }
     }
-    
+
     private let highlightSameQueue = DispatchQueue(label: "\(AppSecrets.domainRoot).highlightSame", qos: .userInitiated)
     private let highlightConflictQueue = DispatchQueue(label: "\(AppSecrets.domainRoot).highlightConflict", qos: .userInitiated)
     private let highlightRequests = HighlightRequestQueue()

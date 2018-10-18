@@ -16,6 +16,7 @@ class PuzzleViewController: UIViewController, UINavigationBarDelegate {
     // MARK: - View Controller properties
     var puzzle: Puzzle!
     private var nextPuzzleId: Int? = nil
+    private var observerTokens: [NSObjectProtocol] = []
     
     // MARK: - References to View Items
     @IBOutlet weak var successOverlayView: UIView!
@@ -1185,28 +1186,28 @@ class PuzzleViewController: UIViewController, UINavigationBarDelegate {
         }
         
         // register notification observers
-        NotificationCenter.default.addObserver(forName: UIApplication.willResignActiveNotification,
+        observerTokens.append(NotificationCenter.default.addObserver(forName: UIApplication.willResignActiveNotification,
                                                object: nil, queue: nil) { [weak self] notification in
             
             self?.view.subviews.forEach({$0.layer.removeAllAnimations()})
             self?.view.layer.removeAllAnimations()
             self?.view.layoutIfNeeded()
             self?.setStatesToViewDisappear()
-        }
-        NotificationCenter.default.addObserver(forName: UIApplication.didBecomeActiveNotification,
+        })
+        observerTokens.append(NotificationCenter.default.addObserver(forName: UIApplication.didBecomeActiveNotification,
                                                object: nil, queue: nil) { [weak self] notification in
                                                 
             self?.setStatesToViewAppear()
-        }
-        NotificationCenter.default.addObserver(forName: UIApplication.willChangeStatusBarOrientationNotification,
+        })
+        observerTokens.append(NotificationCenter.default.addObserver(forName: UIApplication.willChangeStatusBarOrientationNotification,
                                                object: nil, queue: nil) { _ in
             CellViewElementValues.sharedInstance.clear()
-        }
+        })
     }
     
     deinit {
         // unregister the notification observers
-        NotificationCenter.default.removeObserver(self)
+        observerTokens.forEach { NotificationCenter.default.removeObserver($0) }
     }
 }
 

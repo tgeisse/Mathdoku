@@ -78,17 +78,20 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         
         // load the configuration
         let realm = try! Realm()
-        
+        DebugUtil.print(Realm.Configuration.defaultConfiguration.fileURL!)
+
         // set the default player progress / validate that none were lost
         DebugUtil.print("Creating blank player progresses")
         let playerProgress = realm.objects(PlayerProgress.self)
         for puzzleSize in 3...9 {
             if playerProgress.filter("puzzleSize == \(puzzleSize)").count == 0 {
+                
+                let newPlayerProgress = PlayerProgress()
+                newPlayerProgress.puzzleSize = puzzleSize
+                newPlayerProgress.activePuzzleId = Int(arc4random_uniform(200)) + 200
+                newPlayerProgress.puzzleProgress = nil
+                
                 try! realm.write() {
-                    let newPlayerProgress = PlayerProgress()
-                    newPlayerProgress.puzzleSize = puzzleSize
-                    newPlayerProgress.activePuzzleId = Int(arc4random_uniform(200)) + 200
-                    newPlayerProgress.puzzleProgress = nil
                     realm.add(newPlayerProgress)
                 }
             }
@@ -101,11 +104,12 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
             if realm.objects(Allowances.self).filter("allowanceId == '\(allowanceType)'").count == 0 {
                 DebugUtil.print("Granting the initial allowance for \(allowanceType)")
                 // if an allowance for this type does not exist, then let's add the default value
+                let newAllowanceRecord = Allowances()
+                newAllowanceRecord.allowanceId = "\(allowanceType)"
+                newAllowanceRecord.allowance = allowanceType.initialAllowance
+                newAllowanceRecord.lastRefreshDate = NSDate()
+                
                 try! realm.write {
-                    let newAllowanceRecord = Allowances()
-                    newAllowanceRecord.allowanceId = "\(allowanceType)"
-                    newAllowanceRecord.allowance = allowanceType.initialAllowance
-                    newAllowanceRecord.lastRefreshDate = NSDate()
                     realm.add(newAllowanceRecord)
                 }
             }

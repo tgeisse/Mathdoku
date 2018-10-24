@@ -12,7 +12,7 @@ import RealmSwift
 class PuzzleSelectionViewController: UIViewController {
     lazy var realm: Realm = {try! Realm()}()
     lazy var playerProgress: Results<PlayerProgress> = {
-        try! Realm().objects(PlayerProgress.self).sorted(byKeyPath: "puzzleSize", ascending: true)
+        realm.objects(PlayerProgress.self).sorted(byKeyPath: "puzzleSize", ascending: true)
     }()
     
     var selectedPuzzleSize: Int = -1 {
@@ -69,6 +69,7 @@ class PuzzleSelectionViewController: UIViewController {
     }
     
     override func viewDidLoad() {
+        DebugUtil.print("Test")
         super.viewDidLoad()
 
         // Set up and configure a few aspects of the UI

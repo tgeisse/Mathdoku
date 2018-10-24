@@ -46,7 +46,7 @@ struct PuzzleProducts {
         var puzzleAllowance: Allowances?
         
         func queryPuzzleAllowance() -> Allowances {
-            puzzleAllowance = realm.objects(Allowances.self).filter("allowanceId = '\(AllowanceTypes.puzzle)'").first!
+            puzzleAllowance = realm.objects(Allowances.self).filter("allowanceId == '\(AllowanceTypes.puzzle)'").first!
             return puzzleAllowance!
         }
         

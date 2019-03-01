@@ -29,6 +29,10 @@ struct AnalyticsWrapper {
         case presented      =   "type-presented"
     }
     
+    static var isEU: Bool {
+        return ["AN","AT","BE","BG","CY","CZ","DE","DK","EE","ES","FI","FR","GB","GR","HR","HU","IE","IT","LT","LU","LV","MT","NL","PL","PT","RO","SE","SI","SK"].contains(Locale.current.regionCode)
+    }
+    
     static func logEvent(_ type: EventType,
                          contentType: ContentType? = nil,
                          id: String? = nil,

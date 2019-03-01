@@ -10,7 +10,7 @@ target 'Mathdoku' do
   pod 'Firebase/AdMob'
   pod 'Firebase/Database'
   pod 'SwiftyStoreKit', '~> 0.13'
-  pod 'Instructions', '~> 1.2'
+  pod 'Instructions'
   pod 'RealmSwift'
   pod 'PromiseKit', '~> 6.3'
   pod 'SwiftyUserDefaults', '4.0.0-alpha.1'

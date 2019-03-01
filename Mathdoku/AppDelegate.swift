@@ -41,9 +41,9 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         FirebaseApp.configure()
         AnalyticsWrapper.logEvent(.appOpen)
         
-        // Initialize the Google Mobile Ads SDK.
+        // Initialize the Google Mobile Ads SDK. If we are outside of the EU
         // AdMob app id
-        GADMobileAds.configure(withApplicationID: AppKeys.adMobAppId.key)
+        if !AnalyticsWrapper.isEU { GADMobileAds.configure(withApplicationID: AppKeys.adMobAppId.key) }
         
         // Initialize Bugsnag SDK
         Bugsnag.start(withApiKey: AppKeys.bugsnagApiKey.key)

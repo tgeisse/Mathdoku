@@ -1172,7 +1172,7 @@ class PuzzleViewController: UIViewController, UINavigationBarDelegate {
         }
         
         // check if ads are supposed to be enabled
-        if PuzzleProducts.adsEnabled == false {
+        if PuzzleProducts.adsEnabled == false || AnalyticsWrapper.isEU {
             // if ads are not to be enabled, then hide the ad view
             bannerView.isHidden = true
             bannerViewHeight.constant = 0

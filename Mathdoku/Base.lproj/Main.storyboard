@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14313.18" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="5IB-Io-PmN">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14460.31" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="5IB-Io-PmN">
     <device id="retina4_7" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14283.14"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14460.20"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="Stack View standard spacing" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
@@ -55,7 +55,7 @@
                                         <rect key="frame" x="0.0" y="0.0" width="375" height="25"/>
                                         <subviews>
                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Ofm-wk-AUo">
-                                                <rect key="frame" x="0.0" y="0.0" width="97.5" height="25"/>
+                                                <rect key="frame" x="0.0" y="0.0" width="70" height="25"/>
                                                 <constraints>
                                                     <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="70" id="pRj-AC-QKG"/>
                                                 </constraints>
@@ -68,11 +68,11 @@
                                                 </connections>
                                             </button>
                                             <view contentMode="redraw" translatesAutoresizingMaskIntoConstraints="NO" id="egY-ue-O1C" customClass="GameTimerBackgroundView" customModule="Mathdoku" customModuleProvider="target">
-                                                <rect key="frame" x="97.5" y="0.0" width="180" height="25"/>
+                                                <rect key="frame" x="70" y="0.0" width="235" height="25"/>
                                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                             </view>
                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="t0k-m7-o4d">
-                                                <rect key="frame" x="277.5" y="0.0" width="97.5" height="25"/>
+                                                <rect key="frame" x="305" y="0.0" width="70" height="25"/>
                                                 <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="15"/>
                                                 <state key="normal" title="skip">
                                                     <color key="titleColor" red="0.18431372549019609" green="0.18431372549019609" blue="0.18431372549019609" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
@@ -2062,7 +2062,7 @@
                         <rightBarButtonItems>
                             <barButtonItem id="y6U-CO-oeU">
                                 <button key="customView" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" id="3bR-PW-shd">
-                                    <rect key="frame" x="335" y="10" width="24" height="24"/>
+                                    <rect key="frame" x="311" y="0.0" width="48" height="44"/>
                                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                     <state key="normal" image="Settings"/>
                                     <connections>
@@ -2072,7 +2072,7 @@
                             </barButtonItem>
                             <barButtonItem id="eEZ-ti-z8I">
                                 <button key="customView" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" id="ZB1-5M-sXV">
-                                    <rect key="frame" x="303" y="10" width="24" height="24"/>
+                                    <rect key="frame" x="255" y="0.0" width="48" height="44"/>
                                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                     <state key="normal" image="ShoppingCart"/>
                                     <connections>
@@ -2330,37 +2330,54 @@
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="MainMenuTitle" translatesAutoresizingMaskIntoConstraints="NO" id="PwR-Fs-Bg5">
-                                <rect key="frame" x="10" y="104" width="355" height="69.5"/>
-                                <constraints>
-                                    <constraint firstAttribute="width" secondItem="PwR-Fs-Bg5" secondAttribute="height" multiplier="387:76" id="lcl-QN-cyh"/>
-                                </constraints>
-                            </imageView>
+                            <stackView opaque="NO" contentMode="scaleToFill" alignment="center" spacing="10" translatesAutoresizingMaskIntoConstraints="NO" id="mGs-Vj-CYJ" userLabel="Title Card">
+                                <rect key="frame" x="39" y="104" width="297.5" height="65"/>
+                                <subviews>
+                                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Logo" translatesAutoresizingMaskIntoConstraints="NO" id="wMe-rH-tb6">
+                                        <rect key="frame" x="0.0" y="0.0" width="65" height="65"/>
+                                        <constraints>
+                                            <constraint firstAttribute="width" constant="120" id="02E-I7-CrC">
+                                                <variation key="heightClass=regular-widthClass=compact" constant="65"/>
+                                            </constraint>
+                                            <constraint firstAttribute="width" secondItem="wMe-rH-tb6" secondAttribute="height" multiplier="1:1" id="Sur-hj-oh9"/>
+                                        </constraints>
+                                    </imageView>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="center" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Mathdoku" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumFontSize="3" translatesAutoresizingMaskIntoConstraints="NO" id="QVd-1o-eMK">
+                                        <rect key="frame" x="75" y="8" width="222.5" height="49"/>
+                                        <fontDescription key="fontDescription" name="Verdana-Bold" family="Verdana" pointSize="40"/>
+                                        <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        <nil key="highlightedColor"/>
+                                        <variation key="heightClass=regular-widthClass=regular">
+                                            <fontDescription key="fontDescription" name="Verdana-Bold" family="Verdana" pointSize="100"/>
+                                        </variation>
+                                    </label>
+                                </subviews>
+                            </stackView>
                         </subviews>
                         <color key="backgroundColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
                             <constraint firstItem="yKi-bB-Gjb" firstAttribute="centerX" secondItem="Sqd-DY-I35" secondAttribute="centerX" id="2OW-4a-zJi"/>
                             <constraint firstItem="cw0-QO-R7X" firstAttribute="centerX" secondItem="cy6-oO-AMq" secondAttribute="centerX" id="2db-8h-jpg"/>
-                            <constraint firstItem="PwR-Fs-Bg5" firstAttribute="leading" secondItem="fh5-SD-W4q" secondAttribute="leading" constant="10" id="6y4-b6-Mef"/>
                             <constraint firstItem="Ysk-En-Oyw" firstAttribute="centerX" secondItem="mb4-jZ-7o8" secondAttribute="centerX" id="75H-SP-tLD"/>
                             <constraint firstItem="HPQ-bq-0fh" firstAttribute="top" secondItem="MfQ-1z-g2b" secondAttribute="bottom" constant="-50" id="Egc-37-X0T"/>
                             <constraint firstItem="vbx-L5-EtA" firstAttribute="top" secondItem="bqa-pM-kqz" secondAttribute="bottom" constant="5" id="F0t-GT-v1s"/>
                             <constraint firstItem="RWI-Os-67v" firstAttribute="top" secondItem="432-4z-wTW" secondAttribute="bottom" constant="-50" id="GWe-me-N83"/>
                             <constraint firstItem="fh5-SD-W4q" firstAttribute="trailing" secondItem="vbx-L5-EtA" secondAttribute="trailing" id="Hr3-lT-5Rh"/>
                             <constraint firstItem="bqa-pM-kqz" firstAttribute="centerX" secondItem="fh5-SD-W4q" secondAttribute="centerX" id="ImF-bL-3QB"/>
-                            <constraint firstItem="PwR-Fs-Bg5" firstAttribute="centerX" secondItem="fh5-SD-W4q" secondAttribute="centerX" id="LUd-Hf-zyh"/>
+                            <constraint firstItem="mGs-Vj-CYJ" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="fh5-SD-W4q" secondAttribute="leading" constant="10" id="IoL-gR-xli"/>
+                            <constraint firstItem="mGs-Vj-CYJ" firstAttribute="top" secondItem="fh5-SD-W4q" secondAttribute="top" constant="40" id="KuI-MZ-U8w"/>
                             <constraint firstItem="44g-SO-fM5" firstAttribute="top" secondItem="C8b-C4-97Z" secondAttribute="bottom" constant="-50" id="McG-jb-BoM"/>
                             <constraint firstItem="Sqd-DY-I35" firstAttribute="top" secondItem="yKi-bB-Gjb" secondAttribute="bottom" constant="-50" id="Mxo-Eo-RyG"/>
                             <constraint firstItem="75D-Z3-B3L" firstAttribute="top" relation="greaterThanOrEqual" secondItem="bqa-pM-kqz" secondAttribute="bottom" constant="10" id="WOn-9q-BJK"/>
                             <constraint firstItem="432-4z-wTW" firstAttribute="centerX" secondItem="RWI-Os-67v" secondAttribute="centerX" id="X24-KO-HuN"/>
-                            <constraint firstItem="bqa-pM-kqz" firstAttribute="top" secondItem="PwR-Fs-Bg5" secondAttribute="bottom" priority="750" constant="36.5" id="YNV-vY-xTb"/>
+                            <constraint firstItem="bqa-pM-kqz" firstAttribute="top" secondItem="mGs-Vj-CYJ" secondAttribute="bottom" priority="750" constant="41" id="YNV-vY-xTb"/>
                             <constraint firstItem="kI9-Ta-xpq" firstAttribute="top" secondItem="VTt-N8-BTR" secondAttribute="bottom" constant="-50" id="aSa-bY-wT9"/>
-                            <constraint firstItem="fh5-SD-W4q" firstAttribute="trailing" secondItem="PwR-Fs-Bg5" secondAttribute="trailing" constant="10" id="azg-it-7qG"/>
                             <constraint firstItem="mb4-jZ-7o8" firstAttribute="top" secondItem="Ysk-En-Oyw" secondAttribute="bottom" constant="-50" id="ejC-zX-DgJ"/>
-                            <constraint firstItem="PwR-Fs-Bg5" firstAttribute="top" secondItem="fh5-SD-W4q" secondAttribute="top" constant="40" id="fgT-Wz-whf"/>
                             <constraint firstItem="MfQ-1z-g2b" firstAttribute="centerX" secondItem="HPQ-bq-0fh" secondAttribute="centerX" id="gzE-ca-0U5"/>
+                            <constraint firstItem="mGs-Vj-CYJ" firstAttribute="centerX" secondItem="fh5-SD-W4q" secondAttribute="centerX" id="hJC-MJ-MQv"/>
                             <constraint firstItem="fh5-SD-W4q" firstAttribute="bottom" secondItem="vbx-L5-EtA" secondAttribute="bottom" id="ixS-nR-gLw"/>
                             <constraint firstItem="vbx-L5-EtA" firstAttribute="leading" secondItem="fh5-SD-W4q" secondAttribute="leading" id="mBs-dF-RaR"/>
+                            <constraint firstItem="fh5-SD-W4q" firstAttribute="trailing" relation="greaterThanOrEqual" secondItem="mGs-Vj-CYJ" secondAttribute="trailing" constant="10" id="oVk-Ez-fux"/>
                             <constraint firstItem="VTt-N8-BTR" firstAttribute="centerX" secondItem="kI9-Ta-xpq" secondAttribute="centerX" id="rx3-oF-57W"/>
                             <constraint firstItem="C8b-C4-97Z" firstAttribute="centerX" secondItem="44g-SO-fM5" secondAttribute="centerX" id="s3h-AW-8E6"/>
                             <constraint firstItem="cy6-oO-AMq" firstAttribute="top" secondItem="cw0-QO-R7X" secondAttribute="bottom" constant="-50" id="twm-cR-ifG"/>
@@ -3785,14 +3802,14 @@
     <resources>
         <image name="Erase" width="24" height="24"/>
         <image name="GridImage" width="248" height="248"/>
-        <image name="MainMenuTitle" width="387" height="76"/>
+        <image name="Logo" width="40" height="40"/>
         <image name="Note" width="24" height="24"/>
-        <image name="Reveal" width="24" height="24"/>
-        <image name="Settings" width="24" height="24"/>
-        <image name="ShoppingCart" width="24" height="24"/>
+        <image name="Reveal" width="48" height="48"/>
+        <image name="Settings" width="48" height="48"/>
+        <image name="ShoppingCart" width="48" height="48"/>
         <image name="Validate" width="24" height="24"/>
-        <image name="moveRedo" width="24" height="24"/>
-        <image name="moveUndo" width="24" height="24"/>
+        <image name="moveRedo" width="48" height="48"/>
+        <image name="moveUndo" width="48" height="48"/>
     </resources>
     <inferredMetricsTieBreakers>
         <segue reference="7Gi-zC-mWS"/>

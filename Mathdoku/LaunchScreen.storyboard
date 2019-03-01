@@ -1,12 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="13529" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" launchScreen="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="01J-lp-oVM">
-    <device id="retina5_5" orientation="portrait">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14460.31" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" launchScreen="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="01J-lp-oVM">
+    <device id="retina5_9" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="13527"/>
-        <capability name="Aspect ratio constraints" minToolsVersion="5.1"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14460.20"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
@@ -19,21 +18,39 @@
                         <viewControllerLayoutGuide type="bottom" id="xb3-aO-Qok"/>
                     </layoutGuides>
                     <view key="view" contentMode="scaleToFill" id="Ze5-6b-2t3">
-                        <rect key="frame" x="0.0" y="0.0" width="414" height="736"/>
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="812"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="LaunchImageUniversal" translatesAutoresizingMaskIntoConstraints="NO" id="COb-89-CGE">
-                                <rect key="frame" x="5" y="9.3333333333333144" width="404" height="717.33333333333348"/>
-                                <constraints>
-                                    <constraint firstAttribute="width" secondItem="COb-89-CGE" secondAttribute="height" multiplier="377:669" id="03L-U4-vhV"/>
-                                </constraints>
-                            </imageView>
+                            <stackView opaque="NO" contentMode="scaleToFill" alignment="center" spacing="10" translatesAutoresizingMaskIntoConstraints="NO" id="wFr-VH-tKF">
+                                <rect key="frame" x="39" y="373.66666666666669" width="297.33333333333331" height="65"/>
+                                <subviews>
+                                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Logo" translatesAutoresizingMaskIntoConstraints="NO" id="mTX-JN-2ir">
+                                        <rect key="frame" x="0.0" y="0.0" width="65" height="65"/>
+                                        <constraints>
+                                            <constraint firstAttribute="width" secondItem="mTX-JN-2ir" secondAttribute="height" multiplier="1:1" id="Pvy-un-JMu"/>
+                                            <constraint firstAttribute="width" constant="120" id="maD-bR-H4G">
+                                                <variation key="heightClass=regular-widthClass=compact" constant="65"/>
+                                            </constraint>
+                                        </constraints>
+                                    </imageView>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="center" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Mathdoku" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumFontSize="3" translatesAutoresizingMaskIntoConstraints="NO" id="x6B-I6-xNF">
+                                        <rect key="frame" x="75.000000000000014" y="7.9999999999999964" width="222.33333333333337" height="48.666666666666657"/>
+                                        <fontDescription key="fontDescription" name="Verdana-Bold" family="Verdana" pointSize="40"/>
+                                        <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        <nil key="highlightedColor"/>
+                                        <variation key="heightClass=regular-widthClass=regular">
+                                            <fontDescription key="fontDescription" name="Verdana-Bold" family="Verdana" pointSize="100"/>
+                                        </variation>
+                                    </label>
+                                </subviews>
+                            </stackView>
                         </subviews>
                         <color key="backgroundColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
-                            <constraint firstAttribute="trailing" secondItem="COb-89-CGE" secondAttribute="trailing" constant="5" id="Z03-T0-YcE"/>
-                            <constraint firstItem="COb-89-CGE" firstAttribute="centerY" secondItem="Ze5-6b-2t3" secondAttribute="centerY" id="pte-M3-OSi"/>
-                            <constraint firstItem="COb-89-CGE" firstAttribute="leading" secondItem="Ze5-6b-2t3" secondAttribute="leading" constant="5" id="sFv-Ph-Wrb"/>
+                            <constraint firstAttribute="trailing" relation="greaterThanOrEqual" secondItem="wFr-VH-tKF" secondAttribute="trailing" constant="10" id="0Xz-vN-kxc"/>
+                            <constraint firstItem="wFr-VH-tKF" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="Ze5-6b-2t3" secondAttribute="leading" constant="10" id="2j7-Ui-l39"/>
+                            <constraint firstItem="wFr-VH-tKF" firstAttribute="centerY" secondItem="Ze5-6b-2t3" secondAttribute="centerY" id="P9I-bs-KYh"/>
+                            <constraint firstItem="wFr-VH-tKF" firstAttribute="centerX" secondItem="Ze5-6b-2t3" secondAttribute="centerX" id="tbv-I6-PMp"/>
                         </constraints>
                     </view>
                     <nil key="simulatedStatusBarMetrics"/>
@@ -42,10 +59,10 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="iYj-Kq-Ea1" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="52" y="374.66266866566718"/>
+            <point key="canvasLocation" x="50.359712230215834" y="373.86934673366835"/>
         </scene>
     </scenes>
     <resources>
-        <image name="LaunchImageUniversal" width="414" height="736"/>
+        <image name="Logo" width="40" height="40"/>
     </resources>
 </document>

@@ -22,6 +22,8 @@ extension DefaultsKeys {
     static let fillInGiveMes = DefaultsKey<Bool>("fillInGiveMes")
 
     static let doubleTapToggleNoteMode = DefaultsKey<Bool>("doubleTapToggleNoteMode")
+    
+    static let dailyRefreshNotice = DefaultsKey<Bool>("dailyRefreshNotice", defaultValue: true)
 }
 
 struct Settings {

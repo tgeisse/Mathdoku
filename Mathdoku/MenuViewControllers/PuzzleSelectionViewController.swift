@@ -8,6 +8,7 @@
 
 import UIKit
 import RealmSwift
+import SwiftyUserDefaults
 
 class PuzzleSelectionViewController: UIViewController {
     lazy var realm: Realm = {try! Realm()}()
@@ -91,7 +92,7 @@ class PuzzleSelectionViewController: UIViewController {
             DebugUtil.print("Entering refresh grant block for free users")
             let puzzlesGranted = PuzzlePurchase.grantDailyPuzzleAllowance(withRealm: realm)
             
-            if puzzlesGranted > 0 {
+            if puzzlesGranted > 0 && Defaults[.dailyRefreshNotice] {
                 // puzzles were granted, notify the user
                 let alert = self.alertWithTitle("More Puzzles!", message: "We've added \(puzzlesGranted) puzzle\(puzzlesGranted == 1 ? "" : "s") to your stash.", buttonLabel: "Game on!")
                 self.showAlert(alert)

@@ -53,6 +53,11 @@ class SettingsViewController: UITableViewController {
         }
     }
     
+    @IBOutlet weak var dailyPuzzleNotices: UISwitch! {
+        didSet {
+            dailyPuzzleNotices.setOn(Defaults[.dailyRefreshNotice], animated: false)
+        }
+    }
     
     @IBAction func switchValueChanged(_ sender: UISwitch) {
         DebugUtil.print("Switching on tag \(sender.tag)")
@@ -89,6 +94,10 @@ class SettingsViewController: UITableViewController {
             Defaults[.doubleTapToggleNoteMode] = doubleTapNoteModeSwitch.isOn
             settingName = "doubleTapMode"
             settingVariant = "\(Defaults[.doubleTapToggleNoteMode])"
+        case 8:
+            Defaults[.dailyRefreshNotice] = dailyPuzzleNotices.isOn
+            settingName = "dailyRefreshNotice"
+            settingVariant = "\(dailyPuzzleNotices.isOn)"
         default:
             settingName = "default"
             settingVariant = "none"
@@ -132,7 +141,7 @@ class SettingsViewController: UITableViewController {
     }
     
     override func tableView(_ tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
-        if section == 3 {
+        if section == 4 {
             let appVersion: String = Bundle.main.object(forInfoDictionaryKey: "CFBundleShortVersionString") as! String
             let buildNumber: String = Bundle.main.object(forInfoDictionaryKey: "CFBundleVersion") as! String
             

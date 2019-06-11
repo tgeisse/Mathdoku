@@ -49,8 +49,8 @@ struct CellPosition: Hashable, Equatable {
         return CellPosition(cellId: newCellId, puzzleSize: leftHandSide.size)
     }*/
     
-    var hashValue: Int {
-        return self.cellId
+    func hash(into hasher: inout Hasher) {
+        hasher.combine(self.cellId)
     }
     
     static func == (lhs: CellPosition, rhs: CellPosition) -> Bool {

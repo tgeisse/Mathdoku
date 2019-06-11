@@ -9,10 +9,9 @@ target 'Mathdoku' do
   pod 'Firebase/Core'
   pod 'Firebase/AdMob'
   pod 'Firebase/Database'
-  pod 'SwiftyStoreKit', '~> 0.13'
-  pod 'Instructions'
+  pod 'SwiftyStoreKit'
   pod 'RealmSwift'
-  pod 'PromiseKit', '~> 6.3'
+  pod 'PromiseKit', '~> 6.8'
   pod 'SwiftyUserDefaults', '4.0.0-alpha.1'
   pod 'Bugsnag'
 end

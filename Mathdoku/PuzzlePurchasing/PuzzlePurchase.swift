@@ -77,6 +77,12 @@ struct PuzzlePurchase {
                 case .cloudServicePermissionDenied: DebugUtil.print("Access to cloud service information is not allowed")
                 case .cloudServiceNetworkConnectionFailed: DebugUtil.print("Could not connect to the network")
                 case .cloudServiceRevoked: DebugUtil.print("User has revoked permission to use this cloud service")
+                case .privacyAcknowledgementRequired: DebugUtil.print("Privacy Acknowledgement Required")
+                case .unauthorizedRequestData: DebugUtil.print("Unauthorized Request Data")
+                case .invalidOfferPrice: DebugUtil.print("Invalid Offer Price")
+                case .invalidOfferIdentifier: DebugUtil.print("Invalid Offer Identifier")
+                case .invalidSignature: DebugUtil.print("Invalid Signature")
+                case .missingOfferParams: DebugUtil.print("Missing Offer Parameters")
                 }
             }
         }

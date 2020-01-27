@@ -13,49 +13,49 @@ import SwiftyUserDefaults
 class SettingsViewController: UITableViewController {    
     @IBOutlet weak var singleCellNoteTakingSwitch: UISwitch! {
         didSet {
-            singleCellNoteTakingSwitch.setOn(Defaults[.singleNoteCellSelection], animated: false)
+            singleCellNoteTakingSwitch.setOn(Defaults[\.singleNoteCellSelection], animated: false)
         }
     }
     
     @IBOutlet weak var updateNotesAutomaticallySwitch: UISwitch! {
         didSet {
-            updateNotesAutomaticallySwitch.setOn(Defaults[.clearNotesAfterGuessEntry], animated: false)
+            updateNotesAutomaticallySwitch.setOn(Defaults[\.clearNotesAfterGuessEntry], animated: false)
         }
     }
     
     @IBOutlet weak var rotateAfterGuessSwitch: UISwitch! {
         didSet {
-            rotateAfterGuessSwitch.setOn(Defaults[.rotateAfterCellEntry], animated: false)
+            rotateAfterGuessSwitch.setOn(Defaults[\.rotateAfterCellEntry], animated: false)
         }
     }
     
     @IBOutlet weak var highlightSimilarGuessesSwitch: UISwitch! {
         didSet {
-            highlightSimilarGuessesSwitch.setOn(Defaults[.highlightSameGuessEntry], animated: false)
+            highlightSimilarGuessesSwitch.setOn(Defaults[\.highlightSameGuessEntry], animated: false)
         }
     }
     
     @IBOutlet weak var highlightConflictingGuessSwitch: UISwitch! {
     didSet {
-    highlightConflictingGuessSwitch.setOn(Defaults[.highlightConflictingEntries], animated: false)
+    highlightConflictingGuessSwitch.setOn(Defaults[\.highlightConflictingEntries], animated: false)
     }
 }
     
     @IBOutlet weak var fillInGiveMeSwitch: UISwitch! {
         didSet {
-            fillInGiveMeSwitch.setOn(Defaults[.fillInGiveMes], animated: false)
+            fillInGiveMeSwitch.setOn(Defaults[\.fillInGiveMes], animated: false)
         }
     }
     
     @IBOutlet weak var doubleTapNoteModeSwitch: UISwitch! {
         didSet {
-            doubleTapNoteModeSwitch.setOn(Defaults[.doubleTapToggleNoteMode], animated: false)
+            doubleTapNoteModeSwitch.setOn(Defaults[\.doubleTapToggleNoteMode], animated: false)
         }
     }
     
     @IBOutlet weak var dailyPuzzleNotices: UISwitch! {
         didSet {
-            dailyPuzzleNotices.setOn(Defaults[.dailyRefreshNotice], animated: false)
+            dailyPuzzleNotices.setOn(Defaults[\.dailyRefreshNotice], animated: false)
         }
     }
     
@@ -67,35 +67,35 @@ class SettingsViewController: UITableViewController {
         switch sender.tag {
         case 1:
             // single cell toggle
-            Defaults[.singleNoteCellSelection] = singleCellNoteTakingSwitch.isOn
+            Defaults[\.singleNoteCellSelection] = singleCellNoteTakingSwitch.isOn
             settingName = "singleCell"
-            settingVariant = "\(Defaults[.singleNoteCellSelection])"
+            settingVariant = "\(Defaults[\.singleNoteCellSelection])"
         case 2:
-            Defaults[.clearNotesAfterGuessEntry] = updateNotesAutomaticallySwitch.isOn
+            Defaults[\.clearNotesAfterGuessEntry] = updateNotesAutomaticallySwitch.isOn
             settingName = "autoNotes"
-            settingVariant = "\(Defaults[.clearNotesAfterGuessEntry])"
+            settingVariant = "\(Defaults[\.clearNotesAfterGuessEntry])"
         case 3:
-            Defaults[.rotateAfterCellEntry] = rotateAfterGuessSwitch.isOn
+            Defaults[\.rotateAfterCellEntry] = rotateAfterGuessSwitch.isOn
             settingName = "rotateCell"
-            settingVariant = "\(Defaults[.rotateAfterCellEntry])"
+            settingVariant = "\(Defaults[\.rotateAfterCellEntry])"
         case 4:
-            Defaults[.highlightSameGuessEntry] = highlightSimilarGuessesSwitch.isOn
+            Defaults[\.highlightSameGuessEntry] = highlightSimilarGuessesSwitch.isOn
             settingName = "highlightSame"
-            settingVariant = "\(Defaults[.highlightSameGuessEntry])"
+            settingVariant = "\(Defaults[\.highlightSameGuessEntry])"
         case 5:
-            Defaults[.highlightConflictingEntries] = highlightConflictingGuessSwitch.isOn
+            Defaults[\.highlightConflictingEntries] = highlightConflictingGuessSwitch.isOn
             settingName = "highlightConflict"
-            settingVariant = "\(Defaults[.highlightConflictingEntries])"
+            settingVariant = "\(Defaults[\.highlightConflictingEntries])"
         case 6:
-            Defaults[.fillInGiveMes] = fillInGiveMeSwitch.isOn
+            Defaults[\.fillInGiveMes] = fillInGiveMeSwitch.isOn
             settingName = "fillInGiveMes"
-            settingVariant = "\(Defaults[.fillInGiveMes])"
+            settingVariant = "\(Defaults[\.fillInGiveMes])"
         case 7:
-            Defaults[.doubleTapToggleNoteMode] = doubleTapNoteModeSwitch.isOn
+            Defaults[\.doubleTapToggleNoteMode] = doubleTapNoteModeSwitch.isOn
             settingName = "doubleTapMode"
-            settingVariant = "\(Defaults[.doubleTapToggleNoteMode])"
+            settingVariant = "\(Defaults[\.doubleTapToggleNoteMode])"
         case 8:
-            Defaults[.dailyRefreshNotice] = dailyPuzzleNotices.isOn
+            Defaults[\.dailyRefreshNotice] = dailyPuzzleNotices.isOn
             settingName = "dailyRefreshNotice"
             settingVariant = "\(dailyPuzzleNotices.isOn)"
         default:

@@ -119,7 +119,6 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         
         // initiatile user defaults
         DebugUtil.print("Initializing settings")
-        Settings.initialize()
         
         return true
     }

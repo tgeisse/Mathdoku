@@ -17,6 +17,7 @@ struct PuzzlePurchase {
     static func grantDailyPuzzleAllowance(withRealm: Realm? = nil) -> Int {
         let realm = try! Realm()
         if let allowance = realm.objects(Allowances.self).filter("allowanceId == '\(AllowanceTypes.puzzle)'").first {
+            
             let calendar = NSCalendar.current
             let lastRefreshDate = calendar.startOfDay(for: allowance.lastRefreshDate as Date)
             let today = calendar.startOfDay(for: Date())
@@ -28,8 +29,16 @@ struct PuzzlePurchase {
             
             if refreshPeriodGrants > 0 {
                 // if we have periods to grant, then calculate the amount
-                let grantAmount = refreshPeriodGrants * AllowanceTypes.puzzle.refreshAllowance
-                
+                let possibleAmount = refreshPeriodGrants * AllowanceTypes.puzzle.refreshAllowance
+                let grantAmount: Int
+                if allowance.allowance >= AllowanceTypes.puzzle.maxAllowanceLimit {
+                    grantAmount = 0
+                } else if AllowanceTypes.puzzle.maxAllowanceLimit - allowance.allowance >= possibleAmount {
+                    grantAmount = possibleAmount
+                } else {
+                    grantAmount = AllowanceTypes.puzzle.maxAllowanceLimit - allowance.allowance
+                }
+                    
                 DebugUtil.print("Granting \(grantAmount) additional puzzles")
                 
                 allowance.incrementAllowance(by: grantAmount, withRealm: realm)
@@ -83,6 +92,7 @@ struct PuzzlePurchase {
                 case .invalidOfferIdentifier: DebugUtil.print("Invalid Offer Identifier")
                 case .invalidSignature: DebugUtil.print("Invalid Signature")
                 case .missingOfferParams: DebugUtil.print("Missing Offer Parameters")
+                @unknown default: DebugUtil.print("Unknown issue.")
                 }
             }
         }

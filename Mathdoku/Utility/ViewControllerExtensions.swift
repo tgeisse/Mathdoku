@@ -35,6 +35,8 @@ extension UIViewController {
                 DebugUtil.print("alert extension cancel case")
             case .destructive:
                 DebugUtil.print("alert extension destructive case")
+            @unknown default:
+                DebugUtil.print("unknown result")
             }
             
         }))

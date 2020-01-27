@@ -155,7 +155,7 @@ class CellView: UIView {
             NSAttributedString.Key.font: CellViewElementValues.sharedInstance.guessFont!
         ]
         
-        if Defaults[.highlightConflictingEntries] == true && hasGuessAllegiance(.conflict) {
+        if Defaults[\.highlightConflictingEntries] == true && hasGuessAllegiance(.conflict) {
             if CellViewElementValues.sharedInstance.guessConflictShadow == nil {
                 // if the sharedInstance doesn't have the Conflict Shadow calculated
                 let shadow = NSShadow()
@@ -168,7 +168,7 @@ class CellView: UIView {
             
             // apply the Conflict Shadow
             guessTextAttributes[NSAttributedString.Key.shadow] = CellViewElementValues.sharedInstance.guessConflictShadow!
-        } else if Defaults[.highlightSameGuessEntry] == true && hasGuessAllegiance(.equal) {
+        } else if Defaults[\.highlightSameGuessEntry] == true && hasGuessAllegiance(.equal) {
             if CellViewElementValues.sharedInstance.guessEqualShadow == nil {
                 // if the sharedInstance doesn't have the Equal Shadow calculated
                 let shadow = NSShadow()

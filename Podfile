@@ -12,6 +12,6 @@ target 'Mathdoku' do
   pod 'SwiftyStoreKit'
   pod 'RealmSwift'
   pod 'PromiseKit', '~> 6.8'
-  pod 'SwiftyUserDefaults', '4.0.0-alpha.1'
+  pod 'SwiftyUserDefaults', '~> 5.0'
   pod 'Bugsnag'
 end

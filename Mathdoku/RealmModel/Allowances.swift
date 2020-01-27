@@ -30,6 +30,12 @@ public enum AllowanceTypes: CustomStringConvertible {
         }
     }
     
+    var maxAllowanceLimit: Int {
+        switch self {
+        case .puzzle: return 40
+        }
+    }
+    
     public var description: String {
         switch self {
         case .puzzle: return "puzzle"

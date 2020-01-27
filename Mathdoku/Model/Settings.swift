@@ -11,49 +11,12 @@ import SwiftyUserDefaults
 
 // Defaults extension for settings variables
 extension DefaultsKeys {
-    static let singleNoteCellSelection = DefaultsKey<Bool>("singleNoteCellSelection")
-    static let clearNotesAfterGuessEntry = DefaultsKey<Bool>("clearNotesAfterGuessEntry")
-    
-    static let rotateAfterCellEntry = DefaultsKey<Bool>("rotateAfterCellEntry")
-    
-    static let highlightSameGuessEntry = DefaultsKey<Bool>("highlightSameGuessEntry")
-    static let highlightConflictingEntries = DefaultsKey<Bool>("highlightConflictingEntries")
-    
-    static let fillInGiveMes = DefaultsKey<Bool>("fillInGiveMes")
-
-    static let doubleTapToggleNoteMode = DefaultsKey<Bool>("doubleTapToggleNoteMode")
-    
-    static let dailyRefreshNotice = DefaultsKey<Bool>("dailyRefreshNotice", defaultValue: true)
-}
-
-struct Settings {
-    static func initialize() {
-        if !Defaults.hasKey(.singleNoteCellSelection) {
-            Defaults[.singleNoteCellSelection] = false
-        }
-        
-        if !Defaults.hasKey(.clearNotesAfterGuessEntry) {
-            Defaults[.clearNotesAfterGuessEntry] = true
-        }
-        
-        if !Defaults.hasKey(.rotateAfterCellEntry) {
-            Defaults[.rotateAfterCellEntry] = false
-        }
-        
-        if !Defaults.hasKey(.highlightSameGuessEntry) {
-            Defaults[.highlightSameGuessEntry] = true
-        }
-        
-        if !Defaults.hasKey(.highlightConflictingEntries) {
-            Defaults[.highlightConflictingEntries] = true
-        }
-        
-        if !Defaults.hasKey(.fillInGiveMes) {
-            Defaults[.fillInGiveMes] = false
-        }
-        
-        if !Defaults.hasKey(.doubleTapToggleNoteMode) {
-            Defaults[.doubleTapToggleNoteMode] = true
-        }
-    }
+    var singleNoteCellSelection: DefaultsKey<Bool> { return .init("singleNoteCellSelection", defaultValue: false) }
+    var clearNotesAfterGuessEntry: DefaultsKey<Bool> { return .init("clearNotesAfterGuessEntry", defaultValue: true) }
+    var rotateAfterCellEntry: DefaultsKey<Bool> { return .init("rotateAfterCellEntry", defaultValue: false) }
+    var highlightSameGuessEntry: DefaultsKey<Bool> { return .init("highlightSameGuessEntry", defaultValue: true) }
+    var highlightConflictingEntries: DefaultsKey<Bool> { return .init("highlightConflictingEntries", defaultValue: true) }
+    var fillInGiveMes: DefaultsKey<Bool> { return .init("fillInGiveMes", defaultValue: false) }
+    var doubleTapToggleNoteMode: DefaultsKey<Bool> { return .init("doubleTapToggleNoteMode", defaultValue: true) }
+    var dailyRefreshNotice: DefaultsKey<Bool> { return .init("dailyRefreshNotice", defaultValue: true) }
 }

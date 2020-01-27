@@ -86,13 +86,11 @@ class PuzzleSelectionViewController: UIViewController {
         // see if we can get a new refresh allowawnce
         switch PuzzleProducts.puzzleRefreshMode {
         case .error(let error): DebugUtil.print("Error getting the puzzle refresh mode: \(error)")
-        case .purchase:
-            DebugUtil.print("Entering purchase block -- nothing should be done since purchasers don't get refresh grants")
-        case .freeUser:
+        case .purchase, .freeUser:
             DebugUtil.print("Entering refresh grant block for free users")
             let puzzlesGranted = PuzzlePurchase.grantDailyPuzzleAllowance(withRealm: realm)
             
-            if puzzlesGranted > 0 && Defaults[.dailyRefreshNotice] {
+            if puzzlesGranted > 0 && Defaults[\.dailyRefreshNotice] {
                 // puzzles were granted, notify the user
                 let alert = self.alertWithTitle("More Puzzles!", message: "We've added \(puzzlesGranted) puzzle\(puzzlesGranted == 1 ? "" : "s") to your stash.", buttonLabel: "Game on!")
                 self.showAlert(alert)

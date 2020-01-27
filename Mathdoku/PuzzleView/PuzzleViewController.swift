@@ -302,7 +302,7 @@ class PuzzleViewController: UIViewController, UINavigationBarDelegate {
                 
                 // if the tapgesture passed two us is a double tap AND the tapped subviews are the same
                 if recognizer.numberOfTapsRequired == 2 && tappedSubview == secondTappedSubview {
-                    if Defaults[.doubleTapToggleNoteMode] {
+                    if Defaults[\.doubleTapToggleNoteMode] {
                         toggleEntryMode()
                     }
                 } else {
@@ -315,12 +315,12 @@ class PuzzleViewController: UIViewController, UINavigationBarDelegate {
                         let processingSubview = (recognizer.numberOfTapsRequired == 2 ? secondTappedSubview : tappedSubview)
                         
                         // check to see if only a single cell can be selected at a time
-                        if Defaults[.singleNoteCellSelection] {
+                        if Defaults[\.singleNoteCellSelection] {
                             // single note selection is enabled
                             selectedNoteCells = [processingSubview]
                         } else {
                             // multiple note selection is enabled
-                            if let noteCellToRemove = selectedNoteCells.index(of: processingSubview) {
+                            if let noteCellToRemove = selectedNoteCells.firstIndex(of: processingSubview) {
                                 // if the tapped cell was already in the selectedNoteCells array
                                 // then remove it
                                 selectedNoteCells.remove(at: noteCellToRemove)
@@ -344,7 +344,7 @@ class PuzzleViewController: UIViewController, UINavigationBarDelegate {
                     setGuessForCells(atPositions: [cellPosition], withAnswer: num)
                     
                     // if auto rotate is enabled, then rotate to the next free cell
-                    if Defaults[.rotateAfterCellEntry] {
+                    if Defaults[\.rotateAfterCellEntry] {
                         DebugUtil.print("auto rotation turned on -- rotating to next cell in friendly group")
                         let unfilledFriendlies = puzzle.getUnfilledFriendliesForCell(cellPosition)
                         
@@ -550,7 +550,7 @@ class PuzzleViewController: UIViewController, UINavigationBarDelegate {
     
     // MARK: - User Assisting Functions
     private func fillInUnitCells() {
-        if Defaults[.fillInGiveMes] && !puzzle.isSolved {
+        if Defaults[\.fillInGiveMes] && !puzzle.isSolved {
             DebugUtil.print("filling in give me / unit cells")
             puzzle.getUnitCellsWithAnswers().forEach {
                 setGuessForCells(atPositions: [$0.cell], withAnswer: $0.answer, mutatesMoveHistory: false)
@@ -561,7 +561,7 @@ class PuzzleViewController: UIViewController, UINavigationBarDelegate {
     private func removePossibleNotesAfterGuess(_ guess: Int, atCell cell: CellPosition) -> [Move] {
         var moves = [Move]()
         
-        if Defaults[.clearNotesAfterGuessEntry] {
+        if Defaults[\.clearNotesAfterGuessEntry] {
             let guessIndex = guess - 1
             var cellsToRemoveNoteForGuess: Set<CellPosition> = []
             
@@ -809,8 +809,8 @@ class PuzzleViewController: UIViewController, UINavigationBarDelegate {
     
     private func identifyCellPositionForCellContainerView(_ cell: CellContainerView) -> CellPosition? {
         if let rowContainer = cell.superview as? GridRowView {
-            let cellCol = rowContainer.subviews.index(of: cell)!
-            let cellRow = gridRowStacks.index(of: rowContainer)!
+            let cellCol = rowContainer.subviews.firstIndex(of: cell)!
+            let cellRow = gridRowStacks.firstIndex(of: rowContainer)!
             
             return CellPosition(row: cellRow, col: cellCol, puzzleSize: puzzle.size)
         } else {
@@ -1245,7 +1245,7 @@ extension PuzzleViewController {
             withVisualFormat: "V:[superview]-(<=1)-[label]",
             options: NSLayoutConstraint.FormatOptions.alignAllCenterX,
             metrics: nil,
-            views: ["superview":puzzleGridSuperview, "label":countLabel])
+            views: ["superview":puzzleGridSuperview!, "label":countLabel])
         
         view.addConstraints(constraints)
         
@@ -1254,7 +1254,7 @@ extension PuzzleViewController {
             withVisualFormat: "H:[superview]-(<=1)-[label]",
             options: NSLayoutConstraint.FormatOptions.alignAllCenterY,
             metrics: nil,
-            views: ["superview":puzzleGridSuperview, "label":countLabel])
+            views: ["superview":puzzleGridSuperview!, "label":countLabel])
         
         view.addConstraints(constraints)
         

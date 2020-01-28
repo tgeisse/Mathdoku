@@ -82,6 +82,7 @@ class PuzzleSelectionViewController: UIViewController {
     
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
+        DebugUtil.print("Puzzle Refresh Mode: \(PuzzleProducts.puzzleRefreshMode)")
         
         // see if we can get a new refresh allowawnce
         switch PuzzleProducts.puzzleRefreshMode {

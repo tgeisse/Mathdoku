@@ -86,7 +86,7 @@ struct PuzzleProducts {
     }
     
     static var puzzleRefreshMode: PuzzleRefreshMode {
-        if puzzleAllowance.lastPurchaseDate.timeIntervalSince1970 < puzzleAllowance.lastRefreshDate.timeIntervalSince1970 {
+        if puzzleAllowance.lastPurchaseDate.timeIntervalSince1970 <= NSDate(timeIntervalSince1970: 1).timeIntervalSince1970 {
             return .freeUser
         } else {
             return .purchase

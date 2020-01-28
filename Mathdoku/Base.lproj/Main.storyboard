@@ -2060,7 +2060,7 @@
                         <rightBarButtonItems>
                             <barButtonItem id="y6U-CO-oeU">
                                 <button key="customView" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" id="3bR-PW-shd">
-                                    <rect key="frame" x="311" y="0.0" width="48" height="44"/>
+                                    <rect key="frame" x="311" y="0.0" width="30" height="30"/>
                                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                     <state key="normal" image="Settings"/>
                                     <connections>
@@ -2070,7 +2070,7 @@
                             </barButtonItem>
                             <barButtonItem id="eEZ-ti-z8I">
                                 <button key="customView" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" id="ZB1-5M-sXV">
-                                    <rect key="frame" x="164" y="0.0" width="48" height="44"/>
+                                    <rect key="frame" x="164" y="0.0" width="30" height="30"/>
                                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                     <state key="normal" image="ShoppingCart"/>
                                     <connections>

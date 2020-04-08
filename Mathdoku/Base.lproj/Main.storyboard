@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="15705" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="5IB-Io-PmN">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="16096" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="5IB-Io-PmN">
     <device id="retina4_7" orientation="portrait" appearance="light"/>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="15706"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="16086"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="Stack View standard spacing" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
@@ -25,6 +25,21 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="h7m-0Z-bdV" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="-129" y="-379"/>
+        </scene>
+        <!--View Controller-->
+        <scene sceneID="zsm-dW-T8m">
+            <objects>
+                <viewController id="rYM-Ol-Nhp" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="9dv-jQ-lHR">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                        <viewLayoutGuide key="safeArea" id="JHY-Z2-xnt"/>
+                    </view>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="PDE-m4-K7w" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1513" y="-1146"/>
         </scene>
         <!--Puzzle Play!-->
         <scene sceneID="Cjb-T4-LqD">
@@ -3832,6 +3847,10 @@
             <point key="canvasLocation" x="5002" y="1232"/>
         </scene>
     </scenes>
+    <inferredMetricsTieBreakers>
+        <segue reference="7Gi-zC-mWS"/>
+        <segue reference="v3n-3L-gwk"/>
+    </inferredMetricsTieBreakers>
     <resources>
         <image name="Erase" width="24" height="24"/>
         <image name="GridImage" width="248" height="248"/>
@@ -3844,8 +3863,4 @@
         <image name="moveRedo" width="24" height="24"/>
         <image name="moveUndo" width="24" height="24"/>
     </resources>
-    <inferredMetricsTieBreakers>
-        <segue reference="7Gi-zC-mWS"/>
-        <segue reference="v3n-3L-gwk"/>
-    </inferredMetricsTieBreakers>
 </document>

@@ -119,7 +119,7 @@ class PuzzleSelectionViewController: UIViewController {
     func addAllowanceNotification() {
         puzzleAllowanceNotification = PuzzleProducts.puzzleAllowance.observe { [weak self] change in
             switch change {
-            case .change(_):
+            case .change:
                 self?.updatePuzzlesRemainingLabel()
             case .error(let error):
                 DebugUtil.print("An error occurred on the puzzle allowance notifications:\n\(error)")

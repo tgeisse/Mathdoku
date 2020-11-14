@@ -81,6 +81,7 @@ struct CrashWrapper {
             if severity != nil {
                 report.severity = severity!.mapped
             }
+            return true
         }
     }
     
@@ -93,19 +94,22 @@ struct CrashWrapper {
             if severity != nil {
                 report.severity = severity!.mapped
             }
+            return true
         }
     }
     
+    /*
     static func setUser(id: String, withName name: String = "", andEmail email: String = "") {
         Bugsnag.configuration()?.setUser(id, withName: name, andEmail: email)
-    }
+    }*/
     
     static func leaveBreadcrumb(withName name: String, withType type: BreadcrumbType = .manual, withMetadata metadata: [AnyHashable:Any] = [:]) {
-        Bugsnag.leaveBreadcrumb { (crumb) in
+        Bugsnag.leaveBreadcrumb(name, metadata: metadata, type: type.mapped)
+        /*Bugsnag.leaveBreadcrumb { (crumb) in
             crumb.name = name
             crumb.type = type.mapped
             crumb.metadata = metadata
-        }
+        }*/
     }
     
     static func leaveBreadcrumb(withMessage message: String) {
@@ -116,11 +120,12 @@ struct CrashWrapper {
         Bugsnag.leaveBreadcrumb(forNotificationName: notificationName)
     }
     
+    /*
     static func addAttribute(_ attribute: String, withValue value: String? = "", toTabWithName tabName: String) {
         Bugsnag.addAttribute(attribute, withValue: value, toTabWithName: tabName)
     }
     
     static func clearTab(withName tabName: String) {
         Bugsnag.clearTab(withName: tabName)
-    }
+    } */
 }

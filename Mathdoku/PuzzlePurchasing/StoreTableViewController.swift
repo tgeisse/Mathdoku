@@ -15,7 +15,7 @@ class StoreTableViewController: UITableViewController {
     private func loadProductInfo(forCell cell: StoreTableViewCell, forProduct: PuzzleProduct) {
         cell.addActivityIndicator()
         
-        DispatchQueue.global(qos: .userInitiated).async {
+        DispatchQueue.global(qos: .userInitiated).async { 
             let processRetrievedProduct = {(cell: StoreTableViewCell, product: SKProduct) in
                 
                 DebugUtil.print("Retrieved product info. Displaying it to the cell - \(product.localizedTitle)")
@@ -28,6 +28,8 @@ class StoreTableViewController: UITableViewController {
                     cell.updateBuyButton()
                 }
             }
+            
+            if forProduct.productIdentifier == "" { return }
             
             if let prod = PuzzleProducts.getLoadedPuzzleProduct(forIdentifier: forProduct.productIdentifier) {
                 DebugUtil.print("Product already loaded")

@@ -92,6 +92,11 @@ struct PuzzlePurchase {
                 case .invalidOfferIdentifier: DebugUtil.print("Invalid Offer Identifier")
                 case .invalidSignature: DebugUtil.print("Invalid Signature")
                 case .missingOfferParams: DebugUtil.print("Missing Offer Parameters")
+                case .overlayCancelled: DebugUtil.print("Overlay Cancelled")
+                case .overlayInvalidConfiguration: DebugUtil.print("Overlay Invalid Configuration")
+                case .overlayTimeout: DebugUtil.print("Overlay Timeout")
+                case .ineligibleForOffer: DebugUtil.print("Inelgible For Offer")
+                case .unsupportedPlatform: DebugUtil.print("Unsupported Platform")
                 @unknown default: DebugUtil.print("Unknown issue.")
                 }
             }

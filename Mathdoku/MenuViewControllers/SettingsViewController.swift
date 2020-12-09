@@ -10,7 +10,10 @@ import UIKit
 import RealmSwift
 import SwiftyUserDefaults
 
-class SettingsViewController: UITableViewController {    
+class SettingsViewController: UITableViewController {
+    @IBOutlet weak var colorThemeTableViewCell: UITableViewCell!
+    @IBOutlet weak var colorThemeLabel: UILabel!
+    
     @IBOutlet weak var singleCellNoteTakingSwitch: UISwitch! {
         didSet {
             singleCellNoteTakingSwitch.setOn(Defaults[\.singleNoteCellSelection], animated: false)
@@ -140,6 +143,8 @@ class SettingsViewController: UITableViewController {
         }
     }
     
+    
+    
     override func tableView(_ tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
         if section == 4 {
             let appVersion: String = Bundle.main.object(forInfoDictionaryKey: "CFBundleShortVersionString") as! String
@@ -149,5 +154,21 @@ class SettingsViewController: UITableViewController {
         } else {
             return super.tableView(tableView, titleForHeaderInSection   : section)
         }
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        colorThemeLabel.text = "\(ColorTheme.sharedInstance.theme)"
+    }
+    
+    override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        
+        guard let cell = tableView.cellForRow(at: indexPath) else { return }
+        
+        if cell == colorThemeTableViewCell {
+            cell.setSelected(false, animated: true)
+        }
+        
+        
     }
 }

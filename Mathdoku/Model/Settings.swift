@@ -19,4 +19,5 @@ extension DefaultsKeys {
     var fillInGiveMes: DefaultsKey<Bool> { return .init("fillInGiveMes", defaultValue: false) }
     var doubleTapToggleNoteMode: DefaultsKey<Bool> { return .init("doubleTapToggleNoteMode", defaultValue: true) }
     var dailyRefreshNotice: DefaultsKey<Bool> { return .init("dailyRefreshNotice", defaultValue: true) }
+    var colorTheme: DefaultsKey<Int> { return .init("colorTheme", defaultValue:  0) }
 }

@@ -28,7 +28,7 @@ class PuzzleViewController: UIViewController, UINavigationBarDelegate {
     }
     @IBOutlet weak var bestTimeLabel: UILabel!
     @IBOutlet weak var finalTimeLabel: UILabel!
-    @IBOutlet weak var puzzleCompleteLabel: UILabel! { didSet { puzzleCompleteLabel.textColor = ColorTheme.blue.dark } }
+    @IBOutlet weak var puzzleCompleteLabel: UILabel! { didSet { puzzleCompleteLabel.textColor = ColorTheme.sharedInstance.puzzleCompleteAndCountdown } }
     
     @IBOutlet weak var bannerView: GADBannerView!
     @IBOutlet weak var bannerViewHeight: NSLayoutConstraint!
@@ -510,11 +510,11 @@ class PuzzleViewController: UIViewController, UINavigationBarDelegate {
             bestTime.puzzleId != playerProgress.activePuzzleId {
             // previous best time
             bestTimeLabel.text = createTimeString(from: bestTime.timeToSolve.value ?? 0.0)
-            bestTimeLabel.textColor = .black
+            bestTimeLabel.textColor = ColorTheme.sharedInstance.fonts
         } else {
             // new best time
             bestTimeLabel.text = "New Best Time!"
-            bestTimeLabel.textColor = ColorTheme.green.dark
+            bestTimeLabel.textColor = ColorTheme.sharedInstance.positiveTextLabel
         }
         
         finalTimeLabel.text = gameTimerLabel.text
@@ -1219,7 +1219,7 @@ extension PuzzleViewController {
         
         countLabel.tag = countdownTag
         countLabel.backgroundColor = .clear
-        countLabel.textColor = ColorTheme.blue.dark
+        countLabel.textColor = ColorTheme.sharedInstance.puzzleCompleteAndCountdown
         countLabel.font = startingFont
         countLabel.textAlignment = .center
         countLabel.translatesAutoresizingMaskIntoConstraints = false

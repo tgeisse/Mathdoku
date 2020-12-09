@@ -30,6 +30,8 @@
 		957005181FE0EFB300C85822 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 957005171FE0EFB200C85822 /* Assets.xcassets */; };
 		9570051C1FE104F300C85822 /* AnalyticsWrapper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9570051B1FE104F300C85822 /* AnalyticsWrapper.swift */; };
 		9572FDC41FBD500300963CFD /* Settings.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9572FDC31FBD500300963CFD /* Settings.swift */; };
+		9581B8C525803C3B00EA5E5E /* ColorThemePickerTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9581B8C425803C3B00EA5E5E /* ColorThemePickerTableViewController.swift */; };
+		9581B8CF258050F200EA5E5E /* ColorThemePreviewTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9581B8CE258050F200EA5E5E /* ColorThemePreviewTableViewCell.swift */; };
 		959632E41ED115A100CAFC5D /* CellPosition.swift in Sources */ = {isa = PBXBuildFile; fileRef = 959632E31ED115A100CAFC5D /* CellPosition.swift */; };
 		9598A3A21FBC020800AE48E2 /* SettingsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9598A3A11FBC020800AE48E2 /* SettingsViewController.swift */; };
 		95A196221ED2A32A0038D40C /* PuzzleProgress.swift in Sources */ = {isa = PBXBuildFile; fileRef = 95A196211ED2A32A0038D40C /* PuzzleProgress.swift */; };
@@ -112,6 +114,8 @@
 		957005171FE0EFB200C85822 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		9570051B1FE104F300C85822 /* AnalyticsWrapper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AnalyticsWrapper.swift; sourceTree = "<group>"; };
 		9572FDC31FBD500300963CFD /* Settings.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Settings.swift; sourceTree = "<group>"; };
+		9581B8C425803C3B00EA5E5E /* ColorThemePickerTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ColorThemePickerTableViewController.swift; sourceTree = "<group>"; };
+		9581B8CE258050F200EA5E5E /* ColorThemePreviewTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ColorThemePreviewTableViewCell.swift; sourceTree = "<group>"; };
 		959632E31ED115A100CAFC5D /* CellPosition.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CellPosition.swift; sourceTree = "<group>"; };
 		9598A3A11FBC020800AE48E2 /* SettingsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsViewController.swift; sourceTree = "<group>"; };
 		95A196211ED2A32A0038D40C /* PuzzleProgress.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PuzzleProgress.swift; sourceTree = "<group>"; };
@@ -212,6 +216,14 @@
 			path = Model;
 			sourceTree = "<group>";
 		};
+		9581B8C925804FFE00EA5E5E /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				9581B8CE258050F200EA5E5E /* ColorThemePreviewTableViewCell.swift */,
+			);
+			path = Views;
+			sourceTree = "<group>";
+		};
 		9598A3A31FBC1B4B00AE48E2 /* Libraries */ = {
 			isa = PBXGroup;
 			children = (
@@ -241,6 +253,7 @@
 				9544E33C1F001E8000F37ED7 /* HowToPlayPageViewController.swift */,
 				9598A3A11FBC020800AE48E2 /* SettingsViewController.swift */,
 				956CB0471FCFD94700FDB589 /* TutorialSinglePageViewController.swift */,
+				9581B8C425803C3B00EA5E5E /* ColorThemePickerTableViewController.swift */,
 			);
 			name = "Menu View Controllers";
 			path = MenuViewControllers;
@@ -307,6 +320,7 @@
 				9502E5E11EEE159C0048BE1B /* PuzzlePurchasing */,
 				95E9D1101EB81C0C00F51A4B /* Utility */,
 				95C082621EB1AC84008B7C2E /* Menu View Controllers */,
+				9581B8C925804FFE00EA5E5E /* Views */,
 				95FBB9081E9AD95B00B0E662 /* PuzzleView */,
 				95C082651EB1AEA0008B7C2E /* PuzzleLoader */,
 				9555608E1ECEBE53006C9F2D /* Model */,
@@ -546,10 +560,12 @@
 				959632E41ED115A100CAFC5D /* CellPosition.swift in Sources */,
 				95CBCC5D20087176001409B1 /* AppSecrets.swift in Sources */,
 				95FBB8DB1E9AD13F00B0E662 /* AppDelegate.swift in Sources */,
+				9581B8C525803C3B00EA5E5E /* ColorThemePickerTableViewController.swift in Sources */,
 				9570051C1FE104F300C85822 /* AnalyticsWrapper.swift in Sources */,
 				9598A3A21FBC020800AE48E2 /* SettingsViewController.swift in Sources */,
 				954695F1205C8A4300BB431A /* CrashWrapper.swift in Sources */,
 				956CB04A1FD1ADE400FDB589 /* HighlightRequestQueue.swift in Sources */,
+				9581B8CF258050F200EA5E5E /* ColorThemePreviewTableViewCell.swift in Sources */,
 				95470335201245F4007B3C49 /* CellViewElementValues.swift in Sources */,
 				95E9D1121EB81C2B00F51A4B /* CALayerExtensions.swift in Sources */,
 				95C082591EABC8B8008B7C2E /* CellView.swift in Sources */,

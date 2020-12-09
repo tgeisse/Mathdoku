@@ -65,8 +65,8 @@ class CellView: UIView {
         
         var shadowColor: UIColor {
             switch self {
-            case .equal: return ColorTheme.green.bright
-            case .conflict: return ColorTheme.red.bright
+            case .equal: return ColorTheme.sharedInstance.allegianceEqual
+            case .conflict: return ColorTheme.sharedInstance.allegianceConflict
             }
         }
     }
@@ -220,7 +220,7 @@ class CellView: UIView {
         }
         
         let noteTextAttributes: [NSAttributedString.Key : Any] = [
-            NSAttributedString.Key.foregroundColor: ColorTheme.green.dark,
+            NSAttributedString.Key.foregroundColor: ColorTheme.sharedInstance.possibleNote,
             NSAttributedString.Key.font: CellViewElementValues.sharedInstance.noteFont!
         ]
         

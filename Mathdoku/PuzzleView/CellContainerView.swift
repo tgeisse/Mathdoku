@@ -19,6 +19,8 @@ class CellContainerView: UIView {
         return returnValue
     }
     
+    var colorTheme = ColorTheme.sharedInstance
+    
     // MARK: - Hightlight State
     enum HighlightState {
         case unselected
@@ -27,9 +29,10 @@ class CellContainerView: UIView {
         case possibleNote
         case impossibleNote
         
+        @available(*, deprecated, message: "Moving to a function color scheme to allow overriding")
         var color: UIColor {
             switch self {
-            case .unselected: return UIColor.white
+            case .unselected: return .clear
             case .selected: return ColorTheme.sharedInstance.selectedCell
             case .friendly: return ColorTheme.sharedInstance.friendlyCell
             case .possibleNote: return ColorTheme.sharedInstance.possibleNoteCellSelected
@@ -38,14 +41,28 @@ class CellContainerView: UIView {
         }
     }
     
+    func getHighlightColor(forState state: HighlightState) -> UIColor {
+        switch state {
+        case .unselected: return colorTheme.background
+        case .selected: return colorTheme.selectedCell
+        case .friendly: return colorTheme.friendlyCell
+        case .possibleNote: return colorTheme.possibleNoteCellSelected
+        case .impossibleNote: return colorTheme.impossibleNoteCellSelected
+        }
+    }
+    
     private let highlightTransitionTime: TimeInterval = 0.25
     var currentHighlightState = HighlightState.unselected {
         didSet {
             if oldValue != currentHighlightState {
                 // if we have changed values, then animate
-                animateBackgroundColor(currentHighlightState.color, duration: highlightTransitionTime)
+                animateBackgroundColor(getHighlightColor(forState: currentHighlightState), duration: highlightTransitionTime)
             }
         }
+    }
+    
+    func resetBackgroundColor() {
+        backgroundColor = getHighlightColor(forState: currentHighlightState)
     }
     
     // MARK: - Validation States
@@ -54,12 +71,21 @@ class CellContainerView: UIView {
         case valid
         case invalid
         
+        @available(*, deprecated, message: "Moving to a function color scheme to allow overriding")
         var color: UIColor {
             switch self {
-            case .notValidating: return UIColor.clear
+            case .notValidating: return .clear
             case .valid: return ColorTheme.sharedInstance.validCell
             case .invalid: return ColorTheme.sharedInstance.invalidCell
             }
+        }
+    }
+    
+    func getValidationColor(forState state: ValidationState) -> UIColor {
+        switch state {
+        case .notValidating: return colorTheme.background
+        case .valid: return colorTheme.validCell
+        case .invalid: return colorTheme.invalidCell
         }
     }
     
@@ -67,11 +93,10 @@ class CellContainerView: UIView {
     var currentValidationState = ValidationState.notValidating {
         didSet {
             if currentValidationState != .notValidating {
-                animateCellValidationView(color: currentValidationState.color, duration: flashValidationViewTransitionTime)
+                animateCellValidationView(color: getValidationColor(forState: currentValidationState), duration: flashValidationViewTransitionTime)
             }
         }
-    }
-    
+    }    
     
     // MARK: - Background Animations
     private func animateBackgroundColor(_ color: UIColor?,
@@ -95,9 +120,9 @@ class CellContainerView: UIView {
         
         UIView.animate(withDuration: duration, animations: {
             validationAnimtationView.backgroundColor = color
-        }, completion: { finished in
+        }, completion: { [weak self] finished in
             UIView.animate(withDuration: duration, animations: {
-                validationAnimtationView.backgroundColor = ValidationState.notValidating.color
+                validationAnimtationView.backgroundColor = self?.getValidationColor(forState: ValidationState.notValidating) ?? .clear
             }, completion: { fin in
                 validationAnimtationView.removeFromSuperview()
             })

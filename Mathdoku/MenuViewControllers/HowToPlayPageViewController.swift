@@ -12,7 +12,7 @@ class HowToPlayPageViewController: UIPageViewController {
  
     override func viewDidLoad() {
         super.viewDidLoad()
-        
+    
         dataSource = self
         
         if let firstViewController = orderedViewControllers.first {

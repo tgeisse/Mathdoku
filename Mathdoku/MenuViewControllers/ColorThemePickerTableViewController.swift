@@ -11,15 +11,7 @@ import UIKit
 class ColorThemePickerTableViewController: UITableViewController {
 
     // MARK: - Table view data source
-    private var colorThemes = [ColorTheme]()
-    
-    private func updateAvailableThemes() {
-        colorThemes = [ColorTheme]()
-        
-        for theme in ColorTheme.Themes.allCases {
-            colorThemes.append(ColorTheme(theme: theme))
-        }
-    }
+    private let colorThemes = ColorTheme.Themes.allCases.map { ColorTheme(theme: $0) }
 
     override func numberOfSections(in tableView: UITableView) -> Int {
         // #warning Incomplete implementation, return the number of sections
@@ -45,7 +37,11 @@ class ColorThemePickerTableViewController: UITableViewController {
     }
     
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        ColorTheme.sharedInstance.updateTheme(byInt: indexPath.item)
+        ColorTheme.sharedInstance.updateTheme(colorThemes[indexPath.item].theme)
+        if #available(iOS 13.0, *) {
+            navigationController?.topViewController?.navigationController?.overrideUserInterfaceStyle = [ColorTheme.Themes.darkMode, .midnight].contains(ColorTheme.sharedInstance.theme) ? .dark : .light
+            navigationController?.topViewController?.navigationController?.navigationBar.overrideUserInterfaceStyle = [ColorTheme.Themes.darkMode, .midnight].contains(ColorTheme.sharedInstance.theme) ? .dark : .light
+        }
         navigationController?.popViewController(animated: true)
     }
 
@@ -85,14 +81,64 @@ class ColorThemePickerTableViewController: UITableViewController {
     */
     
     private func setScene(forCell cell: ColorThemePreviewTableViewCell, forTheme theme: ColorTheme) {
+        // set the main color theme for the table row
         cell.themeTitle.text = "\(theme.theme)"
+        cell.themeTitle.textColor = theme.fonts
+        cell.backgroundColor = theme.background
+        
+        // set the color theme for all of the cells
+        cell.allCells.forEach {
+            $0.colorTheme = theme
+            $0.cell.colorTheme = theme
+        }
+        
+        // leftmost cell
+        cell.cell1.currentHighlightState = .friendly
+        let leftCell = cell.cell1.cell
+        leftCell.rightBorder = .friend
+        leftCell.hint = "8+"
+        leftCell.guess = "2"
+        leftCell.addGuessAllegiance(.conflict)
+        
+        // center left cell
+        cell.cell2.currentHighlightState = .friendly
+        let centerLeftCell = cell.cell2.cell
+        centerLeftCell.leftBorder = .friend
+        centerLeftCell.rightBorder = .friend
+        centerLeftCell.note = "1  4"
+        
+        // center right cell
+        cell.cell3.currentHighlightState = .selected
+        let centerRightCell = cell.cell3.cell
+        centerRightCell.leftBorder = .friend
+        centerRightCell.rightBorder = .foe
+        centerRightCell.guess = "3"
+        centerRightCell.addGuessAllegiance(.equal)
+        
+        // rightmost cell
+        let rightCell = cell.cell4.cell
+        rightCell.leftBorder = .foe
+        rightCell.hint = "2"
+        rightCell.guess = "2"
+        rightCell.addGuessAllegiance(.conflict)
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        CellViewElementValues.sharedInstance.clear()
     }
 
-    // MARK: - Navigation
-    
-    override func viewDidLoad() {
-        super.viewDidLoad()
-        
-        updateAvailableThemes()
+    override func viewDidDisappear(_ animated: Bool) {
+        super.viewDidDisappear(animated)
+        CellViewElementValues.sharedInstance.clear()
     }
+    
+    @IBAction func testItemButton(_ sender: UIBarButtonItem) {
+        guard let cells = tableView.visibleCells as? [ColorThemePreviewTableViewCell] else { return }
+        
+        cells.forEach { cell in
+            cell.cell2.cell.guess = "2"
+        }
+    }
+    
 }

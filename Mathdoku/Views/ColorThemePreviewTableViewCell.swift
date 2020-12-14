@@ -14,4 +14,7 @@ class ColorThemePreviewTableViewCell: UITableViewCell {
     @IBOutlet weak var cell2: CellContainerView!
     @IBOutlet weak var cell3: CellContainerView!
     @IBOutlet weak var cell4: CellContainerView!
+    
+    @IBOutlet var allCells: [CellContainerView]!
+    
 }

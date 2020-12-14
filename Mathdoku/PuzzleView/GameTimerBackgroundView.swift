@@ -36,10 +36,10 @@ class GameTimerBackgroundView: UIView {
                       controlPoint2: CGPoint(x: rightBorder - (curveWidth * 0.6), y: top))
         path.close()
         
-        UIColor.white.setFill()
+        ColorTheme.sharedInstance.background.setFill()
         path.fill()
         
-        UIColor.white.setStroke()
+        ColorTheme.sharedInstance.background.setStroke()
         path.stroke()
     }
 }

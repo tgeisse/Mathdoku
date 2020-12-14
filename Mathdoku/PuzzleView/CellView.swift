@@ -36,6 +36,7 @@ class CellView: UIView {
     var bottomRightCornerPatch = false { didSet { if oldValue != bottomRightCornerPatch { setNeedsDisplay() } } }
     var bottomLeftCornerPatch = false { didSet { if oldValue != bottomLeftCornerPatch { setNeedsDisplay() } } }
     private var guessAllegiance: UInt8 = 0 { didSet { if oldValue != guessAllegiance { setNeedsDisplay() } } }
+    var colorTheme = ColorTheme.sharedInstance
     
     enum CellAllegiance {
         case friend
@@ -44,12 +45,13 @@ class CellView: UIView {
         
         var borderWeight: CGFloat {
             switch self {
-            case .friend: return 0.25
-            case .foe: return 1.15
+            case .friend: return 0.24
+            case .foe: return 1.2
             case .other: return 1.3
             }
         }
         
+        @available(*, deprecated, message: "Moving to a function color scheme to allow overriding")
         var borderColor: UIColor {
             switch self {
             case .friend: return .darkGray
@@ -59,15 +61,31 @@ class CellView: UIView {
         }
     }
     
+    func getCellAllegianceColor(_ allegiance: CellAllegiance) -> UIColor {
+        switch allegiance {
+        case .friend: return colorTheme.border
+        case .foe: return colorTheme.border
+        case .other: return colorTheme.border
+        }
+    }
+    
     enum GuessAllegiance: UInt8 {
         case equal      = 0b000000001
         case conflict   = 0b000000010
         
+        @available(*, deprecated, message: "Moving to a function color scheme to allow overriding")
         var shadowColor: UIColor {
             switch self {
             case .equal: return ColorTheme.sharedInstance.allegianceEqual
             case .conflict: return ColorTheme.sharedInstance.allegianceConflict
             }
+        }
+    }
+    
+    func getGuessAllegianceColor(_ allegiance: GuessAllegiance) -> UIColor {
+        switch allegiance {
+        case .equal: return colorTheme.allegianceEqual
+        case .conflict: return colorTheme.allegianceConflict
         }
     }
     
@@ -91,7 +109,7 @@ class CellView: UIView {
     // An empty implementation adversely affects performance during animation.
     override func draw(_ rect: CGRect) {
         self.isUserInteractionEnabled = false
-        self.backgroundColor = UIColor.clear
+        self.backgroundColor = .clear
         self.layer.sublayers?.removeAll()
         
         if CellViewElementValues.sharedInstance.scaleFactor == nil {
@@ -128,6 +146,7 @@ class CellView: UIView {
         }
             
         let hintTextAttributes: [NSAttributedString.Key : Any] = [
+            NSAttributedString.Key.foregroundColor: colorTheme.fonts,
             NSAttributedString.Key.font: CellViewElementValues.sharedInstance.hintFont!
         ]
         
@@ -152,6 +171,7 @@ class CellView: UIView {
         
         // base font
         var guessTextAttributes: [NSAttributedString.Key : Any] = [
+            NSAttributedString.Key.foregroundColor: colorTheme.fonts,
             NSAttributedString.Key.font: CellViewElementValues.sharedInstance.guessFont!
         ]
         
@@ -159,7 +179,7 @@ class CellView: UIView {
             if CellViewElementValues.sharedInstance.guessConflictShadow == nil {
                 // if the sharedInstance doesn't have the Conflict Shadow calculated
                 let shadow = NSShadow()
-                shadow.shadowColor = GuessAllegiance.conflict.shadowColor
+                shadow.shadowColor = getGuessAllegianceColor(GuessAllegiance.conflict)
                 shadow.shadowBlurRadius = 9.0
                 shadow.shadowOffset = CGSize(width: 0, height: 0)
                 
@@ -172,7 +192,7 @@ class CellView: UIView {
             if CellViewElementValues.sharedInstance.guessEqualShadow == nil {
                 // if the sharedInstance doesn't have the Equal Shadow calculated
                 let shadow = NSShadow()
-                shadow.shadowColor = GuessAllegiance.equal.shadowColor
+                shadow.shadowColor = getGuessAllegianceColor(GuessAllegiance.equal)
                 shadow.shadowBlurRadius = 9.0
                 shadow.shadowOffset = CGSize(width: 0, height: 0)
                 
@@ -220,7 +240,7 @@ class CellView: UIView {
         }
         
         let noteTextAttributes: [NSAttributedString.Key : Any] = [
-            NSAttributedString.Key.foregroundColor: ColorTheme.sharedInstance.possibleNote,
+            NSAttributedString.Key.foregroundColor: colorTheme.possibleNote,
             NSAttributedString.Key.font: CellViewElementValues.sharedInstance.noteFont!
         ]
         
@@ -246,14 +266,14 @@ class CellView: UIView {
     }
  
     private func addBorders() {
-        self.layer.addBorder(edge: .top, color: topBorder.borderColor, thickness: topBorder.borderWeight)
-        self.layer.addBorder(edge: .right, color: rightBorder.borderColor, thickness: rightBorder.borderWeight)
-        self.layer.addBorder(edge: .bottom, color: bottomBorder.borderColor, thickness: bottomBorder.borderWeight)
-        self.layer.addBorder(edge: .left, color: leftBorder.borderColor, thickness: leftBorder.borderWeight)
+        self.layer.addBorder(edge: .top, color: getCellAllegianceColor(topBorder), thickness: topBorder.borderWeight)
+        self.layer.addBorder(edge: .right, color: getCellAllegianceColor(rightBorder), thickness: rightBorder.borderWeight)
+        self.layer.addBorder(edge: .bottom, color: getCellAllegianceColor(bottomBorder), thickness: bottomBorder.borderWeight)
+        self.layer.addBorder(edge: .left, color: getCellAllegianceColor(leftBorder), thickness: leftBorder.borderWeight)
     }
     
     private func patchCorners() {
-        let color = CellAllegiance.foe.borderColor
+        let color = getCellAllegianceColor(CellAllegiance.foe)
         let edgeLength = CellAllegiance.foe.borderWeight
         
         if topLeftCornerPatch {

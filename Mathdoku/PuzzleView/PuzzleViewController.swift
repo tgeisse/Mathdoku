@@ -19,7 +19,9 @@ class PuzzleViewController: UIViewController, UINavigationBarDelegate {
     private var observerTokens: [NSObjectProtocol] = []
     
     // MARK: - References to View Items
+    @IBOutlet weak var mainView: UIView!
     @IBOutlet weak var successOverlayView: UIView!
+    @IBOutlet weak var successOverlayBackgroundView: UIView!
     @IBOutlet weak var bestTimeTitle: UILabel! {
         didSet {
             // update the best time title label for the puzzle size
@@ -27,6 +29,7 @@ class PuzzleViewController: UIViewController, UINavigationBarDelegate {
         }
     }
     @IBOutlet weak var bestTimeLabel: UILabel!
+    @IBOutlet weak var yourTimeTitle: UILabel!
     @IBOutlet weak var finalTimeLabel: UILabel!
     @IBOutlet weak var puzzleCompleteLabel: UILabel! { didSet { puzzleCompleteLabel.textColor = ColorTheme.sharedInstance.puzzleCompleteAndCountdown } }
     
@@ -41,6 +44,7 @@ class PuzzleViewController: UIViewController, UINavigationBarDelegate {
         
         return returnValue
     }
+    @IBOutlet weak var gameTimerBackground: GameTimerBackgroundView!
     @IBOutlet weak var gameTimerLabel: UILabel!
     
     
@@ -970,6 +974,24 @@ class PuzzleViewController: UIViewController, UINavigationBarDelegate {
     }
     
     // MARK: - Puzzle Setup Functions
+    private func updateColorTheme() {
+        mainView.backgroundColor = ColorTheme.sharedInstance.background
+        successOverlayBackgroundView.backgroundColor = ColorTheme.sharedInstance.background
+        puzzleCompleteLabel.textColor = ColorTheme.sharedInstance.puzzleCompleteAndCountdown
+        bestTimeTitle.textColor = ColorTheme.sharedInstance.fonts
+        bestTimeLabel.textColor = ColorTheme.sharedInstance.fonts
+        yourTimeTitle.textColor = ColorTheme.sharedInstance.fonts
+        finalTimeLabel.textColor = ColorTheme.sharedInstance.fonts
+        gameTimerBackground.setNeedsDisplay()
+        gameTimerLabel.textColor = ColorTheme.sharedInstance.fonts
+        gridRowStacks.forEach {
+            $0.rowCells.forEach {
+                $0.resetBackgroundColor()
+                $0.cell.setNeedsDisplay()
+            }
+        }
+    }
+    
     private func resetCellNotesAndGuesses() {
         // (0) reset selections and set guessing mode back to guessing
         selectedCell = nil
@@ -1109,6 +1131,9 @@ class PuzzleViewController: UIViewController, UINavigationBarDelegate {
         super.viewWillAppear(animated)
         DebugUtil.print("")
         
+        // update all of the color themes
+        updateColorTheme()
+        
         // fill in the unit cells (give me cells)
         fillInUnitCells()
         
@@ -1231,7 +1256,7 @@ extension PuzzleViewController {
                                                  toItem: nil,
                                                  attribute: NSLayoutConstraint.Attribute.notAnAttribute,
                                                  multiplier: 1,
-                                                 constant: 250)
+                                                 constant: 500)
         let heightConstraint = NSLayoutConstraint(item: countLabel,
                                                   attribute: NSLayoutConstraint.Attribute.height,
                                                   relatedBy: NSLayoutConstraint.Relation.equal,
@@ -1291,8 +1316,7 @@ extension PuzzleViewController {
                 UIView.animate(withDuration: 1.0, delay: 0.0, options: .curveEaseOut, animations: {
                     animation()
                 }, completion: { [weak self] finished in
-                    // down counting down. remove the label and start the timer
-                    countLabel.removeFromSuperview()
+                    // done counting down. start the timer, enable interactions
                     if finished {
                         self?.timerState = .start
                         self?.gameState = .playing
@@ -1301,6 +1325,15 @@ extension PuzzleViewController {
                     self?.puzzleGridSuperview.gestureRecognizers?.forEach {
                         $0.isEnabled = true
                     }
+                    
+                    // set the label to say "GO!" an then remove the label from the super view
+                    animationReset()
+                    countLabel.text = "GO"
+                    UIView.animate(withDuration: 1.25, delay: 0.0, options: .curveEaseIn, animations: {
+                        animation()
+                    }, completion: { _ in
+                        countLabel.removeFromSuperview()
+                    })
                 })
             })
         })

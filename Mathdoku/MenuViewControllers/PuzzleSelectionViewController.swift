@@ -70,8 +70,12 @@ class PuzzleSelectionViewController: UIViewController {
     }
     
     override func viewDidLoad() {
-        DebugUtil.print("Test")
         super.viewDidLoad()
+        
+        if #available(iOS 13.0, *) {
+            navigationController?.overrideUserInterfaceStyle = [ColorTheme.Themes.darkMode, .midnight].contains(ColorTheme.sharedInstance.theme) ? .dark : .light
+            navigationController?.navigationBar.overrideUserInterfaceStyle = [ColorTheme.Themes.darkMode, .midnight].contains(ColorTheme.sharedInstance.theme) ? .dark : .light
+        }
 
         // Set up and configure a few aspects of the UI
         DebugUtil.print(Realm.Configuration.defaultConfiguration.fileURL!)

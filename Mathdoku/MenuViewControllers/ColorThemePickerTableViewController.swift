@@ -131,14 +131,5 @@ class ColorThemePickerTableViewController: UITableViewController {
     override func viewDidDisappear(_ animated: Bool) {
         super.viewDidDisappear(animated)
         CellViewElementValues.sharedInstance.clear()
-    }
-    
-    @IBAction func testItemButton(_ sender: UIBarButtonItem) {
-        guard let cells = tableView.visibleCells as? [ColorThemePreviewTableViewCell] else { return }
-        
-        cells.forEach { cell in
-            cell.cell2.cell.guess = "2"
-        }
-    }
-    
+    }    
 }

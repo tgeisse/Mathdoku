@@ -59,7 +59,7 @@ class ColorTheme {
         switch theme {
         case .light: return .darkGray
         case .darkMode: return UIColor(hex: 0xF6F2E6)
-        case .midnight: return UIColor(hex: 0x5E5E5E)
+        case .midnight: return UIColor(hex: 0x7F7F7F)
         }
     }
     
@@ -101,7 +101,7 @@ class ColorTheme {
         switch theme {
         case .light: return red(.light)
         case .darkMode: return red(.dark)
-        case .midnight: return red(.dark)
+        case .midnight: return UIColor(hex: 0xAE1B05)
         }
     }
     
@@ -109,7 +109,7 @@ class ColorTheme {
         switch theme {
         case .light: return green(.light)
         case .darkMode: return green(.dark)
-        case .midnight: return green(.dark)
+        case .midnight: return UIColor(hex: 0x006200)
         }
     }
     
@@ -149,7 +149,7 @@ class ColorTheme {
         switch theme {
         case .light: return red(.bright)
         case .darkMode: return red(.bright)
-        case .midnight: return red(.bright)
+        case .midnight: return red(.light)
         }
     }
     
@@ -157,15 +157,15 @@ class ColorTheme {
         switch theme {
         case .light: return blue(.dark)
         case .darkMode: return blue(.light)
-        case .midnight: return blue(.dark)
+        case .midnight: return blue(.light)
         }
     }
     
     var positiveTextLabel: UIColor {
         switch theme {
         case .light: return green(.dark)
-        case .darkMode: return green(.dark)
-        case .midnight: return green(.dark)
+        case .darkMode: return green(.light)
+        case .midnight: return green(.light)
         }
     }
     

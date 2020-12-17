@@ -83,7 +83,7 @@ class CellContainerView: UIView {
     
     func getValidationColor(forState state: ValidationState) -> UIColor {
         switch state {
-        case .notValidating: return colorTheme.background
+        case .notValidating: return .clear
         case .valid: return colorTheme.validCell
         case .invalid: return colorTheme.invalidCell
         }
@@ -120,9 +120,9 @@ class CellContainerView: UIView {
         
         UIView.animate(withDuration: duration, animations: {
             validationAnimtationView.backgroundColor = color
-        }, completion: { [weak self] finished in
+        }, completion: { _ in
             UIView.animate(withDuration: duration, animations: {
-                validationAnimtationView.backgroundColor = self?.getValidationColor(forState: ValidationState.notValidating) ?? .clear
+                validationAnimtationView.backgroundColor = .clear
             }, completion: { fin in
                 validationAnimtationView.removeFromSuperview()
             })

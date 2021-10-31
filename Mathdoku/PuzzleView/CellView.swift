@@ -45,8 +45,8 @@ class CellView: UIView {
         
         var borderWeight: CGFloat {
             switch self {
-            case .friend: return 0.24
-            case .foe: return 1.2
+            case .friend: return 0.18
+            case .foe: return 1.15
             case .other: return 1.3
             }
         }

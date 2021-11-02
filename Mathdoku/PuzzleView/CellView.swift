@@ -7,13 +7,6 @@
 //
 
 /** TODO:
-* Potential fix for corners is to draw a square in the corner of size
-* of the lines when there is a corner that would present such an issue.
-* This is basically when 2 of the 4 that interconnect are foes while
-* the other two are friends. Then that would require a drawing of a square
-*/
-
-/** TODO:
 * Old code - make CellViews use more standard swift items. For example,
 * using labels instead of drawing text for guesses and notes.
  */

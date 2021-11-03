@@ -12,5 +12,5 @@ import RealmSwift
 class PuzzleGuess: Object {
     let forPuzzle = LinkingObjects(fromType: PuzzleProgress.self, property: "puzzleGuesses")
     @objc dynamic var cellId = 0
-    var guess = RealmOptional<Int>()
+    var guess = RealmProperty<Int?>()
 }

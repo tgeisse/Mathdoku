@@ -97,6 +97,7 @@ struct PuzzlePurchase {
                 case .overlayTimeout: DebugUtil.print("Overlay Timeout")
                 case .ineligibleForOffer: DebugUtil.print("Inelgible For Offer")
                 case .unsupportedPlatform: DebugUtil.print("Unsupported Platform")
+                case .overlayPresentedInBackgroundScene: DebugUtil.print("Overlay Presented In Background Scene")
                 @unknown default: DebugUtil.print("Unknown issue.")
                 }
             }

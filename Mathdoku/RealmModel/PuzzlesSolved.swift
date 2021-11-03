@@ -14,7 +14,7 @@ class PuzzlesSolved: Object {
     @objc dynamic var puzzleId = 0
     @objc dynamic var solvedOn: NSDate? = nil
     // @objc dynamic var timeToSolve: Double? = nil
-    let timeToSolve = RealmOptional<Double>()
+    let timeToSolve = RealmProperty<Double?>()
     @objc dynamic var playCount = 0
     
     func markPuzzlePlayed(finalTime time: Double, withRealm: Realm? = nil) {

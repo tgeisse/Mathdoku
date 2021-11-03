@@ -1,5 +1,5 @@
 PODS:
-  - Bugsnag (6.14.2)
+  - Bugsnag (6.14.3)
   - Firebase/AdMob (7.11.0):
     - Firebase/CoreOnly
     - Google-Mobile-Ads-SDK (~> 7.66)
@@ -153,7 +153,7 @@ SPEC REPOS:
     - SwiftyUserDefaults
 
 SPEC CHECKSUMS:
-  Bugsnag: 33af84166069b53df6e2c4cd73b8760a152a0102
+  Bugsnag: 82cdfff1ddcfa9f06772dbbcab1684dabc9e5545
   Firebase: c121feb35e4126c0b355e3313fa9b487d47319fd
   FirebaseAnalytics: cd3bd84d722a24a8923918af8af8e5236f615d77
   FirebaseCore: 907447d8917a4d3eb0cce2829c5a0ad21d90b432

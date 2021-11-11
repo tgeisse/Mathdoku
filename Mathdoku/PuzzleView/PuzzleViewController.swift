@@ -1340,8 +1340,8 @@ extension PuzzleViewController {
     }
     
     private func createTimeString(from time: Double) -> String {
-        let timerComponents = TimeInterval(time).components
-        return String(format: "%02i:%02i:%02i", timerComponents.hours, timerComponents.minutes, timerComponents.seconds)
+        let ti = TimeInterval(time)
+        return String(format: "%02i:%02i:%02i", ti.hours, ti.minutes, ti.seconds)
     }
     
     private func removeCountdownTimer() {

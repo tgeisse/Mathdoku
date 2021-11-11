@@ -9,6 +9,7 @@
 import Foundation
 
 extension TimeInterval {
+    @available(*, deprecated, message: "To reduce calculations, move to each individual properties")
     var components: (weeks: Int, days: Int, hours: Int, minutes: Int, seconds: Int, ms: Int) {
         
         let ti = NSInteger(self)
@@ -22,4 +23,12 @@ extension TimeInterval {
         
         return (weeks, days, hours, minutes, seconds, ms)
     }
+    
+    private var int:Int     { return NSInteger(self) }
+    var ms:         Int     { return Int(self.truncatingRemainder(dividingBy: 1) * 1000) }
+    var seconds:    Int     { return int % 60 }
+    var minutes:    Int     { return (int / 60) % 60 }
+    var hours:      Int     { return int / 3600 }
+    var days:       Int     { return int / 86400 }
+    var weeks:      Int     { return int / 604800 }
 }

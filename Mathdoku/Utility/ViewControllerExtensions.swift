@@ -54,13 +54,12 @@ extension UIViewController {
         }
     }
     
-    func alertOutOfPuzzlesAndCanPurchase(mentionRefreshPeriod: Bool, messageOverride: String? = nil, actionOnConfirm: @escaping () -> ()) -> UIAlertController {
+    func alertOutOfPuzzlesAndCanPurchase(messageOverride: String? = nil, actionOnConfirm: @escaping () -> ()) -> UIAlertController {
         DebugUtil.print("Creating alert")
         if SwiftyStoreKit.canMakePayments {
             DebugUtil.print("Making alert - can make payments")
-            let message = (mentionRefreshPeriod ? "You have run out of puzzles. Either wait for your next daily refresh or purchase a puzzle pack." :
-                "You have run out of puzzles. Purchase more to keep playing!")
-            let cancelButtonTitle = (mentionRefreshPeriod ? "Wait Until Tomorrow" : "Decide Later")
+            let message = "You have run out of puzzles. Either wait for your next daily refresh or purchase a puzzle pack."
+            let cancelButtonTitle = "Wait for my Refresh"
             DebugUtil.print("Returning created alert")
             return alertWithTwoButtons(title: "Out of Puzzles",
                                        message: messageOverride ?? message,

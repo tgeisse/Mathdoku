@@ -159,11 +159,11 @@ class PuzzleSelectionViewController: UIViewController {
                 return true
             } else {
                 // else the player does not have puzzle allowance to play. Prompt to buy or wait
-                let mentionRefresh: Bool = PuzzleProducts.userIsFree
+                // let mentionRefresh: Bool = PuzzleProducts.userIsFree
                 
                 AnalyticsWrapper.logEvent(.selectContent, contentType: .presented, id: "id-mainMenuOutOfPuzzles")
                 
-                let alert = self.alertOutOfPuzzlesAndCanPurchase(mentionRefreshPeriod: mentionRefresh, actionOnConfirm: segueToStore)
+                let alert = self.alertOutOfPuzzlesAndCanPurchase(actionOnConfirm: segueToStore)
                 self.showAlert(alert)
                 
                 return false

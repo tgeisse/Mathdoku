@@ -454,7 +454,7 @@ class PuzzleViewController: UIViewController, UINavigationBarDelegate {
             AnalyticsWrapper.logEvent(.selectContent, contentType: .puzzlePlayed, id: "id-nextPuzzle")
             
             if PuzzleProducts.puzzleAllowance.allowance == 0 {
-                let alert = self.alertOutOfPuzzlesAndCanPurchase(mentionRefreshPeriod: PuzzleProducts.userIsFree, actionOnConfirm: segueToStore)
+                let alert = self.alertOutOfPuzzlesAndCanPurchase(actionOnConfirm: segueToStore)
                 self.showAlert(alert)
             } else {
                 goToNextPuzzle()
@@ -468,7 +468,7 @@ class PuzzleViewController: UIViewController, UINavigationBarDelegate {
             if PuzzleProducts.puzzleAllowance.allowance == 0 {
                 // If the user is out of puzzles, tell them they have to buy (or wait for daily)
                 DebugUtil.print("Out of puzzles for skip - prompting the user")
-                let alert = self.alertOutOfPuzzlesAndCanPurchase(mentionRefreshPeriod: PuzzleProducts.userIsFree, messageOverride: "You cannot skip this puzzle until you have more to play.", actionOnConfirm: segueToStore)
+                let alert = self.alertOutOfPuzzlesAndCanPurchase(messageOverride: "You cannot skip this puzzle until you have more to play.", actionOnConfirm: segueToStore)
                 DebugUtil.print("Successfully created alert for skip, out of puzzles")
                 self.showAlert(alert)
                 DebugUtil.print("Successfully displayed alert for skip, out of puzzles")

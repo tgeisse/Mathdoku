@@ -342,45 +342,15 @@ class PuzzleViewController: UIViewController, UINavigationBarDelegate {
     // MARK: - UI Button Actions
     @IBAction func numberButtonPress(_ sender: UIButton) {
         if let buttonTitle = sender.currentTitle, let num = Int(buttonTitle) {
-            switch entryMode {
-            case .guessing:
-                if let cellPosition = selectedCellPosition {
-                    setGuessForCells(atPositions: [cellPosition], withAnswer: num)
-                    
-                    // if auto rotate is enabled, then rotate to the next free cell
-                    if Defaults[\.rotateAfterCellEntry] {
-                        DebugUtil.print("auto rotation turned on -- rotating to next cell in friendly group")
-                        let unfilledFriendlies = puzzle.getUnfilledFriendliesForCell(cellPosition)
-                        
-                        if let nextCell = unfilledFriendlies.filter( { $0.cellId > cellPosition.cellId } ).first ?? unfilledFriendlies.first {
-                            selectedCell = gridRowStacks[nextCell.row].rowCells[nextCell.col]
-                        }
-                    }
-                }
-            case .notePossible, .noteImpossible:
-                setNotesForCells(atPositions: selectedNoteCellsPositions, withNotes: [num])
-            }
+            numberIntake(num)
         }
     }
     
     @IBAction func eraseGuessOrNotes(_ sender: UIButton) {
-        switch entryMode {
-        case .guessing:
-            if let cellPosition = selectedCellPosition {
-                if puzzle.cellIsGuessedAtPosition(cellPosition) {
-                    // if the puzzle has a guess, erase it
-                    setGuessForCells(atPositions: [cellPosition], withAnswer: nil)
-                } else {
-                    // if the puzzle does not have a guess, then erase its notes
-                    setNotesForCells(atPositions: [cellPosition], withNotes: nil)
-                }
-            }
-        case .notePossible, .noteImpossible:
-            setNotesForCells(atPositions: selectedNoteCellsPositions, withNotes: nil)
-        }
+        eraseSelectedCellGuessOrNotes()
     }
     
-    @IBAction func validatePuzzleEntries(_ sender: UIButton) {
+    @IBAction func validatePuzzleEntries(_ sender: UIButton? = nil) {
         // log an event to capture usage of this feature
         AnalyticsWrapper.logEvent(.selectContent, contentType: .featureUsage, id: "id-puzzleValidation")
         
@@ -430,14 +400,14 @@ class PuzzleViewController: UIViewController, UINavigationBarDelegate {
         })
     }
     
-    @IBAction func undoMove(_ sender: UIButton) {
+    @IBAction func undoMove(_ sender: UIButton? = nil) {
         if let moves = moveHistory.undo() {
             AnalyticsWrapper.logEvent(.selectContent, contentType: .featureUsage, id: "id-undoMove")
             processMoveHistory(forMoves: moves, moveDirection: .undo)
         }
     }
     
-    @IBAction func redoMove(_ sender: UIButton) {
+    @IBAction func redoMove(_ sender: UIButton? = nil) {
         if let moves = moveHistory.redo() {
             AnalyticsWrapper.logEvent(.selectContent, contentType: .featureUsage, id: "id-redoMove")
             processMoveHistory(forMoves: moves, moveDirection: .redo)
@@ -674,6 +644,46 @@ class PuzzleViewController: UIViewController, UINavigationBarDelegate {
     }
     
     // MARK: - Update cell values
+    private func eraseSelectedCellGuessOrNotes() {
+        switch entryMode {
+        case .guessing:
+            if let cellPosition = selectedCellPosition {
+                if puzzle.cellIsGuessedAtPosition(cellPosition) {
+                    // if the puzzle has a guess, erase it
+                    setGuessForCells(atPositions: [cellPosition], withAnswer: nil)
+                } else {
+                    // if the puzzle does not have a guess, then erase its notes
+                    setNotesForCells(atPositions: [cellPosition], withNotes: nil)
+                }
+            }
+        case .notePossible, .noteImpossible:
+            setNotesForCells(atPositions: selectedNoteCellsPositions, withNotes: nil)
+        }
+    }
+    
+    private func numberIntake(_ num: Int) {
+        guard num <= puzzle.size else { return }
+        
+        switch entryMode {
+        case .guessing:
+            if let cellPosition = selectedCellPosition {
+                setGuessForCells(atPositions: [cellPosition], withAnswer: num)
+                
+                // if auto rotate is enabled, then rotate to the next free cell
+                if Defaults[\.rotateAfterCellEntry] {
+                    DebugUtil.print("auto rotation turned on -- rotating to next cell in friendly group")
+                    let unfilledFriendlies = puzzle.getUnfilledFriendliesForCell(cellPosition)
+                    
+                    if let nextCell = unfilledFriendlies.filter( { $0.cellId > cellPosition.cellId } ).first ?? unfilledFriendlies.first {
+                        selectedCell = gridRowStacks[nextCell.row].rowCells[nextCell.col]
+                    }
+                }
+            }
+        case .notePossible, .noteImpossible:
+            setNotesForCells(atPositions: selectedNoteCellsPositions, withNotes: [num])
+        }
+    }
+    
     private func setGuessForCells(atPositions: [CellPosition], withAnswer: Int?, mutatesMoveHistory: Bool = true, withIdentifier: String = #function) {
         var moves = [Move]()
         
@@ -1390,5 +1400,143 @@ extension PuzzleViewController {
         }
         
         puzzleSolved.first?.markPuzzlePlayed(finalTime: timer.runningTime, withRealm: realm)
+    }
+}
+
+// MARK: - Extension for Keyboard Input
+extension PuzzleViewController {
+    // MARK: - Keyboard Input
+    override func pressesBegan(_ presses: Set<UIPress>, with event: UIPressesEvent?) {
+        guard let key = presses.first?.key else { return }
+        
+        let keyPressed: String
+        
+        switch key.keyCode {
+        case .keyboard1, .keypad1:
+            keyPressed = "1"
+            numberKeyPressed(1)
+        case .keyboard2, .keypad2:
+            keyPressed = "2"
+            numberKeyPressed(2)
+        case .keyboard3, .keypad3:
+            keyPressed = "3"
+            numberKeyPressed(3)
+        case .keyboard4, .keypad4:
+            keyPressed = "4"
+            numberKeyPressed(4)
+        case .keyboard5, .keypad5:
+            keyPressed = "5"
+            numberKeyPressed(5)
+        case .keyboard6, .keypad6:
+            keyPressed = "6"
+            numberKeyPressed(6)
+        case .keyboard7, .keypad7:
+            keyPressed = "7"
+            numberKeyPressed(7)
+        case .keyboard8, .keypad8:
+            keyPressed = "8"
+            numberKeyPressed(8)
+        case .keyboard9, .keypad9:
+            keyPressed = "9"
+            numberKeyPressed(9)
+        case .keyboardLeftArrow, .keyboardA:
+            keyPressed = "Left Arrow or A"
+            moveSelection(direction: .left, shifted: key.modifierFlags.contains(.shift))
+        case .keyboardRightArrow, .keyboardD:
+            keyPressed = "Right Arrow or D"
+            moveSelection(direction: .right, shifted: key.modifierFlags.contains(.shift))
+        case .keyboardUpArrow, .keyboardW:
+            keyPressed = "Up Arrow or W"
+            moveSelection(direction: .up, shifted: key.modifierFlags.contains(.shift))
+        case .keyboardDownArrow, .keyboardS:
+            keyPressed = "Down Arrow or S"
+            moveSelection(direction: .down, shifted: key.modifierFlags.contains(.shift))
+        case .keyboardDeleteForward, .keyboardDeleteOrBackspace:
+            keyPressed = "Delete Key / Backspace / Forward Delete"
+            eraseSelectedCellGuessOrNotes()
+        case .keyboardZ:
+            keyPressed = "Z"
+            guard gameState == .playing else { return }
+            undoMove()
+        case .keyboardY:
+            keyPressed = "Y"
+            guard gameState == .playing else { return }
+            redoMove()
+        case .keyboardC:
+            keyPressed = "C"
+            validatePuzzleEntries()
+        case .keyboardN:
+            keyPressed = "N"
+            guard [GameState.playing, .paused].contains(gameState) else { return }
+            toggleEntryMode()
+        default:
+            keyPressed = "Key not part of switch statement"
+            super.pressesBegan(presses, with: event)
+        }
+        
+        DebugUtil.print("Registered a keypress for keyCode: \(keyPressed)")
+    }
+    
+    // MARK: - Private functions to assist with keyboard input processing
+    private func numberKeyPressed(_ num: Int) {
+        guard gameState == .playing else { return }
+        numberIntake(num)
+    }
+    
+    private func moveSelection(direction: KeyboardDirection, shifted: Bool) {
+        // ignore move selection is the gameState is not in playing
+        guard [GameState.playing, .finished].contains(gameState) else { return }
+        
+        switch entryMode {
+        case .guessing:
+            guard let selCellPos = selectedCellPosition else {
+                selectedCell = gridRowStacks[puzzle.size / 2].rowCells[puzzle.size / 2]
+                return
+            }
+            
+            let newSelCellPos = moveCellPosition(selCellPos, direction: direction)
+            
+            if newSelCellPos.isValid {
+                selectedCell = gridRowStacks[newSelCellPos.row].rowCells[newSelCellPos.col]
+            }
+        case .noteImpossible, .notePossible:
+            let selNoteCellPoses = selectedNoteCellsPositions
+            guard selNoteCellPoses.count > 0 else {
+                selectedNoteCells.append(gridRowStacks[puzzle.size / 2].rowCells[puzzle.size / 2])
+                return
+            }
+            
+            let newSelNotePos = moveCellPosition(selNoteCellPoses.last!, direction: direction)
+            guard newSelNotePos.isValid else { return }
+            
+            if shifted {
+                if let exists = selNoteCellPoses.firstIndex(of: newSelNotePos) {
+                    // it is already selected, so move it to the back of the array
+                    selectedNoteCells.append(selectedNoteCells.remove(at: exists))
+                } else {
+                    // it is not selected, so add it to the notes
+                    selectedNoteCells.append(gridRowStacks[newSelNotePos.row].rowCells[newSelNotePos.col])
+                }
+            } else {
+                selectedNoteCells = [gridRowStacks[newSelNotePos.row].rowCells[newSelNotePos.col]]
+            }
+        }
+    }
+    
+    private func moveCellPosition(_ original: CellPosition, direction: KeyboardDirection) -> CellPosition {
+        let newSelCellPos: CellPosition
+        
+        switch direction {
+        case .up:
+            newSelCellPos = CellPosition(row: original.row - 1, col: original.col, puzzleSize: original.size)
+        case .down:
+            newSelCellPos = CellPosition(row: original.row + 1, col: original.col, puzzleSize: original.size)
+        case .left:
+            newSelCellPos = CellPosition(row: original.row, col: original.col - 1, puzzleSize: original.size)
+        case .right:
+            newSelCellPos = CellPosition(row: original.row, col: original.col + 1, puzzleSize: original.size)
+        }
+        
+        return newSelCellPos
     }
 }

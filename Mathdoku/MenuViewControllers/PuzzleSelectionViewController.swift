@@ -34,6 +34,7 @@ class PuzzleSelectionViewController: UIViewController {
     
     private let selectColor = UIColor(red: 1.0, green: 0.9648, blue: 0.60, alpha: 1.0)
     
+    // MARK: - IBOutlets
     @IBOutlet weak var startPuzzle: UIButton!
     @IBOutlet weak var puzzlesRemainingLabel: UILabel!
     
@@ -45,6 +46,16 @@ class PuzzleSelectionViewController: UIViewController {
     @IBOutlet weak var inProgress8: UILabel!
     @IBOutlet weak var inProgress9: UILabel!
     
+    @IBOutlet var puzzleSizeButtons: [UIButton]! {
+        didSet {
+            puzzleSizeButtons.sort {
+                $0.tag < $1.tag
+            }
+        }
+    }
+    
+    
+    // MARK: - Private methods for UI Updates
     private func updateInProgressMarker(forLabel label: UILabel, show: Bool) {
         label.isHidden = !show
     }
@@ -151,6 +162,8 @@ class PuzzleSelectionViewController: UIViewController {
     // MARK: - Navigation
     override func shouldPerformSegue(withIdentifier identifier: String, sender: Any?) -> Bool {
         if identifier == "PuzzleSelection" {
+            guard selectedPuzzleSize >= 3 && selectedPuzzleSize <= 9 else { return false }
+            
             let allowance = PuzzleProducts.puzzleAllowance
             if (playerProgress[selectedPuzzleSize - 3].puzzleProgress?.inProgress ?? false) || allowance.allowance == AllowanceTypes.puzzle.infiniteAllowance() || allowance.allowance > 0 {
                 
@@ -194,3 +207,47 @@ class PuzzleSelectionViewController: UIViewController {
     }
 }
 
+// MARK: - Extension for Keyboard input
+extension PuzzleSelectionViewController {
+    // MARK: - Keyboard Input
+    override func pressesBegan(_ presses: Set<UIPress>, with event: UIPressesEvent?) {
+        guard let key = presses.first?.key else { return }
+        
+        DebugUtil.print("Key pressed: \(key.characters)")
+        
+        switch key.keyCode {
+        case .keyboard3, .keypad3: selectPuzzleSize(forNumber: 3)
+        case .keyboard4, .keypad4: selectPuzzleSize(forNumber: 4)
+        case .keyboard5, .keypad5: selectPuzzleSize(forNumber: 5)
+        case .keyboard6, .keypad6: selectPuzzleSize(forNumber: 6)
+        case .keyboard7, .keypad7: selectPuzzleSize(forNumber: 7)
+        case .keyboard8, .keypad8: selectPuzzleSize(forNumber: 8)
+        case .keyboard9, .keypad9: selectPuzzleSize(forNumber: 9)
+        case .keyboardLeftArrow: arrowKeyPressed(direction: .left)
+        case .keyboardRightArrow: arrowKeyPressed(direction: .right)
+        case .keypadEnter, .keyboardReturnOrEnter:
+            if shouldPerformSegue(withIdentifier: "PuzzleSelection", sender: self) {
+                performSegue(withIdentifier: "PuzzleSelection", sender: self)
+            }
+        default: super.pressesBegan(presses, with: event)
+        }
+    }
+    
+    // MARK: - Private functions to assist with keyboard input processing
+    private func selectPuzzleSize(forNumber num: Int) {
+        guard num >= 3 && num <= 9 else { return }
+        puzzleSelection(puzzleSizeButtons[num - 3])
+    }
+    
+    private func arrowKeyPressed(direction: KeyboardDirection) {
+        switch direction {
+        case .up, .down: return
+        case .left:
+            if selectedPuzzleSize == -1 { selectPuzzleSize(forNumber: 9) }
+            else { selectPuzzleSize(forNumber: selectedPuzzleSize - 1) }
+        case .right:
+            if selectedPuzzleSize == -1 { selectPuzzleSize(forNumber: 3) }
+            else { selectPuzzleSize(forNumber: selectedPuzzleSize + 1) }
+        }
+    }
+}

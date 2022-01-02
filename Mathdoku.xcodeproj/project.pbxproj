@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		3426D0072781701B002835A2 /* KeyboardDirection.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3426D0062781701B002835A2 /* KeyboardDirection.swift */; };
 		8336D4FC8161CC44C65F908F /* Pods_Mathdoku.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 27B6C3B9D7393F6EFC9176CA /* Pods_Mathdoku.framework */; };
 		9502E5DE1EEE080F0048BE1B /* ViewControllerExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9502E5DD1EEE080F0048BE1B /* ViewControllerExtensions.swift */; };
 		9502E5E01EEE158B0048BE1B /* PuzzlePurchase.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9502E5DF1EEE158B0048BE1B /* PuzzlePurchase.swift */; };
@@ -89,6 +90,7 @@
 /* Begin PBXFileReference section */
 		107ED940AEAB5A0AF4DD58A7 /* Pods_MathdokuTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_MathdokuTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		27B6C3B9D7393F6EFC9176CA /* Pods_Mathdoku.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Mathdoku.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		3426D0062781701B002835A2 /* KeyboardDirection.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KeyboardDirection.swift; sourceTree = "<group>"; };
 		3BC01DF3DD546476D89F7543 /* Pods-Mathdoku.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Mathdoku.debug.xcconfig"; path = "Pods/Target Support Files/Pods-Mathdoku/Pods-Mathdoku.debug.xcconfig"; sourceTree = "<group>"; };
 		7ABBAD76201575B50001FEAB /* MathdokuTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = MathdokuTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		7ABBAD7A201575B50001FEAB /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -212,6 +214,7 @@
 				9572FDC31FBD500300963CFD /* Settings.swift */,
 				95470334201245F4007B3C49 /* CellViewElementValues.swift */,
 				95480ED520846CB200F783F9 /* GameTimer.swift */,
+				3426D0062781701B002835A2 /* KeyboardDirection.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -561,6 +564,7 @@
 				95CBCC5D20087176001409B1 /* AppSecrets.swift in Sources */,
 				95FBB8DB1E9AD13F00B0E662 /* AppDelegate.swift in Sources */,
 				9581B8C525803C3B00EA5E5E /* ColorThemePickerTableViewController.swift in Sources */,
+				3426D0072781701B002835A2 /* KeyboardDirection.swift in Sources */,
 				9570051C1FE104F300C85822 /* AnalyticsWrapper.swift in Sources */,
 				9598A3A21FBC020800AE48E2 /* SettingsViewController.swift in Sources */,
 				954695F1205C8A4300BB431A /* CrashWrapper.swift in Sources */,

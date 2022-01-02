@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="19455" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="5IB-Io-PmN">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="19529" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="5IB-Io-PmN">
     <device id="retina4_7" orientation="portrait" appearance="light"/>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="19454"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="19519"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="Stack View standard spacing" minToolsVersion="9.0"/>
         <capability name="System colors in document resources" minToolsVersion="11.0"/>
@@ -2174,7 +2174,7 @@
                                             <stackView opaque="NO" contentMode="scaleToFill" distribution="fillEqually" spacing="10" translatesAutoresizingMaskIntoConstraints="NO" id="1bY-Je-SKY">
                                                 <rect key="frame" x="44.5" y="32.5" width="270" height="39"/>
                                                 <subviews>
-                                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Sqd-DY-I35">
+                                                    <button opaque="NO" tag="3" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Sqd-DY-I35">
                                                         <rect key="frame" x="0.0" y="0.0" width="30" height="39"/>
                                                         <fontDescription key="fontDescription" type="system" pointSize="22"/>
                                                         <state key="normal" title="3"/>
@@ -2182,7 +2182,7 @@
                                                             <action selector="puzzleSelection:" destination="sGM-lu-8rP" eventType="touchUpInside" id="Ic6-9o-CuK"/>
                                                         </connections>
                                                     </button>
-                                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="mb4-jZ-7o8">
+                                                    <button opaque="NO" tag="4" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="mb4-jZ-7o8">
                                                         <rect key="frame" x="40" y="0.0" width="30" height="39"/>
                                                         <fontDescription key="fontDescription" type="system" pointSize="22"/>
                                                         <state key="normal" title="4"/>
@@ -2190,7 +2190,7 @@
                                                             <action selector="puzzleSelection:" destination="sGM-lu-8rP" eventType="touchUpInside" id="nMA-i3-a2P"/>
                                                         </connections>
                                                     </button>
-                                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="RWI-Os-67v">
+                                                    <button opaque="NO" tag="5" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="RWI-Os-67v">
                                                         <rect key="frame" x="80" y="0.0" width="30" height="39"/>
                                                         <fontDescription key="fontDescription" type="system" pointSize="22"/>
                                                         <state key="normal" title="5"/>
@@ -2198,7 +2198,7 @@
                                                             <action selector="puzzleSelection:" destination="sGM-lu-8rP" eventType="touchUpInside" id="ihM-8k-xgs"/>
                                                         </connections>
                                                     </button>
-                                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="kI9-Ta-xpq">
+                                                    <button opaque="NO" tag="6" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="kI9-Ta-xpq">
                                                         <rect key="frame" x="120" y="0.0" width="30" height="39"/>
                                                         <fontDescription key="fontDescription" type="system" pointSize="22"/>
                                                         <state key="normal" title="6"/>
@@ -2206,7 +2206,7 @@
                                                             <action selector="puzzleSelection:" destination="sGM-lu-8rP" eventType="touchUpInside" id="C0a-VF-4US"/>
                                                         </connections>
                                                     </button>
-                                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="HPQ-bq-0fh">
+                                                    <button opaque="NO" tag="7" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="HPQ-bq-0fh">
                                                         <rect key="frame" x="160" y="0.0" width="30" height="39"/>
                                                         <fontDescription key="fontDescription" type="system" pointSize="22"/>
                                                         <state key="normal" title="7"/>
@@ -2214,7 +2214,7 @@
                                                             <action selector="puzzleSelection:" destination="sGM-lu-8rP" eventType="touchUpInside" id="x2D-OG-lTd"/>
                                                         </connections>
                                                     </button>
-                                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="44g-SO-fM5">
+                                                    <button opaque="NO" tag="8" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="44g-SO-fM5">
                                                         <rect key="frame" x="200" y="0.0" width="30" height="39"/>
                                                         <fontDescription key="fontDescription" type="system" pointSize="22"/>
                                                         <state key="normal" title="8"/>
@@ -2222,7 +2222,7 @@
                                                             <action selector="puzzleSelection:" destination="sGM-lu-8rP" eventType="touchUpInside" id="eEG-XX-Bbz"/>
                                                         </connections>
                                                     </button>
-                                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="cy6-oO-AMq">
+                                                    <button opaque="NO" tag="9" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="cy6-oO-AMq">
                                                         <rect key="frame" x="240" y="0.0" width="30" height="39"/>
                                                         <fontDescription key="fontDescription" type="system" pointSize="22"/>
                                                         <state key="normal" title="9"/>
@@ -2388,6 +2388,13 @@
                         <outlet property="inProgress9" destination="cw0-QO-R7X" id="gr1-n5-h4F"/>
                         <outlet property="puzzlesRemainingLabel" destination="r3V-fF-OKm" id="AQP-oW-ALB"/>
                         <outlet property="startPuzzle" destination="eWV-Pc-I3t" id="GZ2-yr-dRw"/>
+                        <outletCollection property="puzzleSizeButtons" destination="Sqd-DY-I35" collectionClass="NSMutableArray" id="80F-OO-IkP"/>
+                        <outletCollection property="puzzleSizeButtons" destination="mb4-jZ-7o8" collectionClass="NSMutableArray" id="i7y-Pd-OSy"/>
+                        <outletCollection property="puzzleSizeButtons" destination="RWI-Os-67v" collectionClass="NSMutableArray" id="zsD-m7-iE8"/>
+                        <outletCollection property="puzzleSizeButtons" destination="kI9-Ta-xpq" collectionClass="NSMutableArray" id="ec8-um-TK9"/>
+                        <outletCollection property="puzzleSizeButtons" destination="HPQ-bq-0fh" collectionClass="NSMutableArray" id="O38-fw-Uvf"/>
+                        <outletCollection property="puzzleSizeButtons" destination="44g-SO-fM5" collectionClass="NSMutableArray" id="odH-U4-5L1"/>
+                        <outletCollection property="puzzleSizeButtons" destination="cy6-oO-AMq" collectionClass="NSMutableArray" id="7FQ-bD-nbR"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="8VA-wS-Syq" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -2447,7 +2454,7 @@
                                         <rect key="frame" x="0.0" y="92.5" width="375" height="43"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="G3a-5U-clU" id="zjg-j0-NqY">
-                                            <rect key="frame" x="0.0" y="0.0" width="349.5" height="43"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="350.5" height="43"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Color theme" textAlignment="natural" lineBreakMode="wordWrap" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="GnC-fu-qmo">
@@ -2457,7 +2464,7 @@
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                                 <label opaque="NO" userInteractionEnabled="NO" alpha="0.34999999999999998" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Light Mode" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="5rk-Os-6Yi">
-                                                    <rect key="frame" x="253.5" y="11" width="86" height="21"/>
+                                                    <rect key="frame" x="254.5" y="11" width="86" height="21"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                     <nil key="textColor"/>
                                                     <nil key="highlightedColor"/>

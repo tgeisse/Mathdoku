@@ -17,6 +17,10 @@ struct CellPosition: Hashable, Equatable {
     let cellId: Int
     let size: Int
     
+    var isValid: Bool {
+        return row < size && col < size && row >= 0 && col >= 0
+    }
+    
     init(row: Int, col: Int, puzzleSize size: Int) {
         self.row = row
         self.col = col

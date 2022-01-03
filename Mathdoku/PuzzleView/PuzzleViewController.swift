@@ -1407,6 +1407,9 @@ extension PuzzleViewController {
 extension PuzzleViewController {
     // MARK: - Keyboard Input
     override func pressesBegan(_ presses: Set<UIPress>, with event: UIPressesEvent?) {
+        // if keyboard input is disabled, then return
+        guard Defaults[\.enableKeyboardInput] else { return }
+        
         guard let key = presses.first?.key else { return }
         
         let keyPressed: String

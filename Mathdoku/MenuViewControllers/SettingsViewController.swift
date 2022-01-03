@@ -62,6 +62,12 @@ class SettingsViewController: UITableViewController {
         }
     }
     
+    @IBOutlet weak var allowKeyboardInputs: UISwitch! {
+        didSet {
+            allowKeyboardInputs.setOn(Defaults[\.enableKeyboardInput], animated: false)
+        }
+    }
+    
     @IBAction func switchValueChanged(_ sender: UISwitch) {
         DebugUtil.print("Switching on tag \(sender.tag)")
         let settingName: String
@@ -101,6 +107,10 @@ class SettingsViewController: UITableViewController {
             Defaults[\.dailyRefreshNotice] = dailyPuzzleNotices.isOn
             settingName = "dailyRefreshNotice"
             settingVariant = "\(dailyPuzzleNotices.isOn)"
+        case 9:
+            Defaults[\.enableKeyboardInput] = allowKeyboardInputs.isOn
+            settingName = "enableKeyboardInput"
+            settingVariant = "\(allowKeyboardInputs.isOn)"
         default:
             settingName = "default"
             settingVariant = "none"

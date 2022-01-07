@@ -1456,6 +1456,7 @@ extension PuzzleViewController {
             moveSelection(direction: .down, shifted: key.modifierFlags.contains(.shift))
         case .keyboardDeleteForward, .keyboardDeleteOrBackspace:
             keyPressed = "Delete Key / Backspace / Forward Delete"
+            guard gameState == .playing else { return }
             eraseSelectedCellGuessOrNotes()
         case .keyboardZ:
             keyPressed = "Z"
@@ -1467,11 +1468,11 @@ extension PuzzleViewController {
             redoMove()
         case .keyboardC:
             keyPressed = "C"
+            guard gameState == .playing else { return }
             validatePuzzleEntries()
         case .keyboardN:
             keyPressed = "N"
-            guard [GameState.playing, .paused].contains(gameState) else { return }
-            toggleEntryMode()
+            noteToggleKeyPressed()
         default:
             keyPressed = "Key not part of switch statement"
             super.pressesBegan(presses, with: event)
@@ -1486,6 +1487,14 @@ extension PuzzleViewController {
         numberIntake(num)
     }
     
+    private func noteToggleKeyPressed() {
+        guard [GameState.playing, .paused].contains(gameState) else { return }
+        
+        let singleNoteCell = (selectedNoteCells.count == 1 ? selectedNoteCells.first! : nil)
+        toggleEntryMode()
+        if let newGuessCell = singleNoteCell, entryMode == .guessing { selectedCell = newGuessCell }
+    }
+    
     private func moveSelection(direction: KeyboardDirection, shifted: Bool) {
         // ignore move selection is the gameState is not in playing
         guard [GameState.playing, .finished].contains(gameState) else { return }
@@ -1497,10 +1506,15 @@ extension PuzzleViewController {
                 return
             }
             
-            let newSelCellPos = moveCellPosition(selCellPos, direction: direction)
-            
-            if newSelCellPos.isValid {
-                selectedCell = gridRowStacks[newSelCellPos.row].rowCells[newSelCellPos.col]
+            if shifted {
+                toggleEntryMode()
+                moveSelection(direction: direction, shifted: shifted)
+            } else {
+                let newSelCellPos = moveCellPosition(selCellPos, direction: direction)
+                
+                if newSelCellPos.isValid {
+                    selectedCell = gridRowStacks[newSelCellPos.row].rowCells[newSelCellPos.col]
+                }
             }
         case .noteImpossible, .notePossible:
             let selNoteCellPoses = selectedNoteCellsPositions

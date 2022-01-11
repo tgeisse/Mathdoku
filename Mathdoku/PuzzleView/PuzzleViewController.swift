@@ -418,6 +418,7 @@ class PuzzleViewController: UIViewController, UINavigationBarDelegate {
     @IBAction func nextPuzzle(_ sender: UIButton) {
         // this can be used by either the success screen or the skiPuzzle button
         DebugUtil.print("Entering nextPuzzle")
+        // TODO: This could be updated to react to the gameState variable to determine if it is a skip or next puzzle
         if sender.currentTitle == "Next Puzzle" {
             // analytics - going to next puzzle
             DebugUtil.print("Puzzle was completed")
@@ -1473,6 +1474,9 @@ extension PuzzleViewController {
         case .keyboardN:
             keyPressed = "N"
             noteToggleKeyPressed()
+        case .keyboardReturnOrEnter, .keypadEnter:
+            keyPressed = "Return or Enter"
+            mimicNextPuzzleButtonPress()
         default:
             keyPressed = "Key not part of switch statement"
             super.pressesBegan(presses, with: event)
@@ -1482,6 +1486,14 @@ extension PuzzleViewController {
     }
     
     // MARK: - Private functions to assist with keyboard input processing
+    private func mimicNextPuzzleButtonPress() {
+        guard gameState == .finished else { return }
+        let fakeButton = UIButton()
+        fakeButton.setTitle("Next Puzzle", for: .normal)
+        DebugUtil.print("Fake Button's currentTitle: \(fakeButton.currentTitle ?? "Empty")")
+        nextPuzzle(fakeButton)
+    }
+    
     private func numberKeyPressed(_ num: Int) {
         guard gameState == .playing else { return }
         numberIntake(num)

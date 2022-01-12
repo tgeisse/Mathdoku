@@ -1457,23 +1457,27 @@ extension PuzzleViewController {
             moveSelection(direction: .down, shifted: key.modifierFlags.contains(.shift))
         case .keyboardDeleteForward, .keyboardDeleteOrBackspace:
             keyPressed = "Delete Key / Backspace / Forward Delete"
-            guard gameState == .playing else { return }
+            guard gameState == .playing else { break }
             eraseSelectedCellGuessOrNotes()
         case .keyboardZ:
             keyPressed = "Z"
-            guard gameState == .playing else { return }
+            guard gameState == .playing else { break }
             undoMove()
         case .keyboardY:
             keyPressed = "Y"
-            guard gameState == .playing else { return }
+            guard gameState == .playing else { break }
             redoMove()
         case .keyboardC:
             keyPressed = "C"
-            guard gameState == .playing else { return }
+            guard gameState == .playing else { break }
             validatePuzzleEntries()
         case .keyboardN:
             keyPressed = "N"
             noteToggleKeyPressed()
+        case .keyboardR:
+            keyPressed = "R"
+            guard gameState == .playing else { break }
+            resetPuzzle(UIButton())
         case .keyboardReturnOrEnter, .keypadEnter:
             keyPressed = "Return or Enter"
             mimicNextPuzzleButtonPress()

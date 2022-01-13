@@ -211,12 +211,10 @@ class PuzzleSelectionViewController: UIViewController {
 extension PuzzleSelectionViewController {
     // MARK: - Keyboard Input
     override func pressesBegan(_ presses: Set<UIPress>, with event: UIPressesEvent?) {
-        DebugUtil.print("Key was pressed")
         // if keyboard input is disabled, then return
         guard Defaults[\.enableKeyboardInput] else { return }
         
         guard let key = presses.first?.key else { return }
-        
         DebugUtil.print("Key pressed: \(key.characters)")
         
         switch key.keyCode {

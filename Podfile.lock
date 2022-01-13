@@ -1,5 +1,5 @@
 PODS:
-  - Bugsnag (6.15.2)
+  - Bugsnag (6.16.0)
   - Firebase/AdMob (7.11.0):
     - Firebase/CoreOnly
     - Google-Mobile-Ads-SDK (~> 7.66)
@@ -111,11 +111,11 @@ PODS:
   - PromiseKit/UIKit (6.15.3):
     - PromiseKit/CorePromise
   - PromisesObjC (1.2.12)
-  - Realm (10.21.0):
-    - Realm/Headers (= 10.21.0)
-  - Realm/Headers (10.21.0)
-  - RealmSwift (10.21.0):
-    - Realm (= 10.21.0)
+  - Realm (10.21.1):
+    - Realm/Headers (= 10.21.1)
+  - Realm/Headers (10.21.1)
+  - RealmSwift (10.21.1):
+    - Realm (= 10.21.1)
   - SwiftyStoreKit (0.16.1)
   - SwiftyUserDefaults (5.3.0)
 
@@ -153,7 +153,7 @@ SPEC REPOS:
     - SwiftyUserDefaults
 
 SPEC CHECKSUMS:
-  Bugsnag: 22666999c92ec31095ce9eee4d298085b54d85d2
+  Bugsnag: d6e1067ab33e35d08036bac17a7e00eb4d549511
   Firebase: c121feb35e4126c0b355e3313fa9b487d47319fd
   FirebaseAnalytics: cd3bd84d722a24a8923918af8af8e5236f615d77
   FirebaseCore: 907447d8917a4d3eb0cce2829c5a0ad21d90b432
@@ -169,8 +169,8 @@ SPEC CHECKSUMS:
   nanopb: a0ba3315591a9ae0a16a309ee504766e90db0c96
   PromiseKit: 3b2b6995e51a954c46dbc550ce3da44fbfb563c5
   PromisesObjC: 3113f7f76903778cf4a0586bd1ab89329a0b7b97
-  Realm: 55220cda83aabd773740d18518e05fdbe00b87cc
-  RealmSwift: 129dce1dd6b5d9194a37f568aaf32a6c10d1a803
+  Realm: 44b41c3ae39e3ecfded71a04434bfde066c7b317
+  RealmSwift: dbf9a4eb06e0c929d51c4ef2e8f951bca541feab
   SwiftyStoreKit: 6b9c08810269f030586dac1fae8e75871a82e84a
   SwiftyUserDefaults: 63f80248cf5bfb3458825d9a78f2eb7e1293a040
 

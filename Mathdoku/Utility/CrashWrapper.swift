@@ -98,13 +98,8 @@ struct CrashWrapper {
         Bugsnag.configuration()?.setUser(id, withName: name, andEmail: email)
     }*/
     
-    static func leaveBreadcrumb(withName name: String, withType type: BreadcrumbType = .manual, withMetadata metadata: [AnyHashable:Any] = [:]) {
+    static func leaveBreadcrumb(_ name: String, withType type: BreadcrumbType = .manual, withMetadata metadata: [AnyHashable:Any] = [:]) {
         Bugsnag.leaveBreadcrumb(name, metadata: metadata, type: type.mapped)
-        /*Bugsnag.leaveBreadcrumb { (crumb) in
-            crumb.name = name
-            crumb.type = type.mapped
-            crumb.metadata = metadata
-        }*/
     }
     
     static func leaveBreadcrumb(withMessage message: String) {

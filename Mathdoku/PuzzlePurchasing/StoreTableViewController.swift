@@ -47,6 +47,12 @@ class StoreTableViewController: UITableViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        CrashWrapper.leaveBreadcrumb(withMessage: "Entered StoreTableViewController")
+    }
+    
+    override func viewDidDisappear(_ animated: Bool) {
+        super.viewDidDisappear(animated)
+        CrashWrapper.leaveBreadcrumb(withMessage: "Left StoreTableViewController")
     }
 
     // MARK: - Table view data source

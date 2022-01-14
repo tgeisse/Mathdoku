@@ -159,8 +159,13 @@ class SettingsViewController: UITableViewController {
         if section == 4 {
             let appVersion: String = Bundle.main.object(forInfoDictionaryKey: "CFBundleShortVersionString") as! String
             let buildNumber: String = Bundle.main.object(forInfoDictionaryKey: "CFBundleVersion") as! String
+            var secHeader = "VERSION \(appVersion) BUILD \(buildNumber)"
             
-            return "VERSION \(appVersion) BUILD \(buildNumber)"
+            #if DEBUG
+            secHeader += " (DEBUG)"
+            #endif
+            
+            return secHeader
         } else {
             return super.tableView(tableView, titleForHeaderInSection   : section)
         }

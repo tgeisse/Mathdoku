@@ -9,7 +9,6 @@
 import UIKit
 import StoreKit
 
-@MainActor
 class StoreTableViewController: UITableViewController {
     
     private func loadProductInfo(forCell cell: StoreTableViewCell, forProduct: PuzzleProduct) {

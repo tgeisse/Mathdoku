@@ -62,14 +62,9 @@ struct CrashWrapper {
         }
     }
     
-    enum ExceptionID: CustomStringConvertible {
-        case cast
-        
-        var description: String {
-            switch self {
-            case .cast: return "ID-CastingError"
-            }
-        }
+    enum ExceptionID: String {
+        case cast               = "ID-CastingError"
+        case transactionState   = "ID-TransactionState"
     }
     
     static func notifyError(domain: String, code: Int, userInfo: [String:Any]? = nil, severity: Severity? = nil) {
@@ -86,7 +81,7 @@ struct CrashWrapper {
     }
     
     static func notifyException(name: ExceptionID, reason: String?, userInfo: [String:Any]? = nil, severity: Severity? = nil) {
-        CrashWrapper.notifyException(NSException(name: NSExceptionName("\(name)"), reason: reason, userInfo: userInfo), severity: severity)
+        CrashWrapper.notifyException(NSException(name: NSExceptionName("\(name.rawValue)"), reason: reason, userInfo: userInfo), severity: severity)
     }
     
     static func notifyException(_ exception: NSException, severity: Severity? = nil) {

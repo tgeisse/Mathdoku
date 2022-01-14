@@ -8,8 +8,8 @@
 
 import UIKit
 import StoreKit
-import SwiftyStoreKit
 
+@MainActor
 class StoreTableViewController: UITableViewController {
     
     private func loadProductInfo(forCell cell: StoreTableViewCell, forProduct: PuzzleProduct) {
@@ -36,17 +36,9 @@ class StoreTableViewController: UITableViewController {
                 processRetrievedProduct(cell, prod)
             } else {
                 DebugUtil.print("Product needs to be loaded from the store")
-                SwiftyStoreKit.retrieveProductsInfo([forProduct.productIdentifier]) { results in
-                    
-                    if let prod = results.retrievedProducts.first {
-                        processRetrievedProduct(cell, prod)
-                    }
-                    for invalidProductId in results.invalidProductIDs {
-                        DebugUtil.print("Could not retrieve product info. Invalid product identifier: \(invalidProductId)")
-                    }
-                    if let error = results.error {
-                        DebugUtil.print("Error: \(error)")
-                    }
+                StoreKitWrapper.sharedInstance.requestProductInfo(forProduct.productIdentifier) { (success, product) in
+                    guard let product = product else { return }
+                    processRetrievedProduct(cell, product)
                 }
             }
             

@@ -21,4 +21,5 @@ extension DefaultsKeys {
     var dailyRefreshNotice: DefaultsKey<Bool> { .init("dailyRefreshNotice", defaultValue: true) }
     var colorTheme: DefaultsKey<Int> { .init("colorTheme", defaultValue:  0) }
     var enableKeyboardInput: DefaultsKey<Bool> { .init("enableKeyboardInput", defaultValue: true) }
+    var drawFriendlyBorder: DefaultsKey<Bool> { .init("drawFriendlyBorder", defaultValue: true) }
 }

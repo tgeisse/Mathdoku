@@ -68,6 +68,12 @@ class SettingsViewController: UITableViewController {
         }
     }
     
+    @IBOutlet weak var drawFriendlyBorder: UISwitch! {
+        didSet {
+            drawFriendlyBorder.setOn(Defaults.drawFriendlyBorder, animated: false)
+        }
+    }
+    
     @IBAction func switchValueChanged(_ sender: UISwitch) {
         DebugUtil.print("Switching on tag \(sender.tag)")
         let settingName: String
@@ -111,6 +117,10 @@ class SettingsViewController: UITableViewController {
             Defaults[\.enableKeyboardInput] = allowKeyboardInputs.isOn
             settingName = "enableKeyboardInput"
             settingVariant = "\(allowKeyboardInputs.isOn)"
+        case 10:
+            Defaults.drawFriendlyBorder = drawFriendlyBorder.isOn
+            settingName = "drawFriendlyBorder"
+            settingVariant = "\(drawFriendlyBorder.isOn)"
         default:
             settingName = "default"
             settingVariant = "none"

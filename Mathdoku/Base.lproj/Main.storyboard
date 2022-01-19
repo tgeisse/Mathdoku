@@ -2564,8 +2564,8 @@
                                                         <action selector="switchValueChanged:" destination="YgF-xD-UUZ" eventType="valueChanged" id="vHl-b6-bQU"/>
                                                     </connections>
                                                 </switch>
-                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Select one cell while entering notes" textAlignment="natural" lineBreakMode="wordWrap" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="VQ7-pm-fRj">
-                                                    <rect key="frame" x="16" y="11" width="159" height="41"/>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Can select multiple cells while entering notes" textAlignment="natural" lineBreakMode="wordWrap" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="VQ7-pm-fRj">
+                                                    <rect key="frame" x="16" y="11" width="232" height="41"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                     <nil key="textColor"/>
                                                     <nil key="highlightedColor"/>
@@ -2736,14 +2736,14 @@
                                         </tableViewCellContentView>
                                     </tableViewCell>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="none" indentationWidth="10" id="tfT-cU-KC1">
-                                        <rect key="frame" x="16" y="661.5" width="343" height="43"/>
+                                        <rect key="frame" x="16" y="661.5" width="343" height="44"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="tfT-cU-KC1" id="yDg-L9-iXL">
-                                            <rect key="frame" x="0.0" y="0.0" width="343" height="43"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="343" height="44"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <switch opaque="NO" tag="6" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" contentHorizontalAlignment="center" contentVerticalAlignment="center" translatesAutoresizingMaskIntoConstraints="NO" id="4cv-Nh-riz">
-                                                    <rect key="frame" x="279" y="6" width="51" height="31"/>
+                                                    <rect key="frame" x="279" y="6.5" width="51" height="31"/>
                                                     <connections>
                                                         <action selector="switchValueChanged:" destination="YgF-xD-UUZ" eventType="valueChanged" id="7oE-eb-pcI"/>
                                                     </connections>
@@ -2770,7 +2770,7 @@
                             <tableViewSection id="Jci-ac-TiE">
                                 <cells>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="none" indentationWidth="10" id="H3a-t5-dD4">
-                                        <rect key="frame" x="16" y="740.5" width="343" height="44"/>
+                                        <rect key="frame" x="16" y="741.5" width="343" height="44"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="H3a-t5-dD4" id="WMg-V8-sCf">
                                             <rect key="frame" x="0.0" y="0.0" width="343" height="44"/>
@@ -2814,8 +2814,8 @@
                         <outlet property="fillInGiveMeSwitch" destination="4cv-Nh-riz" id="0Ff-0c-w39"/>
                         <outlet property="highlightConflictingGuessSwitch" destination="pda-gz-L5g" id="mPs-9t-4En"/>
                         <outlet property="highlightSimilarGuessesSwitch" destination="LZx-qb-W5H" id="oYS-5o-Z26"/>
+                        <outlet property="multipleCellNoteTakingSwitch" destination="imp-zf-gmU" id="ibK-No-Eqm"/>
                         <outlet property="rotateAfterGuessSwitch" destination="XYu-eH-s6q" id="FvM-68-MlK"/>
-                        <outlet property="singleCellNoteTakingSwitch" destination="imp-zf-gmU" id="ibK-No-Eqm"/>
                         <outlet property="updateNotesAutomaticallySwitch" destination="aaq-vd-WWh" id="mjA-UI-ZcB"/>
                     </connections>
                 </tableViewController>

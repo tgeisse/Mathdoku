@@ -14,9 +14,9 @@ class SettingsViewController: UITableViewController {
     @IBOutlet weak var colorThemeTableViewCell: UITableViewCell!
     @IBOutlet weak var colorThemeLabel: UILabel!
     
-    @IBOutlet weak var singleCellNoteTakingSwitch: UISwitch! {
+    @IBOutlet weak var multipleCellNoteTakingSwitch: UISwitch! {
         didSet {
-            singleCellNoteTakingSwitch.setOn(Defaults[\.singleNoteCellSelection], animated: false)
+            multipleCellNoteTakingSwitch.setOn(!Defaults[\.singleNoteCellSelection], animated: false)
         }
     }
     
@@ -82,9 +82,9 @@ class SettingsViewController: UITableViewController {
         switch sender.tag {
         case 1:
             // single cell toggle
-            Defaults[\.singleNoteCellSelection] = singleCellNoteTakingSwitch.isOn
+            Defaults[\.singleNoteCellSelection] = !multipleCellNoteTakingSwitch.isOn
             settingName = "singleCell"
-            settingVariant = "\(Defaults[\.singleNoteCellSelection])"
+            settingVariant = "\(!multipleCellNoteTakingSwitch.isOn)"
         case 2:
             Defaults[\.clearNotesAfterGuessEntry] = updateNotesAutomaticallySwitch.isOn
             settingName = "autoNotes"

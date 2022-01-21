@@ -1259,6 +1259,12 @@ extension PuzzleViewController {
             countdownLabel = nil
         }
         
+        guard Defaults.enableStartCountdownTimer else {
+            timerState = .start
+            gameState = .playing
+            return
+        }
+        
         let countLabel = UILabel()
         countdownLabel = countLabel
         let startingFont = UIFont(name: "Noteworthy-Bold", size: 200.0)

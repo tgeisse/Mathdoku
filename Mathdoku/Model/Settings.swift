@@ -22,4 +22,5 @@ extension DefaultsKeys {
     var colorTheme: DefaultsKey<Int> { .init("colorTheme", defaultValue:  0) }
     var enableKeyboardInput: DefaultsKey<Bool> { .init("enableKeyboardInput", defaultValue: true) }
     var drawFriendlyBorder: DefaultsKey<Bool> { .init("drawFriendlyBorder", defaultValue: true) }
+    var enableStartCountdownTimer: DefaultsKey<Bool> { .init("enableStartCountdownTimer", defaultValue: true) }
 }

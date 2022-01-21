@@ -74,6 +74,12 @@ class SettingsViewController: UITableViewController {
         }
     }
     
+    @IBOutlet weak var startingCountdownTimer: UISwitch! {
+        didSet {
+            startingCountdownTimer.setOn(Defaults.enableStartCountdownTimer, animated: false)
+        }
+    }
+    
     @IBAction func switchValueChanged(_ sender: UISwitch) {
         DebugUtil.print("Switching on tag \(sender.tag)")
         let settingName: String
@@ -121,6 +127,10 @@ class SettingsViewController: UITableViewController {
             Defaults.drawFriendlyBorder = drawFriendlyBorder.isOn
             settingName = "drawFriendlyBorder"
             settingVariant = "\(drawFriendlyBorder.isOn)"
+        case 11:
+            Defaults.enableStartCountdownTimer = startingCountdownTimer.isOn
+            settingName = "startCountdownTimer"
+            settingVariant = "\(startingCountdownTimer.isOn)"
         default:
             settingName = "default"
             settingVariant = "none"

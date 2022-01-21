@@ -12,7 +12,7 @@ target 'Mathdoku' do
   pod 'Firebase/Database'
   pod 'SwiftyStoreKit'
   pod 'RealmSwift'
-  pod 'PromiseKit', '~> 6.8'
-  pod 'SwiftyUserDefaults', '~> 5.0'
+#  pod 'PromiseKit', '~> 6.8'
+  pod 'SwiftyUserDefaults'
   pod 'Bugsnag'
 end

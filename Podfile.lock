@@ -96,15 +96,6 @@ PODS:
     - nanopb/encode (= 2.30908.0)
   - nanopb/decode (2.30908.0)
   - nanopb/encode (2.30908.0)
-  - PromiseKit (6.15.3):
-    - PromiseKit/CorePromise (= 6.15.3)
-    - PromiseKit/Foundation (= 6.15.3)
-    - PromiseKit/UIKit (= 6.15.3)
-  - PromiseKit/CorePromise (6.15.3)
-  - PromiseKit/Foundation (6.15.3):
-    - PromiseKit/CorePromise
-  - PromiseKit/UIKit (6.15.3):
-    - PromiseKit/CorePromise
   - PromisesObjC (2.0.0)
   - Realm (10.21.1):
     - Realm/Headers (= 10.21.1)
@@ -119,10 +110,9 @@ DEPENDENCIES:
   - Firebase/Core
   - Firebase/Database
   - Google-Mobile-Ads-SDK
-  - PromiseKit (~> 6.8)
   - RealmSwift
   - SwiftyStoreKit
-  - SwiftyUserDefaults (~> 5.0)
+  - SwiftyUserDefaults
 
 SPEC REPOS:
   trunk:
@@ -140,7 +130,6 @@ SPEC REPOS:
     - GoogleUtilities
     - leveldb-library
     - nanopb
-    - PromiseKit
     - PromisesObjC
     - Realm
     - RealmSwift
@@ -162,13 +151,12 @@ SPEC CHECKSUMS:
   GoogleUtilities: e0913149f6b0625b553d70dae12b49fc62914fd1
   leveldb-library: 50c7b45cbd7bf543c81a468fe557a16ae3db8729
   nanopb: a0ba3315591a9ae0a16a309ee504766e90db0c96
-  PromiseKit: 3b2b6995e51a954c46dbc550ce3da44fbfb563c5
   PromisesObjC: 68159ce6952d93e17b2dfe273b8c40907db5ba58
   Realm: 44b41c3ae39e3ecfded71a04434bfde066c7b317
   RealmSwift: dbf9a4eb06e0c929d51c4ef2e8f951bca541feab
   SwiftyStoreKit: 6b9c08810269f030586dac1fae8e75871a82e84a
   SwiftyUserDefaults: 63f80248cf5bfb3458825d9a78f2eb7e1293a040
 
-PODFILE CHECKSUM: 5e2e8ab09aca8083f8a88210905fcbf2cc082e6a
+PODFILE CHECKSUM: d3467e1686c00f01dddda7337f204c246e9b6cb3
 
 COCOAPODS: 1.11.2

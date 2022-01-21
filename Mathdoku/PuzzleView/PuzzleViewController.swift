@@ -46,7 +46,7 @@ class PuzzleViewController: UIViewController, UINavigationBarDelegate {
     }
     @IBOutlet weak var gameTimerBackground: GameTimerBackgroundView!
     @IBOutlet weak var gameTimerLabel: UILabel!
-    
+    var countdownLabel: UILabel?
     
     // MARK: - Game state properties
     private enum GameState {
@@ -1250,7 +1250,17 @@ class PuzzleViewController: UIViewController, UINavigationBarDelegate {
 // MARK: - Extension for timer related methods
 extension PuzzleViewController {
     private func startCountdownTimer() {
+        if let exists = countdownLabel {
+            exists.layer.removeAllAnimations()
+            self.view.layer.removeAllAnimations()
+            exists.removeFromSuperview()
+            self.view.layoutIfNeeded()
+            exists.isHidden = true
+            countdownLabel = nil
+        }
+        
         let countLabel = UILabel()
+        countdownLabel = countLabel
         let startingFont = UIFont(name: "Noteworthy-Bold", size: 200.0)
         
         countLabel.tag = countdownTag
@@ -1331,10 +1341,11 @@ extension PuzzleViewController {
                     if finished {
                         self?.timerState = .start
                         self?.gameState = .playing
-                    }
-                    // enable the gesture recognizers
-                    self?.puzzleGridSuperview.gestureRecognizers?.forEach {
-                        $0.isEnabled = true
+                        
+                        // enable the gesture recognizers
+                        self?.puzzleGridSuperview.gestureRecognizers?.forEach {
+                            $0.isEnabled = true
+                        }
                     }
                     
                     // set the label to say "GO!" an then remove the label from the super view
@@ -1342,8 +1353,12 @@ extension PuzzleViewController {
                     countLabel.text = "GO"
                     UIView.animate(withDuration: 1.25, delay: 0.0, options: .curveEaseIn, animations: {
                         animation()
-                    }, completion: { _ in
+                    }, completion: { [weak self] finished in
+                        if !finished { return }
+                        
                         countLabel.removeFromSuperview()
+                        self?.view.layoutIfNeeded()
+                        self?.countdownLabel = nil
                     })
                 })
             })

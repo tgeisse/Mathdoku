@@ -1,81 +1,76 @@
 PODS:
-  - Bugsnag (6.16.0)
-  - Firebase/AdMob (7.11.0):
+  - Bugsnag (6.16.1)
+  - Firebase/Core (8.11.0):
     - Firebase/CoreOnly
-    - Google-Mobile-Ads-SDK (~> 7.66)
-  - Firebase/Core (7.11.0):
+    - FirebaseAnalytics (~> 8.11.0)
+  - Firebase/CoreOnly (8.11.0):
+    - FirebaseCore (= 8.11.0)
+  - Firebase/Database (8.11.0):
     - Firebase/CoreOnly
-    - FirebaseAnalytics (~> 7.11.0)
-  - Firebase/CoreOnly (7.11.0):
-    - FirebaseCore (= 7.11.0)
-  - Firebase/Database (7.11.0):
-    - Firebase/CoreOnly
-    - FirebaseDatabase (~> 7.11.0)
-  - FirebaseAnalytics (7.11.0):
-    - FirebaseAnalytics/AdIdSupport (= 7.11.0)
-    - FirebaseCore (~> 7.0)
-    - FirebaseInstallations (~> 7.0)
-    - GoogleUtilities/AppDelegateSwizzler (~> 7.0)
-    - GoogleUtilities/MethodSwizzler (~> 7.0)
-    - GoogleUtilities/Network (~> 7.0)
-    - "GoogleUtilities/NSData+zlib (~> 7.0)"
+    - FirebaseDatabase (~> 8.11.0)
+  - FirebaseAnalytics (8.11.0):
+    - FirebaseAnalytics/AdIdSupport (= 8.11.0)
+    - FirebaseCore (~> 8.0)
+    - FirebaseInstallations (~> 8.0)
+    - GoogleUtilities/AppDelegateSwizzler (~> 7.7)
+    - GoogleUtilities/MethodSwizzler (~> 7.7)
+    - GoogleUtilities/Network (~> 7.7)
+    - "GoogleUtilities/NSData+zlib (~> 7.7)"
     - nanopb (~> 2.30908.0)
-  - FirebaseAnalytics/AdIdSupport (7.11.0):
-    - FirebaseAnalytics/Base (= 7.11.0)
-    - FirebaseCore (~> 7.0)
-    - FirebaseInstallations (~> 7.0)
-    - GoogleAppMeasurement/AdIdSupport (= 7.11.0)
-    - GoogleUtilities/AppDelegateSwizzler (~> 7.0)
-    - GoogleUtilities/MethodSwizzler (~> 7.0)
-    - GoogleUtilities/Network (~> 7.0)
-    - "GoogleUtilities/NSData+zlib (~> 7.0)"
+  - FirebaseAnalytics/AdIdSupport (8.11.0):
+    - FirebaseCore (~> 8.0)
+    - FirebaseInstallations (~> 8.0)
+    - GoogleAppMeasurement (= 8.11.0)
+    - GoogleUtilities/AppDelegateSwizzler (~> 7.7)
+    - GoogleUtilities/MethodSwizzler (~> 7.7)
+    - GoogleUtilities/Network (~> 7.7)
+    - "GoogleUtilities/NSData+zlib (~> 7.7)"
     - nanopb (~> 2.30908.0)
-  - FirebaseAnalytics/Base (7.11.0):
-    - FirebaseCore (~> 7.0)
-    - FirebaseInstallations (~> 7.0)
-    - GoogleUtilities/AppDelegateSwizzler (~> 7.0)
-    - GoogleUtilities/MethodSwizzler (~> 7.0)
-    - GoogleUtilities/Network (~> 7.0)
-    - "GoogleUtilities/NSData+zlib (~> 7.0)"
+  - FirebaseCore (8.11.0):
+    - FirebaseCoreDiagnostics (~> 8.0)
+    - GoogleUtilities/Environment (~> 7.7)
+    - GoogleUtilities/Logger (~> 7.7)
+  - FirebaseCoreDiagnostics (8.11.0):
+    - GoogleDataTransport (~> 9.1)
+    - GoogleUtilities/Environment (~> 7.7)
+    - GoogleUtilities/Logger (~> 7.7)
     - nanopb (~> 2.30908.0)
-  - FirebaseCore (7.11.0):
-    - FirebaseCoreDiagnostics (~> 7.4)
-    - GoogleUtilities/Environment (~> 7.0)
-    - GoogleUtilities/Logger (~> 7.0)
-  - FirebaseCoreDiagnostics (7.11.0):
-    - GoogleDataTransport (~> 8.4)
-    - GoogleUtilities/Environment (~> 7.0)
-    - GoogleUtilities/Logger (~> 7.0)
-    - nanopb (~> 2.30908.0)
-  - FirebaseDatabase (7.11.0):
-    - FirebaseCore (~> 7.0)
+  - FirebaseDatabase (8.11.0):
+    - FirebaseCore (~> 8.0)
     - leveldb-library (~> 1.22)
-  - FirebaseInstallations (7.11.0):
-    - FirebaseCore (~> 7.0)
-    - GoogleUtilities/Environment (~> 7.0)
-    - GoogleUtilities/UserDefaults (~> 7.0)
-    - PromisesObjC (~> 1.2)
-  - Google-Mobile-Ads-SDK (7.69.0):
-    - GoogleAppMeasurement (~> 7.0)
-    - GoogleUserMessagingPlatform (~> 1.1)
-  - GoogleAppMeasurement (7.11.0):
-    - GoogleAppMeasurement/AdIdSupport (= 7.11.0)
-    - GoogleUtilities/AppDelegateSwizzler (~> 7.0)
-    - GoogleUtilities/MethodSwizzler (~> 7.0)
-    - GoogleUtilities/Network (~> 7.0)
-    - "GoogleUtilities/NSData+zlib (~> 7.0)"
+  - FirebaseInstallations (8.11.0):
+    - FirebaseCore (~> 8.0)
+    - GoogleUtilities/Environment (~> 7.7)
+    - GoogleUtilities/UserDefaults (~> 7.7)
+    - PromisesObjC (< 3.0, >= 1.2)
+  - Google-Mobile-Ads-SDK (8.13.0):
+    - GoogleAppMeasurement (< 9.0, >= 7.0)
+    - GoogleUserMessagingPlatform (>= 1.1)
+  - GoogleAppMeasurement (8.11.0):
+    - GoogleAppMeasurement/AdIdSupport (= 8.11.0)
+    - GoogleUtilities/AppDelegateSwizzler (~> 7.7)
+    - GoogleUtilities/MethodSwizzler (~> 7.7)
+    - GoogleUtilities/Network (~> 7.7)
+    - "GoogleUtilities/NSData+zlib (~> 7.7)"
     - nanopb (~> 2.30908.0)
-  - GoogleAppMeasurement/AdIdSupport (7.11.0):
-    - GoogleUtilities/AppDelegateSwizzler (~> 7.0)
-    - GoogleUtilities/MethodSwizzler (~> 7.0)
-    - GoogleUtilities/Network (~> 7.0)
-    - "GoogleUtilities/NSData+zlib (~> 7.0)"
+  - GoogleAppMeasurement/AdIdSupport (8.11.0):
+    - GoogleAppMeasurement/WithoutAdIdSupport (= 8.11.0)
+    - GoogleUtilities/AppDelegateSwizzler (~> 7.7)
+    - GoogleUtilities/MethodSwizzler (~> 7.7)
+    - GoogleUtilities/Network (~> 7.7)
+    - "GoogleUtilities/NSData+zlib (~> 7.7)"
     - nanopb (~> 2.30908.0)
-  - GoogleDataTransport (8.4.0):
+  - GoogleAppMeasurement/WithoutAdIdSupport (8.11.0):
+    - GoogleUtilities/AppDelegateSwizzler (~> 7.7)
+    - GoogleUtilities/MethodSwizzler (~> 7.7)
+    - GoogleUtilities/Network (~> 7.7)
+    - "GoogleUtilities/NSData+zlib (~> 7.7)"
+    - nanopb (~> 2.30908.0)
+  - GoogleDataTransport (9.1.2):
     - GoogleUtilities/Environment (~> 7.2)
     - nanopb (~> 2.30908.0)
-    - PromisesObjC (~> 1.2)
-  - GoogleUserMessagingPlatform (1.4.0)
+    - PromisesObjC (< 3.0, >= 1.2)
+  - GoogleUserMessagingPlatform (2.0.0)
   - GoogleUtilities/AppDelegateSwizzler (7.7.0):
     - GoogleUtilities/Environment
     - GoogleUtilities/Logger
@@ -110,7 +105,7 @@ PODS:
     - PromiseKit/CorePromise
   - PromiseKit/UIKit (6.15.3):
     - PromiseKit/CorePromise
-  - PromisesObjC (1.2.12)
+  - PromisesObjC (2.0.0)
   - Realm (10.21.1):
     - Realm/Headers (= 10.21.1)
   - Realm/Headers (10.21.1)
@@ -121,9 +116,9 @@ PODS:
 
 DEPENDENCIES:
   - Bugsnag
-  - Firebase/AdMob
   - Firebase/Core
   - Firebase/Database
+  - Google-Mobile-Ads-SDK
   - PromiseKit (~> 6.8)
   - RealmSwift
   - SwiftyStoreKit
@@ -153,27 +148,27 @@ SPEC REPOS:
     - SwiftyUserDefaults
 
 SPEC CHECKSUMS:
-  Bugsnag: d6e1067ab33e35d08036bac17a7e00eb4d549511
-  Firebase: c121feb35e4126c0b355e3313fa9b487d47319fd
-  FirebaseAnalytics: cd3bd84d722a24a8923918af8af8e5236f615d77
-  FirebaseCore: 907447d8917a4d3eb0cce2829c5a0ad21d90b432
-  FirebaseCoreDiagnostics: 68ad972f99206cef818230f3f3179d52ccfb7f8c
-  FirebaseDatabase: 6c39fbf1c8514a2f32e610f9bf9ef30c535dc15a
-  FirebaseInstallations: a58d4f72ec5861840b84df489f2668d970df558a
-  Google-Mobile-Ads-SDK: 2f288748a42920d1c744946a460896a95b0e9110
-  GoogleAppMeasurement: fd19169c3034975cb934e865e5667bfdce59df7f
-  GoogleDataTransport: cd9db2180fcecd8da1b561aea31e3e56cf834aa7
-  GoogleUserMessagingPlatform: b168e8c46cd8f92aa3e34b584c4ca78a411ce367
+  Bugsnag: 52a466d0b0e7a5a383d03fc84f99c2adab7fec40
+  Firebase: 44dd9724c84df18b486639e874f31436eaa9a20c
+  FirebaseAnalytics: 4e4b13031034e6561ed3bd1d47b6fdabbd6487c6
+  FirebaseCore: 2f4f85b453cc8fea4bb2b37e370007d2bcafe3f0
+  FirebaseCoreDiagnostics: 64d9709d804a6c25bd77841371c1fcfd909d5601
+  FirebaseDatabase: ff9b4c7bee14d9f561f26c64a28ac083989f03d5
+  FirebaseInstallations: 044eede8a049bce71c4541ee68d6e4364fcbe774
+  Google-Mobile-Ads-SDK: 05e5d68bb42a61b2e5bef336a52789785605aa22
+  GoogleAppMeasurement: aa3cb422fab2b05d2efac543a5720d1a85b9dea5
+  GoogleDataTransport: 629c20a4d363167143f30ea78320d5a7eb8bd940
+  GoogleUserMessagingPlatform: ab890ce5f6620f293a21b6bdd82e416a2c73aeca
   GoogleUtilities: e0913149f6b0625b553d70dae12b49fc62914fd1
   leveldb-library: 50c7b45cbd7bf543c81a468fe557a16ae3db8729
   nanopb: a0ba3315591a9ae0a16a309ee504766e90db0c96
   PromiseKit: 3b2b6995e51a954c46dbc550ce3da44fbfb563c5
-  PromisesObjC: 3113f7f76903778cf4a0586bd1ab89329a0b7b97
+  PromisesObjC: 68159ce6952d93e17b2dfe273b8c40907db5ba58
   Realm: 44b41c3ae39e3ecfded71a04434bfde066c7b317
   RealmSwift: dbf9a4eb06e0c929d51c4ef2e8f951bca541feab
   SwiftyStoreKit: 6b9c08810269f030586dac1fae8e75871a82e84a
   SwiftyUserDefaults: 63f80248cf5bfb3458825d9a78f2eb7e1293a040
 
-PODFILE CHECKSUM: 4032aeaee6661f9cb27e29331c707938f796c5e9
+PODFILE CHECKSUM: 5e2e8ab09aca8083f8a88210905fcbf2cc082e6a
 
 COCOAPODS: 1.11.2

@@ -7,7 +7,8 @@ target 'Mathdoku' do
 
   # Pods for Mathdoku
   pod 'Firebase/Core'
-  pod 'Firebase/AdMob'
+#  pod 'Firebase/AdMob'
+  pod 'Google-Mobile-Ads-SDK'
   pod 'Firebase/Database'
   pod 'SwiftyStoreKit'
   pod 'RealmSwift'

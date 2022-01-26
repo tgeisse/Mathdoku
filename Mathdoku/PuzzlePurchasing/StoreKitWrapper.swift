@@ -9,7 +9,7 @@
 import Foundation
 import StoreKit
 
-typealias StoreKitRequestCompletionHandler = (_ success: Bool, _ product: SKProduct?) -> Void
+typealias StoreKitRequestCompletionHandler = (_ success: Bool, _ product: [SKProduct]?) -> Void
 typealias StoreKitPurchaseCompletionHandler = (_ response: StoreKitPurchaseResponse) -> Void
 
 enum StoreKitPurchaseResponse {
@@ -30,7 +30,22 @@ class StoreKitWrapper: NSObject {
     var canMakePayments: Bool { return SKPaymentQueue.canMakePayments() }
     
     // MARK: - Retrieving Product Info
-    func requestProductInfo(_ product: String, _ completionHandler: StoreKitRequestCompletionHandler? = nil) {
+    func requestProductInfo(forProducts products: [String], completionHandler: StoreKitRequestCompletionHandler? = nil) {
+        DebugUtil.print("Sending request for product info for products: \(products)")
+        
+        let combinedRequestName = products.sorted().reduce("", +)
+        DebugUtil.print("Combined name: \(combinedRequestName)")
+        
+        cancelAndClearDetails(forProduct: combinedRequestName)
+        completionHandlers[combinedRequestName] = completionHandler
+        
+        // create a new request and send it
+        requests[combinedRequestName] = SKProductsRequest(productIdentifiers: Set(products))
+        requests[combinedRequestName]!.delegate = self
+        requests[combinedRequestName]!.start()
+    }
+    
+    func requestProductInfo(_ product: String, completionHandler: StoreKitRequestCompletionHandler? = nil) {
         DebugUtil.print("Sending request for product info for product: \(product)")
         // clear out the old request, if one exists and set the new completion handler
         cancelAndClearDetails(forProduct: product)
@@ -65,12 +80,12 @@ class StoreKitWrapper: NSObject {
 // MARK: - Product Info Request Response Delegate Extension
 extension StoreKitWrapper: SKProductsRequestDelegate {
     func productsRequest(_ request: SKProductsRequest, didReceive response: SKProductsResponse) {
-        DebugUtil.print("Received a Product Request response")
+        DebugUtil.print("Received a Product Request response for \(response.products.count) products")
         
-        for product in response.products {
-            if let completionHandler = completionHandlers[product.productIdentifier] { completionHandler(true, product) }
-            cancelAndClearDetails(forProduct: product.productIdentifier)
-        }
+        let combinedRequestName = response.products.sorted(by: { $0.productIdentifier < $1.productIdentifier }).reduce("") { $0 + $1.productIdentifier }
+        DebugUtil.print("Combined name: \(combinedRequestName)")
+        completionHandlers[combinedRequestName]?(true, response.products)
+        cancelAndClearDetails(forProduct: combinedRequestName)
     }
     
     // TODO: Determine what needs to be processed when a failure occurs

@@ -10,8 +10,21 @@ import UIKit
 import StoreKit
 
 class StoreTableViewCell: UITableViewCell {
+    // MARK: - Class properties
     private var activityIndicator: UIActivityIndicatorView = UIActivityIndicatorView()
-    
+    var puzzleProduct: PuzzleProduct? = nil
+    var product: SKProduct? = nil {
+        didSet {
+            if product == nil {
+                addActivityIndicator()
+            } else {
+                removeActivityIndicator()
+                updateBuyButton()   
+            }
+        }
+    }
+
+    // MARK: - IBOutlets
     @IBOutlet weak var promotionalImage: UIImageView!
     @IBOutlet weak var titleText: UILabel!
     @IBOutlet weak var descriptionText: UILabel!
@@ -19,13 +32,11 @@ class StoreTableViewCell: UITableViewCell {
         didSet {
             buyButton.titleLabel?.numberOfLines = 1
             buyButton.titleLabel?.adjustsFontSizeToFitWidth = true
-            buyButton.titleLabel?.lineBreakMode = .byClipping
+            buyButton.titleLabel?.lineBreakMode = .byCharWrapping
         }
     }
     
-    var product: SKProduct? = nil
-    var puzzleProduct: PuzzleProduct? = nil
-    
+    // MARK: - IBActions
     @IBAction func buyButtonPresses(_ sender: UIButton) {
         if let prod = product, let puzzProd = puzzleProduct {
             addActivityIndicator()
@@ -37,6 +48,7 @@ class StoreTableViewCell: UITableViewCell {
         }
     }
     
+    // MARK: - Button activity methods
     func addActivityIndicator() {
         buyButton.setTitle("", for: .normal)
         buyButton.isEnabled = false

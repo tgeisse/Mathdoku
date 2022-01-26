@@ -9,44 +9,58 @@
 import UIKit
 import StoreKit
 
-class StoreTableViewController: UITableViewController {
-    
-    private func loadProductInfo(forCell cell: StoreTableViewCell, forProduct: PuzzleProduct) {
-        cell.addActivityIndicator()
-        
-        DispatchQueue.global(qos: .userInitiated).async { 
-            let processRetrievedProduct = {(cell: StoreTableViewCell, product: SKProduct) in
-                
-                DebugUtil.print("Retrieved product info. Displaying it to the cell - \(product.localizedTitle)")
-                
-                DispatchQueue.main.async {
-                    PuzzleProducts.setLoadedPuzzleProduct(product, forIdentifier: forProduct.productIdentifier)
-                    cell.product = product
-                    cell.puzzleProduct = forProduct
-                    cell.removeActivityIndicator()
-                    cell.updateBuyButton()
+class StoreTableViewController: UITableViewController {    
+    // MARK: - Product information loading
+    func loadAllProducts() {
+        DispatchQueue.global(qos: .userInitiated).async {
+            var pIdsNeedingToBeFetched = [String]()
+            var loadedPuzzleIndexSet = [IndexPath]()
+            
+            for (id, puzzle) in PuzzleProducts.PuzzlePacks.enumerated() {
+                if let _ = PuzzleProducts.getLoadedPuzzleProduct(forIdentifier: puzzle.productIdentifier) {
+                    loadedPuzzleIndexSet.append(IndexPath(row: id, section: 0))
+                } else {
+                    pIdsNeedingToBeFetched.append(puzzle.productIdentifier)
                 }
             }
             
-            if forProduct.productIdentifier == "" { return }
-            
-            if let prod = PuzzleProducts.getLoadedPuzzleProduct(forIdentifier: forProduct.productIdentifier) {
-                DebugUtil.print("Product already loaded")
-                processRetrievedProduct(cell, prod)
-            } else {
-                DebugUtil.print("Product needs to be loaded from the store")
-                StoreKitWrapper.sharedInstance.requestProductInfo(forProduct.productIdentifier) { (success, product) in
-                    guard let product = product else { return }
-                    processRetrievedProduct(cell, product)
-                }
+            if loadedPuzzleIndexSet.count > 0 {
+                // simply reload the table rows - will see if I need this
+                DebugUtil.print("\(loadedPuzzleIndexSet.count) puzzle product informations were already loaded")
             }
             
+            if pIdsNeedingToBeFetched.count > 0 {
+                DebugUtil.print("Need to load puzzle details for the following products: \(pIdsNeedingToBeFetched)")
+                StoreKitWrapper.sharedInstance.requestProductInfo(forProducts: pIdsNeedingToBeFetched) { [weak self] (success, products) in
+                    
+                    guard let products = products else { return }
+                    
+                    var pIdSet = Set<String>()
+                    
+                    for product in products {
+                        pIdSet.insert(product.productIdentifier)
+                        PuzzleProducts.setLoadedPuzzleProduct(product, forIdentifier: product.productIdentifier)
+                    }
+                    
+                    let reloadRows = PuzzleProducts.PuzzlePacks.enumerated().filter {
+                        pIdSet.contains($0.element.productIdentifier)
+                    }.map { IndexPath(row: $0.offset, section: 0) }
+                    
+                    DispatchQueue.main.async { [weak self] in
+                        self?.tableView.performBatchUpdates() { [weak self] in
+                            self?.tableView.reloadRows(at: reloadRows, with: .automatic)
+                        }
+                    }
+                }
+            }
         }
     }
     
+    // MARK: - View lifecycle
     override func viewDidLoad() {
         super.viewDidLoad()
         CrashWrapper.leaveBreadcrumb(withMessage: "Entered StoreTableViewController")
+        loadAllProducts()
     }
     
     override func viewDidDisappear(_ animated: Bool) {
@@ -57,12 +71,10 @@ class StoreTableViewController: UITableViewController {
     // MARK: - Table view data source
 
     override func numberOfSections(in tableView: UITableView) -> Int {
-        // #warning Incomplete implementation, return the number of sections
         return 1
     }
 
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        // #warning Incomplete implementation, return the number of rows
         return PuzzleProducts.PuzzlePacks.count
     }
 
@@ -77,55 +89,9 @@ class StoreTableViewController: UITableViewController {
         cell.promotionalImage.image = product.promotionalImage
         cell.titleText.text = product.title
         cell.descriptionText.text = product.description
-        
-        loadProductInfo(forCell: cell, forProduct: product)
+        cell.puzzleProduct = product
+        cell.product = PuzzleProducts.getLoadedPuzzleProduct(forIdentifier: product.productIdentifier)
 
         return cell
     }
-
-    /*
-    // Override to support conditional editing of the table view.
-    override func tableView(_ tableView: UITableView, canEditRowAt indexPath: IndexPath) -> Bool {
-        // Return false if you do not want the specified item to be editable.
-        return true
-    }
-    */
-
-    /*
-    // Override to support editing the table view.
-    override func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCellEditingStyle, forRowAt indexPath: IndexPath) {
-        if editingStyle == .delete {
-            // Delete the row from the data source
-            tableView.deleteRows(at: [indexPath], with: .fade)
-        } else if editingStyle == .insert {
-            // Create a new instance of the appropriate class, insert it into the array, and add a new row to the table view
-        }    
-    }
-    */
-
-    /*
-    // Override to support rearranging the table view.
-    override func tableView(_ tableView: UITableView, moveRowAt fromIndexPath: IndexPath, to: IndexPath) {
-
-    }
-    */
-
-    /*
-    // Override to support conditional rearranging of the table view.
-    override func tableView(_ tableView: UITableView, canMoveRowAt indexPath: IndexPath) -> Bool {
-        // Return false if you do not want the item to be re-orderable.
-        return true
-    }
-    */
-
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destinationViewController.
-        // Pass the selected object to the new view controller.
-    }
-    */
-
 }

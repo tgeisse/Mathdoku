@@ -203,7 +203,5 @@ class SettingsViewController: UITableViewController {
         if cell == colorThemeTableViewCell {
             cell.setSelected(false, animated: true)
         }
-        
-        
     }
 }

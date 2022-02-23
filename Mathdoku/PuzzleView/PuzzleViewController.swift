@@ -146,6 +146,9 @@ class PuzzleViewController: UIViewController, UINavigationBarDelegate {
             let doubleTapRecognizer = UITapGestureRecognizer(target: self, action: #selector(self.viewTappedGesture(recognizer:)))
             doubleTapRecognizer.numberOfTapsRequired = 2
             puzzleGridSuperview.addGestureRecognizer(doubleTapRecognizer)
+            
+            let longPressRecognizer = UILongPressGestureRecognizer(target: self, action: #selector(self.longPressGesture(recognizer:)))
+            puzzleGridSuperview.addGestureRecognizer(longPressRecognizer)
         }
     }
     
@@ -337,6 +340,43 @@ class PuzzleViewController: UIViewController, UINavigationBarDelegate {
                 }
             }
         }
+    }
+    
+    @objc func longPressGesture(recognizer: UILongPressGestureRecognizer) {
+        guard let view = recognizer.view else { return }
+        let location = recognizer.location(in: view)
+        guard let cell = view.hitTest(location, with: nil) as? CellContainerView else { return }
+        
+        if entryMode != .notePossible && Defaults.longPressTogglesToNoteEntry {
+            toggleEntryMode()
+            selectedNoteCells = []
+        }
+        
+        if entryMode == .guessing {
+            // we are in guess entry mode, so change the selection
+            if selectedCell != cell {
+                DebugUtil.print("New cell in the long press, so set the selected cell")
+                selectedCell = cell
+            }
+        } else {
+            // we are in note entry mode, so append accordingly
+            if Defaults.singleNoteCellSelection {
+                // if we are in note entry, then single note cell selection will always have the same outcome (setting the new cell)
+                if selectedNoteCells.count != 1 || selectedNoteCells.first == cell {
+                    DebugUtil.print("Single note cell selection and long press cell changed. Setting")
+                    selectedNoteCells = [cell]
+                }
+            } else {
+                if !Set(selectedNoteCells).contains(cell) {
+                    DebugUtil.print("If the cell is not selected, append it to the selected note cells")
+                    selectedNoteCells.append(cell)
+                }
+            }
+        }
+    }
+    
+    @objc func swipeGesture(recognizer: UISwipeGestureRecognizer) {
+        DebugUtil.print("Swipe recognized: \(recognizer.direction)")
     }
     
     // MARK: - UI Button Actions
@@ -1132,12 +1172,14 @@ class PuzzleViewController: UIViewController, UINavigationBarDelegate {
         
         setStatesToViewDisappear()
     }
+    
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
         DebugUtil.print("")
         
         setStatesToViewAppear()
     }
+    
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         DebugUtil.print("")
@@ -1150,11 +1192,20 @@ class PuzzleViewController: UIViewController, UINavigationBarDelegate {
         
         // highlight conflicting and equal guesses
         highlightGuesses(for: [.equal, .conflict])
+        
+        // update the long press duration
+        puzzleGridSuperview.gestureRecognizers?.forEach {
+            if let longPressGesture = $0 as? UILongPressGestureRecognizer {
+                longPressGesture.minimumPressDuration = Defaults.longPressDuration.duration
+            }
+        }
     }
+    
     override func loadView() {
         super.loadView()
         CellViewElementValues.sharedInstance.clear()
     }
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         DebugUtil.print("")
@@ -1259,9 +1310,16 @@ extension PuzzleViewController {
             countdownLabel = nil
         }
         
+        let enableGestures = { [weak self] in
+            self?.puzzleGridSuperview.gestureRecognizers?.forEach {
+                $0.isEnabled = true
+            }
+        }
+        
         guard Defaults.enableStartCountdownTimer else {
             timerState = .start
             gameState = .playing
+            enableGestures()
             return
         }
         
@@ -1349,9 +1407,7 @@ extension PuzzleViewController {
                         self?.gameState = .playing
                         
                         // enable the gesture recognizers
-                        self?.puzzleGridSuperview.gestureRecognizers?.forEach {
-                            $0.isEnabled = true
-                        }
+                        enableGestures()
                     }
                     
                     // set the label to say "GO!" an then remove the label from the super view

@@ -10,7 +10,7 @@ import UIKit
 import RealmSwift
 import SwiftyUserDefaults
 
-class SettingsViewController: UITableViewController {
+class SettingsViewController: UITableViewController {    
     @IBOutlet weak var colorThemeTableViewCell: UITableViewCell!
     @IBOutlet weak var colorThemeLabel: UILabel!
     
@@ -80,6 +80,28 @@ class SettingsViewController: UITableViewController {
         }
     }
     
+    @IBOutlet weak var longPressTogglesIntoNoteMode: UISwitch! {
+        didSet {
+            longPressTogglesIntoNoteMode.setOn(Defaults.longPressTogglesToNoteEntry, animated: false)
+        }
+    }
+    
+    @IBOutlet weak var longPressDurationSwitch: UISegmentedControl! {
+        didSet {
+            longPressDurationSwitch.removeAllSegments()
+            let durationOptions = LongPressDuration.allCases.sorted(by: { $0.duration < $1.duration} )
+            
+            for (idx, option) in durationOptions.enumerated() {
+                longPressDurationSwitch.insertSegment(withTitle: option.rawValue, at: idx, animated: false)
+                if Defaults.longPressDuration == option {
+                    longPressDurationSwitch.selectedSegmentIndex = idx
+                }
+            }
+            
+            longPressDurationSwitch.addTarget(self, action: #selector(self.longPressDurationChanged), for: .valueChanged)
+        }
+    }
+    
     @IBAction func switchValueChanged(_ sender: UISwitch) {
         DebugUtil.print("Switching on tag \(sender.tag)")
         let settingName: String
@@ -131,6 +153,10 @@ class SettingsViewController: UITableViewController {
             Defaults.enableStartCountdownTimer = startingCountdownTimer.isOn
             settingName = "startCountdownTimer"
             settingVariant = "\(startingCountdownTimer.isOn)"
+        case 12:
+            Defaults.longPressTogglesToNoteEntry = longPressTogglesIntoNoteMode.isOn
+            settingName = "longPressTogglesToNoteEntry"
+            settingVariant = "\(longPressTogglesIntoNoteMode.isOn)"
         default:
             settingName = "default"
             settingVariant = "none"
@@ -148,6 +174,15 @@ class SettingsViewController: UITableViewController {
         }
         
         self.showAlert(alert)
+    }
+    
+    @objc private func longPressDurationChanged() {
+        guard let dur = longPressDurationSwitch.titleForSegment(at: longPressDurationSwitch.selectedSegmentIndex), let duration = LongPressDuration(rawValue: dur) else { return }
+        
+        DebugUtil.print("Changing to \(dur) duration")
+        AnalyticsWrapper.logEvent(.selectContent, contentType: .userSetting, id: "id-longPressDurationTime", variant: dur)
+        
+        Defaults.longPressDuration = duration
     }
     
     private func resetGameTimeScores() {

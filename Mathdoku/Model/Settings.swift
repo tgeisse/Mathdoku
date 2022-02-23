@@ -9,6 +9,20 @@
 import Foundation
 import SwiftyUserDefaults
 
+enum LongPressDuration: String, CaseIterable, DefaultsSerializable {
+    case normal
+    case long
+    case short
+    
+    var duration: TimeInterval {
+        switch self {
+        case .normal:   return 0.5
+        case .long:     return 0.75
+        case .short:    return 0.25
+        }
+    }
+}
+
 // Defaults extension for settings variables
 extension DefaultsKeys {
     var singleNoteCellSelection: DefaultsKey<Bool> { .init("singleNoteCellSelection", defaultValue: false) }
@@ -23,4 +37,6 @@ extension DefaultsKeys {
     var enableKeyboardInput: DefaultsKey<Bool> { .init("enableKeyboardInput", defaultValue: true) }
     var drawFriendlyBorder: DefaultsKey<Bool> { .init("drawFriendlyBorder", defaultValue: true) }
     var enableStartCountdownTimer: DefaultsKey<Bool> { .init("enableStartCountdownTimer", defaultValue: true) }
+    var longPressTogglesToNoteEntry: DefaultsKey<Bool> { .init("longPressTogglesToNoteEntry", defaultValue: true) }
+    var longPressDuration: DefaultsKey<LongPressDuration> { .init("longPressDuration", defaultValue: .normal) }
 }

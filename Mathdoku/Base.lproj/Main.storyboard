@@ -2105,10 +2105,10 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="fillEqually" spacing="10" translatesAutoresizingMaskIntoConstraints="NO" id="bqa-pM-kqz">
-                                <rect key="frame" x="144" y="234" width="102" height="113"/>
+                                <rect key="frame" x="122" y="234" width="146" height="154"/>
                                 <subviews>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="j5N-wP-3gF">
-                                        <rect key="frame" x="0.0" y="0.0" width="102" height="31"/>
+                                        <rect key="frame" x="0.0" y="0.0" width="146" height="31"/>
                                         <color key="backgroundColor" red="0.42655369639396667" green="0.47584608197212219" blue="0.48026475310325623" alpha="1" colorSpace="calibratedRGB"/>
                                         <fontDescription key="fontDescription" style="UICTFontTextStyleHeadline"/>
                                         <inset key="contentEdgeInsets" minX="10" minY="7" maxX="10" maxY="7"/>
@@ -2125,7 +2125,7 @@
                                         </connections>
                                     </button>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Qps-GV-hRK">
-                                        <rect key="frame" x="0.0" y="41" width="102" height="31"/>
+                                        <rect key="frame" x="0.0" y="41" width="146" height="31"/>
                                         <color key="backgroundColor" red="0.42655369639396667" green="0.47584608197212219" blue="0.48026475310325623" alpha="1" colorSpace="calibratedRGB"/>
                                         <fontDescription key="fontDescription" style="UICTFontTextStyleHeadline"/>
                                         <inset key="contentEdgeInsets" minX="10" minY="7" maxX="10" maxY="7"/>
@@ -2142,7 +2142,7 @@
                                         </connections>
                                     </button>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="RgT-JL-YqG">
-                                        <rect key="frame" x="0.0" y="82" width="102" height="31"/>
+                                        <rect key="frame" x="0.0" y="82" width="146" height="31"/>
                                         <color key="backgroundColor" red="0.42655369639396667" green="0.47584608197212219" blue="0.48026475310325623" alpha="1" colorSpace="calibratedRGB"/>
                                         <fontDescription key="fontDescription" style="UICTFontTextStyleHeadline"/>
                                         <inset key="contentEdgeInsets" minX="10" minY="7" maxX="10" maxY="7"/>
@@ -2161,10 +2161,10 @@
                                 </subviews>
                             </stackView>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="vbx-L5-EtA">
-                                <rect key="frame" x="0.0" y="352" width="390" height="458"/>
+                                <rect key="frame" x="0.0" y="393" width="390" height="417"/>
                                 <subviews>
-                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="75D-Z3-B3L">
-                                        <rect key="frame" x="8" y="149" width="374" height="160"/>
+                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="75D-Z3-B3L" userLabel="Size Picker">
+                                        <rect key="frame" x="8" y="128.66666666666663" width="374" height="160"/>
                                         <subviews>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Pick your puzzle size:" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="77b-Sp-8Q2">
                                                 <rect key="frame" x="105.33333333333333" y="6.9999999999999982" width="163.66666666666669" height="20.333333333333329"/>
@@ -2270,54 +2270,82 @@
                                             </userDefinedRuntimeAttribute>
                                         </userDefinedRuntimeAttributes>
                                     </view>
+                                    <button hidden="YES" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="tailTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="zA4-IT-FE6">
+                                        <rect key="frame" x="178" y="303.66666666666663" width="34.333333333333343" height="30.666666666666686"/>
+                                        <color key="backgroundColor" systemColor="systemBlueColor"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="12"/>
+                                        <inset key="contentEdgeInsets" minX="10" minY="7" maxX="10" maxY="7"/>
+                                        <state key="normal">
+                                            <color key="titleColor" red="0.98431372549019602" green="0.7803921568627451" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                            <imageReference key="image" image="arrow.down.to.line.compact" catalog="system" renderingMode="hierarchical-single">
+                                                <hierarchicalColors>
+                                                    <color red="0.98431372549019602" green="0.7803921568627451" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                    <color systemColor="secondaryLabelColor"/>
+                                                    <color systemColor="tertiaryLabelColor"/>
+                                                </hierarchicalColors>
+                                            </imageReference>
+                                            <preferredSymbolConfiguration key="preferredSymbolConfiguration" scale="small" weight="semibold"/>
+                                        </state>
+                                        <userDefinedRuntimeAttributes>
+                                            <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
+                                                <integer key="value" value="15"/>
+                                            </userDefinedRuntimeAttribute>
+                                        </userDefinedRuntimeAttributes>
+                                        <connections>
+                                            <action selector="openUrlForUpdate:" destination="sGM-lu-8rP" eventType="touchUpInside" id="yDg-NK-dT7"/>
+                                        </connections>
+                                    </button>
                                 </subviews>
                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                 <constraints>
+                                    <constraint firstItem="zA4-IT-FE6" firstAttribute="centerX" secondItem="75D-Z3-B3L" secondAttribute="centerX" id="30u-eP-kxq"/>
+                                    <constraint firstItem="zA4-IT-FE6" firstAttribute="top" secondItem="75D-Z3-B3L" secondAttribute="bottom" constant="15" id="HVg-Ag-E0m"/>
                                     <constraint firstItem="75D-Z3-B3L" firstAttribute="centerX" secondItem="vbx-L5-EtA" secondAttribute="centerX" id="Lbe-ah-G2j"/>
                                     <constraint firstAttribute="trailing" secondItem="75D-Z3-B3L" secondAttribute="trailing" priority="750" constant="8" id="LmW-yc-2Dy"/>
                                     <constraint firstAttribute="bottom" relation="greaterThanOrEqual" secondItem="75D-Z3-B3L" secondAttribute="bottom" priority="800" constant="8" id="Qjb-SE-aat"/>
                                     <constraint firstItem="75D-Z3-B3L" firstAttribute="centerY" secondItem="vbx-L5-EtA" secondAttribute="centerY" id="SwO-pd-dCm"/>
                                     <constraint firstItem="75D-Z3-B3L" firstAttribute="leading" secondItem="vbx-L5-EtA" secondAttribute="leading" priority="750" constant="8" id="gzz-m4-DwL"/>
+                                    <constraint firstItem="zA4-IT-FE6" firstAttribute="width" relation="lessThanOrEqual" secondItem="75D-Z3-B3L" secondAttribute="width" id="qO9-sn-COD"/>
                                 </constraints>
                             </view>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="⋅" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="yKi-bB-Gjb">
-                                <rect key="frame" x="67.333333333333329" y="553.33333333333337" width="15.333333333333329" height="30"/>
+                                <rect key="frame" x="67.333333333333329" y="574" width="15.333333333333329" height="30"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="25"/>
                                 <color key="textColor" systemColor="darkTextColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="⋅" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Ysk-En-Oyw">
-                                <rect key="frame" x="107.33333333333333" y="553.33333333333337" width="15.333333333333329" height="30"/>
+                                <rect key="frame" x="107.33333333333333" y="574" width="15.333333333333329" height="30"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="25"/>
                                 <color key="textColor" systemColor="darkTextColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="⋅" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="432-4z-wTW">
-                                <rect key="frame" x="147.33333333333334" y="553.33333333333337" width="15.333333333333343" height="30"/>
+                                <rect key="frame" x="147.33333333333334" y="574" width="15.333333333333343" height="30"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="25"/>
                                 <color key="textColor" systemColor="darkTextColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="⋅" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="VTt-N8-BTR">
-                                <rect key="frame" x="187.33333333333334" y="553.33333333333337" width="15.333333333333343" height="30"/>
+                                <rect key="frame" x="187.33333333333334" y="574" width="15.333333333333343" height="30"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="25"/>
                                 <color key="textColor" systemColor="darkTextColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="⋅" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="MfQ-1z-g2b">
-                                <rect key="frame" x="227.33333333333334" y="553.33333333333337" width="15.333333333333343" height="30"/>
+                                <rect key="frame" x="227.33333333333334" y="574" width="15.333333333333343" height="30"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="25"/>
                                 <color key="textColor" systemColor="darkTextColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="⋅" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="C8b-C4-97Z">
-                                <rect key="frame" x="267.33333333333331" y="553.33333333333337" width="15.333333333333314" height="30"/>
+                                <rect key="frame" x="267.33333333333331" y="574" width="15.333333333333314" height="30"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="25"/>
                                 <color key="textColor" systemColor="darkTextColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="⋅" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="cw0-QO-R7X">
-                                <rect key="frame" x="307.33333333333331" y="553.33333333333337" width="15.333333333333314" height="30"/>
+                                <rect key="frame" x="307.33333333333331" y="574" width="15.333333333333314" height="30"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="25"/>
                                 <color key="textColor" systemColor="darkTextColor"/>
                                 <nil key="highlightedColor"/>
@@ -2389,6 +2417,7 @@
                         <outlet property="inProgress9" destination="cw0-QO-R7X" id="gr1-n5-h4F"/>
                         <outlet property="puzzlesRemainingLabel" destination="r3V-fF-OKm" id="AQP-oW-ALB"/>
                         <outlet property="startPuzzle" destination="eWV-Pc-I3t" id="GZ2-yr-dRw"/>
+                        <outlet property="updateButton" destination="zA4-IT-FE6" id="v7M-PY-qbh"/>
                         <outletCollection property="puzzleSizeButtons" destination="Sqd-DY-I35" collectionClass="NSMutableArray" id="80F-OO-IkP"/>
                         <outletCollection property="puzzleSizeButtons" destination="mb4-jZ-7o8" collectionClass="NSMutableArray" id="i7y-Pd-OSy"/>
                         <outletCollection property="puzzleSizeButtons" destination="RWI-Os-67v" collectionClass="NSMutableArray" id="zsD-m7-iE8"/>
@@ -2797,14 +2826,14 @@
                                         </tableViewCellContentView>
                                     </tableViewCell>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="none" indentationWidth="10" id="llh-XA-1cZ">
-                                        <rect key="frame" x="20" y="782.33333969116211" width="350" height="42.666667938232422"/>
+                                        <rect key="frame" x="20" y="782.33333969116211" width="350" height="44"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="llh-XA-1cZ" id="E1H-GL-qb0">
-                                            <rect key="frame" x="0.0" y="0.0" width="350" height="42.666667938232422"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="350" height="44"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <switch opaque="NO" tag="5" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" contentHorizontalAlignment="center" contentVerticalAlignment="center" translatesAutoresizingMaskIntoConstraints="NO" id="pda-gz-L5g">
-                                                    <rect key="frame" x="286" y="6" width="51" height="31"/>
+                                                    <rect key="frame" x="286" y="6.6666666666666679" width="51" height="31.000000000000004"/>
                                                     <connections>
                                                         <action selector="switchValueChanged:" destination="YgF-xD-UUZ" eventType="valueChanged" id="uCD-RI-cIZ"/>
                                                     </connections>
@@ -2827,7 +2856,7 @@
                                         </tableViewCellContentView>
                                     </tableViewCell>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="none" indentationWidth="10" id="tfT-cU-KC1">
-                                        <rect key="frame" x="20" y="825.00000762939453" width="350" height="44"/>
+                                        <rect key="frame" x="20" y="826.33333969116211" width="350" height="44"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="tfT-cU-KC1" id="yDg-L9-iXL">
                                             <rect key="frame" x="0.0" y="0.0" width="350" height="44"/>
@@ -2861,7 +2890,7 @@
                             <tableViewSection id="Jci-ac-TiE">
                                 <cells>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="none" indentationWidth="10" id="H3a-t5-dD4">
-                                        <rect key="frame" x="20" y="905.00000762939453" width="350" height="44"/>
+                                        <rect key="frame" x="20" y="906.33333969116211" width="350" height="44"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="H3a-t5-dD4" id="WMg-V8-sCf">
                                             <rect key="frame" x="0.0" y="0.0" width="350" height="44"/>
@@ -3596,7 +3625,7 @@
                             <tableViewSection headerTitle="On the Puzzle Selection Screen" id="hCb-mF-wnL">
                                 <cells>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="none" hidesAccessoryWhenEditing="NO" indentationWidth="10" id="Hjb-ZN-Df9">
-                                        <rect key="frame" x="20" y="738.6666660308839" width="350" height="64"/>
+                                        <rect key="frame" x="20" y="738.66666603088379" width="350" height="64"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="Hjb-ZN-Df9" id="6xz-19-m34">
                                             <rect key="frame" x="0.0" y="0.0" width="350" height="64"/>
@@ -3656,7 +3685,7 @@
                                         </tableViewCellContentView>
                                     </tableViewCell>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="none" hidesAccessoryWhenEditing="NO" indentationWidth="10" id="xAO-Qf-zjk">
-                                        <rect key="frame" x="20" y="802.6666660308839" width="350" height="44"/>
+                                        <rect key="frame" x="20" y="802.66666603088379" width="350" height="44"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="xAO-Qf-zjk" id="V1w-WW-F91">
                                             <rect key="frame" x="0.0" y="0.0" width="350" height="44"/>
@@ -3710,7 +3739,7 @@
                                         </tableViewCellContentView>
                                     </tableViewCell>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="none" hidesAccessoryWhenEditing="NO" indentationWidth="10" id="URy-Ie-nLd">
-                                        <rect key="frame" x="20" y="846.6666660308839" width="350" height="44"/>
+                                        <rect key="frame" x="20" y="846.66666603088379" width="350" height="44"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="URy-Ie-nLd" id="IWV-6I-txF">
                                             <rect key="frame" x="0.0" y="0.0" width="350" height="44"/>
@@ -4880,8 +4909,8 @@
         </scene>
     </scenes>
     <inferredMetricsTieBreakers>
-        <segue reference="teZ-g6-H4K"/>
-        <segue reference="1eU-Tc-Mwc"/>
+        <segue reference="7Gi-zC-mWS"/>
+        <segue reference="v3n-3L-gwk"/>
     </inferredMetricsTieBreakers>
     <resources>
         <image name="1.square" catalog="system" width="128" height="114"/>
@@ -4897,6 +4926,7 @@
         <image name="Validate" width="24" height="24"/>
         <image name="a.square" catalog="system" width="128" height="114"/>
         <image name="arrow.down.square" catalog="system" width="128" height="114"/>
+        <image name="arrow.down.to.line.compact" catalog="system" width="128" height="128"/>
         <image name="arrow.left.square" catalog="system" width="128" height="114"/>
         <image name="arrow.right.square" catalog="system" width="128" height="114"/>
         <image name="arrow.up.square" catalog="system" width="128" height="114"/>
@@ -4915,8 +4945,17 @@
         <systemColor name="darkTextColor">
             <color white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
         </systemColor>
+        <systemColor name="secondaryLabelColor">
+            <color red="0.23529411764705882" green="0.23529411764705882" blue="0.2627450980392157" alpha="0.59999999999999998" colorSpace="custom" customColorSpace="sRGB"/>
+        </systemColor>
         <systemColor name="systemBackgroundColor">
             <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+        </systemColor>
+        <systemColor name="systemBlueColor">
+            <color red="0.0" green="0.47843137254901963" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </systemColor>
+        <systemColor name="tertiaryLabelColor">
+            <color red="0.23529411764705882" green="0.23529411764705882" blue="0.2627450980392157" alpha="0.29999999999999999" colorSpace="custom" customColorSpace="sRGB"/>
         </systemColor>
     </resources>
 </document>

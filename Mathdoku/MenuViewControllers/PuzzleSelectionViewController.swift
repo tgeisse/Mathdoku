@@ -10,6 +10,8 @@ import UIKit
 import RealmSwift
 import SwiftyUserDefaults
 
+infix operator ~>: AdditionPrecedence
+
 class PuzzleSelectionViewController: UIViewController {
     lazy var realm: Realm = {try! Realm()}()
     lazy var playerProgress: Results<PlayerProgress> = {
@@ -34,6 +36,8 @@ class PuzzleSelectionViewController: UIViewController {
     
     private let selectColor = UIColor(red: 1.0, green: 0.9648, blue: 0.60, alpha: 1.0)
     
+    private var puzzleAllowanceNotification: NotificationToken?
+    
     // MARK: - IBOutlets
     @IBOutlet weak var startPuzzle: UIButton!
     @IBOutlet weak var puzzlesRemainingLabel: UILabel!
@@ -54,23 +58,13 @@ class PuzzleSelectionViewController: UIViewController {
         }
     }
     
-    
-    // MARK: - Private methods for UI Updates
-    private func updateInProgressMarker(forLabel label: UILabel, show: Bool) {
-        label.isHidden = !show
+    @IBOutlet weak var updateButton: UIButton! {
+        didSet {
+            updateButton.titleLabel?.minimumScaleFactor = 0.0
+            updateButton.titleLabel?.adjustsFontSizeToFitWidth = true
+            updateButton.titleLabel?.textAlignment = .center
+        }
     }
-    
-    private func updateProgressMarkers() {
-        updateInProgressMarker(forLabel: inProgress3, show: playerProgress[0].puzzleProgress?.inProgress ?? false)
-        updateInProgressMarker(forLabel: inProgress4, show: playerProgress[1].puzzleProgress?.inProgress ?? false)
-        updateInProgressMarker(forLabel: inProgress5, show: playerProgress[2].puzzleProgress?.inProgress ?? false)
-        updateInProgressMarker(forLabel: inProgress6, show: playerProgress[3].puzzleProgress?.inProgress ?? false)
-        updateInProgressMarker(forLabel: inProgress7, show: playerProgress[4].puzzleProgress?.inProgress ?? false)
-        updateInProgressMarker(forLabel: inProgress8, show: playerProgress[5].puzzleProgress?.inProgress ?? false)
-        updateInProgressMarker(forLabel: inProgress9, show: playerProgress[6].puzzleProgress?.inProgress ?? false)
-    }
-    
-    private var puzzleAllowanceNotification: NotificationToken?
    
     // MARK: - View Lifecycle
     override func viewWillAppear(_ animated: Bool) {
@@ -112,6 +106,8 @@ class PuzzleSelectionViewController: UIViewController {
                 self.showAlert(alert)
             }
         }
+        
+        checkForUpdates()
     }
     
     override func viewWillDisappear(_ animated: Bool) {
@@ -144,12 +140,95 @@ class PuzzleSelectionViewController: UIViewController {
         }
     }
     
+    func checkForUpdates() {
+        if !updateButton.isHidden { return }
+        
+        DispatchQueue.global(qos: .utility).async {
+            if AppStoreInfo.sharedInstance.updateAvailable {
+                DispatchQueue.main.async { [weak self] in
+                    self?.displayUpdateButton(animated: true)
+                }
+            }
+        }
+    }
+    
+    // MARK: - Private methods for UI Updates
+    private func updateInProgressMarker(forLabel label: UILabel, show: Bool) {
+        label.isHidden = !show
+    }
+    
+    private func updateProgressMarkers() {
+        updateInProgressMarker(forLabel: inProgress3, show: playerProgress[0].puzzleProgress?.inProgress ?? false)
+        updateInProgressMarker(forLabel: inProgress4, show: playerProgress[1].puzzleProgress?.inProgress ?? false)
+        updateInProgressMarker(forLabel: inProgress5, show: playerProgress[2].puzzleProgress?.inProgress ?? false)
+        updateInProgressMarker(forLabel: inProgress6, show: playerProgress[3].puzzleProgress?.inProgress ?? false)
+        updateInProgressMarker(forLabel: inProgress7, show: playerProgress[4].puzzleProgress?.inProgress ?? false)
+        updateInProgressMarker(forLabel: inProgress8, show: playerProgress[5].puzzleProgress?.inProgress ?? false)
+        updateInProgressMarker(forLabel: inProgress9, show: playerProgress[6].puzzleProgress?.inProgress ?? false)
+    }
+    
+    private func displayUpdateButton(animated: Bool) {
+        let title = " Update Available"
+        
+        if !animated {
+            updateButton.setTitle(title, for: .normal)
+            updateButton.isHidden = false
+            return
+        }
+        
+        updateButton.transform = .identity
+        updateButton.transform = CGAffineTransform(scaleX: 0.2, y: 0.2)
+        updateButton.setTitle("", for: .normal)
+        updateButton.isHidden = false
+        
+        let animation1 = UIViewPropertyAnimator(duration: 0.15, curve: .easeIn) { [weak self] in
+            self?.updateButton.transform = CGAffineTransform(scaleX: 1.5, y: 1.5)
+        }
+        
+        let animation2 = UIViewPropertyAnimator(duration: 0.15, curve: .easeOut) { [weak self] in
+            self?.updateButton.transform = CGAffineTransform(scaleX: 1, y: 1)
+            self?.view.layoutIfNeeded()
+        }
+        
+        let animation3 = UIViewPropertyAnimator(duration: 0.4, curve: .easeInOut){ [weak self] in
+            self?.updateButton.setTitle(title, for: .normal)
+            self?.view.layoutIfNeeded()
+        }
+    
+        animation1 ~> animation2 ~> animation3 //~> animation4
+        animation1.startAnimation()
+    }
+    
     // MARK: - Button Actions
+    @IBAction func redoUpdateAnimation(_ sender: UIButton) {
+        updateButton.isHidden = true
+        displayUpdateButton(animated: true)
+    }
+    
     @IBAction func puzzleSelection(_ sender: UIButton) {
         if let senderString = sender.currentTitle, let numberPressed = Int(senderString) {
             selectedPuzzleSize = numberPressed
             selectedButton = sender
             updateStartButtonTitle()
+        }
+    }
+    
+    @IBAction func openUrlForUpdate(_ sender: UIButton) {
+        DispatchQueue.global(qos: .userInitiated).async {
+            guard let appStoreUrl = AppStoreInfo.sharedInstance.storeInfo[.appStoreUrl],
+                  let appStoreLink = URL(string: appStoreUrl) else {
+                    
+                      DispatchQueue.main.async { [weak self] in
+                          guard let self = self else { return }
+                          self.showAlert(self.alertWithTitle("Error Opening App Store", message: "There was an error trying to load the AppStore link from the update button."))
+                      }
+                      return
+                    }
+            
+            DispatchQueue.main.async {
+                DebugUtil.print("Opening app store: \(appStoreUrl)")
+                UIApplication.shared.open(appStoreLink)
+            }
         }
     }
     

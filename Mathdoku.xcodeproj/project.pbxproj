@@ -10,6 +10,7 @@
 		3426D0072781701B002835A2 /* KeyboardDirection.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3426D0062781701B002835A2 /* KeyboardDirection.swift */; };
 		34A0CE3827C5ACE9001D5F6E /* BundleExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 34A0CE3727C5ACE9001D5F6E /* BundleExtension.swift */; };
 		34A0CE3A27C5B067001D5F6E /* AppStoreInfo.swift in Sources */ = {isa = PBXBuildFile; fileRef = 34A0CE3927C5B067001D5F6E /* AppStoreInfo.swift */; };
+		34ACC70927CD61CE00A3A84A /* UIViewPropertyAnimatorExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 34ACC70827CD61CE00A3A84A /* UIViewPropertyAnimatorExtension.swift */; };
 		34EBA3A72790F58400A885BD /* StoreKitWrapper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 34EBA3A62790F58400A885BD /* StoreKitWrapper.swift */; };
 		8336D4FC8161CC44C65F908F /* Pods_Mathdoku.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 27B6C3B9D7393F6EFC9176CA /* Pods_Mathdoku.framework */; };
 		9502E5DE1EEE080F0048BE1B /* ViewControllerExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9502E5DD1EEE080F0048BE1B /* ViewControllerExtensions.swift */; };
@@ -97,6 +98,7 @@
 		34A0CE3727C5ACE9001D5F6E /* BundleExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BundleExtension.swift; sourceTree = "<group>"; };
 		34A0CE3927C5B067001D5F6E /* AppStoreInfo.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppStoreInfo.swift; sourceTree = "<group>"; };
 		34A2FA50279B4BA9006DD274 /* libswift_Concurrency.tbd */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.text-based-dylib-definition"; name = libswift_Concurrency.tbd; path = usr/lib/swift/libswift_Concurrency.tbd; sourceTree = SDKROOT; };
+		34ACC70827CD61CE00A3A84A /* UIViewPropertyAnimatorExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIViewPropertyAnimatorExtension.swift; sourceTree = "<group>"; };
 		34EBA3A62790F58400A885BD /* StoreKitWrapper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StoreKitWrapper.swift; sourceTree = "<group>"; };
 		3BC01DF3DD546476D89F7543 /* Pods-Mathdoku.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Mathdoku.debug.xcconfig"; path = "Pods/Target Support Files/Pods-Mathdoku/Pods-Mathdoku.debug.xcconfig"; sourceTree = "<group>"; };
 		7ABBAD76201575B50001FEAB /* MathdokuTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = MathdokuTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -181,6 +183,19 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		34ACC70727CD619D00A3A84A /* Extensions */ = {
+			isa = PBXGroup;
+			children = (
+				95E9D1111EB81C2B00F51A4B /* CALayerExtensions.swift */,
+				9502E5DD1EEE080F0048BE1B /* ViewControllerExtensions.swift */,
+				9544E33A1EF0EA5D00F37ED7 /* TimeIntervalExtension.swift */,
+				95CBCC571FFDCE92001409B1 /* UIColorExtensions.swift */,
+				34A0CE3727C5ACE9001D5F6E /* BundleExtension.swift */,
+				34ACC70827CD61CE00A3A84A /* UIViewPropertyAnimatorExtension.swift */,
+			);
+			path = Extensions;
+			sourceTree = "<group>";
+		};
 		599782A8731822E7F32F4D48 /* Pods */ = {
 			isa = PBXGroup;
 			children = (
@@ -291,16 +306,11 @@
 		95E9D1101EB81C0C00F51A4B /* Utility */ = {
 			isa = PBXGroup;
 			children = (
-				95E9D1111EB81C2B00F51A4B /* CALayerExtensions.swift */,
 				951273711EDE898200588467 /* DebugUtil.swift */,
 				95CBCC531FFC9659001409B1 /* Stack.swift */,
-				9502E5DD1EEE080F0048BE1B /* ViewControllerExtensions.swift */,
-				9544E33A1EF0EA5D00F37ED7 /* TimeIntervalExtension.swift */,
-				95CBCC571FFDCE92001409B1 /* UIColorExtensions.swift */,
 				950E6DA620087DD70066AA4F /* ColorTheme.swift */,
 				9570051B1FE104F300C85822 /* AnalyticsWrapper.swift */,
 				954695F0205C8A4300BB431A /* CrashWrapper.swift */,
-				34A0CE3727C5ACE9001D5F6E /* BundleExtension.swift */,
 			);
 			path = Utility;
 			sourceTree = "<group>";
@@ -332,6 +342,7 @@
 				9598A3A31FBC1B4B00AE48E2 /* Libraries */,
 				9502E5E11EEE159C0048BE1B /* PuzzlePurchasing */,
 				95E9D1101EB81C0C00F51A4B /* Utility */,
+				34ACC70727CD619D00A3A84A /* Extensions */,
 				95C082621EB1AC84008B7C2E /* Menu View Controllers */,
 				9581B8C925804FFE00EA5E5E /* Views */,
 				95FBB9081E9AD95B00B0E662 /* PuzzleView */,
@@ -583,6 +594,7 @@
 				954695F1205C8A4300BB431A /* CrashWrapper.swift in Sources */,
 				956CB04A1FD1ADE400FDB589 /* HighlightRequestQueue.swift in Sources */,
 				9581B8CF258050F200EA5E5E /* ColorThemePreviewTableViewCell.swift in Sources */,
+				34ACC70927CD61CE00A3A84A /* UIViewPropertyAnimatorExtension.swift in Sources */,
 				95470335201245F4007B3C49 /* CellViewElementValues.swift in Sources */,
 				95E9D1121EB81C2B00F51A4B /* CALayerExtensions.swift in Sources */,
 				95C082591EABC8B8008B7C2E /* CellView.swift in Sources */,

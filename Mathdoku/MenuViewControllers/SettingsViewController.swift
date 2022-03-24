@@ -208,8 +208,6 @@ class SettingsViewController: UITableViewController {
         }
     }
     
-    
-    
     override func tableView(_ tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
         if section == 4 {
             let appVersion: String = Bundle.main.object(forInfoDictionaryKey: "CFBundleShortVersionString") as! String

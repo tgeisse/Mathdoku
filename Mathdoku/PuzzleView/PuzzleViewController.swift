@@ -1522,16 +1522,16 @@ extension PuzzleViewController {
             numberKeyPressed(9)
         case .keyboardLeftArrow, .keyboardA:
             keyPressed = "Left Arrow or A"
-            moveSelection(direction: .left, shifted: key.modifierFlags.contains(.shift))
+            moveSelection(direction: .left, shifted: key.modifierFlags.contains(.shift), optioned: key.modifierFlags.contains(.alternate))
         case .keyboardRightArrow, .keyboardD:
             keyPressed = "Right Arrow or D"
-            moveSelection(direction: .right, shifted: key.modifierFlags.contains(.shift))
+            moveSelection(direction: .right, shifted: key.modifierFlags.contains(.shift), optioned: key.modifierFlags.contains(.alternate))
         case .keyboardUpArrow, .keyboardW:
             keyPressed = "Up Arrow or W"
-            moveSelection(direction: .up, shifted: key.modifierFlags.contains(.shift))
+            moveSelection(direction: .up, shifted: key.modifierFlags.contains(.shift), optioned: key.modifierFlags.contains(.alternate))
         case .keyboardDownArrow, .keyboardS:
             keyPressed = "Down Arrow or S"
-            moveSelection(direction: .down, shifted: key.modifierFlags.contains(.shift))
+            moveSelection(direction: .down, shifted: key.modifierFlags.contains(.shift), optioned: key.modifierFlags.contains(.alternate))
         case .keyboardDeleteForward, .keyboardDeleteOrBackspace:
             keyPressed = "Delete Key / Backspace / Forward Delete"
             guard gameState == .playing else { break }
@@ -1588,7 +1588,7 @@ extension PuzzleViewController {
         if let newGuessCell = singleNoteCell, entryMode == .guessing { selectedCell = newGuessCell }
     }
     
-    private func moveSelection(direction: KeyboardDirection, shifted: Bool) {
+    private func moveSelection(direction: KeyboardDirection, shifted: Bool, optioned: Bool) {
         // ignore move selection is the gameState is not in playing
         guard [GameState.playing, .finished].contains(gameState) else { return }
         
@@ -1601,9 +1601,9 @@ extension PuzzleViewController {
             
             if shifted {
                 toggleEntryMode()
-                moveSelection(direction: direction, shifted: shifted)
+                moveSelection(direction: direction, shifted: shifted, optioned: optioned)
             } else {
-                let newSelCellPos = moveCellPosition(selCellPos, direction: direction)
+                guard let newSelCellPos = selCellPos.neighborCell(inDirection: direction, atEnd: optioned) else { return }
                 
                 if newSelCellPos.isValid {
                     selectedCell = gridRowStacks[newSelCellPos.row].rowCells[newSelCellPos.col]
@@ -1611,15 +1611,25 @@ extension PuzzleViewController {
             }
         case .noteImpossible, .notePossible:
             let selNoteCellPoses = selectedNoteCellsPositions
+            let setSelNoteCells = Set(selNoteCellPoses)
             guard selNoteCellPoses.count > 0 else {
                 selectedNoteCells.append(gridRowStacks[puzzle.size / 2].rowCells[puzzle.size / 2])
                 return
             }
             
-            let newSelNotePos = moveCellPosition(selNoteCellPoses.last!, direction: direction)
+            guard let lastSelCell = selNoteCellPoses.last else { return }
+            guard let newSelNotePos = lastSelCell.neighborCell(inDirection: direction, atEnd: optioned) else { return }
             guard newSelNotePos.isValid else { return }
             
             if shifted {
+                var curCell = lastSelCell
+                while let nextCell = curCell.neighborCell(inDirection: direction), nextCell != newSelNotePos {
+                    if !setSelNoteCells.contains(nextCell) {
+                        selectedNoteCells.append(gridRowStacks[nextCell.row].rowCells[nextCell.col])
+                    }
+                    curCell = nextCell
+                }
+                
                 if let exists = selNoteCellPoses.firstIndex(of: newSelNotePos) {
                     // it is already selected, so move it to the back of the array
                     selectedNoteCells.append(selectedNoteCells.remove(at: exists))
@@ -1633,12 +1643,13 @@ extension PuzzleViewController {
         }
     }
     
-    private func moveCellPosition(_ original: CellPosition, direction: KeyboardDirection) -> CellPosition {
+    @available(*, message: "This is deprecated. Use the neighborCell method on the original CellPosition")
+    private func moveCellPosition(_ original: CellPosition, direction: KeyboardDirection, toEnd: Bool) -> CellPosition {
         let newSelCellPos: CellPosition
         
         switch direction {
         case .up:
-            newSelCellPos = CellPosition(row: original.row - 1, col: original.col, puzzleSize: original.size)
+            newSelCellPos = toEnd ? CellPosition(row: 0, col: original.col, puzzleSize:original.size) : CellPosition(row: original.row - 1, col: original.col, puzzleSize: original.size)
         case .down:
             newSelCellPos = CellPosition(row: original.row + 1, col: original.col, puzzleSize: original.size)
         case .left:

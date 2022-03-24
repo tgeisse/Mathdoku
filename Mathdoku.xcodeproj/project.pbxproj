@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		3426D0072781701B002835A2 /* KeyboardDirection.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3426D0062781701B002835A2 /* KeyboardDirection.swift */; };
+		34882DD327D83A9A0044E309 /* KeyCommandsTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 34882DD227D83A9A0044E309 /* KeyCommandsTableViewController.swift */; };
 		34A0CE3827C5ACE9001D5F6E /* BundleExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 34A0CE3727C5ACE9001D5F6E /* BundleExtension.swift */; };
 		34A0CE3A27C5B067001D5F6E /* AppStoreInfo.swift in Sources */ = {isa = PBXBuildFile; fileRef = 34A0CE3927C5B067001D5F6E /* AppStoreInfo.swift */; };
 		34ACC70927CD61CE00A3A84A /* UIViewPropertyAnimatorExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 34ACC70827CD61CE00A3A84A /* UIViewPropertyAnimatorExtension.swift */; };
@@ -95,6 +96,7 @@
 		107ED940AEAB5A0AF4DD58A7 /* Pods_MathdokuTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_MathdokuTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		27B6C3B9D7393F6EFC9176CA /* Pods_Mathdoku.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Mathdoku.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		3426D0062781701B002835A2 /* KeyboardDirection.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KeyboardDirection.swift; sourceTree = "<group>"; };
+		34882DD227D83A9A0044E309 /* KeyCommandsTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KeyCommandsTableViewController.swift; sourceTree = "<group>"; };
 		34A0CE3727C5ACE9001D5F6E /* BundleExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BundleExtension.swift; sourceTree = "<group>"; };
 		34A0CE3927C5B067001D5F6E /* AppStoreInfo.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppStoreInfo.swift; sourceTree = "<group>"; };
 		34A2FA50279B4BA9006DD274 /* libswift_Concurrency.tbd */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.text-based-dylib-definition"; name = libswift_Concurrency.tbd; path = usr/lib/swift/libswift_Concurrency.tbd; sourceTree = SDKROOT; };
@@ -281,6 +283,7 @@
 				9598A3A11FBC020800AE48E2 /* SettingsViewController.swift */,
 				956CB0471FCFD94700FDB589 /* TutorialSinglePageViewController.swift */,
 				9581B8C425803C3B00EA5E5E /* ColorThemePickerTableViewController.swift */,
+				34882DD227D83A9A0044E309 /* KeyCommandsTableViewController.swift */,
 			);
 			name = "Menu View Controllers";
 			path = MenuViewControllers;
@@ -595,6 +598,7 @@
 				956CB04A1FD1ADE400FDB589 /* HighlightRequestQueue.swift in Sources */,
 				9581B8CF258050F200EA5E5E /* ColorThemePreviewTableViewCell.swift in Sources */,
 				34ACC70927CD61CE00A3A84A /* UIViewPropertyAnimatorExtension.swift in Sources */,
+				34882DD327D83A9A0044E309 /* KeyCommandsTableViewController.swift in Sources */,
 				95470335201245F4007B3C49 /* CellViewElementValues.swift in Sources */,
 				95E9D1121EB81C2B00F51A4B /* CALayerExtensions.swift in Sources */,
 				95C082591EABC8B8008B7C2E /* CellView.swift in Sources */,
@@ -828,7 +832,7 @@
 					"$(inherited)",
 					"$(SDKROOT)/usr/lib/swift",
 				);
-				MARKETING_VERSION = 1.9;
+				MARKETING_VERSION = 2.0;
 				OTHER_LDFLAGS = (
 					"$(inherited)",
 					"-ObjC",
@@ -952,7 +956,7 @@
 					"$(inherited)",
 					"$(SDKROOT)/usr/lib/swift",
 				);
-				MARKETING_VERSION = 1.9;
+				MARKETING_VERSION = 2.0;
 				OTHER_LDFLAGS = (
 					"$(inherited)",
 					"-ObjC",

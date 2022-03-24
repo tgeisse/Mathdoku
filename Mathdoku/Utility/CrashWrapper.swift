@@ -14,14 +14,14 @@ import Bugsnag
 // NSLocalizedRecoverySuggestionErrorKey
 
 extension Error {
-    func report() {
-        CrashWrapper.notifyError(self)
+    func report(_ severity: CrashWrapper.Severity = .error) {
+        CrashWrapper.notifyError(self, severity: severity)
     }
 }
 
 extension NSError {
-    func report() {
-        CrashWrapper.notifyError(self)
+    func report(_ severity: CrashWrapper.Severity = .error) {
+        CrashWrapper.notifyError(self, severity: severity)
     }
 }
 

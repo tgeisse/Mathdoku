@@ -12,8 +12,8 @@ class GridRowView: UIStackView {
 
     var rowCells: [CellContainerView] {
         guard let returnValue = self.subviews as? [CellContainerView] else {
-            CrashWrapper.notifyException(name: .cast, reason: "A view that is not a CellCtonainerView made it into my subviews")
-            fatalError("A view that is not a CellCtonainerView made it into my subviews")
+            CrashWrapper.notifyException(name: .cast, reason: "A view that is not a CellContainerView made it into my subviews")
+            fatalError("A view that is not a CellContainerView made it into my subviews")
         }
         
         return returnValue

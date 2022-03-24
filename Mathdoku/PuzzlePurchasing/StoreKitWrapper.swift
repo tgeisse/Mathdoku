@@ -32,6 +32,7 @@ class StoreKitWrapper: NSObject {
     // MARK: - Retrieving Product Info
     func requestProductInfo(forProducts products: [String], completionHandler: StoreKitRequestCompletionHandler? = nil) {
         DebugUtil.print("Sending request for product info for products: \(products)")
+        CrashWrapper.leaveBreadcrumb("Product info request", withType: .request, withMetadata: ["Products" : products])
         
         let combinedRequestName = products.sorted().reduce("", +)
         DebugUtil.print("Combined name: \(combinedRequestName)")
@@ -47,6 +48,8 @@ class StoreKitWrapper: NSObject {
     
     func requestProductInfo(_ product: String, completionHandler: StoreKitRequestCompletionHandler? = nil) {
         DebugUtil.print("Sending request for product info for product: \(product)")
+        CrashWrapper.leaveBreadcrumb("Single product info request", withType: .request, withMetadata: ["Product" : product])
+        
         // clear out the old request, if one exists and set the new completion handler
         cancelAndClearDetails(forProduct: product)
         completionHandlers[product] = completionHandler
@@ -91,7 +94,8 @@ extension StoreKitWrapper: SKProductsRequestDelegate {
     // TODO: Determine what needs to be processed when a failure occurs
     func request(_ request: SKRequest, didFailWithError error: Error) {
         DebugUtil.print("Failed to receive Product Information: \(error.localizedDescription)")
-        CrashWrapper.notifyError(error, severity: .error)
+        CrashWrapper.leaveBreadcrumb("Failed to receive product info", withType: .request)
+        CrashWrapper.notifyError(error, severity: .warning)
     }
 }
 

@@ -12,6 +12,8 @@
 		34A0CE3827C5ACE9001D5F6E /* BundleExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 34A0CE3727C5ACE9001D5F6E /* BundleExtension.swift */; };
 		34A0CE3A27C5B067001D5F6E /* AppStoreInfo.swift in Sources */ = {isa = PBXBuildFile; fileRef = 34A0CE3927C5B067001D5F6E /* AppStoreInfo.swift */; };
 		34ACC70927CD61CE00A3A84A /* UIViewPropertyAnimatorExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 34ACC70827CD61CE00A3A84A /* UIViewPropertyAnimatorExtension.swift */; };
+		34C7731D28EB83D0008B2508 /* PuzzleCompletedMainView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 34C7731C28EB83D0008B2508 /* PuzzleCompletedMainView.swift */; };
+		34C7732028EBAD57008B2508 /* PuzzleCompleteViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 34C7731F28EBAD57008B2508 /* PuzzleCompleteViewModel.swift */; };
 		34EBA3A72790F58400A885BD /* StoreKitWrapper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 34EBA3A62790F58400A885BD /* StoreKitWrapper.swift */; };
 		8336D4FC8161CC44C65F908F /* Pods_Mathdoku.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 27B6C3B9D7393F6EFC9176CA /* Pods_Mathdoku.framework */; };
 		9502E5DE1EEE080F0048BE1B /* ViewControllerExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9502E5DD1EEE080F0048BE1B /* ViewControllerExtensions.swift */; };
@@ -101,6 +103,8 @@
 		34A0CE3927C5B067001D5F6E /* AppStoreInfo.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppStoreInfo.swift; sourceTree = "<group>"; };
 		34A2FA50279B4BA9006DD274 /* libswift_Concurrency.tbd */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.text-based-dylib-definition"; name = libswift_Concurrency.tbd; path = usr/lib/swift/libswift_Concurrency.tbd; sourceTree = SDKROOT; };
 		34ACC70827CD61CE00A3A84A /* UIViewPropertyAnimatorExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIViewPropertyAnimatorExtension.swift; sourceTree = "<group>"; };
+		34C7731C28EB83D0008B2508 /* PuzzleCompletedMainView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PuzzleCompletedMainView.swift; sourceTree = "<group>"; };
+		34C7731F28EBAD57008B2508 /* PuzzleCompleteViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PuzzleCompleteViewModel.swift; sourceTree = "<group>"; };
 		34EBA3A62790F58400A885BD /* StoreKitWrapper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StoreKitWrapper.swift; sourceTree = "<group>"; };
 		3BC01DF3DD546476D89F7543 /* Pods-Mathdoku.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Mathdoku.debug.xcconfig"; path = "Pods/Target Support Files/Pods-Mathdoku/Pods-Mathdoku.debug.xcconfig"; sourceTree = "<group>"; };
 		7ABBAD76201575B50001FEAB /* MathdokuTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = MathdokuTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -198,6 +202,14 @@
 			path = Extensions;
 			sourceTree = "<group>";
 		};
+		34C7731E28EB83D8008B2508 /* PuzzleCompleted */ = {
+			isa = PBXGroup;
+			children = (
+				34C7731C28EB83D0008B2508 /* PuzzleCompletedMainView.swift */,
+			);
+			path = PuzzleCompleted;
+			sourceTree = "<group>";
+		};
 		599782A8731822E7F32F4D48 /* Pods */ = {
 			isa = PBXGroup;
 			children = (
@@ -241,6 +253,7 @@
 				95470334201245F4007B3C49 /* CellViewElementValues.swift */,
 				95480ED520846CB200F783F9 /* GameTimer.swift */,
 				3426D0062781701B002835A2 /* KeyboardDirection.swift */,
+				34C7731F28EBAD57008B2508 /* PuzzleCompleteViewModel.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -366,6 +379,7 @@
 		95FBB9081E9AD95B00B0E662 /* PuzzleView */ = {
 			isa = PBXGroup;
 			children = (
+				34C7731E28EB83D8008B2508 /* PuzzleCompleted */,
 				95C2BD2D1EBECC01008A62D0 /* PuzzleViewController.swift */,
 				95E9D1171EB963A400F51A4B /* GridRowView.swift */,
 				95E9D1191EB963BB00F51A4B /* CellContainerView.swift */,
@@ -418,7 +432,6 @@
 				95FBB8D41E9AD13F00B0E662 /* Frameworks */,
 				95FBB8D51E9AD13F00B0E662 /* Resources */,
 				9555607E1ECD3500006C9F2D /* Embed Frameworks */,
-				9555607F1ECD362C006C9F2D /* ShellScript */,
 				A82D7CDF6981615008186848 /* [CP] Embed Pods Frameworks */,
 			);
 			buildRules = (
@@ -521,19 +534,6 @@
 			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
 			showEnvVarsInLog = 0;
 		};
-		9555607F1ECD362C006C9F2D /* ShellScript */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputPaths = (
-			);
-			outputPaths = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "";
-		};
 		A82D7CDF6981615008186848 /* [CP] Embed Pods Frameworks */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
@@ -580,6 +580,7 @@
 				95FBB90A1E9AD97300B0E662 /* Puzzle.swift in Sources */,
 				951273721EDE898200588467 /* DebugUtil.swift in Sources */,
 				95CBCC5B2008716A001409B1 /* AppKeys.swift in Sources */,
+				34C7731D28EB83D0008B2508 /* PuzzleCompletedMainView.swift in Sources */,
 				95A196281ED2A3460038D40C /* PuzzleCellNote.swift in Sources */,
 				95FBB90C1E9AD9E900B0E662 /* Cell.swift in Sources */,
 				95CBCC581FFDCE92001409B1 /* UIColorExtensions.swift in Sources */,
@@ -606,6 +607,7 @@
 				95C2BD2E1EBECC01008A62D0 /* PuzzleViewController.swift in Sources */,
 				95480ED620846CB200F783F9 /* GameTimer.swift in Sources */,
 				95CBCC561FFC9890001409B1 /* MoveHistory.swift in Sources */,
+				34C7732028EBAD57008B2508 /* PuzzleCompleteViewModel.swift in Sources */,
 				95A196241ED2A3310038D40C /* PuzzleGuess.swift in Sources */,
 				9544E33D1F001E8000F37ED7 /* HowToPlayPageViewController.swift in Sources */,
 				9555606A1ECD2989006C9F2D /* SwiftyJSON.swift in Sources */,
@@ -741,7 +743,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 12.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
 				MTL_ENABLE_DEBUG_INFO = YES;
 				ONLY_ACTIVE_ARCH = YES;
 				SDKROOT = iphoneos;
@@ -796,7 +798,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 12.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
 				MTL_ENABLE_DEBUG_INFO = NO;
 				SDKROOT = iphoneos;
 				SWIFT_COMPILATION_MODE = wholemodule;
@@ -823,7 +825,7 @@
 				);
 				GCC_C_LANGUAGE_STANDARD = "compiler-default";
 				INFOPLIST_FILE = Mathdoku/Info.plist;
-				IPHONEOS_DEPLOYMENT_TARGET = 12.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -947,7 +949,7 @@
 				);
 				GCC_C_LANGUAGE_STANDARD = "compiler-default";
 				INFOPLIST_FILE = Mathdoku/Info.plist;
-				IPHONEOS_DEPLOYMENT_TARGET = 12.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",

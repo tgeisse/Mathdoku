@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import SwiftUI
 
 extension UIColor {
     convenience init(red: Int, green: Int, blue: Int, alpha: CGFloat = 1.0) {
@@ -24,5 +25,19 @@ extension UIColor {
             blue: hex & 0xFF,
             alpha: alpha
         )
+    }
+    
+    var suiColor: Color {
+        if #available(iOS 15.0, *) {
+            return Color(self)
+        } else {
+            var red: CGFloat = 0
+            var green: CGFloat = 0
+            var blue: CGFloat = 0
+            var alpha: CGFloat = 0
+            getRed(&red, green: &green, blue: &blue, alpha: &alpha)
+            
+            return Color(red: red, green: green, blue: blue, opacity: alpha)
+        }
     }
 }

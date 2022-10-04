@@ -11,7 +11,7 @@ import SwiftyUserDefaults
 
 // typealias ButtonColor = (background: UIColor, text: UIColor)
 
-class ColorTheme {
+class ColorTheme: ObservableObject {
     enum Themes: Int, CustomStringConvertible, CaseIterable {
         case light = 0
         case darkMode = 1
@@ -28,7 +28,7 @@ class ColorTheme {
     
     static var sharedInstance = ColorTheme()
     
-    var theme: Themes
+    @Published var theme: Themes
     
     init(theme: Themes? = nil) {
         self.theme = theme ?? Themes(rawValue: Defaults[\.colorTheme]) ?? .light

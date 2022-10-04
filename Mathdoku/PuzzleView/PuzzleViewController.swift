@@ -10,9 +10,10 @@ import UIKit
 import RealmSwift
 import GoogleMobileAds
 import SwiftyUserDefaults
+import SwiftUI
 
 @IBDesignable
-class PuzzleViewController: UIViewController, UINavigationBarDelegate {
+class PuzzleViewController: UIViewController, UINavigationBarDelegate, StartNextPuzzleDelegate {
     // MARK: - View Controller properties
     var puzzle: Puzzle!
     private var nextPuzzleId: Int? = nil
@@ -21,6 +22,7 @@ class PuzzleViewController: UIViewController, UINavigationBarDelegate {
     // MARK: - References to View Items
     @IBOutlet weak var mainView: UIView!
     @IBOutlet weak var successOverlayView: UIView!
+    @IBOutlet weak var puzzleCompleteContainer: UIView!
     @IBOutlet weak var successOverlayBackgroundView: UIView!
     @IBOutlet weak var bestTimeTitle: UILabel! {
         didSet {
@@ -455,6 +457,10 @@ class PuzzleViewController: UIViewController, UINavigationBarDelegate {
     }
     
     // MARK: - Puzzle progression UI buttons
+    func nextPuzzleButtonPress() {
+        mimicNextPuzzleButtonPress()
+    }
+    
     @IBAction func nextPuzzle(_ sender: UIButton) {
         // this can be used by either the success screen or the skiPuzzle button
         DebugUtil.print("Entering nextPuzzle")
@@ -521,19 +527,42 @@ class PuzzleViewController: UIViewController, UINavigationBarDelegate {
     }
     
     private func updateShowSuccessView() {
+        let time = gameTimerLabel.text ?? "00:00:00"
+        let bestTimeForSize: String
+        let isBestTime: Bool
+        
         if let bestTime = playerProgress.puzzlesSolved.filter("timeToSolve != nil").sorted(byKeyPath: "timeToSolve", ascending: true).first,
             bestTime.puzzleId != playerProgress.activePuzzleId {
             // previous best time
             bestTimeLabel.text = createTimeString(from: bestTime.timeToSolve.value ?? 0.0)
             bestTimeLabel.textColor = ColorTheme.sharedInstance.fonts
+            
+            bestTimeForSize = createTimeString(from: bestTime.timeToSolve.value ?? 0.0)
+            isBestTime = false
         } else {
             // new best time
             bestTimeLabel.text = "New Best Time!"
             bestTimeLabel.textColor = ColorTheme.sharedInstance.positiveTextLabel
+            
+            bestTimeForSize = "New Best Time!"
+            isBestTime = true
         }
         
         finalTimeLabel.text = gameTimerLabel.text
         successOverlayView.isHidden = false
+        
+        let puzzleCompleteViewModel = PuzzleCompleteViewModel(puzzleSize: puzzle.size,
+                                                              time: time,
+                                                              bestTime: bestTimeForSize,
+                                                              isBestTime: isBestTime,
+                                                              startNextPuzzleDelegate: self)
+        let puzzleCompletedView = PuzzleCompletedMainView().environmentObject(puzzleCompleteViewModel)
+        let hostController = UIHostingController(rootView: puzzleCompletedView)
+        
+        addChild(hostController)
+        hostController.view.frame = puzzleCompleteContainer.bounds
+        puzzleCompleteContainer.addSubview(hostController.view)
+        hostController.didMove(toParent: self)
     }
     
     private func skipPuzzle() {
@@ -547,6 +576,13 @@ class PuzzleViewController: UIViewController, UINavigationBarDelegate {
     }
     
     private func goToNextPuzzle() {
+        DebugUtil.print("Subviews that exist on the puzzle complete container:", puzzleCompleteContainer.subviews.count)
+        puzzleCompleteContainer.subviews.forEach {
+            DebugUtil.print("Removing this subview: \($0)")
+            $0.willMove(toSuperview: nil)
+            puzzleCompleteContainer.willRemoveSubview($0)
+            $0.removeFromSuperview()
+        }
         gameState = .loading
         selectedCell = nil
         timerState = .reset
@@ -1286,6 +1322,7 @@ class PuzzleViewController: UIViewController, UINavigationBarDelegate {
                                                 
             self?.setStatesToViewAppear()
         })
+
         observerTokens.append(NotificationCenter.default.addObserver(forName: UIApplication.willChangeStatusBarOrientationNotification,
                                                object: nil, queue: nil) { _ in
             CellViewElementValues.sharedInstance.clear()

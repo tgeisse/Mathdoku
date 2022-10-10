@@ -72,7 +72,7 @@ class PuzzleViewController: UIViewController, UINavigationBarDelegate, StartNext
     private let countdownTag = 554455
     private var gameTimer = 0.0 {
         didSet {
-            gameTimerLabel.text = createTimeString(from: gameTimer)
+            gameTimerLabel.text = gameTimer.convertToTimeString // createTimeString(from: gameTimer)
         }
     }
     
@@ -530,14 +530,15 @@ class PuzzleViewController: UIViewController, UINavigationBarDelegate, StartNext
         let time = gameTimerLabel.text ?? "00:00:00"
         let bestTimeForSize: String
         let isBestTime: Bool
+        let completedTimes = playerProgress.puzzlesSolved.filter("timeToSolve != nil").sorted(byKeyPath: "timeToSolve", ascending: true)
+        let bestTime = completedTimes.first
         
-        if let bestTime = playerProgress.puzzlesSolved.filter("timeToSolve != nil").sorted(byKeyPath: "timeToSolve", ascending: true).first,
-            bestTime.puzzleId != playerProgress.activePuzzleId {
+        if let bestTime = bestTime, bestTime.puzzleId != playerProgress.activePuzzleId {
             // previous best time
-            bestTimeLabel.text = createTimeString(from: bestTime.timeToSolve.value ?? 0.0)
+            bestTimeLabel.text = bestTime.timeToSolve.value?.convertToTimeString ?? 0.0.convertToTimeString
             bestTimeLabel.textColor = ColorTheme.sharedInstance.fonts
             
-            bestTimeForSize = createTimeString(from: bestTime.timeToSolve.value ?? 0.0)
+            bestTimeForSize = bestTime.timeToSolve.value?.convertToTimeString ?? 0.0.convertToTimeString
             isBestTime = false
         } else {
             // new best time
@@ -549,20 +550,22 @@ class PuzzleViewController: UIViewController, UINavigationBarDelegate, StartNext
         }
         
         finalTimeLabel.text = gameTimerLabel.text
-        successOverlayView.isHidden = false
         
         let puzzleCompleteViewModel = PuzzleCompleteViewModel(puzzleSize: puzzle.size,
                                                               time: time,
+                                                              timesForSize: completedTimes.compactMap { $0.timeToSolve.value },
                                                               bestTime: bestTimeForSize,
                                                               isBestTime: isBestTime,
                                                               startNextPuzzleDelegate: self)
         let puzzleCompletedView = PuzzleCompletedMainView().environmentObject(puzzleCompleteViewModel)
         let hostController = UIHostingController(rootView: puzzleCompletedView)
         
-        addChild(hostController)
+      //  addChild(hostController)
         hostController.view.frame = puzzleCompleteContainer.bounds
         puzzleCompleteContainer.addSubview(hostController.view)
         hostController.didMove(toParent: self)
+        
+        successOverlayView.isHidden = false
     }
     
     private func skipPuzzle() {
@@ -576,13 +579,6 @@ class PuzzleViewController: UIViewController, UINavigationBarDelegate, StartNext
     }
     
     private func goToNextPuzzle() {
-        DebugUtil.print("Subviews that exist on the puzzle complete container:", puzzleCompleteContainer.subviews.count)
-        puzzleCompleteContainer.subviews.forEach {
-            DebugUtil.print("Removing this subview: \($0)")
-            $0.willMove(toSuperview: nil)
-            puzzleCompleteContainer.willRemoveSubview($0)
-            $0.removeFromSuperview()
-        }
         gameState = .loading
         selectedCell = nil
         timerState = .reset
@@ -593,6 +589,13 @@ class PuzzleViewController: UIViewController, UINavigationBarDelegate, StartNext
         fillInUnitCells()
         setPuzzleProgress(to: true)
         successOverlayView.isHidden = true
+        DebugUtil.print("Subviews that exist on the puzzle complete container:", puzzleCompleteContainer.subviews.count)
+        puzzleCompleteContainer.subviews.forEach {
+            DebugUtil.print("Removing this subview: \($0)")
+            $0.willMove(toSuperview: nil)
+            puzzleCompleteContainer.willRemoveSubview($0)
+            $0.removeFromSuperview()
+        }
         
         AnalyticsWrapper.logEvent(.selectContent, contentType: .puzzlePlayed, id: "id-startNextPuzzle", name: "goToNextPuzzle")
         
@@ -1323,10 +1326,14 @@ class PuzzleViewController: UIViewController, UINavigationBarDelegate, StartNext
             self?.setStatesToViewAppear()
         })
 
-        observerTokens.append(NotificationCenter.default.addObserver(forName: UIApplication.willChangeStatusBarOrientationNotification,
+       /* observerTokens.append(NotificationCenter.default.addObserver(forName: UIApplication.willChangeStatusBarOrientationNotification,
                                                object: nil, queue: nil) { _ in
             CellViewElementValues.sharedInstance.clear()
-        })
+        }) */
+    }
+    
+    override func viewWillTransition(to size: CGSize, with coordinator: UIViewControllerTransitionCoordinator) {
+        CellViewElementValues.sharedInstance.clear()
     }
     
     deinit {
@@ -1464,6 +1471,7 @@ extension PuzzleViewController {
         })
     }
     
+    @available(*, deprecated, message: "Moved to an extenion on double")
     private func createTimeString(from time: Double) -> String {
         let ti = TimeInterval(time)
         return String(format: "%02i:%02i:%02i", ti.hours, ti.minutes, ti.seconds)

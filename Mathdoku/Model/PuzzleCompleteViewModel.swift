@@ -8,26 +8,33 @@
 
 import Foundation
 
-protocol StartNextPuzzleDelegate {
+protocol StartNextPuzzleDelegate: AnyObject {
     func nextPuzzleButtonPress() -> Void
 }
 
 class PuzzleCompleteViewModel: ObservableObject {
+/*    @Published var puzzleSize: Int
+    @Published var time: String
+    @Published var bestTime: String
+    @Published var isBestTime: Bool */
+    
     let puzzleSize: Int
     let time: String
+    let timesForSize: [Double]
     let bestTime: String
     let isBestTime: Bool
-    var startNextPuzzleDelegate: StartNextPuzzleDelegate?
+    weak var startNextPuzzleDelegate: StartNextPuzzleDelegate?
     
-    init(puzzleSize: Int, time: String, bestTime: String, isBestTime: Bool, startNextPuzzleDelegate: StartNextPuzzleDelegate? = nil) {
+    init(puzzleSize: Int, time: String, timesForSize: [Double], bestTime: String, isBestTime: Bool, startNextPuzzleDelegate: StartNextPuzzleDelegate? = nil) {
         self.puzzleSize = puzzleSize
         self.time = time
+        self.timesForSize = timesForSize
         self.bestTime = bestTime
         self.isBestTime = isBestTime
         self.startNextPuzzleDelegate = startNextPuzzleDelegate
     }
     
     deinit {
-        DebugUtil.print("PuzzleCompleteViewModel has been destroyed")
+        DebugUtil.print("PuzzleCompleteViewModel has been deallocated")
     }
 }

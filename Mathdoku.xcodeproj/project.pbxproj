@@ -14,6 +14,8 @@
 		34ACC70927CD61CE00A3A84A /* UIViewPropertyAnimatorExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 34ACC70827CD61CE00A3A84A /* UIViewPropertyAnimatorExtension.swift */; };
 		34C7731D28EB83D0008B2508 /* PuzzleCompletedMainView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 34C7731C28EB83D0008B2508 /* PuzzleCompletedMainView.swift */; };
 		34C7732028EBAD57008B2508 /* PuzzleCompleteViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 34C7731F28EBAD57008B2508 /* PuzzleCompleteViewModel.swift */; };
+		34C7732228EC69B5008B2508 /* PuzzleCompletedOriginalView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 34C7732128EC69B5008B2508 /* PuzzleCompletedOriginalView.swift */; };
+		34C7732428F12643008B2508 /* DoubleExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 34C7732328F12643008B2508 /* DoubleExtension.swift */; };
 		34EBA3A72790F58400A885BD /* StoreKitWrapper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 34EBA3A62790F58400A885BD /* StoreKitWrapper.swift */; };
 		8336D4FC8161CC44C65F908F /* Pods_Mathdoku.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 27B6C3B9D7393F6EFC9176CA /* Pods_Mathdoku.framework */; };
 		9502E5DE1EEE080F0048BE1B /* ViewControllerExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9502E5DD1EEE080F0048BE1B /* ViewControllerExtensions.swift */; };
@@ -105,6 +107,8 @@
 		34ACC70827CD61CE00A3A84A /* UIViewPropertyAnimatorExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIViewPropertyAnimatorExtension.swift; sourceTree = "<group>"; };
 		34C7731C28EB83D0008B2508 /* PuzzleCompletedMainView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PuzzleCompletedMainView.swift; sourceTree = "<group>"; };
 		34C7731F28EBAD57008B2508 /* PuzzleCompleteViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PuzzleCompleteViewModel.swift; sourceTree = "<group>"; };
+		34C7732128EC69B5008B2508 /* PuzzleCompletedOriginalView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PuzzleCompletedOriginalView.swift; sourceTree = "<group>"; };
+		34C7732328F12643008B2508 /* DoubleExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DoubleExtension.swift; sourceTree = "<group>"; };
 		34EBA3A62790F58400A885BD /* StoreKitWrapper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StoreKitWrapper.swift; sourceTree = "<group>"; };
 		3BC01DF3DD546476D89F7543 /* Pods-Mathdoku.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Mathdoku.debug.xcconfig"; path = "Pods/Target Support Files/Pods-Mathdoku/Pods-Mathdoku.debug.xcconfig"; sourceTree = "<group>"; };
 		7ABBAD76201575B50001FEAB /* MathdokuTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = MathdokuTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -198,6 +202,7 @@
 				95CBCC571FFDCE92001409B1 /* UIColorExtensions.swift */,
 				34A0CE3727C5ACE9001D5F6E /* BundleExtension.swift */,
 				34ACC70827CD61CE00A3A84A /* UIViewPropertyAnimatorExtension.swift */,
+				34C7732328F12643008B2508 /* DoubleExtension.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -206,6 +211,7 @@
 			isa = PBXGroup;
 			children = (
 				34C7731C28EB83D0008B2508 /* PuzzleCompletedMainView.swift */,
+				34C7732128EC69B5008B2508 /* PuzzleCompletedOriginalView.swift */,
 			);
 			path = PuzzleCompleted;
 			sourceTree = "<group>";
@@ -590,8 +596,10 @@
 				95CBCC5D20087176001409B1 /* AppSecrets.swift in Sources */,
 				95FBB8DB1E9AD13F00B0E662 /* AppDelegate.swift in Sources */,
 				34A0CE3827C5ACE9001D5F6E /* BundleExtension.swift in Sources */,
+				34C7732428F12643008B2508 /* DoubleExtension.swift in Sources */,
 				9581B8C525803C3B00EA5E5E /* ColorThemePickerTableViewController.swift in Sources */,
 				3426D0072781701B002835A2 /* KeyboardDirection.swift in Sources */,
+				34C7732228EC69B5008B2508 /* PuzzleCompletedOriginalView.swift in Sources */,
 				9570051C1FE104F300C85822 /* AnalyticsWrapper.swift in Sources */,
 				34EBA3A72790F58400A885BD /* StoreKitWrapper.swift in Sources */,
 				9598A3A21FBC020800AE48E2 /* SettingsViewController.swift in Sources */,

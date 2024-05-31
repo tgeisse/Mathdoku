@@ -3,7 +3,7 @@
 	archiveVersion = 1;
 	classes = {
 	};
-	objectVersion = 51;
+	objectVersion = 54;
 	objects = {
 
 /* Begin PBXBuildFile section */
@@ -16,8 +16,9 @@
 		34C7732028EBAD57008B2508 /* PuzzleCompleteViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 34C7731F28EBAD57008B2508 /* PuzzleCompleteViewModel.swift */; };
 		34C7732228EC69B5008B2508 /* PuzzleCompletedOriginalView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 34C7732128EC69B5008B2508 /* PuzzleCompletedOriginalView.swift */; };
 		34C7732428F12643008B2508 /* DoubleExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 34C7732328F12643008B2508 /* DoubleExtension.swift */; };
+		34C7732728F49D88008B2508 /* ChartPuzzleTimes.swift in Sources */ = {isa = PBXBuildFile; fileRef = 34C7732628F49D88008B2508 /* ChartPuzzleTimes.swift */; };
 		34EBA3A72790F58400A885BD /* StoreKitWrapper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 34EBA3A62790F58400A885BD /* StoreKitWrapper.swift */; };
-		8336D4FC8161CC44C65F908F /* Pods_Mathdoku.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 27B6C3B9D7393F6EFC9176CA /* Pods_Mathdoku.framework */; };
+		3DDD08339852FF286D50C813 /* Pods_Mathdoku.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E9CE80EFA27BF8762978F174 /* Pods_Mathdoku.framework */; };
 		9502E5DE1EEE080F0048BE1B /* ViewControllerExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9502E5DD1EEE080F0048BE1B /* ViewControllerExtensions.swift */; };
 		9502E5E01EEE158B0048BE1B /* PuzzlePurchase.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9502E5DF1EEE158B0048BE1B /* PuzzlePurchase.swift */; };
 		9502E5E31EEE16020048BE1B /* PuzzleProducts.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9502E5E21EEE16020048BE1B /* PuzzleProducts.swift */; };
@@ -97,8 +98,6 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
-		107ED940AEAB5A0AF4DD58A7 /* Pods_MathdokuTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_MathdokuTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
-		27B6C3B9D7393F6EFC9176CA /* Pods_Mathdoku.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Mathdoku.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		3426D0062781701B002835A2 /* KeyboardDirection.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KeyboardDirection.swift; sourceTree = "<group>"; };
 		34882DD227D83A9A0044E309 /* KeyCommandsTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KeyCommandsTableViewController.swift; sourceTree = "<group>"; };
 		34A0CE3727C5ACE9001D5F6E /* BundleExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BundleExtension.swift; sourceTree = "<group>"; };
@@ -109,8 +108,8 @@
 		34C7731F28EBAD57008B2508 /* PuzzleCompleteViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PuzzleCompleteViewModel.swift; sourceTree = "<group>"; };
 		34C7732128EC69B5008B2508 /* PuzzleCompletedOriginalView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PuzzleCompletedOriginalView.swift; sourceTree = "<group>"; };
 		34C7732328F12643008B2508 /* DoubleExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DoubleExtension.swift; sourceTree = "<group>"; };
+		34C7732628F49D88008B2508 /* ChartPuzzleTimes.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChartPuzzleTimes.swift; sourceTree = "<group>"; };
 		34EBA3A62790F58400A885BD /* StoreKitWrapper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StoreKitWrapper.swift; sourceTree = "<group>"; };
-		3BC01DF3DD546476D89F7543 /* Pods-Mathdoku.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Mathdoku.debug.xcconfig"; path = "Pods/Target Support Files/Pods-Mathdoku/Pods-Mathdoku.debug.xcconfig"; sourceTree = "<group>"; };
 		7ABBAD76201575B50001FEAB /* MathdokuTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = MathdokuTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		7ABBAD7A201575B50001FEAB /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		9502E5DD1EEE080F0048BE1B /* ViewControllerExtensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ViewControllerExtensions.swift; sourceTree = "<group>"; };
@@ -168,7 +167,9 @@
 		95FBB9091E9AD97300B0E662 /* Puzzle.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Puzzle.swift; sourceTree = "<group>"; };
 		95FBB90B1E9AD9E900B0E662 /* Cell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Cell.swift; sourceTree = "<group>"; };
 		95FFC6D01F118C2200DF964A /* iAd.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = iAd.framework; path = System/Library/Frameworks/iAd.framework; sourceTree = SDKROOT; };
-		F41B6E2D82BEB28B8FADADD3 /* Pods-Mathdoku.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Mathdoku.release.xcconfig"; path = "Pods/Target Support Files/Pods-Mathdoku/Pods-Mathdoku.release.xcconfig"; sourceTree = "<group>"; };
+		C0309F8064501E5BEAC2E0A0 /* Pods-Mathdoku.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Mathdoku.release.xcconfig"; path = "Target Support Files/Pods-Mathdoku/Pods-Mathdoku.release.xcconfig"; sourceTree = "<group>"; };
+		DED68742CA55F53CF459A9CD /* Pods-Mathdoku.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Mathdoku.debug.xcconfig"; path = "Target Support Files/Pods-Mathdoku/Pods-Mathdoku.debug.xcconfig"; sourceTree = "<group>"; };
+		E9CE80EFA27BF8762978F174 /* Pods_Mathdoku.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Mathdoku.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -186,13 +187,22 @@
 				95F869081FC51779006D3921 /* iAd.framework in Frameworks */,
 				9568B3151FC1FF2B000502A4 /* AdSupport.framework in Frameworks */,
 				9568B3131FC1FE46000502A4 /* StoreKit.framework in Frameworks */,
-				8336D4FC8161CC44C65F908F /* Pods_Mathdoku.framework in Frameworks */,
+				3DDD08339852FF286D50C813 /* Pods_Mathdoku.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		1A0C1A442B67808E89EFB923 /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				DED68742CA55F53CF459A9CD /* Pods-Mathdoku.debug.xcconfig */,
+				C0309F8064501E5BEAC2E0A0 /* Pods-Mathdoku.release.xcconfig */,
+			);
+			path = Pods;
+			sourceTree = "<group>";
+		};
 		34ACC70727CD619D00A3A84A /* Extensions */ = {
 			isa = PBXGroup;
 			children = (
@@ -216,13 +226,12 @@
 			path = PuzzleCompleted;
 			sourceTree = "<group>";
 		};
-		599782A8731822E7F32F4D48 /* Pods */ = {
+		34C7732528F49C49008B2508 /* Complete Puzzle Graph */ = {
 			isa = PBXGroup;
 			children = (
-				3BC01DF3DD546476D89F7543 /* Pods-Mathdoku.debug.xcconfig */,
-				F41B6E2D82BEB28B8FADADD3 /* Pods-Mathdoku.release.xcconfig */,
+				34C7732628F49D88008B2508 /* ChartPuzzleTimes.swift */,
 			);
-			name = Pods;
+			path = "Complete Puzzle Graph";
 			sourceTree = "<group>";
 		};
 		7ABBAD77201575B50001FEAB /* MathdokuTests */ = {
@@ -267,6 +276,9 @@
 		9581B8C925804FFE00EA5E5E /* Views */ = {
 			isa = PBXGroup;
 			children = (
+				34C7732528F49C49008B2508 /* Complete Puzzle Graph */,
+				95C082621EB1AC84008B7C2E /* Menu View Controllers */,
+				95FBB9081E9AD95B00B0E662 /* PuzzleView */,
 				9581B8CE258050F200EA5E5E /* ColorThemePreviewTableViewCell.swift */,
 			);
 			path = Views;
@@ -344,7 +356,7 @@
 				7ABBAD77201575B50001FEAB /* MathdokuTests */,
 				95FBB8D81E9AD13F00B0E662 /* Products */,
 				95FFC6CF1F118C2200DF964A /* Frameworks */,
-				599782A8731822E7F32F4D48 /* Pods */,
+				1A0C1A442B67808E89EFB923 /* Pods */,
 			);
 			sourceTree = "<group>";
 		};
@@ -365,9 +377,7 @@
 				9502E5E11EEE159C0048BE1B /* PuzzlePurchasing */,
 				95E9D1101EB81C0C00F51A4B /* Utility */,
 				34ACC70727CD619D00A3A84A /* Extensions */,
-				95C082621EB1AC84008B7C2E /* Menu View Controllers */,
 				9581B8C925804FFE00EA5E5E /* Views */,
-				95FBB9081E9AD95B00B0E662 /* PuzzleView */,
 				95C082651EB1AEA0008B7C2E /* PuzzleLoader */,
 				9555608E1ECEBE53006C9F2D /* Model */,
 				95A196201ED2A3130038D40C /* RealmModel */,
@@ -402,8 +412,7 @@
 				9568B3141FC1FF1A000502A4 /* AdSupport.framework */,
 				9568B3121FC1FE46000502A4 /* StoreKit.framework */,
 				95FFC6D01F118C2200DF964A /* iAd.framework */,
-				27B6C3B9D7393F6EFC9176CA /* Pods_Mathdoku.framework */,
-				107ED940AEAB5A0AF4DD58A7 /* Pods_MathdokuTests.framework */,
+				E9CE80EFA27BF8762978F174 /* Pods_Mathdoku.framework */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";
@@ -433,12 +442,13 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 95FBB8FF1E9AD13F00B0E662 /* Build configuration list for PBXNativeTarget "Mathdoku" */;
 			buildPhases = (
-				72EC30814EF0ED3499C19700 /* [CP] Check Pods Manifest.lock */,
+				22A1804C60E62186D1E5B587 /* [CP] Check Pods Manifest.lock */,
 				95FBB8D31E9AD13F00B0E662 /* Sources */,
 				95FBB8D41E9AD13F00B0E662 /* Frameworks */,
 				95FBB8D51E9AD13F00B0E662 /* Resources */,
 				9555607E1ECD3500006C9F2D /* Embed Frameworks */,
-				A82D7CDF6981615008186848 /* [CP] Embed Pods Frameworks */,
+				B2C60B031BE3AAD6FC23E8AB /* [CP] Embed Pods Frameworks */,
+				A6B960C4BB1E71CB506B6313 /* [CP] Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -522,16 +532,20 @@
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXShellScriptBuildPhase section */
-		72EC30814EF0ED3499C19700 /* [CP] Check Pods Manifest.lock */ = {
+		22A1804C60E62186D1E5B587 /* [CP] Check Pods Manifest.lock */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+			);
+			inputFileListPaths = (
 			);
 			inputPaths = (
 				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
 				"${PODS_ROOT}/Manifest.lock",
 			);
 			name = "[CP] Check Pods Manifest.lock";
+			outputFileListPaths = (
+			);
 			outputPaths = (
 				"$(DERIVED_FILE_DIR)/Pods-Mathdoku-checkManifestLockResult.txt",
 			);
@@ -540,7 +554,24 @@
 			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
 			showEnvVarsInLog = 0;
 		};
-		A82D7CDF6981615008186848 /* [CP] Embed Pods Frameworks */ = {
+		A6B960C4BB1E71CB506B6313 /* [CP] Copy Pods Resources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-Mathdoku/Pods-Mathdoku-resources-${CONFIGURATION}-input-files.xcfilelist",
+			);
+			name = "[CP] Copy Pods Resources";
+			outputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-Mathdoku/Pods-Mathdoku-resources-${CONFIGURATION}-output-files.xcfilelist",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-Mathdoku/Pods-Mathdoku-resources.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		B2C60B031BE3AAD6FC23E8AB /* [CP] Embed Pods Frameworks */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -594,6 +625,7 @@
 				9518F85E1FF36AF400AAAB35 /* StoreTableViewCell.swift in Sources */,
 				959632E41ED115A100CAFC5D /* CellPosition.swift in Sources */,
 				95CBCC5D20087176001409B1 /* AppSecrets.swift in Sources */,
+				34C7732728F49D88008B2508 /* ChartPuzzleTimes.swift in Sources */,
 				95FBB8DB1E9AD13F00B0E662 /* AppDelegate.swift in Sources */,
 				34A0CE3827C5ACE9001D5F6E /* BundleExtension.swift in Sources */,
 				34C7732428F12643008B2508 /* DoubleExtension.swift in Sources */,
@@ -662,7 +694,7 @@
 				DEBUG_INFORMATION_FORMAT = dwarf;
 				GCC_C_LANGUAGE_STANDARD = gnu11;
 				INFOPLIST_FILE = MathdokuTests/Info.plist;
-				IPHONEOS_DEPLOYMENT_TARGET = 12.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 16.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -686,7 +718,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				GCC_C_LANGUAGE_STANDARD = gnu11;
 				INFOPLIST_FILE = MathdokuTests/Info.plist;
-				IPHONEOS_DEPLOYMENT_TARGET = 12.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 16.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -751,7 +783,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 16.0;
 				MTL_ENABLE_DEBUG_INFO = YES;
 				ONLY_ACTIVE_ARCH = YES;
 				SDKROOT = iphoneos;
@@ -806,7 +838,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 16.0;
 				MTL_ENABLE_DEBUG_INFO = NO;
 				SDKROOT = iphoneos;
 				SWIFT_COMPILATION_MODE = wholemodule;
@@ -818,7 +850,7 @@
 		};
 		95FBB9001E9AD13F00B0E662 /* Debug */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 3BC01DF3DD546476D89F7543 /* Pods-Mathdoku.debug.xcconfig */;
+			baseConfigurationReference = DED68742CA55F53CF459A9CD /* Pods-Mathdoku.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CLANG_ENABLE_MODULES = YES;
@@ -833,7 +865,7 @@
 				);
 				GCC_C_LANGUAGE_STANDARD = "compiler-default";
 				INFOPLIST_FILE = Mathdoku/Info.plist;
-				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 16.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -842,7 +874,7 @@
 					"$(inherited)",
 					"$(SDKROOT)/usr/lib/swift",
 				);
-				MARKETING_VERSION = 2.0;
+				MARKETING_VERSION = 2.0.1;
 				OTHER_LDFLAGS = (
 					"$(inherited)",
 					"-ObjC",
@@ -873,8 +905,6 @@
 					"-framework",
 					"\"FirebaseCore\"",
 					"-framework",
-					"\"FirebaseCoreDiagnostics\"",
-					"-framework",
 					"\"FirebaseDatabase\"",
 					"-framework",
 					"\"FirebaseInstallations\"",
@@ -884,8 +914,6 @@
 					"\"GoogleAppMeasurement\"",
 					"-framework",
 					"\"GoogleAppMeasurementIdentitySupport\"",
-					"-framework",
-					"\"GoogleDataTransport\"",
 					"-framework",
 					"\"GoogleMobileAds\"",
 					"-framework",
@@ -943,7 +971,7 @@
 		};
 		95FBB9011E9AD13F00B0E662 /* Release */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = F41B6E2D82BEB28B8FADADD3 /* Pods-Mathdoku.release.xcconfig */;
+			baseConfigurationReference = C0309F8064501E5BEAC2E0A0 /* Pods-Mathdoku.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CLANG_ENABLE_MODULES = YES;
@@ -957,7 +985,7 @@
 				);
 				GCC_C_LANGUAGE_STANDARD = "compiler-default";
 				INFOPLIST_FILE = Mathdoku/Info.plist;
-				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 16.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -966,7 +994,7 @@
 					"$(inherited)",
 					"$(SDKROOT)/usr/lib/swift",
 				);
-				MARKETING_VERSION = 2.0;
+				MARKETING_VERSION = 2.0.1;
 				OTHER_LDFLAGS = (
 					"$(inherited)",
 					"-ObjC",
@@ -997,8 +1025,6 @@
 					"-framework",
 					"\"FirebaseCore\"",
 					"-framework",
-					"\"FirebaseCoreDiagnostics\"",
-					"-framework",
 					"\"FirebaseDatabase\"",
 					"-framework",
 					"\"FirebaseInstallations\"",
@@ -1008,8 +1034,6 @@
 					"\"GoogleAppMeasurement\"",
 					"-framework",
 					"\"GoogleAppMeasurementIdentitySupport\"",
-					"-framework",
-					"\"GoogleDataTransport\"",
 					"-framework",
 					"\"GoogleMobileAds\"",
 					"-framework",

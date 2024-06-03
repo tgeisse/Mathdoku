@@ -11,6 +11,9 @@
 		34882DD327D83A9A0044E309 /* KeyCommandsTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 34882DD227D83A9A0044E309 /* KeyCommandsTableViewController.swift */; };
 		34A0CE3827C5ACE9001D5F6E /* BundleExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 34A0CE3727C5ACE9001D5F6E /* BundleExtension.swift */; };
 		34A0CE3A27C5B067001D5F6E /* AppStoreInfo.swift in Sources */ = {isa = PBXBuildFile; fileRef = 34A0CE3927C5B067001D5F6E /* AppStoreInfo.swift */; };
+		34AB12C02C0E26B600C76E16 /* Version.swift in Sources */ = {isa = PBXBuildFile; fileRef = 34AB12BF2C0E26B600C76E16 /* Version.swift */; };
+		34AB12C32C0E494400C76E16 /* VersionTesting.swift in Sources */ = {isa = PBXBuildFile; fileRef = 34AB12C22C0E494400C76E16 /* VersionTesting.swift */; };
+		34AB12C42C0E49D200C76E16 /* Version.swift in Sources */ = {isa = PBXBuildFile; fileRef = 34AB12BF2C0E26B600C76E16 /* Version.swift */; };
 		34ACC70927CD61CE00A3A84A /* UIViewPropertyAnimatorExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 34ACC70827CD61CE00A3A84A /* UIViewPropertyAnimatorExtension.swift */; };
 		34C7731D28EB83D0008B2508 /* PuzzleCompletedMainView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 34C7731C28EB83D0008B2508 /* PuzzleCompletedMainView.swift */; };
 		34C7732028EBAD57008B2508 /* PuzzleCompleteViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 34C7731F28EBAD57008B2508 /* PuzzleCompleteViewModel.swift */; };
@@ -103,6 +106,9 @@
 		34A0CE3727C5ACE9001D5F6E /* BundleExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BundleExtension.swift; sourceTree = "<group>"; };
 		34A0CE3927C5B067001D5F6E /* AppStoreInfo.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppStoreInfo.swift; sourceTree = "<group>"; };
 		34A2FA50279B4BA9006DD274 /* libswift_Concurrency.tbd */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.text-based-dylib-definition"; name = libswift_Concurrency.tbd; path = usr/lib/swift/libswift_Concurrency.tbd; sourceTree = SDKROOT; };
+		34AB12BF2C0E26B600C76E16 /* Version.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Version.swift; sourceTree = "<group>"; };
+		34AB12C12C0E494400C76E16 /* MathdokuTests-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "MathdokuTests-Bridging-Header.h"; sourceTree = "<group>"; };
+		34AB12C22C0E494400C76E16 /* VersionTesting.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VersionTesting.swift; sourceTree = "<group>"; };
 		34ACC70827CD61CE00A3A84A /* UIViewPropertyAnimatorExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIViewPropertyAnimatorExtension.swift; sourceTree = "<group>"; };
 		34C7731C28EB83D0008B2508 /* PuzzleCompletedMainView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PuzzleCompletedMainView.swift; sourceTree = "<group>"; };
 		34C7731F28EBAD57008B2508 /* PuzzleCompleteViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PuzzleCompleteViewModel.swift; sourceTree = "<group>"; };
@@ -238,6 +244,8 @@
 			isa = PBXGroup;
 			children = (
 				7ABBAD7A201575B50001FEAB /* Info.plist */,
+				34AB12C22C0E494400C76E16 /* VersionTesting.swift */,
+				34AB12C12C0E494400C76E16 /* MathdokuTests-Bridging-Header.h */,
 			);
 			path = MathdokuTests;
 			sourceTree = "<group>";
@@ -345,6 +353,7 @@
 				950E6DA620087DD70066AA4F /* ColorTheme.swift */,
 				9570051B1FE104F300C85822 /* AnalyticsWrapper.swift */,
 				954695F0205C8A4300BB431A /* CrashWrapper.swift */,
+				34AB12BF2C0E26B600C76E16 /* Version.swift */,
 			);
 			path = Utility;
 			sourceTree = "<group>";
@@ -465,15 +474,17 @@
 		95FBB8CF1E9AD13F00B0E662 /* Project object */ = {
 			isa = PBXProject;
 			attributes = {
+				BuildIndependentTargetsInParallel = YES;
 				KnownAssetTags = (
 					com.apple.gamecenter.Leaderboard,
 				);
 				LastSwiftUpdateCheck = 0920;
-				LastUpgradeCheck = 1220;
+				LastUpgradeCheck = 1540;
 				ORGANIZATIONNAME = "Taylor Geisse";
 				TargetAttributes = {
 					7ABBAD75201575B50001FEAB = {
 						CreatedOnToolsVersion = 9.2;
+						LastSwiftMigration = 1540;
 						ProvisioningStyle = Automatic;
 						TestTargetID = 95FBB8D61E9AD13F00B0E662;
 					};
@@ -595,6 +606,8 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				34AB12C42C0E49D200C76E16 /* Version.swift in Sources */,
+				34AB12C32C0E494400C76E16 /* VersionTesting.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -615,6 +628,7 @@
 				95CBCC541FFC9659001409B1 /* Stack.swift in Sources */,
 				95A196221ED2A32A0038D40C /* PuzzleProgress.swift in Sources */,
 				95FBB90A1E9AD97300B0E662 /* Puzzle.swift in Sources */,
+				34AB12C02C0E26B600C76E16 /* Version.swift in Sources */,
 				951273721EDE898200588467 /* DebugUtil.swift in Sources */,
 				95CBCC5B2008716A001409B1 /* AppKeys.swift in Sources */,
 				34C7731D28EB83D0008B2508 /* PuzzleCompletedMainView.swift in Sources */,
@@ -688,10 +702,12 @@
 			buildSettings = {
 				BUNDLE_LOADER = "$(TEST_HOST)";
 				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
+				CLANG_ENABLE_MODULES = YES;
 				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				CODE_SIGN_STYLE = Automatic;
 				DEBUG_INFORMATION_FORMAT = dwarf;
+				DEVELOPMENT_TEAM = 57TCLD34EQ;
 				GCC_C_LANGUAGE_STANDARD = gnu11;
 				INFOPLIST_FILE = MathdokuTests/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 16.0;
@@ -702,6 +718,8 @@
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = com.geissefamily.taylor.MathdokuTests;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_OBJC_BRIDGING_HEADER = "MathdokuTests/MathdokuTests-Bridging-Header.h";
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 				SWIFT_VERSION = 4.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/Mathdoku.app/Mathdoku";
@@ -713,9 +731,11 @@
 			buildSettings = {
 				BUNDLE_LOADER = "$(TEST_HOST)";
 				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
+				CLANG_ENABLE_MODULES = YES;
 				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = 57TCLD34EQ;
 				GCC_C_LANGUAGE_STANDARD = gnu11;
 				INFOPLIST_FILE = MathdokuTests/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 16.0;
@@ -726,6 +746,7 @@
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = com.geissefamily.taylor.MathdokuTests;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_OBJC_BRIDGING_HEADER = "MathdokuTests/MathdokuTests-Bridging-Header.h";
 				SWIFT_VERSION = 4.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/Mathdoku.app/Mathdoku";
@@ -736,6 +757,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
+				ASSETCATALOG_COMPILER_GENERATE_SWIFT_ASSET_SYMBOL_EXTENSIONS = YES;
 				CLANG_ANALYZER_LOCALIZABILITY_NONLOCALIZED = YES;
 				CLANG_ANALYZER_NONNULL = YES;
 				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
@@ -769,6 +791,7 @@
 				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
 				ENABLE_TESTABILITY = YES;
+				ENABLE_USER_SCRIPT_SANDBOXING = YES;
 				GCC_C_LANGUAGE_STANDARD = gnu99;
 				GCC_DYNAMIC_NO_PIC = NO;
 				GCC_NO_COMMON_BLOCKS = YES;
@@ -797,6 +820,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
+				ASSETCATALOG_COMPILER_GENERATE_SWIFT_ASSET_SYMBOL_EXTENSIONS = YES;
 				CLANG_ANALYZER_LOCALIZABILITY_NONLOCALIZED = YES;
 				CLANG_ANALYZER_NONNULL = YES;
 				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
@@ -830,6 +854,7 @@
 				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
 				ENABLE_NS_ASSERTIONS = NO;
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_USER_SCRIPT_SANDBOXING = YES;
 				GCC_C_LANGUAGE_STANDARD = gnu99;
 				GCC_NO_COMMON_BLOCKS = YES;
 				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
@@ -858,6 +883,7 @@
 				CURRENT_PROJECT_VERSION = 1;
 				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
 				DEVELOPMENT_TEAM = 57TCLD34EQ;
+				ENABLE_USER_SCRIPT_SANDBOXING = NO;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(PROJECT_DIR)",
@@ -874,7 +900,7 @@
 					"$(inherited)",
 					"$(SDKROOT)/usr/lib/swift",
 				);
-				MARKETING_VERSION = 2.0.1;
+				MARKETING_VERSION = 2.0.2;
 				OTHER_LDFLAGS = (
 					"$(inherited)",
 					"-ObjC",
@@ -978,6 +1004,7 @@
 				CONFIGURATION_BUILD_DIR = "$(BUILD_DIR)/$(CONFIGURATION)$(EFFECTIVE_PLATFORM_NAME)";
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_TEAM = 57TCLD34EQ;
+				ENABLE_USER_SCRIPT_SANDBOXING = NO;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(PROJECT_DIR)",
@@ -994,7 +1021,7 @@
 					"$(inherited)",
 					"$(SDKROOT)/usr/lib/swift",
 				);
-				MARKETING_VERSION = 2.0.1;
+				MARKETING_VERSION = 2.0.2;
 				OTHER_LDFLAGS = (
 					"$(inherited)",
 					"-ObjC",

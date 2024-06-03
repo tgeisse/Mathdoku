@@ -22,12 +22,15 @@ class AppStoreInfo {
     // MARK: - Class properties
     lazy var storeInfo: [SavedStoreInformation: String] = saveStoreInformation()
     var updateAvailable: Bool {
-        guard let installedVersion = MainBundleInformation.version.string,
-              let storeVersion = storeInfo[.version] else {
+        guard let installedVersionString = MainBundleInformation.version.string,
+              let storeVersionString = storeInfo[.version],
+              let installedVersion = Version(versionString: installedVersionString),
+              let storeVersion = Version(versionString: storeVersionString) else {
             return false
         }
         DebugUtil.print("Installed Version: \(installedVersion)  .....  Store Version: \(storeVersion)")
-        return installedVersion != storeVersion
+        
+        return installedVersion < storeVersion
     }
     
     // MARK: - Private helper Functions

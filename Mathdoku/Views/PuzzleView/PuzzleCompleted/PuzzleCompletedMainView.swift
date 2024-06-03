@@ -12,6 +12,8 @@ struct PuzzleCompletedMainView: View {
     @State private var showOriginal = false
     
     var body: some View {
+        PuzzleCompletedOriginalView()
+        /*
         ZStack {
             if showOriginal {
                 PuzzleCompletedOriginalView()
@@ -26,6 +28,7 @@ struct PuzzleCompletedMainView: View {
             .frame(maxWidth: .infinity, maxHeight: .infinity, alignment: .topLeading)
             .padding()
         }
+         */
     }
 }
 

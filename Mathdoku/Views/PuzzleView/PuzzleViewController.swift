@@ -35,7 +35,7 @@ class PuzzleViewController: UIViewController, UINavigationBarDelegate, StartNext
     @IBOutlet weak var finalTimeLabel: UILabel!
     @IBOutlet weak var puzzleCompleteLabel: UILabel! { didSet { puzzleCompleteLabel.textColor = ColorTheme.sharedInstance.puzzleCompleteAndCountdown } }
     
-    @IBOutlet weak var bannerView: GADBannerView!
+    @IBOutlet weak var bannerView: BannerView!
     @IBOutlet weak var bannerViewHeight: NSLayoutConstraint!
     
     private var gridRowStacks: [GridRowView] {
@@ -1308,7 +1308,7 @@ class PuzzleViewController: UIViewController, UINavigationBarDelegate, StartNext
             // configure banner view ads
             bannerView.adUnitID = AppKeys.adMobPuzzleBannerAdId.key
             bannerView.rootViewController = self
-            bannerView.load(GADRequest())
+            bannerView.load(Request())
         }
         
         // register notification observers

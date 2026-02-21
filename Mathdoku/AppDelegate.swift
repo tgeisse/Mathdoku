@@ -43,7 +43,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         // Initialize the Google Mobile Ads SDK. If we are outside of the EU
         // AdMob app id
         if !AnalyticsWrapper.isEU {
-            GADMobileAds.sharedInstance().start(completionHandler: nil)
+            MobileAds.shared.start(completionHandler: nil)
         }
         
         // Initialize Bugsnag SDK
